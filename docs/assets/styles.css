@@ -181,6 +181,19 @@ section.cover .cover-main {
   display: none;
 }
 
+.markdown-section p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-section ul {
+  margin-top: 0;
+}
+
+.markdown-section p + p {
+  margin-top: 1rem;
+}
+
 .markdown-section pre,
 .markdown-section pre > code {
   background-color: #2E2E46;
@@ -220,7 +233,7 @@ section.cover .cover-main {
   color: inherit;
   border-radius: 0;
   font-size: 0.9em;
-  padding: 6px 10px;
+  padding: 0px 10px;
   /* color: #111; */
 }
 
