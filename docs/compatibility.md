@@ -32,6 +32,18 @@ require "anycable/rails/compatibility"
 
 **NOTE:** compatibility checks could be used with Action Cable (i.e. w/o AnyCable) and don't affect compatible functionality; thus it makes sense to add runtime checks in development and test environments.
 
+For example, the following channel class:
+
+```ruby
+class ChatChannel < ApplicationCable::Channel
+  def subscribed
+    @room = ChatRoom.find(params[:id])
+  end
+end
+```
+
+raises `AnyCable::CompatibilityError` when client tries to subscribe to the channel, 'cause AnyCable doesnt's support storing channel's state in instance variables.
+
 ## RuboCop cops
 
 AnyCable integrates with [RuboCop](https://github.com/rubocop-hq/rubocop) to detect incompatible code in your application.
