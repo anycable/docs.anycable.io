@@ -2,7 +2,11 @@
 
 [AnyCable gem](https://github.com/anycable/anycable) consists of a gRPC server implementation and a CLI to run this server along with your Ruby application.
 
-**Required Ruby version:** >= 2.4.0.
+## Requirements
+- Ruby >= 2.4
+- Redis
+
+## Installation
 
 Add `anycable` gem to your `Gemfile`:
 
@@ -19,10 +23,9 @@ Run `anycable` CLI to start a gRPC server:
 ```sh
 $ bundle exec anycable --require "./path/to/app.rb"
 #> Starting AnyCable gRPC server (pid: 48111)
+#> Serving application from ./path/to/app.rb ...
 #> AnyCable version: 0.6.0
 #> gRPC version: 1.16.0
-#> Loading application from ./path/to/app.rb ...
-#> Application is loaded
 #> ...
 ```
 
