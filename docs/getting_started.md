@@ -14,10 +14,7 @@ AnyCable could be used with the existing Action Cable clients (such as [JavaScri
 
 You can use AnyCable with:
 - Action Cable (Rails) apps (see [Using with Rails](./using_with_rails.md))
-- [Lite Cable](./lite_cable.md) for  _plain_ Ruby projects (see [Using with Ruby](./using_with_ruby.md))
-- your own [AnyCable-compatible framework](./how_to_anycable_framework.md).
+- [Lite Cable](https://github.com/palkan/litecable) for  _plain_ Ruby projects (see [Using with Ruby](./using_with_ruby.md))
+- your own [AnyCable-compatible framework](./using_with_ruby.md).
 
-As a WebSocket server you can choose:
-- [`anycable-go`](./anycable_go.md) (Golang) (_recommended_)
-- [`erlycable`](./erlucable.md) (Erlang)
-- your own [AnyCable-compatible server](./how_to_anycable_server.md)
+See the list of available WebSocket servers [here](./websocket_servers.md).

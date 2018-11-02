@@ -1,0 +1,3 @@
+# Action Cable Compatibility
+
+TBD
