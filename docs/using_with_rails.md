@@ -107,7 +107,7 @@ config.log_level = :debug
 
 AnyCable is [compatible](./compatibility.md) with the original Action Cable implementation; thus you can continue using Action Cable for development and tests.
 
-Compatibility could be enforced by [runtime checks](./compatibility.md#runtime-checks) or [static checks](./compatibility.md#static-checks) (via [RuboCop](https://github.com/rubocop-hq/rubocop)).
+Compatibility could be enforced by [runtime checks](./compatibility.md#runtime-checks) or [static checks](./compatibility.md#rubocop-cops) (via [RuboCop](https://github.com/rubocop-hq/rubocop)).
 
 Use process manager (e.g. [Hivemind](https://github.com/DarthSim/hivemind) or [Overmind](https://github.com/DarthSim/overmind)) to run AnyCable processes in development with the following `Procfile`:
 
