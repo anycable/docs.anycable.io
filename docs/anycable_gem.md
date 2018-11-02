@@ -1,6 +1,8 @@
-# `anycable` gem
+# Using `anycable` gem
 
 [AnyCable gem](https://github.com/anycable/anycable) consists of a gRPC server implementation and a CLI to run this server along with your Ruby application.
+
+**Required Ruby version:** >= 2.4.0.
 
 Add `anycable` gem to your `Gemfile`:
 
@@ -10,7 +12,9 @@ gem "anycable"
 
 (and don't forget to run `bundle install`).
 
-Now you're able to run `anycable` CLI and start gRPC server:
+## CLI
+
+Run `anycable` CLI to start a gRPC server:
 
 ```sh
 $ bundle exec anycable --require "./path/to/app.rb"
@@ -24,7 +28,7 @@ $ bundle exec anycable --require "./path/to/app.rb"
 
 You only have to tell AnyCable where to find your application code.
 
-**NOTE:** AnyCable tries to detect where to load your app from if no `--require` options is provided.
+**NOTE:** AnyCable tries to detect where to load your app from if no `--require` option is provided.
 It checks for `config/environment.rb` and `config/anycable.rb` files presence.
 
 Run `anycable -h` to see the list of all available options and their defaults.

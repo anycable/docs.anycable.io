@@ -5,7 +5,7 @@
 <img align="right" height="150" width="129"
      title="TestProf logo" class="home-logo" src="./assets/images/logo.svg">
 
-AnyCable allows you to use any WebSocket server (written in any language) as a replacement for your Ruby server (such as Faye, ActionCable, etc).
+AnyCable allows you to use any WebSocket server (written in any language) as a replacement for your Ruby server (such as Faye, ActionCable, etc.).
 
 AnyCable uses [Action Cable protocol](./action_cable_protocol.md), so you can use Action Cable [JavaScript client](https://www.npmjs.com/package/actioncable) without any monkey-patching.
 

@@ -6,7 +6,7 @@ AnyCable acts like a bridge beetween _logic-less_ WebSocket server and _Action C
   <img src="./assets/images/anycable.svg" alt="AnyCable diagram" width="40%">
 </div>
 
-The main goal of AnyCable is to make it possible to write high-performant real-time application using Ruby as a language for implementing a business-logic.
+The primary goal of AnyCable is to make it possible to write a high-performant real-time application using Ruby as a language for implementing a business-logic.
 
 This goal is achieved by _moving_ low-level responsibility (handling sockets, parsing frames, broadcasting data) to WebSocket servers written in other languages (such as Golang or Erlang).
 

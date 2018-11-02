@@ -9,7 +9,7 @@ AnyCable **WebSocket server** (1) is responsible for handling clients, or socket
 
 WebSocket server should include gRPC client built from AnyCable [`rpc.proto`](./rpc_proto.md).
 
-**RPC server** (2) is a connector between Ruby application (e.g. Rails) and WebSocket server. It’s an instance of your application with a [gRPC](https://grpc.io) endpoint which implements `rpc.proto`.
+**RPC server** (2) is a connector between the Ruby application (e.g. Rails) and WebSocket server. It’s an instance of your application with a [gRPC](https://grpc.io) endpoint which implements `rpc.proto`.
 
 This server is a part of the [`anycable` gem](./anycable_gem.md).
 
