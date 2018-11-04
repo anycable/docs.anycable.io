@@ -7,7 +7,7 @@ Since version 0.4.0 Rails integration has been extracted into a separate gem–[
 ## Requirements
 - Ruby >= 2.4
 - Rails >= 5.0
-- Redis
+- Redis (when using Redis [broadcast adapter](./broadcast_adapters.md))
 
 ## Getting started
 
@@ -15,6 +15,9 @@ Add `anycable-rails` gem to your Gemfile:
 
 ```ruby
 gem "anycable-rails"
+
+# when using Redis broadcast adapter
+gem "redis", ">= 4.0"
 ```
 
 (and don't forget to run `bundle install`).

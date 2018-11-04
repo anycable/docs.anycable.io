@@ -4,14 +4,17 @@
 
 ## Requirements
 - Ruby >= 2.4
-- Redis
+- Redis (when using Redis [broadcast adapter](./broadcast_adapters.md))
 
 ## Installation
 
 Add `anycable` gem to your `Gemfile`:
 
 ```ruby
-gem "anycable"
+gem "anycable", "~> 0.6.0"
+
+# when using Redis broadcast adapter
+gem "redis", ">= 4.0"
 ```
 
 (and don't forget to run `bundle install`).

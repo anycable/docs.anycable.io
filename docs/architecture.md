@@ -15,4 +15,4 @@ This server is a part of the [`anycable` gem](./anycable_gem.md).
 
 We use a **Pub/Sub service** (3) to send messages from the application to the WS server, which then broadcasts the messages to clients.
 
-**NOTE**: Currently, only Redis is supported as Pub/Sub service.
+**NOTE**: Currently, only Redis is supported as Pub/Sub service. See [Broadcast Adapters](./broadcast_adapters.md).
