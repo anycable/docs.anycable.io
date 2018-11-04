@@ -14,9 +14,7 @@ You can also specify your own logger instance for full control:
 
 ```ruby
 # AnyCable invokes this code before initializing the configuration
-AnyCable.to_prepare do
-  AnyCable.logger = MyLogger.new
-end
+AnyCable.logger = MyLogger.new
 ```
 
 ## gRPC logging
