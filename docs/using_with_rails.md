@@ -79,15 +79,11 @@ config.action_cable.url = "wss://ws.example.com/cable"
 Then, run Anycable RPC server:
 
 ```ruby
-$ RAILS_ENV=production bundle exec anycable
-
-# or
-
-$ bundle exec anycable -e production
-
-# or for development
-
 $ bundle exec anycable
+
+# don't forget to provide Rails env
+
+$ RAILS_ENV=production bundle exec anycable
 ```
 
 And, finally, run AnyCable WebSocket server, e.g. [anycable-go](./go_getting_started.md):
