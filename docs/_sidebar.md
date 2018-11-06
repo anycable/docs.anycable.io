@@ -12,6 +12,7 @@
   * [Health Checking](./health_checking.md)
   * [Logging](./logging.md)
   * [Exceptions Handling](./exceptions.md)
+  * [Broadcast Adapters](./broadcast_adapters.md)
 * `anycable-go`
   * [Getting Started](./go_getting_started.md)
   * [Instrumentation](./go_instrumentation.md)
