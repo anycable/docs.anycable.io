@@ -63,3 +63,5 @@ class TimingMiddleware < AnyCable::Middleware
   end
 end
 ```
+
+The complete example could be found in the [demo app](https://github.com/anycable/anycable_demo/blob/v0.6.0/config/initializers/yabeda.rb).
