@@ -93,3 +93,6 @@ anycable-go --port=443 -ssl_cert=path/to/ssl.cert -ssl_key=path/to/ssl.key
 
 Official docker images available at [DockerHub](https://hub.docker.com/r/anycable/anycable-go/).
 
+### Heroku
+
+See [heroku-anycable-go](https://github.com/anycable/heroku-anycable-go) buildpack.
