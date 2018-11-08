@@ -18,11 +18,13 @@ AnyCable uses [Action Cable protocol](./action_cable_protocol.md), so you can us
 
 - [How it works?](./architecture.md)
 
-- [Using AnyCable with Rails](./anycable_rails.md)
+- [Using AnyCable with Rails](./using_with_rails.md)
 
-- [Using AnyCable with other Ruby frameworks](./anycable_no_rails.md)
+- [Using AnyCable with other Ruby frameworks](./using_with_ruby.md)
 
 ## Resources
+
+- [Official Website](https://anycable.io)
 
 - [AnyCable: Action Cable on steroids!](https://evilmartians.com/chronicles/anycable-actioncable-on-steroids)
 
