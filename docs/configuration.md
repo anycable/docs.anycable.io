@@ -32,7 +32,7 @@ Redis URL for pub/sub (default: `"redis://localhost:6379/5"`).
 
 Redis channel for broadcasting (default: `"__anycable__"`).
 
-**log_level** (`ANYCABLE_LOG_LEVEL`, `--log-leve`)
+**log_level** (`ANYCABLE_LOG_LEVEL`, `--log-level`)
 
 Logging level (default: `"info"`).
 
