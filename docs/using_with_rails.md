@@ -100,6 +100,9 @@ AnyCable uses `Rails.logger` as `AnyCable.logger` by default, thus setting log l
 # in Rails configuration
 config.logger = Logger.new(STDOUT)
 config.log_level = :debug
+
+# or
+Rails.logger.level = :debug if AnyCable.config.debug?
 ```
 
 ## Development and test
