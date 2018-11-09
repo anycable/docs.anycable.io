@@ -74,17 +74,24 @@ INFO 2018-03-06T14:16:27.872Z broadcast_msg_total=0 broadcast_streams_num=0 clie
 
 By default, metrics are logged every 15 seconds (you can change this behavior through `--metrics_log_interval` option).
 
-### Custom loggers with MRuby
+### Custom loggers with mruby
 
 > 👨‍🔬 This is an experimental API and could change in the future 👩‍🔬
 
-AnyCable-Go allows you to write custom log formatters using an embedded [MRuby](http://mruby.org) engine.
+AnyCable-Go allows you to write custom log formatters using an embedded [mruby](http://mruby.org) engine.
 
-MRuby is the lightweight implementation of the Ruby language. Hence it is possible to use Ruby to write metrics exporters.
+mruby is the lightweight implementation of the Ruby language. Hence it is possible to use Ruby to write metrics exporters.
 
-First, you should download the version of `anycable-go` with MRuby (it's not included by default): these binaries have `-mrb` suffix right after the version (i.e. `anycable-go-0.6.0-mrb-linux-amd64`).
+First, you should download the version of `anycable-go` with mruby (it's not included by default): these binaries have `-mrb` suffix right after the version (i.e. `anycable-go-0.6.0-mrb-linux-amd64`).
 
-**NOTE:** only MacOS and Linux are supported.
+**NOTE**: only MacOS and Linux are supported.
+
+**NOTE**: when a server with mruby support is starting you should the following message:
+
+```sh
+$ anycable-go
+=> Starting AnyCable v0.6.0 (with mruby)...
+```
 
 Secondly, write a Ruby script implementing a simple interface:
 
