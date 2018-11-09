@@ -67,6 +67,10 @@ Logging level (default: `"info"`).
 
 Enable debug mode (more verbose logging).
 
+## Instrumentation
+
+Check this [article](go_instrumentation.md).
+
 ## Troubleshooting
 
 First, try to run `anycable-go --debug` to enable verbose logging.
