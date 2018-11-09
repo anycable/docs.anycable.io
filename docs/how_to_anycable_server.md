@@ -138,7 +138,7 @@ func ping_message() {
 
 ### Step 4. gRPC Client
 
-Then you have to build a gRPC client using [`rpc.proto`](https://github.com/anycable/anycable/blob/master/protos/rpc.proto).
+Then you have to build a gRPC client using a [Protobuf service definition](./rpc_proto.md).
 
 It has a simple interface with only three methods: `Connect`, `Disconnect` and `Command`.
 Let's go to Step 4 to see, how to use these methods and their return values.
@@ -299,4 +299,4 @@ func socket_disconn(socket_handle) {
 }
 ```
 
-*NOTE*: It makes sense to call `Disconnect` asynchronously or using a queue in order to avoid RPC calls spikes caused by mass-disconnection.
+**NOTE**: It makes sense to call `Disconnect` asynchronously or using a queue in order to avoid RPC calls spikes caused by mass-disconnection.

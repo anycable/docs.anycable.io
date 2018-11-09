@@ -123,3 +123,7 @@ module MetricsFormatter
   end
 end
 ```
+
+```sh
+=> INFO 2018-04-27T14:11:59.701Z sample#clients_num=0 sample#clients_uniq_num=0 sample#goroutines_num=0
+```
