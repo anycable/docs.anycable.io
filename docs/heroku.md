@@ -86,7 +86,7 @@ See complete example: [code](https://github.com/anycable/anycable_demo) and [dep
 
 ## Using with Heroku Review apps
 
-We recommend using _standard_ Action Cable in review apps with [enforced runtime compatibility checks](./compatibility.md#runtime-checks).
+We recommend using _standard_ Action Cable in review apps with [enforced runtime compatibility checks](compatibility.md#runtime-checks).
 
 In your `cable.yml` use the following code to conditionally load the adapter:
 

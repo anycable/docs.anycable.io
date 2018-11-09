@@ -1,6 +1,6 @@
 # Logging
 
-By default, AnyCable logger logs to STDOUT with `INFO` severity but can be easily configured (see [Configuration](./configuration#parameters)), for example:
+By default, AnyCable logger logs to STDOUT with `INFO` severity but can be easily configured (see [Configuration](configuration#parameters)), for example:
 
 ```sh
 $ bundle exec anycable --log-file=logs/anycable.log --log-level debug

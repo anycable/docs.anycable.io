@@ -7,7 +7,7 @@
 
 AnyCable allows you to use any WebSocket server (written in any language) as a replacement for your Ruby server (such as Faye, ActionCable, etc.).
 
-AnyCable uses [Action Cable protocol](./action_cable_protocol.md), so you can use Action Cable [JavaScript client](https://www.npmjs.com/package/actioncable) without any monkey-patching.
+AnyCable uses [Action Cable protocol](action_cable_protocol.md), so you can use Action Cable [JavaScript client](https://www.npmjs.com/package/actioncable) without any monkey-patching.
 
 **NOTE**: this website shows documentation for the upcoming AnyCable version (0.6.0).
 
@@ -16,11 +16,11 @@ AnyCable uses [Action Cable protocol](./action_cable_protocol.md), so you can us
 
 ## Where to go from here?
 
-- [How it works?](./architecture.md)
+- [How it works?](architecture.md)
 
-- [Using AnyCable with Rails](./using_with_rails.md)
+- [Using AnyCable with Rails](using_with_rails.md)
 
-- [Using AnyCable with other Ruby frameworks](./using_with_ruby.md)
+- [Using AnyCable with other Ruby frameworks](using_with_ruby.md)
 
 ## Resources
 

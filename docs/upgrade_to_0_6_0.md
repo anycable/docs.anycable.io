@@ -57,7 +57,7 @@ For example:
 $ bundle exec anycable --server-command "anycable-go -p 3334"
 ```
 
-The previous _hack_ for running `anycable-go` on Heroku is no longer needed (see [Heroku deployment](./heroku.md)).
+The previous _hack_ for running `anycable-go` on Heroku is no longer needed (see [Heroku deployment](heroku.md)).
 
 ## `anycable-go`
 

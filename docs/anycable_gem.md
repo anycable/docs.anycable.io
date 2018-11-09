@@ -4,7 +4,7 @@
 
 ## Requirements
 - Ruby >= 2.4
-- Redis (when using Redis [broadcast adapter](./broadcast_adapters.md))
+- Redis (when using Redis [broadcast adapter](broadcast_adapters.md))
 
 ## Installation
 
@@ -41,7 +41,7 @@ Run `anycable -h` to see the list of all available options and their defaults.
 
 ### Running WebSocket server along with RPC
 
-AnyCable CLI provides an option to run any arbitrary command along with the RPC server. That could be useful for local development and even in production (e.g. for [Heroku deployment](./heroku.md)).
+AnyCable CLI provides an option to run any arbitrary command along with the RPC server. That could be useful for local development and even in production (e.g. for [Heroku deployment](heroku.md)).
 
 For example:
 

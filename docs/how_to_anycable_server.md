@@ -10,14 +10,15 @@ The server should be able to:
 
 - Communicate with [gRPC](https://grpc.io) server as a gRPC client
 
-gRPC provides libraries for most popular languages (see [docs](http://www.grpc.io/docs/).
-If there is no gRPC support for your favorite language, you can build it yourself (the minimal implementation for AnyCable) – it's just HTTP2 + [Protocol Buffers](https://developers.google.com/protocol-buffers/).
+gRPC provides libraries for most popular languages (see [docs](http://www.grpc.io/docs/)).
+
+If there is no gRPC support for your favorite language, you can build it yourself (the minimal implementation for AnyCable)–it's just HTTP2 + [Protocol Buffers](https://developers.google.com/protocol-buffers/).
 
 See [erlgrpc](https://github.com/palkan/erlgrpc) for the example of a minimal gRPC client.
 
 - Subscribe to Redis channels.
 
-We use Redis to receive broadcast events from the application by default (see [Broadcast adapters](./broadcast_adapters.md)).
+We use Redis to receive broadcast events from the application by default (see [Broadcast adapters](broadcast_adapters.md)).
 
 **NOTE**: You can build a custom broadcast adapter (for both–your server and `anycable`  gem).
 For the rest of this article, we consider that we want to use Redis.
@@ -29,7 +30,7 @@ Let's go through all steps to implement a custom server (using abstract language
 
 ### Step 1. Server
 
-First of all, you need a _server_ – the entry point for clients connections – which can handle incoming data and disconnection events.
+First of all, you need a _server_–the entry point for clients connections – which can handle incoming data and disconnection events.
 
 ```js
 interface Server {
@@ -66,7 +67,7 @@ interface Hub {
 Why do we need a `channel_id`? Unfortunately, this is required by Action Cable client.
 The JS client doesn't know about streams, only about channels. So it needs a channel identifier to be present in incoming messages to resolve channels.
 
-Moreover, there are no uniqueness restrictions on streams names – the same stream name can be used for different channels.
+Moreover, there are no uniqueness restrictions on streams names–the same stream name can be used for different channels.
 
 Thus, our `broadcast` function may look like this:
 
@@ -100,7 +101,7 @@ func msg_for_channel(msg, identifier) {
 
 ### Step 3. Pinger
 
-Action Cable clients assume that a server sends a special message – ping – every 3 seconds (configurable).
+Action Cable clients assume that a server sends a special message–ping–every 3 seconds (configurable).
 Thus we should implement a _pinger_.
 
 Pinger is a simple entity that holds a list of active sockets and broadcast a message to them every X seconds.
@@ -138,7 +139,7 @@ func ping_message() {
 
 ### Step 4. gRPC Client
 
-Then you have to build a gRPC client using a [Protobuf service definition](./rpc_proto.md).
+Then you have to build a gRPC client using a [Protobuf service definition](rpc_proto.md).
 
 It has a simple interface with only three methods: `Connect`, `Disconnect` and `Command`.
 Let's go to Step 4 to see, how to use these methods and their return values.
@@ -147,7 +148,7 @@ Let's go to Step 4 to see, how to use these methods and their return values.
 
 Now, when we already have a server and RPC client, let's fit them together.
 
-**NOTE**: see also [Action Cable protocol spec](./action_cable_protocol.md).
+**NOTE**: see also [Action Cable protocol spec](action_cable_protocol.md).
 
 #### Client Connection
 

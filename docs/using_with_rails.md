@@ -7,7 +7,7 @@ Since version 0.4.0 Rails integration has been extracted into a separate gem–[
 ## Requirements
 - Ruby >= 2.4
 - Rails >= 5.0
-- Redis (when using Redis [broadcast adapter](./broadcast_adapters.md))
+- Redis (when using Redis [broadcast adapter](broadcast_adapters.md))
 
 ## Getting started
 
@@ -30,13 +30,13 @@ $ bundle exec anycable
 #> Serving Rails application from ./config/environment.rb
 ```
 
-**NOTE**: you don't need to specify `-r` option (see [CLI docs](./anycable_gem.md#cli)), your application would be loaded from `config/environment.rb`.
+**NOTE**: you don't need to specify `-r` option (see [CLI docs](anycable_gem.md#cli)), your application would be loaded from `config/environment.rb`.
 
-Install [WebSocket server](./websocket_servers.md)–and you're ready to use your Rails application with AnyCable!
+Install [WebSocket server](websocket_servers.md)–and you're ready to use your Rails application with AnyCable!
 
 ## Configuration
 
-Rails integration extends the base [configuration](./configuration.md) by adding a special parameter–`access_logs_disabled`.
+Rails integration extends the base [configuration](configuration.md) by adding a special parameter–`access_logs_disabled`.
 
 This parameter turn on/off access logging (`Started <request data>` / `Finished <request data>`) (disabled by default).
 
@@ -86,7 +86,7 @@ $ bundle exec anycable
 $ RAILS_ENV=production bundle exec anycable
 ```
 
-And, finally, run AnyCable WebSocket server, e.g. [anycable-go](./go_getting_started.md):
+And, finally, run AnyCable WebSocket server, e.g. [anycable-go](go_getting_started.md):
 
 ```sh
 anycable-go --host=localhost --port=3334
@@ -107,9 +107,9 @@ Rails.logger.level = :debug if AnyCable.config.debug?
 
 ## Development and test
 
-AnyCable is [compatible](./compatibility.md) with the original Action Cable implementation; thus you can continue using Action Cable for development and tests.
+AnyCable is [compatible](compatibility.md) with the original Action Cable implementation; thus you can continue using Action Cable for development and tests.
 
-Compatibility could be enforced by [runtime checks](./compatibility.md#runtime-checks) or [static checks](./compatibility.md#rubocop-cops) (via [RuboCop](https://github.com/rubocop-hq/rubocop)).
+Compatibility could be enforced by [runtime checks](compatibility.md#runtime-checks) or [static checks](compatibility.md#rubocop-cops) (via [RuboCop](https://github.com/rubocop-hq/rubocop)).
 
 Use process manager (e.g. [Hivemind](https://github.com/DarthSim/hivemind) or [Overmind](https://github.com/DarthSim/overmind)) to run AnyCable processes in development with the following `Procfile`:
 
