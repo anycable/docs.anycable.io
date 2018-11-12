@@ -92,6 +92,15 @@ And, finally, run AnyCable WebSocket server, e.g. [anycable-go](go_getting_start
 anycable-go --host=localhost --port=3334
 ```
 
+## Forgery protection
+
+AnyCable respects [Action Cable configuration](https://guides.rubyonrails.org/action_cable_overview.html#allowed-request-origins) regarding forgery protection if and only if `ORIGIN` header is proxied by WebSocket server:
+
+```sh
+# with anycable-go
+$ anycable-go --headers=cookie,origin --port=3334
+```
+
 ## Logging
 
 AnyCable uses `Rails.logger` as `AnyCable.logger` by default, thus setting log level for AnyCable (e.g. `ANYCABLE_LOG_LEVEL=debug`) won't work, you should configure Rails logger instead, e.g.:
