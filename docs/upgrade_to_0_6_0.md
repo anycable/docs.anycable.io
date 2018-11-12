@@ -95,3 +95,9 @@ WSPATH | ANYCABLE_PATH
 LOG  | ANYCABLE_DEBUG
 
 All variables should be prefixed with `ANYCABLE_` (e.g. `ANYCABLE_HEADERS` instead of `HEADERS`).
+
+### Homebrew
+
+```sh
+$ brew upgrade anycable/anycable/anycable-go
+```
