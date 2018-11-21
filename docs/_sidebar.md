@@ -25,4 +25,4 @@
   * [Protobuf Definitions](rpc_proto.md)
   * [How to write AnyCable-compatible server](how_to_anycable_server.md)
 * Upgrade Notes
-  * [v0.6.0](upgrade_to_0_6_0.md)
+  * [From v0.5.x to v0.6.0](upgrade_to_0_6_0.md)
