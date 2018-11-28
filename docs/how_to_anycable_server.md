@@ -23,7 +23,6 @@ We use Redis to receive broadcast events from the application by default (see [B
 **NOTE**: You can build a custom broadcast adapter (for both–your server and `anycable`  gem).
 For the rest of this article, we consider that we want to use Redis.
 
-
 ## Step-by-step
 
 Let's go through all steps to implement a custom server (using abstract language).
@@ -301,3 +300,7 @@ func socket_disconn(socket_handle) {
 ```
 
 **NOTE**: It makes sense to call `Disconnect` asynchronously or using a queue in order to avoid RPC calls spikes caused by mass-disconnection.
+
+### Step 6. Testing
+
+You can use [AnyT](https://github.com/anycable/anyt)–AnyCable conformance testing tool–for integration tests.
