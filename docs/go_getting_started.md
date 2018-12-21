@@ -62,10 +62,16 @@ Redis channel for broadcasting (default: `"__anycable__"`).
 
 Logging level (default: `"info"`).
 
-
 **--debug** (`ANYCABLE_DEBUG`)
 
 Enable debug mode (more verbose logging).
+
+## Health checks
+
+*@since v0.6.1*
+
+Go to `/health` (you can configure the path via `--health-path`) to see the _health_ message.
+You can use this endpoint as readiness/liveness check (e.g. for load balancers).
 
 ## Instrumentation
 
