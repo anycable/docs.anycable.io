@@ -99,5 +99,5 @@ All variables should be prefixed with `ANYCABLE_` (e.g. `ANYCABLE_HEADERS` inste
 ### Homebrew
 
 ```sh
-$ brew upgrade anycable/anycable/anycable-go
+$ brew upgrade anycable-go
 ```

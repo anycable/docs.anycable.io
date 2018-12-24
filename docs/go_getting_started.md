@@ -9,7 +9,7 @@ The easiest way to install AnyCable-Go is to [download](https://github.com/anyca
 Or with [Homebrew](https://brew.sh/)
 
 ```sh
-brew install anycable/anycable/anycable-go
+brew install anycable-go
 ```
 
 Of course, you can install it from source too:
