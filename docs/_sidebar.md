@@ -21,6 +21,7 @@
 * Misc
   * [Benchmarks](benchmarks.md)
   * [Heroku Deployment](heroku.md)
+  * [Docker Deployment](docker.md)
   * [Action Cable Protocol](action_cable_protocol.md)
   * [Protobuf Definitions](rpc_proto.md)
   * [How to write AnyCable-compatible server](how_to_anycable_server.md)
