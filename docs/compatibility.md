@@ -2,7 +2,7 @@
 
 This compatibility table shows which Action Cable features supported by `anycable` gem (AnyCable servers may not support some of the features supported by gem).
 
-Feature                  | Status 
+Feature                  | Status
 -------------------------|--------
 Connection Identifiers   | ✅
 Connection Request (cookies, params) | ✅
@@ -51,7 +51,8 @@ AnyCable integrates with [RuboCop](https://github.com/rubocop-hq/rubocop) to det
 Add to your `.rubocop.yml`:
 
 ```yml
-- require: "anycable/rails/compatibility/rubocop"
+require:
+  - "anycable/rails/compatibility/rubocop"
 # ...
 ```
 
