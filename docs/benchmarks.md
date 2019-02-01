@@ -4,7 +4,7 @@
 
 ## Broadcasting RTT
 
-Broadcasting round-trip time benchmark (based on [Hashroket's bench](https://github.com/hashrocket/websocket-shootout)) measures how much time does it take for the server to re-transmit the message to all the connected clients–the less the time, the better the _real-time-ness_ of the server.
+Broadcasting round-trip time benchmark (based on [Hashrocket's bench](https://github.com/hashrocket/websocket-shootout)) measures how much time does it take for the server to re-transmit the message to all the connected clients–the less the time, the better the _real-time-ness_ of the server.
 
 The results of this benchmark could be seen below.
 
