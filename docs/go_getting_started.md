@@ -101,10 +101,42 @@ anycable-go --port=443 -ssl_cert=path/to/ssl.cert -ssl_key=path/to/ssl.key
 => INFO time context=http Starting HTTPS server at 0.0.0.0:443
 ```
 
-## Docker
+## Deploying
+### Docker
 
 Official docker images available at [DockerHub](https://hub.docker.com/r/anycable/anycable-go/).
 
 ### Heroku
 
 See [heroku-anycable-go](https://github.com/anycable/heroku-anycable-go) buildpack.
+
+### Systemd
+
+To run on systemd you can:
+
+1. Edit as needed and save the following script to `/etc/systemd/system/anycable-go.service`
+2. Reload services via `sudo systemctl daemon-reload`
+3. Run as usual - `sudo systemctl start anycable-go`
+
+```
+[Unit]
+Description=AnyCable WebSocket Server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/anycable-go
+Restart=always
+# User=some_user
+# Group=some_user
+# Environment=ANYCABLE_HOST=0.0.0.0
+# Environment=ANYCABLE_PORT=8080
+# Environment=ANYCABLE_PATH=/cable
+# Environment=ANYCABLE_REDIS_URL=redis://localhost:6379/1
+# Environment=ANYCABLE_REDIS_CHANNEL=__anycable__
+# Environment=ANYCABLE_RPC_HOST=localhost:50051
+# Environment=ANYCABLE_METRICS_PATH=/metrics
+
+[Install]
+WantedBy=multi-user.target
+```
