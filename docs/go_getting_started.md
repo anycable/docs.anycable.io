@@ -104,7 +104,7 @@ anycable-go --port=443 -ssl_cert=path/to/ssl.cert -ssl_key=path/to/ssl.key
 ## Deploying
 ### Docker
 
-Official docker images available at [DockerHub](https://hub.docker.com/r/anycable/anycable-go/).
+Official docker images are available at [DockerHub](https://hub.docker.com/r/anycable/anycable-go/).
 
 ### Heroku
 
@@ -112,13 +112,14 @@ See [heroku-anycable-go](https://github.com/anycable/heroku-anycable-go) buildpa
 
 ### Systemd
 
-To run on systemd you can:
+If you prefer to run anycable-go without containerisation, we recommend running it as a system service for better manageability.
+On most modern Linux distributions this can be done by declaring a [systemd](https://www.freedesktop.org/wiki/Software/systemd/) service like this:
 
 1. Edit as needed and save the following script to `/etc/systemd/system/anycable-go.service`
-2. Reload services via `sudo systemctl daemon-reload`
-3. Run as usual - `sudo systemctl start anycable-go`
+2. Reload systemd configuration via `sudo systemctl daemon-reload`
+3. Start the service: `sudo systemctl start anycable-go`
 
-```
+```ini
 [Unit]
 Description=AnyCable WebSocket Server
 After=network.target
