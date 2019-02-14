@@ -25,8 +25,8 @@ go get -u -f github.com/anycable/anycable-go/cmd/anycable-go
 Run server:
 
 ```sh
-$ anycable-go --rpc_host=0.0.0.0:50051 --headers=cookie,x-api-token \
-              --redis_url=redis://localhost:6379/5 --redis_channel=anycable \
+$ anycable-go --rpc_host=0.0.0.0:50051 --headers=cookie \
+              --redis_url=redis://localhost:6379/5 --redis_channel=__anycable__ \
               --host=0.0.0.0 --port=8080
 
 => INFO time context=main Starting AnyCable v0.6.0 (pid: 12902)
@@ -52,7 +52,7 @@ RPC service address (default: `"localhost:50051"`).
 
 **--headers** (`ANYCABLE_HEADERS`)
 
-List of headers to proxy to RPC (default: "`cookie`").
+Comma-separated list of headers to proxy to RPC (default: `"cookie"`).
 
 Redis URL for pub/sub (default: `"redis://localhost:6379/5"`).
 
@@ -102,6 +102,7 @@ anycable-go --port=443 -ssl_cert=path/to/ssl.cert -ssl_key=path/to/ssl.key
 ```
 
 ## Deploying
+
 ### Docker
 
 Official docker images are available at [DockerHub](https://hub.docker.com/r/anycable/anycable-go/).
@@ -128,6 +129,7 @@ After=network.target
 Type=simple
 ExecStart=/usr/local/bin/anycable-go
 Restart=always
+# LimitNOFILE = xxxx # increase open files limit (see OS Tuning guide)
 # User=some_user
 # Group=some_user
 # Environment=ANYCABLE_HOST=0.0.0.0
