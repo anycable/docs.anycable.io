@@ -138,7 +138,7 @@ Restart=always
 # Environment=ANYCABLE_REDIS_URL=redis://localhost:6379/5
 # Environment=ANYCABLE_REDIS_CHANNEL=__anycable__
 # Environment=ANYCABLE_RPC_HOST=localhost:50051
-# Environment=ANYCABLE_METRICS_PATH=/metrics
+# Environment=ANYCABLE_METRICS_HTTP=/metrics
 
 [Install]
 WantedBy=multi-user.target
