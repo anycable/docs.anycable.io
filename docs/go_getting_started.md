@@ -25,9 +25,9 @@ go get -u -f github.com/anycable/anycable-go/cmd/anycable-go
 Run server:
 
 ```sh
-$ anycable-go --rpc_host=0.0.0.0:50051 --headers=cookie \
+$ anycable-go --rpc_host=localhost:50051 --headers=cookie \
               --redis_url=redis://localhost:6379/5 --redis_channel=__anycable__ \
-              --host=0.0.0.0 --port=8080
+              --host=localhost --port=8080
 
 => INFO time context=main Starting AnyCable v0.6.0 (pid: 12902)
 ```
@@ -132,10 +132,10 @@ Restart=always
 # LimitNOFILE = xxxx # increase open files limit (see OS Tuning guide)
 # User=some_user
 # Group=some_user
-# Environment=ANYCABLE_HOST=0.0.0.0
+# Environment=ANYCABLE_HOST=localhost
 # Environment=ANYCABLE_PORT=8080
 # Environment=ANYCABLE_PATH=/cable
-# Environment=ANYCABLE_REDIS_URL=redis://localhost:6379/1
+# Environment=ANYCABLE_REDIS_URL=redis://localhost:6379/5
 # Environment=ANYCABLE_REDIS_CHANNEL=__anycable__
 # Environment=ANYCABLE_RPC_HOST=localhost:50051
 # Environment=ANYCABLE_METRICS_PATH=/metrics
