@@ -5,7 +5,7 @@ AnyCable uses [`anyway_config`](https://github.com/palkan/anyway_config) gem for
 You can also pass configuration variables to CLI as options, e.g.:
 
 ```sh
-$ bundle exec anycable --rpc-host 0.0.0.0:50120 \ 
+$ bundle exec anycable --rpc-host 0.0.0.0:50120 \
                        --redis-channel my_redis_channel \
                        --log-level debug
 ```
@@ -22,7 +22,7 @@ Here is the list of the most commonly used configuration parameters and the way 
 
 **rpc_host** (`ANYCABLE_RPC_HOST`, `--rpc-host`)
 
-Local address to run gRPC server on (default: `"[::]:50051"`).
+Local address to run gRPC server on (default: `"[::]:50051"`, deprecated, will be changed to `"127.0.0.1:50051"` in future versions).
 
 **redis_url** (`REDIS_URL`, `ANYCABLE_REDIS_URL`, `--redis-url`)
 
