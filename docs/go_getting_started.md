@@ -54,6 +54,8 @@ RPC service address (default: `"localhost:50051"`).
 
 Comma-separated list of headers to proxy to RPC (default: `"cookie"`).
 
+**--redis_url** (`ANYCABLE_REDIS_URL` or `REDIS_URL`)
+
 Redis URL for pub/sub (default: `"redis://localhost:6379/5"`).
 
 **--redis_channel** (`ANYCABLE_REDIS_CHANNEL`)
