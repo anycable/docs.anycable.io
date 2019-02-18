@@ -44,7 +44,7 @@ Here is the list of the most commonly used configuration parameters and the way 
 
 **--host**, **--port** (`ANYCABLE_HOST`, `ANYCABLE_PORT` or `PORT`)
 
-Server host and port (default: `"localhost"` and `8080`).
+Server host and port (default: `"0.0.0.0"` (deprecated, will be changed to `"localhost"` in future versions) and `8080`).
 
 **--rpc_host** (`ANYCABLE_RPC_HOST`)
 
