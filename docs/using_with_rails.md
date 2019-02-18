@@ -128,6 +128,32 @@ rpc: bundle exec anycable
 ws:  anycable-go --port 3334
 ```
 
+## Devise authentication
+
+Devise relies on warden middleware, but unlike ActionCable, Anycable does not have it in environment.
+You can reconstruct necessary part from cookies:
+
+```ruby
+module ApplicationCable
+  class Connection < ActionCable::Connection::Base
+    identified_by :current_user
+
+    def connect
+      self.current_user = find_verified_user || reject_unauthorized_connection
+    end
+
+    protected
+    def find_verified_user
+      app_cookies_key = Rails.application.config.session_options[:key] ||
+        raise("No session cookies key in config")
+
+      env['rack.session'] = cookies.encrypted[app_cookies_key]
+      Warden::SessionSerializer.new(env).fetch(:user)
+    end
+  end
+end
+```
+
 ## Links
 
 - [Demo application](https://github.com/anycable/anycable_demo)
