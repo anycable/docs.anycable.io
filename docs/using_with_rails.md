@@ -130,8 +130,10 @@ ws:  anycable-go --port 3334
 
 ## Devise authentication
 
-Devise relies on warden middleware, but unlike ActionCable, Anycable does not have it in environment.
-You can reconstruct necessary part from cookies:
+Devise relies on [`warden`](https://github.com/wardencommunity/warden) Rack middleware to authenticate users but unlike Action Cable,
+Anycable does not have it in the environment ('cause it doesn't use Rails app Rack middleware at all).
+
+Hopefully, you can reconstruct the necessary part of the Rack env from cookies:
 
 ```ruby
 module ApplicationCable
