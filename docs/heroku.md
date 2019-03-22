@@ -22,7 +22,7 @@ We have to use the same `Procfile` for both applications ('cause we're using the
 #!/bin/bash
 
 if [ "$ANYCABLE_DEPLOYMENT" == "true" ]; then
-  bundle exec anycable --server-comand="anycable-go"
+  bundle exec anycable --server-command="anycable-go"
 else
   bundle exec rails server -p $PORT -b 0.0.0.0  
 fi
