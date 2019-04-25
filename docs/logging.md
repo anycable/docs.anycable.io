@@ -17,6 +17,8 @@ You can also specify your own logger instance for full control:
 AnyCable.logger = MyLogger.new
 ```
 
+If you use AnyCable with Rails see the corresponding section in [Using with Rails](using_with_rails#logging)
+
 ## gRPC logging
 
 AnyCable does not log any GRPC internal events by default. You can turn GRPC logger on by setting `log_grpc` parameter to true:
