@@ -114,6 +114,17 @@ config.log_level = :debug
 Rails.logger.level = :debug if AnyCable.config.debug?
 ```
 
+### Log tracing
+
+Using with Rails, AnyCable adds a _session ID_ tag (`sid`) to each log entry produced during the RPC message handling. You can use it to trace the request's pathway throught the whole Load Balancer -> WS Server -> RPC stack.
+
+Logs example:
+
+```
+[AnyCable sid=FQQS_IltswlTJK60ncf9Cm] RPC Command: <AnyCable::CommandMessage: command: "subscribe", identifier: "{\"channel\":\"PresenceChannel\"}", connection_identifiers: "{\"__ltags__\":[11084497],\"current_user\":\"Z2lkOi8vbWFuYWdlYmFjL1VzZXIvMTEwODQ0OTc\"}", data: "">
+[AnyCable sid=FQQS_IltswlTJK60ncf9Cm]   User Load (0.6ms)  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
+```
+
 ## Development and test
 
 AnyCable is [compatible](compatibility.md) with the original Action Cable implementation; thus you can continue using Action Cable for development and tests.

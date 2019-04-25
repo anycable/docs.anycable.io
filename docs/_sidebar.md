@@ -16,6 +16,7 @@
 * `anycable-go`
   * [Getting Started](go_getting_started.md)
   * [Instrumentation](go_instrumentation.md)
+  * [Tracing](go_tracing.md)
   * [Using with Envoy](go_envoy.md)
   * [OS Tuning](go_os_tuning.md)
 * Misc
