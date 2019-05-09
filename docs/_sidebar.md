@@ -20,6 +20,7 @@
   * [Using with Envoy](go_envoy.md)
   * [OS Tuning](go_os_tuning.md)
 * Misc
+  * [Troubleshooting](troubleshooting.md)
   * [Benchmarks](benchmarks.md)
   * [Heroku Deployment](heroku.md)
   * [Docker Deployment](docker.md)

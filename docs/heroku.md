@@ -96,32 +96,3 @@ production:
 ```
 
 And set `"CABLE_ADAPTER": "redis"` (or any other built-in adapter, e.g. `"CABLE_ADAPTER": "async"`) in your `app.json`.
-
-## Troubleshooting
-
-### My WebSocket connection fails with "Auth failed" error
-
-It's likely that you're using cookie-based authentication. Make sure that your cookies are accessible from both domain (HTTP server and WebSocket server). For example:
-
-```ruby
-# session_store.rb
-Rails.application.config.session_store :cookie_store,
-    key: '_any_cable_session',
-    domain: :all # or domain: '.example.com'
-
-# anywhere setting cookie
-cookies[:val] = { value: '1', domain: :all }
-```
-
-**NOTE**: It's impossible to set cookies for `.herokuapp.com`. [Read more](https://devcenter.heroku.com/articles/cookies-and-herokuapp-com).
-
-### I see a lot of `too many open files` errors in the log
-
-Congratulations! You have a lot (thousands) of simultaneous connections (and you hit the max open files limit).
-
-Heroku _standard_ dynos have a limit (both soft and hard) of 10000 open files, and _performance_ dynes have a limit of 1048576.
-
-Does this mean that the theoretical limit of connections is 10k for standard dynos? Yes, but only theoretical.
-But in practice, the process doesn't free open files (sockets in our case) immediately after disconnection; it waits for TCP close handshake to finish (and you can find such sockets in `CLOSE_WAIT` state).
-
-So, if a lot of clients dropping connections, the actual limit on the number of active connections could be much less at the specific moment.

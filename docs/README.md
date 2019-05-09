@@ -22,6 +22,8 @@ AnyCable uses [Action Cable protocol](action_cable_protocol.md), so you can use 
 
 - [Using AnyCable with other Ruby frameworks](using_with_ruby.md)
 
+- [🔥 Troubleshooting](troubleshooting.md)
+
 ## Resources
 
 - [Official Website](https://anycable.io)
