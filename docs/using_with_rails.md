@@ -22,47 +22,16 @@ gem "redis", ">= 4.0"
 
 (and don't forget to run `bundle install`).
 
-Now you can start AnyCable RPC server for your application:
-
-```sh
-$ bundle exec anycable
-#> Starting AnyCable gRPC server (pid: 48111)
-#> Serving Rails application from ./config/environment.rb
-```
-
-**NOTE**: you don't need to specify `-r` option (see [CLI docs](anycable_gem.md#cli)), your application would be loaded from `config/environment.rb`.
-
-Install [WebSocket server](websocket_servers.md)–and you're ready to use your Rails application with AnyCable!
-
-## Configuration
-
-Rails integration extends the base [configuration](configuration.md) by adding a special parameter–`access_logs_disabled`.
-
-This parameter turn on/off access logging (`Started <request data>` / `Finished <request data>`) (disabled by default).
-
-You can configure it via env var (`ANYCABLE_ACCESS_LOGS_DISABLED=0` to enable) or config file:
-
-```yml
-# config/anycable.yml
-production:
-  access_logs_disabled: false
-```
-
-## Usage
-
-Running Rails application with AnyCable requires the following steps.
-
-First, update your Action Cable configuration:
-
-- Use AnyCable subscription adapter:
+Next, update your Action Cable configuration:
 
 ```yml
 # config/cable.yml
 production:
+  # Set adatper to any_cable to activate AnyCable
   adapter: any_cable
 ```
 
-- Specify AnyCable WebSocket server URL
+Install [WebSocket server](websocket_servers.md) and specify its URL in the configuration:
 
 ```ruby
 # For development it's likely the localhost
@@ -76,20 +45,49 @@ config.action_cable.url = "ws://localhost:3334/cable"
 config.action_cable.url = "wss://ws.example.com/cable"
 ```
 
-Then, run AnyCable RPC server:
+Now you can start AnyCable RPC server for your application:
 
-```ruby
+```sh
 $ bundle exec anycable
+#> Starting AnyCable gRPC server (pid: 48111)
+#> Serving Rails application from ./config/environment.rb
 
-# don't forget to provide Rails env
-
+# don't forget to provide Rails env in production
 $ RAILS_ENV=production bundle exec anycable
 ```
+
+**NOTE**: you don't need to specify `-r` option (see [CLI docs](anycable_gem.md#cli)), your application would be loaded from `config/environment.rb`.
 
 And, finally, run AnyCable WebSocket server, e.g. [anycable-go](go_getting_started.md):
 
 ```sh
-anycable-go --host=localhost --port=3334
+$ anycable-go --host=localhost --port=3334
+```
+
+## Configuration
+
+You can store AnyCable-specific configuration in YAML file (similar to Action Cable one):
+
+```yml
+# config/anycable.yml
+development:
+  redis_url: redis://localhost:6379/1
+production:
+  redis_url: redis://my.redis.io:6379/1
+```
+
+Or you can use the environment variables (or anything else supported by [anyway_config](https://github.com/palkan/anyway_config)).
+
+Rails integration extends the base [configuration](configuration.md) by adding a special parameter–`access_logs_disabled`.
+
+This parameter turn on/off access logging (`Started <request data>` / `Finished <request data>`) (disabled by default).
+
+You can configure it via env var (`ANYCABLE_ACCESS_LOGS_DISABLED=0` to enable) or config file:
+
+```yml
+# config/anycable.yml
+production:
+  access_logs_disabled: false
 ```
 
 ## Forgery protection

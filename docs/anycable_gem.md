@@ -19,6 +19,8 @@ gem "redis", ">= 4.0"
 
 (and don't forget to run `bundle install`).
 
+See Rails specific instructions [here](using_with_rails.md).
+
 ## CLI
 
 Run `anycable` CLI to start a gRPC server:
