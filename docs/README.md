@@ -28,13 +28,15 @@ AnyCable uses [Action Cable protocol](action_cable_protocol.md), so you can use 
 
 - [Official Website](https://anycable.io)
 
+### Blog Posts
+
 - [AnyCable: Action Cable on steroids!](https://evilmartians.com/chronicles/anycable-actioncable-on-steroids)
 
 - [Connecting LiteCable to Hanami](http://gabrielmalakias.com.br/ruby/hanami/iot/2017/05/26/websockets-connecting-litecable-to-hanami.html) by [@GabrielMalakias](https://github.com/GabrielMalakias)
 
 - [From Action to Any](https://medium.com/@leshchuk/from-action-to-any-1e8d863dd4cf) by [@alekseyl](https://github.com/alekseyl)
 
-## Talks
+### Talks
 
 - High-speed cables for Ruby, [RubyConf 2018](http://rubyconf.org/program#session-712), [slides](https://speakerdeck.com/palkan/rubyconf-2018-high-speed-cables-for-ruby) and [video](https://www.youtube.com/watch?v=8XRcOZXOzV4) (EN)
 
