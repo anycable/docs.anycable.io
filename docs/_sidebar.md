@@ -19,11 +19,13 @@
   * [Tracing](go_tracing.md)
   * [Using with Envoy](go_envoy.md)
   * [OS Tuning](go_os_tuning.md)
+* Deployment
+  * [Heroku](heroku.md)
+  * [Docker](docker.md)
+  * [Capistrano](capistrano.md)
 * Misc
   * [Troubleshooting](troubleshooting.md)
   * [Benchmarks](benchmarks.md)
-  * [Heroku Deployment](heroku.md)
-  * [Docker Deployment](docker.md)
   * [Action Cable Protocol](action_cable_protocol.md)
   * [Protobuf Definitions](rpc_proto.md)
   * [How to write AnyCable-compatible server](how_to_anycable_server.md)
