@@ -1,6 +1,6 @@
 # AnyCable
 
-> Polyglot replacement for ActionCable-compatible servers
+> Build lightning fast, reliable real-time applications with Ruby and Rails
 
 <img align="right" height="150" width="129"
      title="TestProf logo" class="home-logo" src="./assets/images/logo.svg">
