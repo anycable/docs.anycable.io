@@ -164,6 +164,7 @@ module ApplicationCable
   end
 end
 ```
+If you're using some other other session store instead `cookie_store` (for example [`Redis`](https://github.com/anycable/anycable-rails/issues/95#issuecomment-502458973)) you need manually get key from users cookies and find payload in your session store. Take a look at this [issue](https://github.com/anycable/anycable-rails/issues/95#issuecomment-502458973) for example of Redis stored session.
 
 ## Links
 
