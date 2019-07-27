@@ -129,9 +129,9 @@ After=network.target
 Type=simple
 ExecStart=/usr/local/bin/anycable-go
 Restart=always
-# LimitNOFILE = xxxx # increase open files limit (see OS Tuning guide)
 # User=some_user
 # Group=some_user
+# LimitNOFILE=xxxx # increase open files limit (see OS Tuning guide)
 # Environment=ANYCABLE_HOST=localhost
 # Environment=ANYCABLE_PORT=8080
 # Environment=ANYCABLE_PATH=/cable
