@@ -12,6 +12,9 @@ workflows:
       - links_lint:
           requires:
             - checkout
+      - spelling:
+          requires:
+            - checkout
 
 executors:
   golang:
@@ -61,3 +64,17 @@ jobs:
       - run:
           name: Check links
           command: liche -r docs
+  spelling:
+    executor: ruby
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Install hunspell
+          command: sudo apt-get install hunspell
+      - run:
+          name: Install forspell
+          command: gem install forspell
+      - run:
+          name: Check spelling
+          command: forspell docs/

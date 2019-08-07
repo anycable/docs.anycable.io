@@ -6,3 +6,6 @@ pre-commit:
     liche:
       glob: "**/*.md"
       run: liche -r docs
+    forspell:
+      glob: "**/*.md"
+      run: forspell {staged_files}

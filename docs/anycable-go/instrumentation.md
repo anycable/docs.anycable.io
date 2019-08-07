@@ -66,7 +66,7 @@ Another option is to periodically write stats to log (with `info` level).
 
 To enable metrics logging pass `--metrics_log` flag.
 
-Your logs should contain smth like:
+Your logs should contain something like this:
 
 ```sh
 INFO 2018-03-06T14:16:27.872Z broadcast_msg_total=0 broadcast_streams_num=0 client_msg_total=0 clients_num=0 clients_uniq_num=0 context=metrics disconnect_queue_size=0 failed_auths_total=0 failed_broadcast_msg_total=0 failed_client_msg_total=0 goroutines_num=35 rpc_call_total=0 rpc_error_total=0

@@ -4,7 +4,7 @@ AnyCable provides two types of health checks: HTTP and gRPC.
 
 ## HTTP
 
-You can run a healthcheck server along with the RPC server by specifying the `http_health_port`:
+You can run a health check server along with the RPC server by specifying the `http_health_port`:
 
 ```sh
 # via CLI options
@@ -24,9 +24,9 @@ $ bundle exec anycable --http-health-port=54321 --http-health-path="/check"
 #> HTTP health server is listening on localhost:54321 and mounted at "/check"
 ```
 
-The healthcheck server responds with 200 when the gRPC server is running and with 503 when it isn't.
+The health check server responds with 200 when the gRPC server is running and with 503 when it isn't.
 
-HTTP healthcheck server can be used for readiness and liveness checks (e.g., in Kubernetes environment).
+HTTP health check server can be used for readiness and liveness checks (e.g., in Kubernetes environment).
 
 ## gRPC
 

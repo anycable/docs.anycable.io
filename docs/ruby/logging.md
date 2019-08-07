@@ -45,7 +45,7 @@ $ ANYCABLE_DEBUG=1 bundle exec anycable
 
 ## Log tracing
 
-When using with Rails, AnyCable adds a _session ID_ tag (`sid`) to each log entry produced during the RPC message handling. You can use it to trace the request's pathway throught the whole Load Balancer -> WS Server -> RPC stack.
+When using with Rails, AnyCable adds a _session ID_ tag (`sid`) to each log entry produced during the RPC message handling. You can use it to trace the request's pathway through the whole Load Balancer -> WS Server -> RPC stack.
 
 Logs example:
 
