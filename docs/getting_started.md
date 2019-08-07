@@ -1,7 +1,7 @@
 <!-- markdownlint-disable no-inline-html -->
 # Getting Started
 
-AnyCable acts like a bridge beetween _logic-less_ WebSocket server and _Action Cable-like_ Ruby framework (i.e. framework which support [Action Cable protocol](misc/action_cable_protocol.md)).
+AnyCable acts like a bridge between _logic-less_ WebSocket server and _Action Cable-like_ Ruby framework (i.e. framework which support [Action Cable protocol](misc/action_cable_protocol.md)).
 
 <div class="chart-container">
   <img src="./assets/images/anycable.svg" alt="AnyCable diagram" width="40%">

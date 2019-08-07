@@ -18,7 +18,7 @@ The results of this benchmark could be seen below.
 
 Memory usage of AnyCable is significantly lower than of Action Cable.
 
-That's achieved by moving memory-intensive operations into (storing connection states and subscriptions maps, serializing data)into a standalone WebSocket server.
+That's achieved by moving memory-intensive operations into (storing connection states and subscriptions maps, serializing data into a standalone WebSocket server.
 
 <div class="chart-container">
   <img src="./assets/images/ram_bench.png" alt="Memory usage" width="80%">

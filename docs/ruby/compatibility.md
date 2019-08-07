@@ -42,7 +42,7 @@ class ChatChannel < ApplicationCable::Channel
 end
 ```
 
-raises `AnyCable::CompatibilityError` when client tries to subscribe to the channel, 'cause AnyCable doesnt's support storing channel's state in instance variables.
+raises `AnyCable::CompatibilityError` when client tries to subscribe to the channel, 'cause AnyCable doesn't support storing channel's state in instance variables.
 
 ## RuboCop cops
 

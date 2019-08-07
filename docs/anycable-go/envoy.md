@@ -1,6 +1,6 @@
 # Using AnyCable-Go with Envoy
 
-[Envoy](https://www.envoyproxy.io) is a modern proxy serverewhich support HTTP2 and gRPC.
+[Envoy](https://www.envoyproxy.io) is a modern proxy server which supports HTTP2 and gRPC.
 
 We can use Envoy for load balancing and zero-disconnect deployments.
 

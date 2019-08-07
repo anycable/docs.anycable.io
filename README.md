@@ -19,6 +19,7 @@ We try to keep our documentation both correct and _stylish_ using the following 
 
 - [mdl](https://github.com/markdownlint/markdownlint)—Markdown linter, Ruby edition.
 - [liche](https://github.com/raviqqe/liche)—links linter.
+- [forspell](https://github.com/kkuprikov/forspell)—spelling checker.
 
 To run these tools locally we use [Lefthook](https://github.com/Arkweid/lefthook) (runs linters automatically for every commit).
 
@@ -36,10 +37,19 @@ gem install mdl
 go get -u github.com/raviqqe/liche
 ```
 
+- Install Hunspell and Forspell:
+
+```sh
+# for MacOS (for other OS see Forspell documentation)
+brew install hunspell
+
+gem install forspell
+```
+
 - Install `lefthook`:
 
 ```sh
-# for MacOS (for other OS see documentation)
+# for MacOS (for other OS see Lefthook documentation)
 brew install lefthook
 ```
 
