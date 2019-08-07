@@ -334,6 +334,23 @@ section.cover .cover-main {
   width:0;
 }
 
+.github-edit-btn {
+  z-index: 100;
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+  background-color:var(--theme-color);
+  border-radius:50px;
+  text-align:center;
+  box-shadow: 1px 1px 1px rgb(165, 165, 165);
+}
+
+.github-edit-btn svg {
+  margin-top:18px;
+}
+
 @media (max-width: 768px) {
 
   .home-logo {
@@ -385,6 +402,10 @@ section.cover .cover-main {
 
   .markdown-section pre, .markdown-section pre > code {
     font-size: 0.8em;
+  }
+
+  .github-edit-btn {
+    display: none;
   }
 }
 

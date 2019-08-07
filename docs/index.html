@@ -23,6 +23,7 @@
 </head>
 <body>
   <div id="app"></div>
+  <script src="assets/docsify-edit-link.js"></script>
   <script>
     window.$docsify = {
       name: '<div class="sidebar-logo">' +
@@ -39,7 +40,10 @@
       auto2top: true,
       search: {
         namespace: 'docs-anycable'
-      }
+      },
+      plugins:[
+        EditOnGithubPlugin.create("https://github.com/anycable/docs.anycable.io/blob/master/docs/")
+      ]
     }
   </script>
   <script src="assets/docsify.min.js"></script>
