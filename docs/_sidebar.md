@@ -13,6 +13,7 @@
   * [CLI](ruby/cli.md)
   * [Configuration](ruby/configuration.md)
   * [Action Cable Compatibility](ruby/compatibility.md)
+  * [Authentication](ruby/authentication.md)
   * [Middlewares](ruby/middlewares.md)
   * [Health Checking](ruby/health_checking.md)
   * [Logging](ruby/logging.md)
