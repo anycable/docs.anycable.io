@@ -59,4 +59,4 @@ brew install lefthook
 lefthook install
 ```
 
-Or you can skip all of these an rely on our CI, which can do all the checks for you!
+Or you can skip all of these and rely on our CI, which can do all the checks for you!
