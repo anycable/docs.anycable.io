@@ -1,12 +1,36 @@
-# Using with Ruby
+# Using AnyCable without Rails
 
 AnyCable can be used without Rails, thus allowing you to use ActionCable-like functionality in your app.
+
+## Requirements
+
+- Ruby >= 2.4
+- Redis (when using Redis [broadcast adapter](broadcast_adapters.md))
+
+## Installation
+
+Add `anycable` gem to your `Gemfile`:
+
+```ruby
+gem "anycable", "~> 0.6.0"
+
+# when using Redis broadcast adapter
+gem "redis", ">= 4.0"
+```
+
+(and don't forget to run `bundle install`).
+
+Now you need to add _channels_ layer to your application (`anycable` gem only provides a [CLI](./cli.md) and a gRPC server).
+
+You can use an existing solution (e.g., `litecable`) or build your own.
 
 ## Lite Cable
 
 There is a ready-to-go framework – [Lite Cable](https://github.com/palkan/litecable) – which can be used for application logic. It also supports AnyCable out-of-the-box.
 
-### Links
+Resources:
+
+- [Lite Cable docs](https://github.com/palkan/litecable)
 - [Lite Cable Sinatra example](https://github.com/palkan/litecable/tree/master/examples/sinatra)
 - [Connecting LiteCable to Hanami](http://gabrielmalakias.com.br/ruby/hanami/iot/2017/05/26/websockets-connecting-litecable-to-hanami.html) by [@GabrielMalakias](https://github.com/GabrielMalakias).
 
@@ -39,11 +63,11 @@ class Connection
   # Called on connection
   def handle_open
   end
-  
+
   # Called on disconnection
   def handle_close
   end
-  
+
   # Called on incoming message.
   # Client send a JSON-encoded message of the form { "identifier": ..., "command": ..., "data" ... }.
   # - identifier – channel identifier (e.g. `{"channel":"chat","id":1}`)
@@ -52,7 +76,7 @@ class Connection
   def handle_channel_command(identifier, command, data)
     ...
   end
-  
+
   # Returns any string which can be used later in .create function to initiate connection.
   def identifiers_json
   end

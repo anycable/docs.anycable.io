@@ -72,7 +72,7 @@ $ bundle exec rubocop
 Or you can require AnyCable cops dynamically:
 
 ```sh
-$ bundle exec rubocop -r 'anycable/rails/compatibility/rubocop' --only AnyCable
+bundle exec rubocop -r 'anycable/rails/compatibility/rubocop' --only AnyCable
 ```
 
 ### Cops

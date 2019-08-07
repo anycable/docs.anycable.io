@@ -10,7 +10,7 @@ You can also change a listening port and listening host through `--metrics_port`
 
 The exported metrics format is the following:
 
-```
+```sh
 # HELP anycable_go_clients_num The number of active clients
 # TYPE anycable_go_clients_num gauge
 anycable_go_clients_num 0
@@ -68,7 +68,7 @@ To enable metrics logging pass `--metrics_log` flag.
 
 Your logs should contain smth like:
 
-```
+```sh
 INFO 2018-03-06T14:16:27.872Z broadcast_msg_total=0 broadcast_streams_num=0 client_msg_total=0 clients_num=0 clients_uniq_num=0 context=metrics disconnect_queue_size=0 failed_auths_total=0 failed_broadcast_msg_total=0 failed_client_msg_total=0 goroutines_num=35 rpc_call_total=0 rpc_error_total=0
 ```
 
@@ -90,7 +90,8 @@ First, you should download the version of `anycable-go` with mruby (it's not inc
 
 ```sh
 $ anycable-go
-=> Starting AnyCable v0.6.0 (with mruby)...
+
+INFO 2019-08-07T16:37:46.387Z context=main Starting AnyCable v0.6.2-13-gd421927 (with mruby 1.2.0 (2015-11-17)) (pid: 1362)
 ```
 
 Secondly, write a Ruby script implementing a simple interface:
@@ -110,7 +111,7 @@ end
 Finally, specify `--metrics_log_formatter` when running a server:
 
 ```sh
-$ anycable-go --metrics_log_formatter path/to/custom_printer.rb
+anycable-go --metrics_log_formatter path/to/custom_printer.rb
 ```
 
 #### Example
@@ -132,5 +133,5 @@ end
 ```
 
 ```sh
-=> INFO 2018-04-27T14:11:59.701Z sample#clients_num=0 sample#clients_uniq_num=0 sample#goroutines_num=0
+INFO 2018-04-27T14:11:59.701Z sample#clients_num=0 sample#clients_uniq_num=0 sample#goroutines_num=0
 ```

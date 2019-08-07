@@ -6,7 +6,7 @@ available in logs and you can use it to trace a request's pathway through the wh
 
 Logs example:
 
-```
+```sh
 D 2019-04-25T18:41:07.172Z context=node sid=FQQS_IltswlTJK60ncf9Cm Incoming message: &{subscribe {"channel":"PresenceChannel"} }
 D 2019-04-25T18:41:08.074Z context=pubsub Incoming pubsub message from Redis: {"stream":"presence:Z2lkOi8vbWFuYWdlYmFjL1NjaG9vbC8xMDAwMjI3Mw","data":"{\"type\":\"presence\",\"event\":\"user-presence-changed\",\"user_id\":1,\"status\":\"online\"}"}
 ```
@@ -15,12 +15,11 @@ D 2019-04-25T18:41:08.074Z context=pubsub Incoming pubsub message from Redis: {"
 
 Heroku assigns `X-Request-ID` [automatically at the router level](https://devcenter.heroku.com/articles/http-request-id).
 
-
 ## Using with NGINX
 
 If you use AnyCable-Go behind NGINX server, you can assign request id with the provided configuration example:
 
-```
+```nginx
 # Сonfiguration is shortened for the sake of brevity
 
 log_format trace '$remote_addr - $remote_user [$time_local] "$request" '

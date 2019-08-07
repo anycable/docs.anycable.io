@@ -26,7 +26,7 @@ We have to use the same `Procfile` for both applications ('cause we're using the
 if [ "$ANYCABLE_DEPLOYMENT" == "true" ]; then
   bundle exec anycable --server-command="anycable-go"
 else
-  bundle exec rails server -p $PORT -b 0.0.0.0  
+  bundle exec rails server -p $PORT -b 0.0.0.0
 fi
 ```
 
@@ -48,7 +48,7 @@ $ heroku create example-app
 
 # Add necessary add-ons
 # NOTE: we need at least Redis
-$ heroku addons:create heroku-postgresql 
+$ heroku addons:create heroku-postgresql
 $ heroku addons:create heroku-redis
 
 # Deploy application
@@ -100,7 +100,7 @@ $ heroku addons:attach redis-regular-12345 -a example-app-anycable
 
 **NOTE:** Make sure you have a Redis instance shared and the database as well. You might also want to share other add-ons depending on your configuration.
 
-### Configuring the apps 
+### Configuring the apps
 
 Finally, we need to add the configuration variables to both apps.
 
@@ -111,7 +111,7 @@ For AnyCable app:
 $ heroku config:set ANYCABLE_DEPLOYMENT=true -a example-app-anycable
 
 # Don't forget to add RAILS_ENV if using Rails
-$ heroku config:set RAILS_ENV=production -a anycable-demo-rpc 
+$ heroku config:set RAILS_ENV=production -a anycable-demo-rpc
 ```
 
 **IMPORTANT:** You also need to copy all (or most) the application-specific variables from
@@ -138,14 +138,14 @@ $ heroku config:set CABLE_URL="example-app-anycable.herokuapp.com/cable"
 $ heroku config:set CABLE_URL="anycable.example.com/cable"
 ```
 
-**NOTE:** with default `.herokuapp.com` domains you won't be able to use cookies for authentication. Read more in [troubleshooting](troubleshooting.md#my-websocket-connection-fails-with-quotauth-failedquot-error).
+**NOTE:** with default `.herokuapp.com` domains you won't be able to use cookies for authentication. Read more in [troubleshooting](../troubleshooting.md#my-websocket-connection-fails-with-quotauth-failedquot-error).
 
 ### Pushing code
 
 Don't forget to push code to the AnyCable app every time you push the code to the main app:
 
 ```sh
-$ git push anycable master
+git push anycable master
 ```
 
 Alternatively, you can configure [automatic deployments](https://devcenter.heroku.com/articles/github-integration#automatic-deploys).
@@ -164,7 +164,7 @@ On the other hand, it has the same architecture involving the RPC server, and th
 
 ### Use Action Cable
 
-You can use the _standard_ Action Cable in review apps with [enforced runtime compatibility checks](compatibility.md#runtime-checks).
+You can use the _standard_ Action Cable in review apps with [enforced runtime compatibility checks](../ruby/compatibility.md#runtime-checks).
 
 In your `cable.yml` use the following code to conditionally load the adapter:
 

@@ -10,7 +10,7 @@ AnyCable middleware is a class inherited from `AnyCable::Middleware` and impleme
 
 ```ruby
 class PrintMiddleware < AnyCable::Middleware
-  # request - is a request payload (incoming message)  
+  # request - is a request payload (incoming message)
   # rpc_call - is an active gRPC call
   # handler - is a method (Method object) of RPC handler which is called
   def call(request, rpc_call, handler)
@@ -38,7 +38,7 @@ Consider adding instrumentation via [Yabeda](https://github.com/yabeda-rb):
 
 ```ruby
 class TimingMiddleware < AnyCable::Middleware
-  # request - is a request payload (incoming message)  
+  # request - is a request payload (incoming message)
   # rpc_call - is an active gRPC call
   # handler - is a method (Method object) of RPC handler which is called
   def call(request, rpc_call, handler)

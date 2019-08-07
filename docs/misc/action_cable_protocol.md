@@ -11,6 +11,7 @@ Communication is based on messages. Every message is an object.
 Protocol-related messages from server to client MUST have `type` field (string).
 
 Possible types:
+
 * [`welcome`]
 * [`ping`]
 * [`confirm_subscription`]
@@ -21,6 +22,7 @@ There are also _data_ messages–broadcasts and transmissions–they MUST have `
 Protocol-related messages from client to server MUST have `command` field (string).
 
 Possible commands:
+
 * [`subscribe`]
 * [`unsubscribe`]
 * [`message`]
@@ -28,8 +30,9 @@ Possible commands:
 ## Handshake
 
 When client connects to server one of the following two could happen:
-- server accepts the connection and responds with `welcome` message (`{"type":"welcome"}`)
-- server rejects and drops the connection without sending anything\*
+
+* server accepts the connection and responds with `welcome` message (`{"type":"welcome"}`)
+* server rejects and drops the connection without sending anything\*
 
 Server MUST respond with the `welcome` message to authorize the connection.
 

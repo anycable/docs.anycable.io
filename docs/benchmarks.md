@@ -1,3 +1,5 @@
+<!-- markdownlint-disable no-inline-html -->
+
 # Benchmarks
 
 > See [the main repo](https://github.com/anycable/anycable/tree/master/benchmarks) for benchmarks reports.

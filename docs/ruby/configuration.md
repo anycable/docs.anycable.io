@@ -15,6 +15,7 @@ $ bundle exec anycable --rpc-host 0.0.0.0:50120 \
 ## Parameters
 
 Here is the list of the most commonly used configuration parameters and the way you can provide them:
+
 - in Ruby code using parameter name (e.g. `AnyCable.config.rpc_host = "127.0.0.0:42421"`)
 - in `config/anycable.yml` or `secrets.yml` using the parameter name
 - through environment variable

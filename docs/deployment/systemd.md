@@ -4,9 +4,9 @@ If you prefer to run AnyCable without containerization, we recommend running it 
 
 On most modern Linux distributions this can be done by declaring a [systemd](https://www.freedesktop.org/wiki/Software/systemd/) service like this:
 
-1. Edit as needed and save the following script to `/etc/systemd/system/anycable-<rpc|go>.service`
-2. Reload systemd configuration via `sudo systemctl daemon-reload`
-3. Start the service: `sudo systemctl start anycable-go anycable-rpc`
+1. Edit as needed and save the following script to `/etc/systemd/system/anycable-<rpc|go>.service`.
+1. Reload systemd configuration via `sudo systemctl daemon-reload`.
+1. Start the service: `sudo systemctl start anycable-go anycable-rpc`.
 
 ## AnyCable RPC
 

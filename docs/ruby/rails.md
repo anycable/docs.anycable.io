@@ -1,15 +1,16 @@
-# Using with Rails
+# Getting Started with AnyCable on Rails
 
 AnyCable initially was designed for Rails applications only.
 
 Since version 0.4.0 Rails integration has been extracted into a separate gem–[`anycable-rails`](https://github.com/anycable/anycable-rails).
 
 ## Requirements
+
 - Ruby >= 2.4
 - Rails >= 5.0
 - Redis (when using Redis [broadcast adapter](broadcast_adapters.md))
 
-## Getting started
+## Installation
 
 Add `anycable-rails` gem to your Gemfile:
 
@@ -22,6 +23,8 @@ gem "redis", ">= 4.0"
 
 (and don't forget to run `bundle install`).
 
+## Configuration
+
 Next, update your Action Cable configuration:
 
 ```yml
@@ -31,7 +34,7 @@ production:
   adapter: any_cable
 ```
 
-Install [WebSocket server](websocket_servers.md) and specify its URL in the configuration:
+Install [WebSocket server](../websocket_servers.md) and specify its URL in the configuration:
 
 ```ruby
 # For development it's likely the localhost
@@ -56,15 +59,17 @@ $ bundle exec anycable
 $ RAILS_ENV=production bundle exec anycable
 ```
 
-**NOTE**: you don't need to specify `-r` option (see [CLI docs](anycable_gem.md#cli)), your application would be loaded from `config/environment.rb`.
+**NOTE**: you don't need to specify `-r` option (see [CLI docs](cli.md)), your application would be loaded from `config/environment.rb`.
 
-And, finally, run AnyCable WebSocket server, e.g. [anycable-go](go_getting_started.md):
+And, finally, run AnyCable WebSocket server, e.g. [anycable-go](../anycable-go/getting_started.md):
 
 ```sh
 $ anycable-go --host=localhost --port=3334
-```
 
-## Configuration
+INFO 2019-08-07T16:37:46.387Z context=main Starting AnyCable v0.6.2-13-gd421927 (with mruby 1.2.0 (2015-11-17)) (pid: 1362)
+INFO 2019-08-07T16:37:46.387Z context=main Handle WebSocket connections at /cable
+INFO 2019-08-07T16:37:46.388Z context=http Starting HTTP server at localhost:3334
+```
 
 You can store AnyCable-specific configuration in YAML file (similar to Action Cable one):
 
@@ -78,6 +83,8 @@ production:
 
 Or you can use the environment variables (or anything else supported by [anyway_config](https://github.com/palkan/anyway_config)).
 
+### Access logs
+
 Rails integration extends the base [configuration](configuration.md) by adding a special parameter–`access_logs_disabled`.
 
 This parameter turn on/off access logging (`Started <request data>` / `Finished <request data>`) (disabled by default).
@@ -90,7 +97,7 @@ production:
   access_logs_disabled: false
 ```
 
-## Forgery protection
+### Forgery protection
 
 AnyCable respects [Action Cable configuration](https://guides.rubyonrails.org/action_cable_overview.html#allowed-request-origins) regarding forgery protection if and only if `ORIGIN` header is proxied by WebSocket server:
 
@@ -112,16 +119,7 @@ config.log_level = :debug
 Rails.logger.level = :debug if AnyCable.config.debug?
 ```
 
-### Log tracing
-
-Using with Rails, AnyCable adds a _session ID_ tag (`sid`) to each log entry produced during the RPC message handling. You can use it to trace the request's pathway throught the whole Load Balancer -> WS Server -> RPC stack.
-
-Logs example:
-
-```
-[AnyCable sid=FQQS_IltswlTJK60ncf9Cm] RPC Command: <AnyCable::CommandMessage: command: "subscribe", identifier: "{\"channel\":\"PresenceChannel\"}", connection_identifiers: "{\"__ltags__\":[11084497],\"current_user\":\"Z2lkOi8vbWFuYWdlYmFjL1VzZXIvMTEwODQ0OTc\"}", data: "">
-[AnyCable sid=FQQS_IltswlTJK60ncf9Cm]   User Load (0.6ms)  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
-```
+Read more about [logging](./logging.md).
 
 ## Development and test
 
@@ -131,40 +129,11 @@ Compatibility could be enforced by [runtime checks](compatibility.md#runtime-che
 
 Use process manager (e.g. [Hivemind](https://github.com/DarthSim/hivemind) or [Overmind](https://github.com/DarthSim/overmind)) to run AnyCable processes in development with the following `Procfile`:
 
-```
+```procfile
 web: bundle exec rails s
 rpc: bundle exec anycable
 ws:  anycable-go --port 3334
 ```
-
-## Devise authentication
-
-Devise relies on [`warden`](https://github.com/wardencommunity/warden) Rack middleware to authenticate users but unlike Action Cable,
-Anycable does not have it in the environment ('cause it doesn't use Rails app Rack middleware at all).
-
-Hopefully, you can reconstruct the necessary part of the Rack env from cookies:
-
-```ruby
-module ApplicationCable
-  class Connection < ActionCable::Connection::Base
-    identified_by :current_user
-
-    def connect
-      self.current_user = find_verified_user || reject_unauthorized_connection
-    end
-
-    protected
-    def find_verified_user
-      app_cookies_key = Rails.application.config.session_options[:key] ||
-        raise("No session cookies key in config")
-
-      env['rack.session'] = cookies.encrypted[app_cookies_key]
-      Warden::SessionSerializer.new(env).fetch(:user)
-    end
-  end
-end
-```
-If you're using some other other session store instead `cookie_store` (for example [`Redis`](https://github.com/anycable/anycable-rails/issues/95#issuecomment-502458973)) you need manually get key from users cookies and find payload in your session store. Take a look at this [issue](https://github.com/anycable/anycable-rails/issues/95#issuecomment-502458973) for example of Redis stored session.
 
 ## Links
 

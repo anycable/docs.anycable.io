@@ -18,7 +18,7 @@ See [erlgrpc](https://github.com/palkan/erlgrpc) for the example of a minimal gR
 
 - Subscribe to Redis channels.
 
-We use Redis to receive broadcast events from the application by default (see [Broadcast adapters](broadcast_adapters.md)).
+We use Redis to receive broadcast events from the application by default (see [Broadcast adapters](../ruby/broadcast_adapters.md)).
 
 **NOTE**: You can build a custom broadcast adapter (for both–your server and `anycable`  gem).
 For the rest of this article, we consider that we want to use Redis.
@@ -34,9 +34,9 @@ First of all, you need a _server_–the entry point for clients connections –�
 ```js
 interface Server {
  # Invoked on socket connection.
- # socket_handle is an entity (object/record/whatever) representing connection socket 
+ # socket_handle is an entity (object/record/whatever) representing connection socket
  func socket_conn(socket_handle);
- 
+
  # Invoked on socket disconnection
  func socket_disconn(socket_handle);
 
@@ -54,14 +54,14 @@ interface Hub {
   # Subscribe socket to the stream.
   # We also need a channel_id to sign messages with it (see below)
   func add(socket_handle, channel_id, stream);
-  
+
   # Unsubscribe socket from all streams for the given channel
   func remove(socket_handle, channel_id);
 
   # Broadcast a message to all subscribed sockets
   func broadcast(stream, msg);
 }
-``` 
+```
 
 Why do we need a `channel_id`? Unfortunately, this is required by Action Cable client.
 The JS client doesn't know about streams, only about channels. So it needs a channel identifier to be present in incoming messages to resolve channels.
@@ -82,7 +82,7 @@ func broadcast(stream, msg) {
   #           |    channel2 – ( ... )
   #           |
   #           stream2 ...
-  #     
+  #
   for (channel in channels_for_stream(stream)) {
     channel_msg = msg_for_channel(msg, channel.id())
     for (socket in channel.sockets()) {
@@ -94,7 +94,7 @@ func broadcast(stream, msg) {
 # msg – JSON encoded string
 # We should transform into another JSON "{"identifier":<identifier>,"message": <msg>}"
 func msg_for_channel(msg, identifier) {
-  return json_encode(['identifier', 'message'], [identifier, json_decode(msg)]); 
+  return json_encode(['identifier', 'message'], [identifier, json_decode(msg)]);
 }
 ```
 
@@ -109,7 +109,7 @@ Pinger is a simple entity that holds a list of active sockets and broadcast a me
 interface Pinger {
   # Add socket to the active list
   func register(socket_handle);
-  
+
   # Remove socket from the active list
   func unregister(socket_handle);
 }
@@ -143,7 +143,7 @@ Then you have to build a gRPC client using a [Protobuf service definition](rpc_p
 It has a simple interface with only three methods: `Connect`, `Disconnect` and `Command`.
 Let's go to Step 4 to see, how to use these methods and their return values.
 
-### Step 5. Server – RPC communication.
+### Step 5. Server – RPC communication
 
 Now, when we already have a server and RPC client, let's fit them together.
 
@@ -166,29 +166,29 @@ func socket_conn(socket_handle) {
   #   path - string - request URL
   #   headers - map<string><string>
   var payload = pb::ConnectionRequest(url, headers)
-  
+
   # Make a call and get a response – ConnectionResponse:
   #    status – Status::SUCCESS | Status::ERROR – status enum is a part of rpc.proto
   #    identifiers – string (connection identifiers string used by the app)
   #    transmissions - list of strings (repeated string)
   var response = rpc::Connect(payload)
-  
+
   # handle response
   if (response.status() == pb::Status::SUCCESS) {
     # store identifiers for the socket
     # we will use them in later calls
     socket_handle.setIdentifiers(response.identifiers())
-    
+
     # transmit messages to socket
     # NOTE: typically Connect returns only "welcome" message
     socket_handle.transmit(response.transmissions())
-   
+
     # register socket to pinger
     pinger.register(socket_handle)
   } else {
     # if Status is not SUCCESS we should disconnect the socket
     socket_handle.close()
-    
+
     # non-SUCCESS status could be:
     #  - ERROR - there was an en exception during the call; in this case we also have response.error_msg()
     #  - FAILURE - application-level "rejection" (e.g. authentication failed)
@@ -216,7 +216,7 @@ func socket_data(socket_handle, msg) {
   #   connection_identifiers - string (identifiers from Connect call)
   #   data – string (additional provided data)
   var payload = pb::CommandMessage(type, identifier, socket_handle.identifiers(), data)
-  
+
   # Make a call and get a response – ConnectionResponse:
   #    status – Status::SUCCESS | Status::FAILURE | Status::ERROR– status enum is a part of rpc.proto
   #    disconnect – bool – whether to disconnect the client or not
@@ -225,7 +225,7 @@ func socket_data(socket_handle, msg) {
   #    transmissions - list of strings – messages to send to the client
   #    error_msg – error message in case of ERROR
   var response = rpc::Command(payload)
-  
+
   # handle response
   if (response.status() == pb::Status::SUCCESS) {
     # First, handle subscription commands
@@ -237,19 +237,19 @@ func socket_data(socket_handle, msg) {
     if (type == "unsubscribe") {
       socket_handle.removeSubscription(identifier)
     }
-    
+
     # Then handle other response information
     # If response contains disconnect flag set to true
-    # The we immediately disconnect the client 
+    # The we immediately disconnect the client
     if (response.disconnect()) {
       return socket_handle.close()
     }
-    
+
     if (response.stop_streams()) {
       # Stop all subscriptions for the channel
       hub.remove(socket_handle, identifier)
     }
-    
+
     # Add new subscriptions
     for (stream in response.streams()) {
       hub.add(socket_handle, identifier, stream)
@@ -272,14 +272,14 @@ When a client disconnects, we should remove its subscriptions, de-register from 
 func socket_disconn(socket_handle) {
   # De-register socket from pinger
   pinger.unregister(socket_handle)
-  
+
   # Remove subscriptions
   var subscriptions = socket_handle.subscriptions()
-  
+
   for (channel in subscriptions) {
     hub.remove(socket_handle, channel)
   }
- 
+
   # And only after that notify the app thru RPC
 
   # Extract Cookie header and build a map { 'Cookie' => cookie_val }
@@ -291,10 +291,10 @@ func socket_disconn(socket_handle) {
   #  path – string – request URL
   #  headers - map of strings
   var payload = pb::DisconnectRequest(socket_handle.identifier(), subscriptions, socket_handle.url(), headers)
-  
+
   # Make a call and get a response – DisconnectResponse:
   #    status – Status::SUCCESS | Status::ERROR – status enum is a part of rpc.proto
-  # Actually, response status does not matter here, we should cleanup  
+  # Actually, response status does not matter here, we should cleanup
   rpc::Disconnect(payload)
 }
 ```
