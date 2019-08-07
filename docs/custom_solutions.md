@@ -4,4 +4,4 @@ AnyCable development is backed by [Evil Martians](https://evilmartians.com/), a 
 
 For our clients all over the world, AnyCable is what we use by default to add real-time features to their Rails applications.
 
-Read more at our website: [anycable.io](https://anycable.io/).
+Read more at our website: [anycable.io](https://anycable.io/#custom-solutions).
