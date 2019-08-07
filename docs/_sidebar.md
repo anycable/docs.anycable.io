@@ -20,9 +20,10 @@
   * [Using with Envoy](go_envoy.md)
   * [OS Tuning](go_os_tuning.md)
 * Deployment
-  * [Heroku](heroku.md)
-  * [Docker](docker.md)
-  * [Capistrano](capistrano.md)
+  * [Heroku](deployment/heroku.md)
+  * [Docker](deployment/docker.md)
+  * [Capistrano](deployment/capistrano.md)
+  * [Systemd](deployment/systemd.md)
 * Misc
   * [Troubleshooting](troubleshooting.md)
   * [Benchmarks](benchmarks.md)
