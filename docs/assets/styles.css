@@ -351,6 +351,22 @@ section.cover .cover-main {
   margin-top:18px;
 }
 
+.docsify-pagination-container {
+  justify-content: center !important;
+}
+
+.pagination-item {
+  max-width: 40%;
+}
+
+.pagination-item--next {
+  margin-left: 1em !important;
+}
+
+.pagination-item--previous {
+  margin-right: 1em;
+}
+
 @media (max-width: 768px) {
 
   .home-logo {

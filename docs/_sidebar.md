@@ -9,15 +9,15 @@
   * [Custom Solutions ⚙️](custom_solutions.md)
 * Ruby
   * [Getting Started with Rails](ruby/rails.md)
-  * [Non-Rails usage](ruby/non_rails.md)
   * [CLI](ruby/cli.md)
   * [Configuration](ruby/configuration.md)
-  * [Action Cable Compatibility](ruby/compatibility.md)
   * [Authentication](ruby/authentication.md)
   * [Middlewares](ruby/middlewares.md)
   * [Health Checking](ruby/health_checking.md)
   * [Logging](ruby/logging.md)
   * [Exceptions Handling](ruby/exceptions.md)
+  * [Action Cable Compatibility](ruby/compatibility.md)
+  * [Non-Rails usage](ruby/non_rails.md)
   * [Broadcast Adapters](ruby/broadcast_adapters.md)
 * AnyCable-Go
   * [Getting Started](anycable-go/getting_started.md)
