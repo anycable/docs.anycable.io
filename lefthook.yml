@@ -1,0 +1,8 @@
+pre-commit:
+  commands:
+    mdl:
+      glob: "**/*.md"
+      run: mdl {staged_files}
+    liche:
+      glob: "**/*.md"
+      run: liche -r docs
