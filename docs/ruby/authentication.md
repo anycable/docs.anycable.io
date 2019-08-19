@@ -17,11 +17,12 @@ module ApplicationCable
     end
 
     protected
+
     def find_verified_user
       app_cookies_key = Rails.application.config.session_options[:key] ||
         raise("No session cookies key in config")
 
-      env['rack.session'] = cookies.encrypted[app_cookies_key]
+      env["rack.session"] = cookies.encrypted[app_cookies_key]
       Warden::SessionSerializer.new(env).fetch(:user)
     end
   end

@@ -127,7 +127,7 @@ module MetricsFormatter
       parts << "sample##{key}=#{value}"
     end
 
-    parts.join(' ')
+    parts.join(" ")
   end
 end
 ```
