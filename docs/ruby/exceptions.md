@@ -15,7 +15,7 @@ end
 # with Raven (Sentry)
 AnyCable.capture_exception do |ex, method, message|
   Raven.capture_exception(ex, transaction: "AnyCable##{method}", extra: message)
-ends
+end
 
 # with Airbrake
 AnyCable.capture_exception do |ex, method, message|

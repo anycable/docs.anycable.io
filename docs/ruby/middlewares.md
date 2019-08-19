@@ -42,7 +42,7 @@ class TimingMiddleware < AnyCable::Middleware
   # rpc_call - is an active gRPC call
   # handler - is a method (Method object) of RPC handler which is called
   def call(request, rpc_call, handler)
-    labels = { method: handler.name }
+    labels = {method: handler.name}
     start = Time.now
     begin
       yield

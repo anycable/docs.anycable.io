@@ -74,7 +74,7 @@ class Connection
   # - command – e.g. "subscribe", "unsubscribe", "message"
   # - any additional data
   def handle_channel_command(identifier, command, data)
-    ...
+    # ...
   end
 
   # Returns any string which can be used later in .create function to initiate connection.

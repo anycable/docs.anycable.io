@@ -9,3 +9,6 @@ pre-commit:
     forspell:
       glob: "**/*.md"
       run: forspell {staged_files}
+    rubocop:
+      glob: "**/*.md"
+      run: rubocop {staged_files}

@@ -15,6 +15,9 @@ workflows:
       - spelling:
           requires:
             - checkout
+      - rubocop:
+          requires:
+            - checkout
 
 executors:
   golang:
@@ -78,3 +81,17 @@ jobs:
       - run:
           name: Check spelling
           command: forspell docs/
+  rubocop:
+    executor: ruby
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Install standard
+          command: gem install standard
+      - run:
+          name: Install rubocop-md
+          command: gem install rubocop-md
+      - run:
+          name: Check Ruby style
+          command: rubocop
