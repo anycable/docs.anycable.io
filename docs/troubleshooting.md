@@ -40,6 +40,12 @@ Check that:
 
 Related issues: [#88](https://github.com/anycable/anycable-rails/issues/88), [#22](https://github.com/anycable/anycable-rails/issues/22).
 
+## Authentication fails with `undefined method 'protocol' for nil:NilClass`
+
+That could happen if there is a monkey-patch overriding the default Action Cable behaviour. For example, `lograge` [does this](https://github.com/roidrage/lograge/pull/257#issuecomment-525690256) (at least versions <= 0.11.2).
+
+Related issues: [#103](https://github.com/anycable/anycable-rails/issues/103).
+
 ## My WebSocket connection fails with "Auth failed" error
 
 It's likely that you're using cookie-based authentication. Make sure that your cookies are accessible from both domain (HTTP server and WebSocket server). For example:
