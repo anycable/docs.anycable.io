@@ -53,8 +53,8 @@ It's likely that you're using cookie-based authentication. Make sure that your c
 ```ruby
 # session_store.rb
 Rails.application.config.session_store :cookie_store,
-    key: "_any_cable_session",
-    domain: :all # or domain: '.example.com'
+  key: "_any_cable_session",
+  domain: :all # or domain: '.example.com'
 
 # anywhere setting cookie
 cookies[:val] = {value: "1", domain: :all}
