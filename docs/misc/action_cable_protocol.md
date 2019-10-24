@@ -33,9 +33,11 @@ Possible commands:
 When client connects to server one of the following two could happen:
 
 * server accepts the connection and responds with `welcome` message (`{"type":"welcome"}`)
-* server rejects the connection and responds with a `disconnect` message, which may include fields `reason` and `reconnect` (`{"type":"disconnect", "reason":"unauthorized", "reconnect":false}`)
+* server rejects the connection and responds with a `disconnect` message, which may include fields `reason` and `reconnect` (`{"type":"disconnect", "reason":"unauthorized", "reconnect":false}`)\*
 
 Server MUST respond with either a `welcome` message or a `disconnect` message.
+
+\* `disconnect` message only exists in Rails 6.0 and later. Prior to 6.0, server would drop the connection without sending anything.
 
 ## Subscriptions & identifiers
 
