@@ -13,6 +13,7 @@ Protocol-related messages from server to client MUST have `type` field (string).
 Possible types:
 
 * [`welcome`]
+* [`disconnect`]
 * [`ping`]
 * [`confirm_subscription`]
 * [`reject_subscription`]
@@ -32,11 +33,11 @@ Possible commands:
 When client connects to server one of the following two could happen:
 
 * server accepts the connection and responds with `welcome` message (`{"type":"welcome"}`)
-* server rejects and drops the connection without sending anything\*
+* server rejects the connection and responds with a `disconnect` message, which may include fields `reason` and `reconnect` (`{"type":"disconnect", "reason":"unauthorized", "reconnect":false}`)\*
 
-Server MUST respond with the `welcome` message to authorize the connection.
+Server MUST respond with either a `welcome` message or a `disconnect` message.
 
-\* There is a proposed change [PR#34194](https://github.com/rails/rails/pull/34194) to add a _disconnection_ type.
+\* `disconnect` message only exists in Rails 6.0 and later. Prior to 6.0, server would drop the connection without sending anything.
 
 ## Subscriptions & identifiers
 
