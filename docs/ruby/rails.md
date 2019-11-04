@@ -137,5 +137,6 @@ ws:  anycable-go --port 3334
 
 ## Links
 
+- [Plugging in AnyCable](https://www.driftingruby.com/episodes/plugging-in-anycable) at Drifting Ruby
 - [Demo application](https://github.com/anycable/anycable_demo)
 - [From Action to Any](https://medium.com/@leshchuk/from-action-to-any-1e8d863dd4cf)
