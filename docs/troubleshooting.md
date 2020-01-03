@@ -66,12 +66,16 @@ cookies[:val] = {value: "1", domain: :all}
 
 Congratulations! You have a lot (thousands) of simultaneous connections (and you hit the max open files limit).
 
-Heroku _standard_ dynos have a limit (both soft and hard) of 10000 open files, and _performance_ dynos have a limit of 1048576.
+For example, Heroku _standard_ dynos have a limit (both soft and hard) of 10000 open files, and _performance_ dynos have a limit of 1048576.
 
 Does this mean that the theoretical limit of connections is 10k for standard dynos? Yes, but only theoretical.
 But in practice, the process doesn't free open files (sockets in our case) immediately after disconnection; it waits for TCP close handshake to finish (and you can find such sockets in `CLOSE_WAIT` state).
 
 So, if a lot of clients dropping connections, the actual limit on the number of active connections could be much less at the specific moment.
+
+See the [OS tuning](./os_tuning) guide for possible solutions.
+
+Related issues: [#79](https://github.com/anycable/anycable-rails/issues/79).
 
 ## Problems with Docker alpine images
 
