@@ -73,7 +73,7 @@ But in practice, the process doesn't free open files (sockets in our case) immed
 
 So, if a lot of clients dropping connections, the actual limit on the number of active connections could be much less at the specific moment.
 
-See the [OS tuning](./os_tuning) guide for possible solutions.
+See the [OS tuning](anycable-go/os_tuning.md) guide for possible solutions.
 
 Related issues: [#79](https://github.com/anycable/anycable-rails/issues/79).
 
