@@ -42,4 +42,3 @@ We recommend to check out these articles on the details of how to tune OS settin
 
 - [The Road to 2 Million Websocket Connections in Phoenix](https://phoenixframework.org/blog/the-road-to-2-million-websocket-connections)
 - [Benchmarking and Scaling WebSockets: Handling 60000 concurrent connections](http://kemalcr.com/blog/2016/11/13/benchmarking-and-scaling-websockets-handling-60000-concurrent-connections/)
-- [Reduce TIME_WAIT socket connections](http://www.linuxbrigade.com/reduce-time_wait-socket-connections/)
