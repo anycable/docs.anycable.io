@@ -2,11 +2,9 @@
 
 AnyCable initially was designed for Rails applications only.
 
-Since version 0.4.0 Rails integration has been extracted into a separate gem–[`anycable-rails`](https://github.com/anycable/anycable-rails).
-
 ## Requirements
 
-- Ruby >= 2.4
+- Ruby >= 2.5
 - Rails >= 5.0
 - Redis (when using Redis [broadcast adapter](broadcast_adapters.md))
 
@@ -15,7 +13,7 @@ Since version 0.4.0 Rails integration has been extracted into a separate gem–[
 Add `anycable-rails` gem to your Gemfile:
 
 ```ruby
-gem "anycable-rails"
+gem "anycable-rails", "~> 1.0"
 
 # when using Redis broadcast adapter
 gem "redis", ">= 4.0"
