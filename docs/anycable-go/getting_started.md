@@ -29,7 +29,7 @@ $ anycable-go --rpc_host=localhost:50051 --headers=cookie \
               --redis_url=redis://localhost:6379/5 --redis_channel=__anycable__ \
               --host=localhost --port=8080
 
-=> INFO time context=main Starting AnyCable v0.6.0 (pid: 12902)
+=> INFO time context=main Starting AnyCable v1.0.0 (pid: 12902, open files limit: 524288)
 ```
 
 You can also provide configuration parameters through the corresponding environment variables (i.e. `ANYCABLE_RPC_HOST`, `ANYCABLE_REDIS_URL`, etc.).
@@ -47,7 +47,7 @@ Here is the list of the most commonly used configuration parameters and the way 
 
 **--host**, **--port** (`ANYCABLE_HOST`, `ANYCABLE_PORT` or `PORT`)
 
-Server host and port (default: `"0.0.0.0"` (deprecated, will be changed to `"localhost"` in future versions) and `8080`).
+Server host and port (default: `"localhost"`).
 
 **--rpc_host** (`ANYCABLE_RPC_HOST`)
 
