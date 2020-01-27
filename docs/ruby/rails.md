@@ -21,6 +21,14 @@ gem "redis", ">= 4.0"
 
 (and don't forget to run `bundle install`).
 
+Then, run the interactive configuration wizard via Rails generators:
+
+```sh
+bin/rails g anycable:setup
+```
+
+<!-- TODO: добавить гифку -->
+
 ## Configuration
 
 Next, update your Action Cable configuration:
