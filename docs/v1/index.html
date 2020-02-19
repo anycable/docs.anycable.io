@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AnyCable Docs</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+  <meta itemprop="name" content="AnyCable Docs" />
+  <meta property="og:title" content="AnyCable Docs" />
+  <meta name="description" content="Polyglot replacement for ActionCable-compatible servers" />
+  <meta itemprop="description" content="Polyglot replacement for ActionCable-compatible servers" />
+  <meta property="og:description" content="Polyglot replacement for ActionCable-compatible servers" />
+  <meta itemprop="image" content="https://docs.anycable.io/assets/images/share.png" />
+  <meta property="og:image" content="https://docs.anycable.io/assets/images/share.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@any_cable" />
+  <meta name="twitter:creator" content="@any_cable" />
+  <meta property="og:site_name" content="AnyCable Docs" />
+  <meta name="keywords" content="rails, actioncable, websocket, anycable, grpc, ruby, erlang, golang" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="stylesheet" href="assets/vue.min.css">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script src="assets/docsify-edit-link.js"></script>
+  <script>
+    window.$docsify = {
+      name: '<div class="sidebar-logo">' +
+        '<img src="./assets/images/logo.svg" height="64px">' +
+        '<span class="sidebar-logo-title">AnyCable</span>' + 
+        '</div>' +
+        '<a href="https://gitter.im/anycable/Lobby" rel="nofollow">' +
+          '<img src="https://img.shields.io/badge/gitter-join%20chat%20%E2%86%92-brightgreen.svg" alt="Gitter" style="max-width:100%;">' +
+        '</a>',
+      repo: 'https://github.com/anycable',
+      loadSidebar: true,
+      subMaxLevel: 3,
+      ga: 'UA-88982723-3',
+      auto2top: true,
+      search: {
+        namespace: 'docs-anycable'
+      },
+      plugins:[
+        EditOnGithubPlugin.create("https://github.com/anycable/docs.anycable.io/blob/master/docs/")
+      ]
+    }
+  </script>
+  <script src="assets/docsify.min.js"></script>
+  <script src="assets/docsify-search.js"></script>
+  <script src="https://unpkg.com/docsify-copy-code@2"></script>
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <script src="assets/prism-ruby.min.js"></script>
+</body>
+</html>
