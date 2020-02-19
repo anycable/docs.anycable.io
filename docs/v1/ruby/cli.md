@@ -6,10 +6,10 @@ Run `anycable` CLI to start a gRPC server:
 
 ```sh
 $ bundle exec anycable --require "./path/to/app.rb"
-#> Starting AnyCable gRPC server (pid: 48111)
-#> Serving application from ./path/to/app.rb ...
-#> AnyCable version: 0.6.0
-#> gRPC version: 1.16.0
+#> Starting AnyCable gRPC server (pid: 85746, workers_num: 30)
+#> AnyCable version: 1.0.0
+#> gRPC version: 1.26.0
+#> Serving Rails application from ./path/to/app.rb ...
 #> ...
 ```
 
@@ -28,10 +28,10 @@ For example:
 
 ```sh
 $ bundle exec anycable --server-command "anycable-go -p 3334"
-#> Starting AnyCable gRPC server (pid: 48111)
-#> Serving application from ./path/to/app.rb ...
+#> Starting AnyCable gRPC server (pid: 85746, workers_num: 30)
 #> AnyCable version: 0.6.0
-#> gRPC version: 1.16.0
+#> gRPC version: 1.26.0
+#> Serving Rails application from ./path/to/app.rb ...
 #> ...
 #> Started command: anycable-go --port 3334 (pid: 13710)
 #> ...
