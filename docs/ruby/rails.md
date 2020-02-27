@@ -29,6 +29,8 @@ Next, update your Action Cable configuration:
 
 ```yml
 # config/cable.yml
+development:
+  adapter: any_cable
 production:
   # Set adapter to any_cable to activate AnyCable
   adapter: any_cable
