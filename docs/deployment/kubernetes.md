@@ -7,7 +7,7 @@ AnyCable-Go can be easily deployed to your Kubernetes cluster using Helm and [ou
  1. Add it as a dependency to your main application:
 
     ```yaml
-    # Chart.yaml
+    # Chart.yaml for Helm 3
     dependencies:
     - name: anycable-go
       version: 0.2.4
@@ -15,6 +15,12 @@ AnyCable-Go can be easily deployed to your Kubernetes cluster using Helm and [ou
     ```
 
     Check the latest Helm chart version at [github.com/anycable/anycable-helm/releases](https://github.com/anycable/anycable-helm/releases).
+
+    And execute
+
+    ```sh
+    helm dependencies update
+    ```
 
  1. And then configure it in your application values within `anycable-go` namespace:
 
@@ -32,7 +38,8 @@ AnyCable-Go can be easily deployed to your Kubernetes cluster using Helm and [ou
     anycable-go:
       env:
         # Assuming that Redis is available in K8s in the same namespace as redis-anycable service
-        anycableRedisUrl: redis://:password@redis-anycable:6379/0
+        anycableRedisUrl: redis://:CHANGE-THE-PASSWORD@redis-anycable:6379/0
+        anycableRpcHost: "anycable-rpc:50051" # See service definition for RPC server
       ingress:
         acme: # if you're using Let's Encrypt
           hosts:
@@ -41,7 +48,7 @@ AnyCable-Go can be easily deployed to your Kubernetes cluster using Helm and [ou
 
 Read the [chart’s README][anycable-helm] for more info.
 
-## Ruby RPC server
+## RPC server
 
 To run Ruby counterpart of AnyCable which will handle connection authentication and execute your business logic we need to create a separate deployment and a corresponding service for it.
 
@@ -77,22 +84,15 @@ To run Ruby counterpart of AnyCable which will handle connection authentication 
                 - bundle
                 - exec
                 - anycable
-                - !!str --rpc-host=0.0.0.0:50051
+                # you should define these parameters in the values.yml file, we give them here directly for readability
+                - --rpc-host=0.0.0.0:50051
               env:
                 - name: ANYCABLE_REDIS_URL
-                  value: "redis://:password@redis-anycable:6379/0" # Same as for anycable-go
-                  # or, better, place it into secrets for better security:
-                  # valueFrom:
-                  #   secretKeyRef:
-                  #     name: "anycable-go-secrets"
-                  #     key: anycableRedisUrl
-              resources:
-                limits:
-                  cpu: 500m
-                  memory: 700Mi
-                requests:
-                  cpu: 200m
-                  memory: 400Mi
+                  valueFrom:
+                    secretKeyRef:
+                      name: "anycable-go-secrets"
+                      key: anycableRedisUrl
+                # And all your application ENV like DATABASE_URL etc
     ```
 
  1. [**Service**](https://kubernetes.io/docs/concepts/services-networking/service/) to connect anycable-go with RPC server.
@@ -109,6 +109,7 @@ To run Ruby counterpart of AnyCable which will handle connection authentication 
         component: anycable-rpc
       type: ClusterIP
       ports:
+        # you should define these parameters in the values.yml file, we give them here directly for readability
         - port: 50051
           targetPort: 50051
           protocol: TCP
@@ -120,16 +121,16 @@ To run Ruby counterpart of AnyCable which will handle connection authentication 
     kind: NetworkPolicy
     apiVersion: networking.k8s.io/v1
     metadata:
-      name: restrict-access-to-anycable-rpc
+      name: anycable-go-and-rpc-connectivity
     spec:
       podSelector:
         matchLabels:
           component: anycable-rpc
       ingress:
         - from:
-          - podSelector:
-              matchLabels:
-                component: anycable-go
+            - podSelector:
+                matchLabels:
+                  component: anycable-go
     ```
 
     See detailed explanation in the docs and in this example: [Kubernetes network policy recipes: deny traffic from other namespaces](https://github.com/ahmetb/kubernetes-network-policy-recipes/blob/60f5b12f274472901ce79463ce0ba3a8f98b9a48/04-deny-traffic-from-other-namespaces.md)
