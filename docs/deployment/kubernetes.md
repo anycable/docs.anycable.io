@@ -14,7 +14,7 @@ anycable-go can be easily deployed to your Kubernetes cluster using Helm and [ou
       repository: https://helm.anycable.io/
     ```
 
-    Check latest Helm chart version at [github.com/anycable/anycable-helm/releases](https://github.com/anycable/anycable-helm/releases).
+    Check the latest Helm chart version at [github.com/anycable/anycable-helm/releases](https://github.com/anycable/anycable-helm/releases).
 
  1. And then configure it in your application values within `anycable-go` namespace:
 
