@@ -43,7 +43,7 @@ Read the [chart’s README][anycable-helm] for more info.
 
 ## Ruby RPC server
 
-To run Ruby counterpart of Anycable which will handle connection authentication and execute your business logic we will need to create separate deployment and service for it.
+To run Ruby counterpart of AnyCable which will handle connection authentication and execute your business logic we need to create a separate deployment and a corresponding service for it.
 
  1. [**Deployment**](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) that will spin up required number of pods and handle rolling restarts on deploys
 
