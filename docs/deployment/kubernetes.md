@@ -22,10 +22,12 @@ AnyCable-Go can be easily deployed to your Kubernetes cluster using Helm and [ou
     helm dependencies update
     ```
 
- 1. And then configure it in your application values within `anycable-go` namespace:
+ 1. And then configure it in your application values within `anycable-go` section:
 
     ```yaml
     # values.yaml
+
+    # Configuration for the external Helm chart "anycable/anycable-go"
     anycable-go:
       env:
         # Assuming that Ruby RPC is available in K8s in the same namespace as anycable-rpc service (see next chapter)
