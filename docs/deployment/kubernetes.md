@@ -2,7 +2,7 @@
 
 ## AnyCable-Go
 
-anycable-go can be easily deployed to your Kubernetes cluster using Helm and [our official Helm chart][anycable-helm].
+AnyCable-Go can be easily deployed to your Kubernetes cluster using Helm and [our official Helm chart][anycable-helm].
 
  1. Add it as a dependency to your main application:
 
