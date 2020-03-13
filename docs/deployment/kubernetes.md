@@ -41,7 +41,6 @@ AnyCable-Go can be easily deployed to your Kubernetes cluster using Helm and [ou
       env:
         # Assuming that Redis is available in K8s in the same namespace as redis-anycable service
         anycableRedisUrl: redis://:CHANGE-THE-PASSWORD@redis-anycable:6379/0
-        anycableRpcHost: "anycable-rpc:50051" # See service definition for RPC server
       ingress:
         acme: # if you're using Let's Encrypt
           hosts:
