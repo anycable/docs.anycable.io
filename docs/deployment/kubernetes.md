@@ -117,7 +117,7 @@ To run Ruby counterpart of AnyCable which will handle connection authentication 
           protocol: TCP
     ```
 
- 1. (Optional) [**network policy**](https://kubernetes.io/docs/concepts/services-networking/network-policies/) will restrict access to pods running RPC service to only those that runs anycable-go daemon in the same namespace.
+ 1. (Optional) [**network policy**](https://kubernetes.io/docs/concepts/services-networking/network-policies/) will restrict access to pods running RPC service to only those that run AnyCable-Go daemon in the same namespace.
 
     ```yaml
     kind: NetworkPolicy
