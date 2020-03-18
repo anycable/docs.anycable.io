@@ -23,3 +23,5 @@ end
 ```
 
 You can put this code, for example, into an initializer (`config/initializers/anycable.rb`) or any other configuration file.
+
+Then, you can access the current user via `env["warden"].user` in your connection class.
