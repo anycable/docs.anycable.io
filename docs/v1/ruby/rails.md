@@ -24,7 +24,7 @@ gem "redis", ">= 4.0"
 Then, run the interactive configuration wizard via Rails generators:
 
 ```sh
-bin/rails g anycable:setup
+bundle exec rails g anycable:setup
 ```
 
 <!-- TODO: добавить гифку -->
@@ -40,7 +40,7 @@ production:
   adapter: any_cable
 ```
 
-Install [WebSocket server](../websocket_servers.md) and specify its URL in the configuration:
+Install [WebSocket server](#server-installation) and specify its URL in the configuration:
 
 ```ruby
 # For development it's likely the localhost
@@ -88,6 +88,22 @@ production:
 ```
 
 Or you can use the environment variables (or anything else supported by [anyway_config](https://github.com/palkan/anyway_config)).
+
+### Server installation
+
+You can install AnyCable-Go server using one of the [multiple ways](../anycable-go/getting_started.md#installation).
+
+For your convenience, we have a generator task which could be used to download a binary from GitHub released for your platform:
+
+```sh
+$ bundle exec rails anycable:download
+
+run  curl -L https://github.com/anycable/anycable-go/releases/download/...
+```
+
+You can specify the target bin path (`--bin-path`) or AnyCable-Go version (`--version`).
+
+**NOTE:** This task uses cURL under the hood, so it must be available.
 
 ### Access logs
 
