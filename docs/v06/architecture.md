@@ -1,6 +1,6 @@
 # Architecture
 
-![AnyCable arhictecture](assets/images/scheme.png)
+![AnyCable arhictecture](../assets/images/scheme.png)
 
 AnyCable **WebSocket server** (1) is responsible for handling clients, or sockets. That includes:
 
