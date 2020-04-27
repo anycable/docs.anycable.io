@@ -24,8 +24,54 @@
   --theme-color-secondary-dark: #f64242;
   --theme-color-secondary-light: #fd7373;
 
+  --background-color: #fff;
+  --background-light: #fff;
+
   --text-color-base: #363636;
   --text-color-secondary: #646473;
+  --text-color-active: #111;
+  --text-color-header: #2c3e50;
+
+
+  --border-color: #ccccccbb;
+
+  --menu-weight: 400;
+
+  --shadow-color: rgb(165, 165, 165);
+}
+
+.is-dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --theme-color-secondary: #fcf9f9;
+    --theme-color-secondary-dark: #f7f5f5;
+    --theme-color-secondary-light: #f64242;
+
+    --background-color: #000;
+    --background-light: #2a2a2a;
+
+    --text-color-base: #f3f2f2;
+    --text-color-secondary: #fac8c8;
+    --text-color-active: #f64242;
+    --text-color-header: #f64242;
+
+    --border-color: #f64242bb;
+
+    --menu-weight: 600;
+
+    --shadow-color: var(--background-color);
+  }
+
+  .is-light {
+    display: none !important;
+  }
+
+  .is-dark {
+    display: initial;
+  }
 }
 
 ::selection {
@@ -36,6 +82,7 @@ body {
   font-size: 100%;
   font: 18px/30px "Stem Text", "Arial", sans-serif;
   color: var(--text-color-base);
+  background-color: var(--background-color);
 }
 
 * {
@@ -48,7 +95,7 @@ a {
 }
 
 .github-corner svg {
-  fill: var(--theme-color-secondary);
+  fill: var(--theme-color);
 }
 
 .chart-container {
@@ -70,10 +117,10 @@ a {
 
 aside.sidebar {
   border: none;
-  background-color: #fff;
+  background-color: var(--background-light);
   color: var(--text-color-base);
   width: 20%;
-  border-right: 1px solid #ccccccbb;
+  border-right: 1px solid var(--border-color);
 }
 
 body.close .sidebar {
@@ -81,8 +128,9 @@ body.close .sidebar {
 }
 
 .sidebar ul li a {
-  color: var(--theme-color-light);
+  color: var(--theme-color-secondary);
   font-size: 1rem;
+  font-weight: var(--menu-weight);
 }
 
 .sidebar ul li.active>a {
@@ -95,9 +143,10 @@ body.close .sidebar {
 }
 
 .sidebar .sidebar-nav ul li.active>a {
-  color: #111;
+  color: var(--text-color-active);
   border-right: 0.2rem solid var(--theme-color-secondary-light);
 }
+
 
 .sidebar > h1 {
   font-size: 2rem;
@@ -131,8 +180,8 @@ body.close .sidebar {
   order: 2;
   margin: 1.5rem 0 0 0;
   border: none;
-  border-top: 1px solid #ccccccbb;
-  border-bottom: 1px solid #ccccccbb;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 6px;
@@ -145,6 +194,12 @@ body.close .sidebar {
 .sidebar .search .input-wrap {
   border: none;
   position: relative;
+}
+
+
+.sidebar .search .input-wrap input {
+  background: var(--background-color-light);
+  color: var(--text-color-base);
 }
 
 .sidebar .search .clear-button.show {
@@ -166,7 +221,7 @@ body .sidebar-toggle {
 
 body .sidebar-toggle span {
   transition: all 0.3s linear;
-  background-color: #111;
+  background-color: var(--text-color-active);
   height: 0.25rem;
   width: 1.5rem;
   position: absolute;
@@ -216,6 +271,10 @@ th {
   position: relative;
 }
 
+.anchor span {
+  color: var(--text-color-header);
+}
+
 section.cover .cover-main {
   margin: 20vh 20vw;
 }
@@ -241,10 +300,14 @@ section.cover .cover-main {
   margin-top: 1rem;
 }
 
-.markdown-section pre,
+.markdown-section code, .markdown-section pre {
+  background-color: var(--background-light);
+  color: var(--text-color-base);
+}
+
 .markdown-section pre > code {
-  background-color: #2E2E46;
-  color: rgba(255,255,255,0.75);
+  background-color: var(--background-light);
+  color: var(--text-color-base);
   font-size: 1em;
   line-height: 1.5;
 }
@@ -291,7 +354,7 @@ section.cover .cover-main {
 .markdown-section table tr {
   border-width: 0.2rem 0;
   border-style: solid;
-  border-color: #F1F1F2;
+  border-color: var(--border-color);
 }
 
 .markdown-section table tr:nth-child(2n) {
@@ -320,6 +383,10 @@ section.cover .cover-main {
   color: var(--theme-color-dark);
 }
 
+.markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section strong {
+  color: var(--text-color-header);
+}
+
 
 /* Badges */
 .markdown-section > p:first-child > a {
@@ -344,7 +411,7 @@ section.cover .cover-main {
   background-color:var(--theme-color);
   border-radius:50px;
   text-align:center;
-  box-shadow: 1px 1px 1px rgb(165, 165, 165);
+  box-shadow: 1px 1px 1px var(--shadow-color);
 }
 
 .github-edit-btn svg {
@@ -387,7 +454,7 @@ section.cover .cover-main {
 
 
   body.close .sidebar-toggle span {
-    background-color:#111;
+    background-color: var(--text-color-active);
   }
 
   .sidebar-toggle:hover span:nth-child(1), .sidebar-toggle:hover span:nth-child(2), .sidebar-toggle:hover span:nth-child(3) {
