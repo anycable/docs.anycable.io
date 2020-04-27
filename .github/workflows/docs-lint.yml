@@ -70,4 +70,4 @@ jobs:
       run: |
         export PATH=$PATH:$(go env GOPATH)/bin
         go get -u github.com/raviqqe/liche
-        liche -r docs/v06 docs/v1
+        liche -c 4 -r docs/v06 docs/v1
