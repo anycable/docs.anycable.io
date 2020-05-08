@@ -17,4 +17,4 @@ This server is a part of the [`anycable` CLI](ruby/cli.md).
 
 We use a **Pub/Sub service** (3) to send messages from the application to the WS server, which then broadcasts the messages to clients.
 
-**NOTE**: Currently, only Redis is supported as Pub/Sub service. See [Broadcast Adapters](ruby/broadcast_adapters.md).
+See the list of supported [broadcast adapters](ruby/broadcast_adapters.md).

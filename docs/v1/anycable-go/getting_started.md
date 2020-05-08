@@ -47,7 +47,7 @@ Here is the list of the most commonly used configuration parameters and the way 
 
 **--host**, **--port** (`ANYCABLE_HOST`, `ANYCABLE_PORT` or `PORT`)
 
-Server host and port (default: `"localhost"`).
+Server host and port (default: `"localhost:8080"`).
 
 **--rpc_host** (`ANYCABLE_RPC_HOST`)
 
@@ -56,6 +56,20 @@ RPC service address (default: `"localhost:50051"`).
 **--headers** (`ANYCABLE_HEADERS`)
 
 Comma-separated list of headers to proxy to RPC (default: `"cookie"`).
+
+**--broadcast_adapter** (`ANYCABLE_BROADCAST_ADAPTER`, default: `redis`)
+
+[Broadcasting adapter](../ruby/broadcast_adapters.md) to use. Available options: `redis` (default), `http`.
+
+When HTTP adapter is used, AnyCable-Go accepts broadcasting requests on `:8090/_broadcast`.
+
+**--http_broadcast_port** (`ANYCABLE_HTTP_BROADCAST_PORT`, default: `8090`)
+
+You can specify on which port to receive broadcasting requests (NOTE: it could be the same port as the main HTTP server listens to).
+
+**--http_broadcast_secret** (`ANYCABLE_HTTP_BROADCAST_SECRET`)
+
+Authorization secret to protect the broadcasting endpoint (see [Ruby docs](../ruby/broadcast_adapters.md#securing-http-endpoint)).
 
 **--redis_url** (`ANYCABLE_REDIS_URL` or `REDIS_URL`)
 
