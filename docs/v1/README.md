@@ -55,4 +55,4 @@ AnyCable uses [Action Cable protocol](misc/action_cable_protocol.md), so you can
 
 ## License
 
- Gems and libraries are available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+ Gems and libraries are available as open source under the terms of the MIT License.
