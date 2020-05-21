@@ -18,22 +18,11 @@ The only way (for now) to run AnyCable applications on Heroku is to have two sep
 
 ### Preparing the source code
 
-We have to use the same `Procfile` for both applications ('cause we're using the same repo) but run different commands for the `web` service. That can be achieved through a custom script (from [this post](http://techtime.getharvest.com/blog/deploying-multiple-heroku-apps-from-a-single-repo)):
+We have to use the same `Procfile` for both applications ('cause we're using the same repo) but run different commands for the `web` service. We can use an environment variable to toggle the application behaviour, for example:
 
 ```sh
-#!/bin/bash
-
-if [ "$ANYCABLE_DEPLOYMENT" == "true" ]; then
-  bundle exec anycable --server-command="anycable-go"
-else
-  bundle exec rails server -p $PORT -b 0.0.0.0
-fi
-```
-
-Put this script, for example, into `bin/heroku-web` (and don't forget to `chmod +x`). Then in your `Procfile`:
-
-```yml
-web: bin/heroku-web
+# Procfile
+web: [[ "$ANYCABLE_DEPLOYMENT" == "true" ]] && bundle exec anycable --server-command="anycable-go" ||  bundle exec rails server -p $PORT -b 0.0.0.0
 ```
 
 ### Preparing Heroku apps
