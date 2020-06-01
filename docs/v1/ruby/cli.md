@@ -29,7 +29,7 @@ For example:
 ```sh
 $ bundle exec anycable --server-command "anycable-go -p 3334"
 #> Starting AnyCable gRPC server (pid: 85746, workers_num: 30)
-#> AnyCable version: 0.6.0
+#> AnyCable version: 1.0.0
 #> gRPC version: 1.26.0
 #> Serving Rails application from ./path/to/app.rb ...
 #> ...
