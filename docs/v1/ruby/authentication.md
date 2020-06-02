@@ -24,4 +24,4 @@ end
 
 You can put this code, for example, into an initializer (`config/initializers/anycable.rb`) or any other configuration file.
 
-Then, you can access the current user via `env["warden"].user` in your connection class.
+Then, you can access the current user via `env["warden"].user(scope)` in your connection class (where `scope` is [Warden scope](https://github.com/wardencommunity/warden/wiki/Scopes), usually, `:user`).
