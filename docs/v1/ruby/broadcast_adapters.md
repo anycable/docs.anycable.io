@@ -10,7 +10,7 @@ AnyCable ships with two broadcast adapters by default: HTTP and Redis (Redis is 
 
 HTTP adapter has zero-dependencies and thus a good candidate for experimenting with AnyCable or even using in development/test environments.
 
-**HTTP adapter is not meant for production**. It's not scalable (only supports a single WS server), less performant (due to HTTP overhead).
+**HTTP adapter is not meant for production**. It's not scalable (only supports a single WS server), less performant (due to HTTP overhead). For SSL connections it uses `SSL_VERIFY_NONE`.
 
 To use HTTP adapter specify `broadcast_adapter` configuration parameter (`--broadcast-adapter=http` or `ANYCABLE_BROADCAST_ADAPTER=http` or set in the code/YML) and make sure your AnyCable WebSocket server supports it. An URL to broadcast to could be specified via `http_broadcast_url` parameter (defaults to `http://localhost:8080/_broadcast`, which corresponds to the [AnyCable-Go](../anycable-go/getting_started.md#configuration-parameters) default).
 
