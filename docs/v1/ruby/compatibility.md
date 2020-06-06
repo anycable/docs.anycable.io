@@ -4,19 +4,19 @@ This compatibility table shows which Action Cable features supported by `anycabl
 
 Feature                  | Status
 -------------------------|--------
-Connection Identifiers   | ✅
-Connection Request (cookies, params) | ✅
-Disconnect Handling | ✅
+Connection identifiers   | ✅
+Connection request data (cookies, params) | ✅
+Disconnect handling | ✅
 Subscribe to channels | ✅
 Parameterized subscriptions | ✅
 Unsubscribe from channels | ✅
-[Subscription Instance Variables](http://edgeapi.rubyonrails.org/classes/ActionCable/Channel/Streams.html) | 🚫
+[Subscription Instance Variables](http://edgeapi.rubyonrails.org/classes/ActionCable/Channel/Streams.html) | 🚧
 Performing Channel Actions | ✅
 Streaming | ✅
 [Custom stream callbacks](http://edgeapi.rubyonrails.org/classes/ActionCable/Channel/Streams.html) | 🚫
 Broadcasting | ✅
-Periodical Timers | 🚫
-Disconnect remote clients | 🚧
+Periodical timers | 🚫
+Disconnect remote clients | ✅
 
 ## Runtime checks
 
@@ -64,9 +64,6 @@ $ bundle exec rubocop
 #=> app/channels/bad_channel.rb:5:5: C: AnyCable/InstanceVars: Channel instance variables are not supported in AnyCable
 #=>    @bad_var = "bad"
 #=>    ^^^^^^^^^^^^^^^^
-#=> app/controllers/good_controller.rb:15:5: C: AnyCable/RemoteDisconnect: Disconnecting remote clients is not supported inAnyCable
-#=>   ActionCable.server.remote_connections.where(current_user: user).disconnect
-#=>   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ```
 
 Or you can require AnyCable cops dynamically:
@@ -141,18 +138,3 @@ class MyChannel < ApplicationCable::Channel
   periodically(:do_something, every: 2.seconds)
 end
 ```
-
-#### `AnyCable/RemoteDisconnect`
-
-Checks for remote disconnect usage:
-
-```ruby
-# bad
-class MyDisconnectService
-  def call(user)
-    ActionCable.server.remote_connections.where(current_user: user).disconnect
-  end
-end
-```
-
-**NOTE**: all cops (except from `AnyCable/RemoteDisconnect`) check only files matching `**/channels/**.rb` pattern; you can change this behaviour by adding custom `Include` directive for the cop in your `.rubocop.yml`.
