@@ -66,8 +66,13 @@ jobs:
       uses: actions/setup-go@v1
       with:
         go-version: 1.13.x
-    - name: Run liche
+    - name: Install liche
       run: |
         export PATH=$PATH:$(go env GOPATH)/bin
         go get -u github.com/raviqqe/liche
-        liche -c 4 -r docs/v06 docs/v1
+    - name: Run liche for v06
+      run: |
+        liche -c 4 -r docs/v06 -d docs/v06 -x /v1
+    - name: Run liche for v1
+        run: |
+          liche -c 4 -r docs/v1 -d docs/v1 -x /v06
