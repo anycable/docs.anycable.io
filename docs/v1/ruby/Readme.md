@@ -4,6 +4,7 @@
 * [CLI](cli.md)
 * [Configuration](configuration.md)
 * [Authentication](authentication.md)
+* [Channels State](channels_state.md)
 * [Middlewares](middlewares.md)
 * [Health Checking](health_checking.md)
 * [Logging](logging.md)
