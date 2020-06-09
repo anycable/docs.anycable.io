@@ -6,11 +6,11 @@ The most important thing you should take into account is to set a big enough ope
 It defines how many file descriptors a process can keep open, and a socket is also a file descriptor.
 Thus, you cannot handle more connections than this limit (and event less, since the process uses a few file descriptors for its own purposes).
 
-Since v0.6.3, AnyCable-Go prints the current open files limit on boot:
+ AnyCable-Go prints the current open files limit on boot:
 
 ```sh
 $ anycable-go
-INFO 2019-08-07T19:30:33.059Z context=main Starting AnyCable v0.6.3 (with mruby 1.2.0 (2015-11-17)) (pid: 29333, open file limit: 524288)
+INFO 2020-06-07T19:30:33.059Z context=main Starting AnyCable v1.0.0s (with mruby 1.2.0 (2015-11-17)) (pid: 29333, open file limit: 524288)
 ...
 ```
 

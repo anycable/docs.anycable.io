@@ -1,5 +1,7 @@
 # Using AnyCable without Rails
 
+<!-- FIXME: make up to date -->
+
 AnyCable can be used without Rails, thus allowing you to use ActionCable-like functionality in your app.
 
 ## Requirements

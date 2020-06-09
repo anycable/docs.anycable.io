@@ -27,7 +27,7 @@ Then, run the interactive configuration wizard via Rails generators:
 bundle exec rails g anycable:setup
 ```
 
-<!-- TODO: добавить гифку -->
+<!-- TODO: add GIF/Video demo -->
 
 ## Configuration
 
@@ -159,6 +159,5 @@ ws:  anycable-go --port 3334
 
 ## Links
 
+- [Demo application](https://github.com/anycable/anycable_rails_demo)
 - [Plugging in AnyCable](https://www.driftingruby.com/episodes/plugging-in-anycable) at Drifting Ruby
-- [Demo application](https://github.com/anycable/anycable_demo)
-- [From Action to Any](https://medium.com/@leshchuk/from-action-to-any-1e8d863dd4cf)

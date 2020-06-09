@@ -50,6 +50,6 @@ When using with Rails, AnyCable adds a _session ID_ tag (`sid`) to each log entr
 Logs example:
 
 ```sh
-[AnyCable sid=FQQS_IltswlTJK60ncf9Cm] RPC Command: <AnyCable::CommandMessage: command: "subscribe", identifier: "{\"channel\":\"PresenceChannel\"}", connection_identifiers: "{\"__ltags__\":[11084497],\"current_user\":\"Z2lkOi8vbWFuYWdlYmFjL1VzZXIvMTEwODQ0OTc\"}", data: "">
+[AnyCable sid=FQQS_IltswlTJK60ncf9Cm] RPC Command: <AnyCable::CommandMessage: command: "subscribe", identifier: "{\"channel\":\"PresenceChannel\"}", connection_identifiers: "{\"current_user\":\"Z2lkOi8vbWFuYWdlYmFjL1VzZXIvMTEwODQ0OTc\"}", data: "", env: <>>
 [AnyCable sid=FQQS_IltswlTJK60ncf9Cm]   User Load (0.6ms)  SELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1
 ```

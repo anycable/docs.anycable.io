@@ -2,6 +2,8 @@
 
 # Benchmarks
 
+<!-- TODO: perform new benchmarks for v1.0 -->
+
 > See [the main repo](https://github.com/anycable/anycable/tree/master/benchmarks) for benchmarks reports.
 
 ## Broadcasting RTT

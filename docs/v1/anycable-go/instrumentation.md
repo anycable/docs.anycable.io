@@ -10,6 +10,8 @@ You can also change a listening port and listening host through `--metrics_port`
 
 The exported metrics format is the following:
 
+<!-- TODO: actualize list of metrics -->
+
 ```sh
 # HELP anycable_go_clients_num The number of active clients
 # TYPE anycable_go_clients_num gauge
@@ -75,6 +77,8 @@ INFO 2018-03-06T14:16:27.872Z broadcast_msg_total=0 broadcast_streams_num=0 clie
 By default, metrics are logged every 15 seconds (you can change this behavior through `--metrics_log_interval` option).
 
 ### Custom loggers with mruby
+
+<!-- TODO: add new API, remove "experimental" -->
 
 > 👨‍🔬 This is an experimental API and could change in the future 👩‍🔬
 

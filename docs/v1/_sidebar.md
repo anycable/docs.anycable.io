@@ -37,7 +37,6 @@
   * [How to write AnyCable-compatible server](/misc/how_to_anycable_server.md)
 * Upgrade Notes
   * [From v0.6.x to v1.0.0](/upgrade-notes/0_6_0_to_1_0_0.md)
-  * [From v0.5.x to v0.6.0](/upgrade-notes/0_5_0_to_0_6_0.md)
 * Other Versions
   <ul>
     <li><a href="/v06" title="v0.6.x">0.6.x</a></li>

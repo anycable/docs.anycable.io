@@ -18,6 +18,6 @@ You can use AnyCable with:
 
 - Action Cable (Rails) apps (see [Using with Rails](ruby/rails.md))
 - [Lite Cable](https://github.com/palkan/litecable) for  _plain_ Ruby projects (see [Using with Ruby](ruby/non_rails.md))
-- your own [AnyCable-compatible framework](r\uby/non_rails.md).
+- your own [AnyCable-compatible framework](ruby/non_rails.md).
 
 See the list of available WebSocket servers [here](websocket_servers.md).

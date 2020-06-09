@@ -21,9 +21,20 @@ enum Status {
   FAILURE = 2;
 }
 
-message ConnectionRequest {
-  string path = 1;
+message Env {
+  string url = 1;
   map<string,string> headers = 2;
+  map<string,string> cstate = 3;
+  map<string,string> istate = 4;
+}
+
+message EnvResponse {
+  map<string,string> cstate = 1;
+  map<string,string> istate = 2;
+}
+
+message ConnectionRequest {
+  Env env = 3;
 }
 
 message ConnectionResponse {
@@ -31,6 +42,7 @@ message ConnectionResponse {
   string identifiers = 2;
   repeated string transmissions = 3;
   string error_msg = 4;
+  EnvResponse env = 5;
 }
 
 message CommandMessage {
@@ -38,6 +50,7 @@ message CommandMessage {
   string identifier = 2;
   string connection_identifiers = 3;
   string data = 4;
+  Env env = 5;
 }
 
 message CommandResponse {
@@ -47,13 +60,14 @@ message CommandResponse {
   repeated string streams = 4;
   repeated string transmissions = 5;
   string error_msg = 6;
+  EnvResponse env = 7;
+  repeated string stopped_streams = 8;
 }
 
 message DisconnectRequest {
   string identifiers = 1;
   repeated string subscriptions = 2;
-  string path = 3;
-  map<string,string> headers = 4;
+  Env env = 5;
 }
 
 message DisconnectResponse {
