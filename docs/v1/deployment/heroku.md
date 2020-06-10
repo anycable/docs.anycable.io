@@ -1,20 +1,15 @@
 # Heroku Deployment
 
-## The Problem
+## Setting up a pipeline
 
 Deploying applications using AnyCable on Heroku is a little bit tricky due to the following limitations:
 
-- Missing HTTP/2 support.
-
-AnyCable relies on HTTP/2 ('cause it uses [gRPC](https://grpc.io)).
-
-- The only `web` service.
-
-It is not possible to have two HTTP services within one application (only `web` service is open the world).
-
-## The Workaround
+- **Missing HTTP/2 support.** AnyCable relies on HTTP/2 ('cause it uses [gRPC](https://grpc.io)).
+- **The only `web` service.** It is not possible to have two HTTP services within one application (only `web` service is open the world).
 
 The only way (for now) to run AnyCable applications on Heroku is to have two separate applications sharing some resources: the first one is a typical web application responsible for general HTTP and the second contains AnyCable WebSocket and RPC servers.
+
+For convenience, We recommend adding a WebSocket app instance to the same [pipeline](https://devcenter.heroku.com/articles/pipelines) as the original one.
 
 ### Preparing the source code
 
@@ -52,6 +47,9 @@ Secondly, create a new Heroku application for the same repository to host the We
 ```sh
 # Create a new application and name the git remote as "anycable"
 $ heroku create example-app-anycable --remote anycable
+
+# Add this application to the pipeline (if you have one)
+$ heroku pipelines:add example-pipeline -a example-app-anycable
 ```
 
 Now we need to add `anycable-go` to this new app. There is a buildpack, [anycable/heroku-anycable-go](https://github.com/anycable/heroku-anycable-go), for that:
@@ -108,9 +106,9 @@ $ heroku config:set RAILS_ENV=production -a anycable-demo-rpc
 For example, you must use the same `SECRET_KEY_BASE` if you're going to use cookies for authentication or
 utilize some other encryption-related functionality in your channels code.
 
-<!-- TODO: add Heroku sync instructions -->
-
 We recommend using Rails credentials (or alternative secure store implementation, e.g., [chamber](https://github.com/thekompanee/chamber)) to store the application configuration. This way you won't need to think about manual env syncing.
+
+<!-- TODO: add Heroku sync instructions -->
 
 Next, we need to _tell_ the main app where to point Action Cable clients:
 
@@ -133,15 +131,15 @@ $ heroku config:set CABLE_URL="anycable.example.com/cable"
 
 ### Pushing code
 
-Don't forget to push code to the AnyCable app every time you push the code to the main app:
+To keep the applications in sync, you need to deploy them simultaneously. The easiest way to do that is to configure [automatic deploys](https://devcenter.heroku.com/articles/github-integration#automatic-deploys).
+
+If you prefer the manual `git push` approach, don't forget to push code to the AnyCable app every time you push the code to the main app:
 
 ```sh
 git push anycable master
 ```
 
-Alternatively, you can configure [automatic deployments](https://devcenter.heroku.com/articles/github-integration#automatic-deploys).
-
-## Using with Heroku Review apps
+## Using with review apps
 
 Creating a separate AnyCable app for every Heroku review app seems to be an unnecessary overhead.
 
@@ -166,8 +164,61 @@ production:
 
 And set `"CABLE_ADAPTER": "redis"` (or any other built-in adapter, e.g. `"CABLE_ADAPTER": "async"`) in your `app.json`.
 
-## Example
+## Choosing the right formation
+
+How do to choose the right dyno type and the number of AnyCable dynos? Since we run both RPC and WebSocket servers within the same dyno, we need to think about the resources usage carefully.
+
+The following formula could be used to estimate the necessary formation configuration:
+
+$$
+N = \frac{\mu\frac{C}{1000}}{\phi(D - R)}
+$$
+
+$\mu$ — MiB required to serve 1k connections by AnyCable-Go (currently, it equals to 50MiB for most use-cases)
+
+$\phi$ — fill factor ($0 \le \phi \le 1$): what portion of all the available RAM we want to use (to leave a room for load spikes)
+
+$C$ — the expected number of simultaneous connections at peak times
+
+$D$ — RAM available for the dyno type (512MiB for 1X and 1GiB for 2x)
+
+$R$ — the size of the RPC (Rails) application.
+
+For a hypothetical app with $R = 350$, $C = 6000$ and $\phi = 0.8$:
+
+$$
+N = \frac{50\frac{6000}{1000}}{0.8(512 - 350)} = \frac{300}{130} = 2.31
+$$
+
+Thus, the theoretical number for required 1X dynos is 3.
+For 2X dynos it’s just 1 (the formula above gives 0.56).
+
+We recommend to analyze the application size and try to reduce it (e.g., drop unused gems, disable parts of the application for the AnyCable process) in order to leave more RAM for WebSocket connections.
+
+### Preboot and load balancing
+
+The formula above doesn’t take into account load balancing with [Preboot](https://devcenter.heroku.com/articles/preboot), which could result in a non-uniform distribution of the connections across the dynos. We noticed the difference up to 2x-3x between the number of connections after deployment with Preboot.
+
+From the [Preboot docs](https://devcenter.heroku.com/articles/preboot#preboot-in-manual-or-automatic-dyno-restarts):
+
+> The new dynos will start receiving requests as soon as it binds to its assigned port. At this point, both the old and new dynos are receiving requests.
+
+Thus, the lag between new dynos startup causes some dynos to receive new connections before others.
+
+If it’s possible, it’s better to perform deployments during off-peak hours to minimize the unbalancing effect of Preboot and avoid having one dyno serving much more connections than others.
+
+### Open files limit
+
+One thing you should also take into account is OS-level limits. One such limit is the open files limit (the total number of allowed file descriptors, including sockets).
+
+For 1X/2X dynos this limit is 10k. That means that the max number of connections  is ~9500 (we need some room for RPC connections, logs, DB connections, etc).
+
+**NOTE:** It’s impossible to change system limits on Heroku.
+
+Thus, the max practical number of connections per dyno is 9k.
+
+## Links
+
+- [Example application]([code](https://github.com/anycable/anycable_demo) and [deployed application](http://heroku-demo.anycable.io/).
 
 <!-- TODO: update example -->
-
-See complete example: [code](https://github.com/anycable/anycable_demo) and [deployed application](http://heroku-demo.anycable.io/).
