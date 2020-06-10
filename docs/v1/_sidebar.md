@@ -24,13 +24,13 @@
   * [Instrumentation](/anycable-go/instrumentation.md)
   * [Health Checking](/anycable-go/health_checking.md)
   * [Tracing](/anycable-go/tracing.md)
-  * [Using with Envoy](/anycable-go/envoy.md)
   * [OS Tuning](/anycable-go/os_tuning.md)
 * Deployment
   * [Heroku](/deployment/heroku.md)
   * [Docker](/deployment/docker.md)
   * [Capistrano](/deployment/capistrano.md)
   * [Systemd](/deployment/systemd.md)
+  * [Load Balancing](/deployment/load_balancing.md)
 * Misc
   * [Action Cable Protocol](/misc/action_cable_protocol.md)
   * [Protobuf Definitions](/misc/rpc_proto.md)
