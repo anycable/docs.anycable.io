@@ -4,6 +4,8 @@
 
 This is a `.proto` file that should be used to generate AnyCable clients/servers:
 
+<!-- TODO: annotate schema -->
+
 ```protobuf
 syntax = "proto3";
 

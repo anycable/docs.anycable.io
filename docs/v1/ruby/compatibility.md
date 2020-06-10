@@ -74,6 +74,13 @@ Or you can require AnyCable cops dynamically:
 bundle exec rubocop -r 'anycable/rails/compatibility/rubocop' --only AnyCable
 ```
 
+**NOTE**: You if you have `DisabledByDefault: true` in your RuboCop config, you need to specify all AnyCable cops explicitly:
+
+```sh
+bundle exec rubocop -r 'anycable/rails/compatibility/rubocop' \
+--only AnyCable/InstanceVars,AnyCable/PeriodicalTimers,AnyCable/InstanceVars
+```
+
 ### Cops
 
 #### `AnyCable/InstanceVars`
