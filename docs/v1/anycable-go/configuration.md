@@ -70,7 +70,7 @@ anycable-go --port=443 -ssl_cert=path/to/ssl.cert -ssl_key=path/to/ssl.key
 => INFO time context=http Starting HTTPS server at 0.0.0.0:443
 ```
 
-## Concurrently settings
+## Concurrency settings
 
 AnyCable-Go uses a single Go gRPC client to communicate with AnyCable RPC servers (see [the corresponding PR](https://github.com/anycable/anycable-go/pull/88)). We limit the number of concurrent RPC calls to avoid flooding servers (and getting `ResourceExhausted` exceptions in response).
 

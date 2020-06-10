@@ -12,6 +12,7 @@
   * [CLI](/ruby/cli.md)
   * [Configuration](/ruby/configuration.md)
   * [Authentication](/ruby/authentication.md)
+  * [Channels State](/ruby/channels_state.md)
   * [Middlewares](/ruby/middlewares.md)
   * [Health Checking](/ruby/health_checking.md)
   * [Logging](/ruby/logging.md)
