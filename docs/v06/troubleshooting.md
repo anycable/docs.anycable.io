@@ -113,3 +113,7 @@ Check that:
 - In case of using a reverse proxy (e.g. Nginx), check that it points to the correct server as well.
 
 Related issues: [#115](https://github.com/anycable/anycable-rails/issues/115)
+
+## Websocket connections are not closed by load balancer
+
+Check out the [#83](https://github.com/anycable/anycable-go/issues/83) and [this comment](https://github.com/anycable/anycable-go/issues/83#issuecomment-597769178) in particular.
