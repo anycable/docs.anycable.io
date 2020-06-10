@@ -63,7 +63,7 @@ Increasing pool size makes sense if you have a lot of IO operations in your chan
 
 **NOTE**: Make sure the gRPC pool size is aligned with concurrency limits you have in your application, such as database pool size.
 
-**IMPORTANT**: AnyCable-Go concurrency limit must correlate to the RPC server pool size (read more in [AnyCable-Go Configuration](../anycable-go/getting_started.md#concurrency-settings)).
+**IMPORTANT**: AnyCable-Go concurrency limit must correlate to the RPC server pool size (read more in [AnyCable-Go Configuration](../anycable-go/configuration.md#concurrency-settings)).
 
 ### Redis connections
 

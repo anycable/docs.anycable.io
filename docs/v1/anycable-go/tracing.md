@@ -1,4 +1,4 @@
-# AnyCable-Go Instrumentation
+# AnyCable-Go Tracing
 
 AnyCable-Go assigns a random unique `sid` (_session ID_) or use the one provided in the `X-Request-ID` HTTP header
 to each websocket connection and passes it with requests to RPC service. This identifier is also

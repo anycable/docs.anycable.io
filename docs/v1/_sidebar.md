@@ -21,6 +21,7 @@
   * [Broadcast Adapters](/ruby/broadcast_adapters.md)
 * AnyCable-Go
   * [Getting Started](/anycable-go/getting_started.md)
+  * [Configuration](/anycable-go/configuration.md)
   * [Instrumentation](/anycable-go/instrumentation.md)
   * [Health Checking](/anycable-go/health_checking.md)
   * [Tracing](/anycable-go/tracing.md)
