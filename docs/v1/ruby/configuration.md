@@ -12,14 +12,14 @@ $ bundle exec anycable --rpc-host 0.0.0.0:50120 \
 
 **NOTE:** CLI options take precedence over parameters from other sources (files, env).
 
-## Parameters
+## Primary settings
 
 Here is the list of the most commonly used configuration parameters and the way you can provide them:
 
 - in Ruby code using parameter name (e.g. `AnyCable.config.rpc_host = "127.0.0.0:42421"`)
 - in `config/anycable.yml` or `secrets.yml` using the parameter name
 - through environment variable
-- through CLI option.
+- through a CLI option.
 
 **rpc_host** (`ANYCABLE_RPC_HOST`, `--rpc-host`)
 
@@ -43,10 +43,26 @@ Logging level (default: `"info"`).
 
 **log_file** (`ANYCABLE_LOG_FILE`, `--log-file`)
 
-Path to log file. By default AnyCable logs to STDOUT.
+Path to the log file. By default AnyCable logs to STDOUT.
 
 **debug** (`ANYCABLE_DEBUG`, `--debug`)
 
 Shortcut to turn on verbose logging ("debug" log level and gRPC logging on).
 
 For the complete list of configuration parameters see [`config.rb`](https://github.com/anycable/anycable/blob/master/lib/anycable/config.rb) file.
+
+## Concurrency settings
+
+AnyCable gRPC server maintains a pool of worker threads to execute commands. We rely on the `grpc` gem [default pool size](https://github.com/grpc/grpc/blob/80e834abab5dff45e16e9a1e3b98f20eae5f91ad/src/ruby/lib/grpc/generic/rpc_server.rb#L163), which is equal to **30**.
+
+You can configure the pool size via `rpc_pool_size` parameter (or `ANYCABLE_RPC_POOL_SIZE` env var).
+
+Increasing pool size makes sense if you have a lot of IO operations in your channels (DB, HTTP, etc.).
+
+**NOTE**: Make sure the gRPC pool size is aligned with concurrency limits you have in your application, such as database pool size.
+
+**IMPORTANT**: AnyCable-Go concurrency limit must correlate to the RPC server pool size (read more in [AnyCable-Go Configuration](../anycable-go/getting_started.md#concurrency-settings)).
+
+### Redis connections
+
+Redis broadcast adapter uses a single connection to Redis.
