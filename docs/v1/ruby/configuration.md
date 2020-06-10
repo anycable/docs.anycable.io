@@ -17,7 +17,7 @@ $ bundle exec anycable --rpc-host 0.0.0.0:50120 \
 Here is the list of the most commonly used configuration parameters and the way you can provide them:
 
 - in Ruby code using parameter name (e.g. `AnyCable.config.rpc_host = "127.0.0.0:42421"`)
-- in `config/anycable.yml` or `secrets.yml` using the parameter name
+- in `config/anycable.yml`\* or `secrets.yml` using the parameter name
 - through environment variable
 - through a CLI option.
 
@@ -50,6 +50,8 @@ Path to the log file. By default AnyCable logs to STDOUT.
 Shortcut to turn on verbose logging ("debug" log level and gRPC logging on).
 
 For the complete list of configuration parameters see [`config.rb`](https://github.com/anycable/anycable/blob/master/lib/anycable/config.rb) file.
+
+\* You can change the default YML config location path by settings `ANYCABLE_CONF` env variable.
 
 ## Concurrency settings
 
