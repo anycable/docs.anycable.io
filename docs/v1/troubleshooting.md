@@ -100,3 +100,16 @@ BUNDLE_FORCE_RUBY_PLATFORM=1 bundle install
 See the [example Dockerfile](https://github.com/anycable/anycable/blob/master/etc/Dockerfile.alpine).
 
 Related issues: [#70](https://github.com/anycable/anycable-rails/issues/70), [#47](https://github.com/anycable/anycable/issues/47).
+
+## Client connection fails with `ActionController::RoutingError (No route matches [GET] "/cable")`
+
+This exception means that your client attempts to connect to the Rails server not to AnyCable WebSocket server.
+
+Check that:
+
+- `config.action_cable.url` points to the AnyCable server and not to the Rails one.
+- Make sure that `action_cable_meta_tag` is called before JS script is loaded.
+- Make sure you do not pass incorrect URL to JS `createConsumer` question.
+- In case of using a reverse proxy (e.g. Nginx), check that it points to the correct server as well.
+
+Related issues: [#115](https://github.com/anycable/anycable-rails/issues/115)
