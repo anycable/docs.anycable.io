@@ -1,7 +1,5 @@
 # Using AnyCable without Rails
 
-<!-- FIXME: make up to date -->
-
 AnyCable can be used without Rails, thus allowing you to use ActionCable-like functionality in your app.
 
 ## Requirements
@@ -47,7 +45,7 @@ AnyCable initiates a _connection_ object for every request using user-provided f
 AnyCable.connection_factory = MyConnectionFactory
 
 # And then AnyCable calls .call method on your factory
-connection = factory.call(socket, options)
+connection = factory.call(socket, **options)
 ```
 
 Where:
@@ -91,5 +89,7 @@ end
 
 To send a message to a client, you should call `socket#transmit`.
 For manipulating with streams use `socket#subscribe`, `socket#unsubscribe` and `socket#unsubscribe_from_all`.
+
+To persist client states between RPC calls you can use `socket#cstate` (connection state) and `socket#istate` (per-channel state), which are key-value stores (keys and values must both be strings).
 
 See [test factory](https://github.com/anycable/anycable/blob/master/spec/support/test_factory.rb) for example.
