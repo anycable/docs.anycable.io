@@ -106,9 +106,9 @@ $ heroku config:set RAILS_ENV=production -a anycable-demo-rpc
 For example, you must use the same `SECRET_KEY_BASE` if you're going to use cookies for authentication or
 utilize some other encryption-related functionality in your channels code.
 
-We recommend using Rails credentials (or alternative secure store implementation, e.g., [chamber](https://github.com/thekompanee/chamber)) to store the application configuration. This way you won't need to think about manual env syncing.
+Here is an example Rake task to sync env vars between two applications on Heroku: [heroku.rake](https://github.com/anycable/anycable_demo/blob/master/lib/tasks/heroku.rake).
 
-<!-- TODO: add Heroku sync instructions -->
+We recommend using Rails credentials (or alternative secure store implementation, e.g., [chamber](https://github.com/thekompanee/chamber)) to store the application configuration. This way you won't need to think about manual and even automated env syncing.
 
 Next, we need to _tell_ the main app where to point Action Cable clients:
 
