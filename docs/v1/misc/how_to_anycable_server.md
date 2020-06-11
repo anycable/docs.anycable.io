@@ -55,15 +55,18 @@ interface Hub {
   # We also need a channel_id to sign messages with it (see below)
   func add(socket_handle, channel_id, stream);
 
-  # Unsubscribe socket from all streams for the given channel
-  func remove(socket_handle, channel_id);
+  # Unsubscribe socket from a stream for the given channel
+  func remove(socket_handle, channel_id, stream);
+
+   # Unsubscribe socket from all streams for the given channel
+  func removeAll(socket_handle, channel_id);
 
   # Broadcast a message to all subscribed sockets
   func broadcast(stream, msg);
 }
 ```
 
-Why do we need a `channel_id`? Unfortunately, this is required by Action Cable client.
+Why do we need a `channel_id`? This is required by Action Cable client.
 The JS client doesn't know about streams, only about channels. So it needs a channel identifier to be present in incoming messages to resolve channels.
 
 Moreover, there are no uniqueness restrictions on streams names–the same stream name can be used for different channels.
@@ -141,7 +144,7 @@ func ping_message() {
 Then you have to build a gRPC client using a [Protobuf service definition](rpc_proto.md).
 
 It has a simple interface with only three methods: `Connect`, `Disconnect` and `Command`.
-Let's go to Step 4 to see, how to use these methods and their return values.
+Let's go to Step 5 to see, how to use these methods and their return values.
 
 ### Step 5. Server – RPC communication
 
@@ -161,11 +164,16 @@ func socket_conn(socket_handle) {
   # NOTE: you MAY provide more headers if you want
   var headers = header('Cookie', socket_handle.header('Cookie'));
 
+  # Keep header for subsequent calls
+  socket_handle.setFilteredHeaders(headers);
+
   # Then generate a payload (build protobuf msg)
   # ConnectionRequest contains fields:
-  #   path - string - request URL
-  #   headers - map<string><string>
-  var payload = pb::ConnectionRequest(url, headers)
+  #   env:
+  #     url - string - request URL
+  #     headers - map<string><string>
+  var env = pb::SessionEnv(url, headers)
+  var payload = pb::ConnectionRequest(env)
 
   # Make a call and get a response – ConnectionResponse:
   #    status – Status::SUCCESS | Status::ERROR – status enum is a part of rpc.proto
@@ -178,6 +186,9 @@ func socket_conn(socket_handle) {
     # store identifiers for the socket
     # we will use them in later calls
     socket_handle.setIdentifiers(response.identifiers())
+
+    # update a client's connection state
+    socket_handle.setState(response.env().cstate())
 
     # transmit messages to socket
     # NOTE: typically Connect returns only "welcome" message
@@ -215,15 +226,25 @@ func socket_data(socket_handle, msg) {
   #   identifier - string (channel identifier)
   #   connection_identifiers - string (identifiers from Connect call)
   #   data – string (additional provided data)
-  var payload = pb::CommandMessage(type, identifier, socket_handle.identifiers(), data)
+  #   env:
+  #     url - string - request URL
+  #     headers - map<string><string>
+  #     cstate - map<string><string> — connection state obtained in socket_conn
+  #     istate - map<string><string> — channel state for the identifier
+  var env = pb::SessionEnv(socket_handle.url(), socket.filtered_headers(), socket.state(), socket.channel_state(identifier))
+  var payload = pb::CommandMessage(type, identifier, socket_handle.identifiers(), data, env)
 
   # Make a call and get a response – ConnectionResponse:
   #    status – Status::SUCCESS | Status::FAILURE | Status::ERROR– status enum is a part of rpc.proto
   #    disconnect – bool – whether to disconnect the client or not
   #    stop_streams – bool – whether to stop all existing subscriptions for the channel
   #    streams – list of strings – new subscriptions
+  #    stopped_streams - list of strings —
   #    transmissions - list of strings – messages to send to the client
   #    error_msg – error message in case of ERROR
+  #    env:
+  #      cstate - map<string><string> — connection state changed/new fields
+  #      istate — map<string><string> — channel state changed/new fields
   var response = rpc::Command(payload)
 
   # handle response
@@ -245,13 +266,31 @@ func socket_data(socket_handle, msg) {
       return socket_handle.close()
     }
 
+    # update connection state
+    if (response.env().cstate()) {
+      socket_handle.mergeState(response.env().cstate())
+    }
+
+    # update channel state
+    if (response.env().istate()) {
+      # socket_handle.channel_state has a form of map<string><map<string><string>>,
+      # where first-level keys are subscription identifiers, and values are the
+      # corresponding channels states
+      socket_handle.mergeChannelState(identifier, response.env().istate())
+    }
+
     if (response.stop_streams()) {
       # Stop all subscriptions for the channel
-      hub.remove(socket_handle, identifier)
+      hub.removeAll(socket_handle, identifier)
     }
 
     # Add new subscriptions
     for (stream in response.streams()) {
+      hub.add(socket_handle, identifier, stream)
+    }
+
+    # Remove old subscriptions
+    for (stream in response.stopped_streams()) {
       hub.add(socket_handle, identifier, stream)
     }
 
@@ -277,20 +316,19 @@ func socket_disconn(socket_handle) {
   var subscriptions = socket_handle.subscriptions()
 
   for (channel in subscriptions) {
-    hub.remove(socket_handle, channel)
+    hub.removeAll(socket_handle, channel)
   }
 
   # And only after that notify the app thru RPC
 
-  # Extract Cookie header and build a map { 'Cookie' => cookie_val }
-  var headers = header('Cookie', socket_handle.header('Cookie'));
   # Then generate a payload (build protobuf msg)
   # DisconnectRequest contains fields:
   #  identifiers – string – connection identifiers
   #  subscriptions – list of strings – connections channels
-  #  path – string – request URL
-  #  headers - map of strings
-  var payload = pb::DisconnectRequest(socket_handle.identifier(), subscriptions, socket_handle.url(), headers)
+  #  env:
+  #    url – string – request URL
+  #    headers - map<string><string>
+  var payload = pb::DisconnectRequest(socket_handle.identifier(), subscriptions, socket_handle.url(), socket_handle.filtered_headers())
 
   # Make a call and get a response – DisconnectResponse:
   #    status – Status::SUCCESS | Status::ERROR – status enum is a part of rpc.proto
