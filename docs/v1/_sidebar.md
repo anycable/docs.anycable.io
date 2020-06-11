@@ -6,7 +6,7 @@
   * [WebSocket Servers](/websocket_servers.md)
   * [Benchmarks](/benchmarks.md)
   * [Troubleshooting 🔥](/troubleshooting.md)
-  * [Custom Solutions ⚙️](/custom_solutions.md)
+  * [Commercial support 🆘](https://anycable.io/#custom-solutions)
 * Ruby
   * [Getting Started with Rails](/ruby/rails.md)
   * [CLI](/ruby/cli.md)

@@ -11,6 +11,7 @@ AnyCable allows you to use any WebSocket server (written in any language) as a r
 
 AnyCable uses [Action Cable protocol](misc/action_cable_protocol.md), so you can use Action Cable [JavaScript client](https://www.npmjs.com/package/actioncable) without any monkey-patching.
 
+<br/>
 <a href="https://evilmartians.com/">
 <img class="is-light" src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="236" height="54">
 <img class="is-dark" src="https://evilmartians.com/badges/sponsored-by-evil-martians_v2.0_for-dark-bg.svg" alt="Sponsored by Evil Martians" width="236" height="54">
@@ -26,6 +27,8 @@ AnyCable uses [Action Cable protocol](misc/action_cable_protocol.md), so you can
 - [Using AnyCable with other Ruby frameworks](ruby/non_rails.md)
 
 - [🔥 Troubleshooting](troubleshooting.md)
+
+- [🆘 Commercial support](https://anycable.io/#custom-solutions)
 
 ## Resources
 
