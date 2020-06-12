@@ -18,6 +18,7 @@
   * [Logging](/ruby/logging.md)
   * [Exceptions Handling](/ruby/exceptions.md)
   * [Action Cable Compatibility](/ruby/compatibility.md)
+  * [Using with Stimulus Reflex](/ruby/stimulus_reflex.md)
   * [Non-Rails usage](/ruby/non_rails.md)
   * [Broadcast Adapters](/ruby/broadcast_adapters.md)
 * AnyCable-Go
