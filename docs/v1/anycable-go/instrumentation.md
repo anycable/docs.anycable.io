@@ -10,8 +10,6 @@ You can also change a listening port and listening host through `--metrics_port`
 
 The exported metrics format is the following:
 
-<!-- TODO: actualize list of metrics -->
-
 ```sh
 # HELP anycable_go_clients_num The number of active clients
 # TYPE anycable_go_clients_num gauge
@@ -48,6 +46,10 @@ anycable_go_rpc_call_total 15808
 # HELP anycable_go_rpc_error_total The total number of failed RPC calls
 # TYPE anycable_go_rpc_error_total counter
 anycable_go_rpc_error_total 0
+
+# HELP anycable_go_rpc_retries_total The total number of RPC call retries
+# TYPE anycable_go_rpc_retries_total counter
+anycable_go_rpc_retries_total 0
 
 # HELP anycable_go_failed_auths_total The total number of failed authentication attempts
 # TYPE anycable_go_failed_auths_total counter

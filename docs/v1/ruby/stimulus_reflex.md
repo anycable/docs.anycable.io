@@ -9,3 +9,5 @@ AnyCable v1.0+ works with Stimulus Reflex with some additional considerations:
 
 - [Original issue & discussion](https://github.com/hopsoft/stimulus_reflex/issues/46)
 - [Issue with a cache store](https://github.com/anycable/anycable-rails/issues/127)
+
+<!-- TODO: add demo -->
