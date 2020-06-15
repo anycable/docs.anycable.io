@@ -42,7 +42,7 @@ AnyCable uses [Action Cable protocol](misc/action_cable_protocol.md), so you can
 
 ### Talks
 
-- High-speed cables for Ruby, [RubyConf 2018](http://rubyconf.org/program#session-712), [slides](https://speakerdeck.com/palkan/rubyconf-2018-high-speed-cables-for-ruby) and [video](https://www.youtube.com/watch?v=8XRcOZXOzV4) (EN)
+- High-speed cables for Ruby, RubyConf 2018, [slides](https://speakerdeck.com/palkan/rubyconf-2018-high-speed-cables-for-ruby) and [video](https://www.youtube.com/watch?v=8XRcOZXOzV4) (EN)
 
 - One cable to rule them all, [RubyKaigi 2018](http://rubykaigi.org/2018/presentations/palkan_tula.html), [slides](https://speakerdeck.com/palkan/rubykaigi-2018-anycable-one-cable-to-rule-them-all) and [video](https://www.youtube.com/watch?v=jXCPuNICT8s) (EN)
 
