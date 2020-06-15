@@ -8,7 +8,6 @@ AnyCable v1.0+ works with Stimulus Reflex with some additional considerations:
 ## Links
 
 - [Stimulus Reflex AnyCable deployment documentation](https://docs.stimulusreflex.com/deployment#anycable)
+- [Stimulus Reflex Expo configured to run on AnyCable](https://github.com/anycable/stimulus_reflex_expo)
 - [Original issue & discussion](https://github.com/hopsoft/stimulus_reflex/issues/46)
 - [Issue with a cache store](https://github.com/anycable/anycable-rails/issues/127)
-
-<!-- TODO: add demo -->
