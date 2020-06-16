@@ -32,6 +32,7 @@
 * Deployment
   * [Heroku](/deployment/heroku.md)
   * [Docker](/deployment/docker.md)
+  * [Kubernetes](/deployment/kubernetes.md)
   * [Capistrano](/deployment/capistrano.md)
   * [Systemd](/deployment/systemd.md)
   * [Load Balancing](/deployment/load_balancing.md)
