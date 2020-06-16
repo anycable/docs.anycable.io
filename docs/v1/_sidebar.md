@@ -7,6 +7,7 @@
   * [Benchmarks](/benchmarks.md)
   * [Troubleshooting 🔥](/troubleshooting.md)
   * [Commercial support 🆘](https://anycable.io/#custom-solutions)
+  * [Release notes](/release_notes.md)
 * Ruby
   * [Getting Started with Rails](/ruby/rails.md)
   * [CLI](/ruby/cli.md)

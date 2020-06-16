@@ -2,11 +2,13 @@
 
 This page contains combined release notes for major and minor releases of all AnyCable libraries.
 
-## 1.0.0.rc1
+## 1.0.0.rc1{2}
 
 **tl;dr** API stabilization, better Action Cable compatibility, [Stimulus Reflex][stimulus_reflex] compatibility, improved RPC communication, state persistence, HTTP broadcast adapter, Rails generators.
 
 See also [upgrade notes](./upgrade-notes/0_6_0_to_1_0_0.md).
+
+**NOTE:** For `anycable-rails` use version 1.0.0.rc2, other libraries haven't been updated since rc1.
 
 ### Features
 
