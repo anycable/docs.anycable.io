@@ -27,8 +27,6 @@ Then, run the interactive configuration wizard via Rails generators:
 bundle exec rails g anycable:setup
 ```
 
-<!-- TODO: add GIF/Video demo -->
-
 ## Configuration
 
 Next, update your Action Cable configuration:

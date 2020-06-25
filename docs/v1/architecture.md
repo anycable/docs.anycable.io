@@ -49,5 +49,4 @@ This results in a slightly different behaviour comparing to persistent, long-liv
 
 For example, if you use an Active Record object as an identifier (e.g., `user`), it's _reloaded_ in every RPC action it's used.
 
-<!-- TODO: replace with demo link -->
-To use arbitrary Ruby objects as identifiers, you must add GlobalID support for them (see, for example, this [SO answer](https://stackoverflow.com/questions/61866192/anycable-retrieve-information-grpc-info-on-ror-app/62149645#62149645)).
+To use arbitrary Ruby objects as identifiers, you must add GlobalID support for them (see [AnyCable setup demo](https://github.com/anycable/anycable_rails_demo/pull/2)).

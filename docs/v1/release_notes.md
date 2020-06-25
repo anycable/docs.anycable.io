@@ -121,9 +121,9 @@ Now you can specify only the part of the version, e.g. `anycable-go:1.0` instead
 For internal changes see the corresponding change logs:
 <!-- TODO: update links after release -->
 
-- [`anycable` gem](https://github.com/anycable/anycable/blob/v1.0.0.rc1/CHANGELOG.md)
-- [`anycable-rails` gem](https://github.com/anycable/anycable-rails/blob/v1.0.0.rc1/CHANGELOG.md)
-- [`anycable-go`](https://github.com/anycable/anycable-go/blob/v1.0.0.rc1/CHANGELOG.md)
+- [`anycable` gem](https://github.com/anycable/anycable/blob/master/CHANGELOG.md)
+- [`anycable-rails` gem](https://github.com/anycable/anycable-rails/blob/master/CHANGELOG.md)
+- [`anycable-go`](https://github.com/anycable/anycable-go/blob/v1.0.0/CHANGELOG.md)
 - [`anycable-rack-server`](https://github.com/anycable/anycable-rack-server/blob/master/CHANGELOG.md)
 
 [stimulus_reflex]: https://github.com/hopsoft/stimulus_reflex
