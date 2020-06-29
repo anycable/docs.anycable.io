@@ -2,6 +2,8 @@
 
 AnyCable initially was designed for Rails applications only.
 
+> See also the [demo](https://github.com/anycable/anycable_rails_demo/pull/2) of migrating from Action Cable to AnyCable.
+
 ## Requirements
 
 - Ruby >= 2.5
@@ -44,7 +46,7 @@ Install [WebSocket server](#server-installation) and specify its URL in the conf
 # For development it's likely the localhost
 
 # config/environments/development.rb
-config.action_cable.url = "ws://localhost:3334/cable"
+config.action_cable.url = "ws://localhost:8080/cable"
 
 # For production it's likely to have a sub-domain and secure connection
 
@@ -152,10 +154,9 @@ Use process manager (e.g. [Hivemind](https://github.com/DarthSim/hivemind) or [O
 ```procfile
 web: bundle exec rails s
 rpc: bundle exec anycable
-ws:  anycable-go --port 3334
+ws:  anycable-go
 ```
 
 ## Links
 
 - [Demo application](https://github.com/anycable/anycable_rails_demo)
-- [Plugging in AnyCable](https://www.driftingruby.com/episodes/plugging-in-anycable) at Drifting Ruby

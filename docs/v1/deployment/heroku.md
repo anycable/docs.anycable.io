@@ -17,6 +17,8 @@ heroku pipelines:create -a example-pipeline
 
 ### Preparing the source code
 
+> See also the [demo](https://github.com/anycable/anycable_rails_demo/pull/4) of preparing the app for Heroku deployment.
+
 We have to use the same `Procfile` for both applications ('cause we're using the same repo) but run different commands for the `web` service. We can use an environment variable to toggle the application behaviour, for example:
 
 ```sh

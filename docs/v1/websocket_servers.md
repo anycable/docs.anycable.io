@@ -9,4 +9,6 @@ For older versions you can still use [`erlycable`](https://github.com/anycable/e
 
 We also have a server written in Ruby–[AnyCable Rack Server](https://github.com/anycable/anycable-rack-server)–which could be used for local experiments to emulate the same architecture as with _real_ AnyCable server.
 
+> See [the demo](https://github.com/anycable/anycable_rails_demo/pull/1) of how you can use anycable-rack-server to run system tests.
+
 If you're not happy with the above implementations, you can build your own [AnyCable-compatible server](misc/how_to_anycable_server.md).
