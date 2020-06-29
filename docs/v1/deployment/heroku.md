@@ -9,7 +9,11 @@ Deploying applications using AnyCable on Heroku is a little bit tricky due to th
 
 The only way (for now) to run AnyCable applications on Heroku is to have two separate applications sharing some resources: the first one is a typical web application responsible for general HTTP and the second contains AnyCable WebSocket and RPC servers.
 
-For convenience, We recommend adding a WebSocket app instance to the same [pipeline](https://devcenter.heroku.com/articles/pipelines) as the original one.
+For convenience, we recommend adding a WebSocket app instance to the same [pipeline](https://devcenter.heroku.com/articles/pipelines) as the original one. You can create a pipeline via Web UI or using a CLI:
+
+```sh
+heroku pipelines:create -a example-pipeline
+```
 
 ### Preparing the source code
 
@@ -28,42 +32,47 @@ First, we need to create an app for the _main_ application (skip this step if yo
 
 ```sh
 # Create a new heroku application
-$ heroku create example-app
+heroku create example-app
+
+# Add to the pipeline
+heroku pipelines:add example-pipeline -a example-app
 
 # Add necessary add-ons
 # NOTE: we need at least Redis
-$ heroku addons:create heroku-postgresql
-$ heroku addons:create heroku-redis
+heroku addons:create heroku-postgresql
+heroku addons:create heroku-redis
 
 # Deploy application
-$ git push heroku master
+git push heroku master
 
 # Run migrations or other postdeployment scripts
-$ heroku run "rake db:migrate"
+heroku run "rake db:migrate"
 ```
+
+See also the [official Heroku guide](https://devcenter.heroku.com/articles/getting-started-with-rails6#create-a-new-rails-app-or-upgrade-an-existing-one) for setting up Rails applications.
 
 Secondly, create a new Heroku application for the same repository to host the WebSocket server:
 
 ```sh
 # Create a new application and name the git remote as "anycable"
-$ heroku create example-app-anycable --remote anycable
+heroku create example-app-anycable --remote anycable
 
 # Add this application to the pipeline (if you have one)
-$ heroku pipelines:add example-pipeline -a example-app-anycable
+heroku pipelines:add example-pipeline -a example-app-anycable
 ```
 
 Now we need to add `anycable-go` to this new app. There is a buildpack, [anycable/heroku-anycable-go](https://github.com/anycable/heroku-anycable-go), for that:
 
 ```sh
 # Add anycable-go buildpack
-$ heroku buildpacks:add https://github.com/anycable/heroku-anycable-go -a example-app-anycable
+heroku buildpacks:add https://github.com/anycable/heroku-anycable-go -a example-app-anycable
 ```
 
 Also, to run RPC server ensure that you have a Ruby buildpack installed as well:
 
 ```sh
 # Add ruby buildpack
-$ heroku buildpacks:add heroku/ruby -a example-app-anycable
+heroku buildpacks:add heroku/ruby -a example-app-anycable
 ```
 
 Now, **the most important** part: linking one application to another.
@@ -74,15 +83,15 @@ Let's get a list of the main app add-ons:
 
 ```sh
 # Get the list of the first app add-ons
-$ heroku add-ons -a example-app
+$ heroku addons -a example-app
 ```
 
 Find the ones you want to share with the AnyCable app and _attach_ them to it:
 
 ```sh
 # Attach add-ons to the second app
-$ heroku addons:attach postgresql-closed-12345 -a example-app-anycable
-$ heroku addons:attach redis-regular-12345 -a example-app-anycable
+heroku addons:attach postgresql-closed-12345 -a example-app-anycable
+heroku addons:attach redis-regular-12345 -a example-app-anycable
 ```
 
 **NOTE:** Make sure you have a Redis instance shared and the database as well. You might also want to share other add-ons depending on your configuration.
@@ -95,36 +104,48 @@ For AnyCable app:
 
 ```sh
 # Make our heroku/web script run `bundle exec anycable`
-$ heroku config:set ANYCABLE_DEPLOYMENT=true -a example-app-anycable
+heroku config:set ANYCABLE_DEPLOYMENT=true -a example-app-anycable
+
+# Configure anycable-go to listen at 0.0.0.0 (to make it accessible to Heroku router)
+heroku config:set ANYCABLE_HOST=0.0.0.0 -a example-app-anycable
 
 # Don't forget to add RAILS_ENV if using Rails
-$ heroku config:set RAILS_ENV=production -a anycable-demo-rpc
+heroku config:set RAILS_ENV=production -a anycable-demo-rpc
+```
+
+You may also want to explicitly specify AnyCable-Go version (the latest release is used by default):
+
+```sh
+heroku config:set HEROKU_ANYCABLE_GO_VERSION
 ```
 
 **IMPORTANT:** You also need to copy all (or most) the application-specific variables from
 `example-app` to `example-app-anycable` to make sure that applications have the same environment.
-For example, you must use the same `SECRET_KEY_BASE` if you're going to use cookies for authentication or
+For example, you **must** use the same `SECRET_KEY_BASE` if you're going to use cookies for authentication or
 utilize some other encryption-related functionality in your channels code.
 
 Here is an example Rake task to sync env vars between two applications on Heroku: [heroku.rake](https://github.com/anycable/anycable_demo/blob/master/lib/tasks/heroku.rake).
 
 We recommend using Rails credentials (or alternative secure store implementation, e.g., [chamber](https://github.com/thekompanee/chamber)) to store the application configuration. This way you won't need to think about manual and even automated env syncing.
 
-Next, we need to _tell_ the main app where to point Action Cable clients:
+Next, we need to _tell_ the main app where to point Action Cable clients.
+If you configured AnyCable via `rails g anycable:setup`, you have something like this in your `production.rb`:
 
 ```ruby
 # config/environments/production.rb
-config.action_cable.url = "wss://#{ENV["CABLE_URL"]}"
+config.after_initialize do
+  config.action_cable.url = ActionCable.server.config.url = ENV.fetch("CABLE_URL") if AnyCable::Rails.enabled?
+end
 ```
 
 And set the `CABLE_URL` var to point to the AnyCable endpoint in the AnyCable app:
 
 ```sh
 # with the default Heroku domain
-$ heroku config:set CABLE_URL="example-app-anycable.herokuapp.com/cable"
+heroku config:set CABLE_URL="wss://example-app-anycable.herokuapp.com/cable"
 
 # or with a custom domain
-$ heroku config:set CABLE_URL="anycable.example.com/cable"
+heroku config:set CABLE_URL="ws://anycable.example.com/cable"
 ```
 
 **NOTE:** with default `.herokuapp.com` domains you won't be able to use cookies for authentication. Read more in [troubleshooting](../troubleshooting.md#my-websocket-connection-fails-with-quotauth-failedquot-error).
@@ -219,6 +240,5 @@ Thus, the max practical number of connections per dyno is 9k.
 
 ## Links
 
-- [Example application]([code](https://github.com/anycable/anycable_demo) and [deployed application](http://heroku-demo.anycable.io/).
-
-<!-- TODO: update example -->
+- [Demo application](https://github.com/anycable/anycable_rails_demo/pull/4)
+- [Deployed application](http://demo.anycable.io/)
