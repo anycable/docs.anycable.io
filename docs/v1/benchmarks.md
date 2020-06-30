@@ -2,9 +2,7 @@
 
 # Benchmarks
 
-<!-- TODO: perform new benchmarks for v1.0 -->
-
-> See [the main repo](https://github.com/anycable/anycable/tree/master/benchmarks) for benchmarks reports.
+> The latest benchmark results are available at [the main repo](https://github.com/anycable/anycable/blob/master/benchmarks/2020-06-30.md).
 
 ## Broadcasting RTT
 
@@ -16,6 +14,7 @@ The results of this benchmark could be seen below.
   <img class="is-light" src="../assets/images/rtt_bench.png" alt="RTT" width="80%">
   <img class="is-dark" src="../assets/images/rtt_bench_invert.png" alt="RTT" width="80%">
 </div>
+
 ## Memory usage
 
 Memory usage of AnyCable is significantly lower than of Action Cable.
