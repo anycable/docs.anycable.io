@@ -2,13 +2,11 @@
 
 This page contains combined release notes for major and minor releases of all AnyCable libraries.
 
-## 1.0.0 (release candidate)
+## 1.0.0
 
 **tl;dr** API stabilization, better Action Cable compatibility, [Stimulus Reflex][stimulus_reflex] compatibility, improved RPC communication, state persistence, HTTP broadcast adapter, Rails generators.
 
 See also [upgrade notes](./upgrade-notes/0_6_0_to_1_0_0.md).
-
-**NOTE:** For `anycable-rails` use version 1.0.0.rc2, other libraries haven't been updated since rc1.
 
 ### Features
 
@@ -121,9 +119,9 @@ Now you can specify only the part of the version, e.g. `anycable-go:1.0` instead
 For internal changes see the corresponding change logs:
 <!-- TODO: update links after release -->
 
-- [`anycable` gem](https://github.com/anycable/anycable/blob/master/CHANGELOG.md)
-- [`anycable-rails` gem](https://github.com/anycable/anycable-rails/blob/master/CHANGELOG.md)
+- [`anycable` gem](https://github.com/anycable/anycable/blob/v1.0.0/CHANGELOG.md)
+- [`anycable-rails` gem](https://github.com/anycable/anycable-rails/blob/v1.0.0/CHANGELOG.md)
 - [`anycable-go`](https://github.com/anycable/anycable-go/blob/v1.0.0/CHANGELOG.md)
-- [`anycable-rack-server`](https://github.com/anycable/anycable-rack-server/blob/master/CHANGELOG.md)
+- [`anycable-rack-server`](https://github.com/anycable/anycable-rack-server/blob/v0.2.0/CHANGELOG.md)
 
 [stimulus_reflex]: https://github.com/hopsoft/stimulus_reflex
