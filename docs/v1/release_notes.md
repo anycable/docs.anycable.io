@@ -6,6 +6,8 @@ This page contains combined release notes for major and minor releases of all An
 
 **tl;dr** API stabilization, better Action Cable compatibility, [Stimulus Reflex][stimulus_reflex] compatibility, improved RPC communication, state persistence, HTTP broadcast adapter, Rails generators.
 
+> Read more about the first major release of AnyCable in [Evil Martians chronicles](https://evilmartians.com/chronicles/anycable-1-0-four-years-of-real-time-web-with-ruby-and-go).
+
 See also [upgrade notes](./upgrade-notes/0_6_0_to_1_0_0.md).
 
 ### Features

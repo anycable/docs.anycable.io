@@ -36,6 +36,8 @@ AnyCable uses [Action Cable protocol](misc/action_cable_protocol.md), so you can
 
 ### Blog Posts
 
+- [AnyCable 1.0: Four years of real-time web with Ruby and Go](https://evilmartians.com/chronicles/anycable-1-0-four-years-of-real-time-web-with-ruby-and-go)
+
 - [AnyCable: Action Cable on steroids!](https://evilmartians.com/chronicles/anycable-actioncable-on-steroids)
 
 - [Connecting LiteCable to Hanami](http://gabrielmalakias.com.br/ruby/hanami/iot/2017/05/26/websockets-connecting-litecable-to-hanami.html) by [@GabrielMalakias](https://github.com/GabrielMalakias)
