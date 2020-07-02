@@ -12,7 +12,7 @@ MacOS users could install it with [Homebrew](https://brew.sh/)
 brew install anycable-go
 
 # or use --HEAD option for edge versions
-brew intsall anycable-go --HEAD
+brew install anycable-go --HEAD
 ```
 
 Arch Linux users can install [anycable-go package from AUR](https://aur.archlinux.org/packages/anycable-go/).
