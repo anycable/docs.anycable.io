@@ -36,6 +36,8 @@ AnyCable could be used with Redis Sentinel out-of-the-box. For that, you should 
 - `redis_url` must contain a master name (e.g., `ANYCABLE_REDIS_URL=redis://mymaster`)
 - `redis_sentinels` must contain a comma separated list of sentinel hosts (e.g., `ANYCABLE_REDIS_SENTINELS=my.redis.sentinel.first:26380,my.redis.sentinel.second:26380`).
 
+If your sentinels are protected with passwords, use the following format: `:password1@my.redis.sentinel.first:26380,:password2@my.redis.sentinel.second:26380`.
+
 ## Custom adapters
 
 AnyCable allows you to use custom broadcasting adapters:
