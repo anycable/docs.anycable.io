@@ -38,6 +38,8 @@ AnyCable could be used with Redis Sentinel out-of-the-box. For that, you should 
 
 If your sentinels are protected with passwords, use the following format: `:password1@my.redis.sentinel.first:26380,:password2@my.redis.sentinel.second:26380`.
 
+> See the [demo](https://github.com/anycable/anycable_rails_demo/pull/8) of using Redis with Sentinels in a local Docker dev environment.
+
 ## Custom adapters
 
 AnyCable allows you to use custom broadcasting adapters:
