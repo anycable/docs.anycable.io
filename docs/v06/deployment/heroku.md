@@ -100,7 +100,7 @@ For AnyCable app:
 $ heroku config:set ANYCABLE_DEPLOYMENT=true -a example-app-anycable
 
 # Don't forget to add RAILS_ENV if using Rails
-$ heroku config:set RAILS_ENV=production -a anycable-demo-rpc
+$ heroku config:set RAILS_ENV=production -a example-app-anycable
 ```
 
 **IMPORTANT:** You also need to copy all (or most) the application-specific variables from

@@ -112,7 +112,7 @@ heroku config:set ANYCABLE_DEPLOYMENT=true -a example-app-anycable
 heroku config:set ANYCABLE_HOST=0.0.0.0 -a example-app-anycable
 
 # Don't forget to add RAILS_ENV if using Rails
-heroku config:set RAILS_ENV=production -a anycable-demo-rpc
+heroku config:set RAILS_ENV=production -a example-app-anycable
 ```
 
 You may also want to explicitly specify AnyCable-Go version (the latest release is used by default):
