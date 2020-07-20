@@ -127,6 +127,10 @@ body.close .sidebar {
   transform: translateX(-100%);
 }
 
+.sidebar-version-select {
+  font-size: 100%;
+}
+
 .sidebar ul li a {
   color: var(--theme-color-secondary);
   font-size: 1rem;

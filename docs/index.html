@@ -34,15 +34,19 @@
       alias: {
         '/v06/(.*)': 'https://raw.githubusercontent.com/anycable/docs.anycable.io/0-6-stable/docs/$1'
       },
-      name: '<div class="sidebar-logo">' +
+      name: '<a class="app-name-link" data-nosearch href="/"><div class="sidebar-logo">' +
         '<img src="../assets/images/logo.svg" height="64px" class="is-light">' +
         '<img src="../assets/images/logo_bw.svg" height="64px" class="is-dark">' +
         '<span class="sidebar-logo-title">AnyCable</span>' +
-        '</div>' +
-        '<img src="https://img.shields.io/badge/version-1.0.0-brightgreen" alt="Version 1.0.0" style="max-width:100%;">',
+        '</div></a>' +
+        '<select id="version-selector" name="version" class="sidebar-version-select">' +
+          '<option value="/#/" selected>v1.0.0</value>' +
+          '<option value="/#/v06/">v0.6.x</value>' +
+        '</select>',
       repo: 'https://github.com/anycable',
       loadSidebar: true,
       relativePath: true,
+      nameLink: false,
       subMaxLevel: 2,
       ga: 'UA-88982723-3',
       auto2top: true,
@@ -53,8 +57,24 @@
         depth: 3
       },
       plugins:[
-        EditOnGithubPlugin.create("https://github.com/anycable/docs.anycable.io/blob/master/docs/")
+        EditOnGithubPlugin.create("https://github.com/anycable/docs.anycable.io/blob/master/docs/"),
+        function(hook, vm) {
+          var el;
+
+          hook.mounted(function(){
+            el = Docsify.dom.find("#version-selector");
+            options =
+
+            // Prevent aside from closing in mobile view
+            Docsify.dom.on(el, "click", function (e) { return e.stopPropagation(); });
+            Docsify.dom.on(el, "change", function (e) { showVersion(e.target.value); });
+          })
+        }
       ]
+    }
+
+    window.showVersion = function(val) {
+      window.location = val + window.location.hash.replace(/#\/(?:v\d+\/)?/, '');
     }
   </script>
   <script src="../assets/docsify.min.js"></script>
