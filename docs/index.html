@@ -70,7 +70,13 @@
             // Prevent aside from closing in mobile view
             Docsify.dom.on(el, "click", function (e) { return e.stopPropagation(); });
             Docsify.dom.on(el, "change", function (e) { showVersion(e.target.value); });
-          })
+          });
+
+          hook.doneEach(function(){
+            var matches = window.location.hash.match(/#\/v\d+\//);
+
+            el.value = matches ? "/" + matches[0] : "/#/";
+          });
         }
       ]
     }
