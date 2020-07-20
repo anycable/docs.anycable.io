@@ -32,6 +32,9 @@
     }
     window.$docsify = {
       alias: {
+        '/v06/.*_sidebar.md': 'https://raw.githubusercontent.com/anycable/docs.anycable.io/0-6-stable/docs/_sidebar.md',
+        '/v1/.*_sidebar.md': 'https://raw.githubusercontent.com/anycable/docs.anycable.io/1-0-stable/docs/_sidebar.md',
+        '/.*/_sidebar.md': '/_sidebar.md',
         '/anycable-go/(.*)': 'https://raw.githubusercontent.com/anycable/anycable-go/master/docs/$1',
         '/v06/(.*)': 'https://raw.githubusercontent.com/anycable/docs.anycable.io/0-6-stable/docs/$1',
         '/v1/anycable-go/(.*)': 'https://raw.githubusercontent.com/anycable/anycable-go/1-0-stable/docs/$1',
@@ -64,10 +67,28 @@
         EditOnGithubPlugin.create("https://github.com/anycable/docs.anycable.io/blob/master/docs/"),
         function(hook, vm) {
           var el;
+          var currentNamespace, previousNamespace;
+
+          var showVersion = function(val) {
+            window.location = val + window.location.hash.replace(/#\/(?:v\d+\/)?/, '');
+          }
+
+          var namespaceSidebarLinks = function() {
+            var sidebar = Docsify.dom.find("aside");
+            if (!sidebar) return;
+
+            var namespaceRx = new RegExp("^" + currentNamespace);
+
+            Docsify.dom.findAll(sidebar, "a").forEach(element => {
+              if (!element.hash) return;
+              if (element.hash.match(namespaceRx)) return;
+
+              element.hash = element.hash.replace(/#\//, currentNamespace);
+            });
+          };
 
           hook.mounted(function(){
             el = Docsify.dom.find("#version-selector");
-            options =
 
             // Prevent aside from closing in mobile view
             Docsify.dom.on(el, "click", function (e) { return e.stopPropagation(); });
@@ -78,13 +99,15 @@
             var matches = window.location.hash.match(/#\/v\d+\//);
 
             el.value = matches ? "/" + matches[0] : "/#/";
+
+            currentNamespace = matches ? matches[0] : "#/";
+
+            if (matches) namespaceSidebarLinks();
+
+            previousNamespace = currentNamespace;
           });
         }
       ]
-    }
-
-    window.showVersion = function(val) {
-      window.location = val + window.location.hash.replace(/#\/(?:v\d+\/)?/, '');
     }
   </script>
   <script src="../assets/docsify.min.js"></script>
