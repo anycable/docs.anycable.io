@@ -38,10 +38,6 @@
   * [How to write AnyCable-compatible server](/v06/misc/how_to_anycable_server.md)
 * Upgrade Notes
   * [From v0.5.x to v0.6.0](/v06/upgrade-notes/0_5_0_to_0_6_0.md)
-* Other Versions
-  <ul>
-    <li><a href="/" title="v1">1.0</a></li>
-  </ul>
 * Community
   * [Gitter](https://gitter.im/anycable/Lobby)
   * [Twitter](https://twitter.com/any_cable)
