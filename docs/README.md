@@ -3,9 +3,9 @@
 > Build lightning fast, reliable real-time applications with Ruby and Rails
 
 <img class="is-light" align="right" height="150" width="129"
-     title="AnyCable logo" class="home-logo" src="../assets/images/logo.svg">
+     title="AnyCable logo" class="home-logo" src="./assets/images/logo.svg">
 <img class="is-dark" align="right" height="150" width="129"
-     title="AnyCable logo" class="home-logo" src="../assets/images/logo_invert.svg">
+     title="AnyCable logo" class="home-logo" src="./assets/images/logo_invert.svg">
 
 AnyCable allows you to use any WebSocket server (written in any language) as a replacement for your Ruby server (such as Faye, ActionCable, etc.).
 
