@@ -32,7 +32,8 @@
     }
     window.$docsify = {
       alias: {
-        '/v06/(.*)': 'https://raw.githubusercontent.com/anycable/docs.anycable.io/0-6-stable/docs/$1'
+        '/v06/(.*)': 'https://raw.githubusercontent.com/anycable/docs.anycable.io/0-6-stable/docs/$1',
+        '/v1/(.*)': 'https://raw.githubusercontent.com/anycable/docs.anycable.io/1-0-stable/docs/$1'
       },
       name: '<a class="app-name-link" data-nosearch href="/"><div class="sidebar-logo">' +
         '<img src="../assets/images/logo.svg" height="64px" class="is-light">' +
@@ -40,8 +41,9 @@
         '<span class="sidebar-logo-title">AnyCable</span>' +
         '</div></a>' +
         '<select id="version-selector" name="version" class="sidebar-version-select">' +
-          '<option value="/#/" selected>v1.0.0</value>' +
-          '<option value="/#/v06/">v0.6.x</value>' +
+          '<option value="/#/" selected>v1.0-edge</value>' +
+          '<option value="/#/v1/">v1.0</value>' +
+          '<option value="/#/v06/">v0.6</value>' +
         '</select>',
       repo: 'https://github.com/anycable',
       loadSidebar: true,
