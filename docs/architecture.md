@@ -25,7 +25,7 @@ See the list of supported [broadcast adapters](ruby/broadcast_adapters.md).
 
 AnyCable's is different to the most WebSocket servers in the way connection states are stored: all the information about client connections is kept in WebSocket server; an RPC server operates on temporary, short-lived, objects passed with every gRPC request.
 
-That means, for example, that you cannot rely on instance variables in your channel and connection classes. Instead, you should use specified _state_ objects, provided by AnyCable (read more about [channel states](ruby/channels_state.md)).
+That means, for example, that you cannot rely on instance variables in your channel and connection classes. Instead, you should use specified _state_ objects, provided by AnyCable (read more about [channel states](rails/channels_state.md)).
 
 A client's state consists of three parts:
 

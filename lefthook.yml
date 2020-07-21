@@ -4,14 +4,10 @@ pre-commit:
       tags: style
       glob: "**/*.md"
       run: mdl {staged_files}
-    liche_v06:
-      tags: links
-      glob: "docs/v06/**/*.md"
-      run: liche -r docs/v06 -d docs/v06 -x /v1
-    liche_v1:
+    liche:
       tags: links
       glob: "docs/v1/**/*.md"
-      run: liche -r docs/v1 -d docs/v1 -x /v06
+      run: liche -c 2 -r docs/* -d docs/ -x "(anycable-go)/"
     forspell:
       tags: grammar
       glob: "**/*.md"

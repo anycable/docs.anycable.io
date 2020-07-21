@@ -22,7 +22,7 @@ AnyCable uses [Action Cable protocol](misc/action_cable_protocol.md), so you can
 
 - [How it works?](architecture.md)
 
-- [Using AnyCable with Rails](ruby/rails.md)
+- [Using AnyCable with Rails](rails/getting_started.md)
 
 - [Using AnyCable with other Ruby frameworks](ruby/non_rails.md)
 

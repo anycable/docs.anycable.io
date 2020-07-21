@@ -36,7 +36,7 @@ By default, only session store middleware is included, which allows you to acces
 
 A typical use-case is adding a Warden middleware for Devise-backed authentication.
 
-See [documentation](./ruby/authentication.md).
+See [documentation](./rails/authentication.md).
 
 - Underlying HTTP request data in now accessible in all RPC methods.
 
@@ -56,7 +56,7 @@ Now `request.session` could be persisted between RPC calls, and hence be used as
 
 **NOTE:** This feature is optional and should be enabled explicitly in `anycable-rails` configuration.
 
-See [documentation](./ruby/stimulus_reflex.md).
+See [documentation](./rails/stimulus_reflex.md).
 
 <br/>
 

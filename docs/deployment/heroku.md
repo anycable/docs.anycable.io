@@ -176,7 +176,7 @@ On the other hand, it has the same architecture involving the RPC server, and th
 
 ### Use Action Cable
 
-You can use the _standard_ Action Cable in review apps with [enforced runtime compatibility checks](../ruby/compatibility.md#runtime-checks).
+You can use the _standard_ Action Cable in review apps with [enforced runtime compatibility checks](../rails/compatibility.md#runtime-checks).
 
 In your `cable.yml` use the following code to conditionally load the adapter:
 
