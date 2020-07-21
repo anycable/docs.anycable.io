@@ -4,6 +4,7 @@
   function create(opts) {
     let hashMode = true;
     let namespaces = opts.namespaces || [];
+    let defaultSearchNamespace;
 
     let namespaceRegexps = opts.namespaces.map((namespace) => {
       let base = `(?:(${namespace.values.join("|")})/)`
@@ -77,6 +78,10 @@
       hook.mounted(function(){
         hashMode = vm.router.mode == "hash";
 
+        if (vm.config.search) {
+          defaultSearchNamespace = vm.config.search.namespace;
+        }
+
         let parts = getUrlParts();
         // Only load default namespace for root path
         let loadDefault = (parts.length == 2) && parts[1] == "";
@@ -124,6 +129,14 @@
         });
 
         currentNamespace = matches ? matches[0] : "/";
+
+        if (vm.config.search) {
+          if (currentNamespace === "/") {
+            vm.config.search.namespace = defaultSearchNamespace;
+          } else {
+            vm.config.search.namespace = `${defaultSearchNamespace}-${currentNamespace}`;
+          }
+        }
 
         next(html);
       });
