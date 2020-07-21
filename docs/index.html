@@ -25,6 +25,7 @@
 <body>
   <div id="app"></div>
   <script src="../assets/docsify-edit-link.js"></script>
+  <script src="../assets/docsify-namespaces.js"></script>
   <script>
     if(rhash = sessionStorage.getItem("__redirect_hash__")) {
       window.location.hash = rhash;
@@ -46,9 +47,9 @@
         '<span class="sidebar-logo-title">AnyCable</span>' +
         '</div></a>' +
         '<select id="version-selector" name="version" class="sidebar-version-select">' +
-          '<option value="/#/" selected>v1.0-edge</value>' +
-          '<option value="/#/v1/">v1.0</value>' +
-          '<option value="/#/v06/">v0.6</value>' +
+          '<option value="">v1.0-edge</value>' +
+          '<option value="v1">v1.0</value>' +
+          '<option value="v06">v0.6</value>' +
         '</select>',
       repo: 'https://github.com/anycable',
       loadSidebar: true,
@@ -65,48 +66,17 @@
       },
       plugins:[
         EditOnGithubPlugin.create("https://github.com/anycable/docs.anycable.io/blob/master/docs/"),
-        function(hook, vm) {
-          var el;
-          var currentNamespace, previousNamespace;
-
-          var showVersion = function(val) {
-            window.location = val + window.location.hash.replace(/#\/(?:v\d+\/)?/, '');
-          }
-
-          var namespaceSidebarLinks = function() {
-            var sidebar = Docsify.dom.find("aside");
-            if (!sidebar) return;
-
-            var namespaceRx = new RegExp("^" + currentNamespace);
-
-            Docsify.dom.findAll(sidebar, "a").forEach(element => {
-              if (!element.hash) return;
-              if (element.hash.match(namespaceRx)) return;
-
-              element.hash = element.hash.replace(/#\//, currentNamespace);
-            });
-          };
-
-          hook.mounted(function(){
-            el = Docsify.dom.find("#version-selector");
-
-            // Prevent aside from closing in mobile view
-            Docsify.dom.on(el, "click", function (e) { return e.stopPropagation(); });
-            Docsify.dom.on(el, "change", function (e) { showVersion(e.target.value); });
-          });
-
-          hook.doneEach(function(){
-            var matches = window.location.hash.match(/#\/v\d+\//);
-
-            el.value = matches ? "/" + matches[0] : "/#/";
-
-            currentNamespace = matches ? matches[0] : "#/";
-
-            if (matches) namespaceSidebarLinks();
-
-            previousNamespace = currentNamespace;
-          });
-        }
+        NamespacesPlugin.create({
+          namespaces: [
+            {
+              id: "version",
+              values: ["v1", "v06"],
+              default: "v1",
+              optional: true,
+              selector: "#version-selector"
+            }
+          ]
+        })
       ]
     }
   </script>
