@@ -6,7 +6,7 @@ pre-commit:
       run: mdl {staged_files}
     liche:
       tags: links
-      glob: "docs/v1/**/*.md"
+      glob: "docs/**/*.md"
       run: liche -c 2 -r docs/* -d docs/ -x "(anycable-go|ruby|rails)/"
     forspell:
       tags: grammar
