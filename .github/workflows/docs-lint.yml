@@ -73,4 +73,4 @@ jobs:
     - name: Run liche
       run: |
         export PATH=$PATH:$(go env GOPATH)/bin
-        liche -c 4 -r docs/* -d docs/
+        liche -c 2 -r docs/* -d docs/ -x "(anycable-go)/"
