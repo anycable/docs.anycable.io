@@ -130,13 +130,8 @@
 
         currentNamespace = matches ? matches[0] : "/";
 
-        if (vm.config.search) {
-          if (currentNamespace === "/") {
-            vm.config.search.namespace = defaultSearchNamespace;
-          } else {
-            vm.config.search.namespace = `${defaultSearchNamespace}-${currentNamespace}`;
-          }
-        }
+        // Make current namespace available to other plugins
+        vm.config.currentNamespace = currentNamespace;
 
         next(html);
       });
