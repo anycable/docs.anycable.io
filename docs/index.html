@@ -24,7 +24,6 @@
 </head>
 <body>
   <div id="app"></div>
-  <script src="../assets/docsify-namespaces.js"></script>
   <script>
     if(rhash = sessionStorage.getItem("__redirect_hash__")) {
       window.location.hash = rhash;
@@ -68,18 +67,16 @@
         depth: 3,
         pathNamespaces: ['/v06', '/v1']
       },
+      namespaces: [
+        {
+          id: "version",
+          values: ["v1", "v06"],
+          default: "v1",
+          optional: true,
+          selector: "#version-selector"
+        }
+      ],
       plugins:[
-        NamespacesPlugin.create({
-          namespaces: [
-            {
-              id: "version",
-              values: ["v1", "v06"],
-              default: "v1",
-              optional: true,
-              selector: "#version-selector"
-            }
-          ]
-        }),
         function(hook, vm) {
           hook.doneEach(function(){
             var appNameLink = Docsify.dom.find("#logo-link");
@@ -94,6 +91,7 @@
   </script>
   <script src="../assets/docsify.min.js"></script>
   <script src="../assets/docsify-search.js"></script>
+  <script src="//unpkg.com/docsify-namespaced/dist/docsify-namespaced.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
   <script src="https://unpkg.com/docsify-copy-code@2"></script>
   <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
