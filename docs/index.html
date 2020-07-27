@@ -41,7 +41,8 @@
         '/v1/anycable-go/(.*)': 'https://raw.githubusercontent.com/anycable/anycable-go/1-0-stable/docs/$1',
         '/v1/ruby/(.*)': 'https://raw.githubusercontent.com/anycable/anycable/1-0-stable/docs/$1',
         '/v1/rails/(.*)': 'https://raw.githubusercontent.com/anycable/anycable-rails/1-0-stable/docs/$1',
-        '/v1/(.*)': 'https://raw.githubusercontent.com/anycable/docs.anycable.io/1-0-stable/docs/$1',
+        '/v1/': 'README.md',
+        '/v1/(.*)': '$1',
       },
       name: '<a id="logo-link" class="app-name-link" data-nosearch href="/"><div class="sidebar-logo">' +
         '<img src="../assets/images/logo.svg" height="64px" class="is-light">' +
