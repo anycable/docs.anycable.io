@@ -48,7 +48,11 @@ Related issues: [#103](https://github.com/anycable/anycable-rails/issues/103).
 
 ## My WebSocket connection fails with "Auth failed" error
 
-It's likely that you're using cookie-based authentication. Make sure that your cookies are accessible from both domain (HTTP server and WebSocket server). For example:
+It's likely that you're using cookie-based authentication. There are several things that could break here.
+
+1. Cross-domain cookies.
+
+Make sure that your cookies are accessible from both domain (HTTP server and WebSocket server). For example:
 
 ```ruby
 # session_store.rb
@@ -61,6 +65,13 @@ cookies[:val] = {value: "1", domain: :all}
 ```
 
 **NOTE**: It's impossible to set cookies for `.herokuapp.com`. [Read more](https://devcenter.heroku.com/articles/cookies-and-herokuapp-com).
+
+2. `SECRET_KEY_BASE` vs. encrypted cookies.
+
+Make sure both RPC and web apps use the same `Rails.application.secret_key_base` (usually provided via credentials or `ENV['SECRET_KEY_BASE']`).
+If they don't match, cookies decryption would silently fail.
+
+Related issues: [#135](https://github.com/anycable/anycable-rails/issues/135).
 
 ## I see a lot of `too many open files` errors in the log
 
