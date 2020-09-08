@@ -328,7 +328,14 @@ func socket_disconn(socket_handle) {
   #  env:
   #    url – string – request URL
   #    headers - map<string><string>
-  var payload = pb::DisconnectRequest(socket_handle.identifier(), subscriptions, socket_handle.url(), socket_handle.filtered_headers())
+  #    cstate - map<string><string> — connection state
+  #    istate - map<string><string> — channel states for all subscriptions
+
+  # We need to encode channel states to strings to pass them as istate (which is a string-string map)
+  var channel_states = socket.channel_state().transform_values( (v) => JSON.encode(v) )
+
+  var env = pb::SessionEnv(socket_handle.url(), socket.filtered_headers(), socket.state(), channel_states)
+  var payload = pb::DisconnectRequest(socket_handle.identifier(), subscriptions, env)
 
   # Make a call and get a response – DisconnectResponse:
   #    status – Status::SUCCESS | Status::ERROR – status enum is a part of rpc.proto

@@ -38,6 +38,7 @@ This is how AnyCable manages these states under the hood:
 - A client connects to the WebSocket server, `Connect` RPC is made, which returns _connection identifiers_ and the initial _connection state_. All subsequent RPC calls contain this information (as long as underlying HTTP request data).
 - Every time a client performs an action for a specific channel, the _channel state_ for the corresponding subscription is provided in the RPC payload.
 - If during RPC invocation connection or channel state has been changed, the **changes** are returned to the WebSocket server to get merge with the full state.
+- When a client disconnects, the full channel state (i.e., for all subscriptions) is included into the corresponding RPC payload.
 
 Thus, the amount of state data passed in each RPC request is minimized.
 
