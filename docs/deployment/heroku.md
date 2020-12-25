@@ -26,6 +26,12 @@ We have to use the same `Procfile` for both applications ('cause we're using the
 web: [[ "$ANYCABLE_DEPLOYMENT" == "true" ]] && bundle exec anycable --server-command="anycable-go" ||  bundle exec rails server -p $PORT -b 0.0.0.0
 ```
 
+If you have a `release` command in your `Procfile`, we recommend to ignore it for AnyCable deployment as well and let the main app take care of it. For example:
+
+```sh
+release: [[ "$ANYCABLE_DEPLOYMENT" == "true" ]] && echo "Skip release script" || bundle exec rails db:migrate
+```
+
 ### Preparing Heroku apps
 
 Here is the step-by-step guide on how to deploy AnyCable application on Heroku from scratch using [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install).
