@@ -73,6 +73,15 @@ If they don't match, cookies decryption would silently fail.
 
 Related issues: [#135](https://github.com/anycable/anycable-rails/issues/135).
 
+3. Middlewares configuration.
+
+There could be a situation when AnyCable middleware chain behaves differently from Rails middleware chain.
+Make sure you include only the necessary middlewares in the right order and with correct parameters.
+
+Keep in mind that `anycable-rails` automatically includes the corresponding session store middleware in the beginning of the AnyCable chain, so you don't need to add it yourself.
+
+Related issues: [#156](https://github.com/anycable/anycable-rails/issues/156).
+
 ## I see a lot of `too many open files` errors in the log
 
 Congratulations! You have a lot (thousands) of simultaneous connections (and you hit the max open files limit).
