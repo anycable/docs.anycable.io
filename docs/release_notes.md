@@ -4,7 +4,7 @@ This page contains combined release notes for major and minor releases of all An
 
 ## 1.1.0
 
-**tl;dr** Housekeeping and internals refactoring,
+**tl;dr** Housekeeping and internals refactoring, prepare for non-gRPC RPC, minor but useful additions.
 
 See also [upgrade notes](./upgrade-notes/1_0_0_to_1_1_0.md).
 
@@ -47,6 +47,28 @@ AnyCable::CLI.embed!(*args) # args is a space-separated list of CLI args
 <br/>
 
 - Dropped deprecated AnyCable RPC v0.6 support.
+
+<br/>
+
+- The `anycable` gem has been split into `anycable-core` and `anycable`.
+
+The first one contains an abstract RPC implementation and all the supporting tools (CLI, Protobuf), the second one adds the gRPC implementation.
+
+<br/>
+
+- **BREAKING** Middlewares are no longer inherited from gRPC interceptors.
+
+That allowed us to have _real_ middlewares with ability to modify responses, intercept exceptions, etc.
+The API changed a bit:
+
+```diff
+ class SomeMiddleware < AnyCable::Middleware
+-  def call(request, rpc_call, rpc_handler)
++  def call(rpc_method_name, request, metadata)
+     yield
+   end
+ end
+```
 
 <br/>
 
