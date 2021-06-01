@@ -2,6 +2,72 @@
 
 This page contains combined release notes for major and minor releases of all AnyCable libraries.
 
+## 1.1.0
+
+**tl;dr** Housekeeping and internals refactoring,
+
+See also [upgrade notes](./upgrade-notes/1_0_0_to_1_1_0.md).
+
+### Features
+
+- Added ability to embed AnyCable RPC into any Ruby process.
+
+When using `anycable-rails`, set `embedded: true` in the configuration to launch RPC along with `rails s` (only for Rails 6.1+).
+
+For any other Ruby process, drop the following snippet to launch an RPC server:
+
+```ruby
+require "anycable/cli"
+AnyCable::CLI.embed!(*args) # args is a space-separated list of CLI args
+```
+
+<br/>
+
+- New metrics for `anycable-go`:
+  - `server_msg_total` and `failed_server_msg_total`: the total number of messages sent (or failed to send) by server.
+  - `data_sent_bytes_total` and `data_rcvd_bytes_total`: the total amount of bytes sent to (or received from) clients.
+
+<br/>
+
+- New configuration parameters for `anycable-go`:
+  - `--max-conn`: hard-limit the number of simultaneous server connections.
+  - `--allowed_origins`: a comma-separated list of hostnames to check the Origin header against during the WebSocket Upgrade; supports wildcards, e.g., `--allowed_origins=*.evl.ms,www.evlms.io`.
+  - `--ping_timestamp_precision`: define the precision for timestamps in ping messages (s, ms, ns).
+
+<br/>
+
+### Changes
+
+- Ruby 2.6+ is required for all Ruby gems (`anycable`, `anycable-rails`, `anycable-rack-server`).
+
+<br/>
+
+- Rails 6.0+ is required for `anycable-rails`.
+
+<br/>
+
+- Dropped deprecated AnyCable RPC v0.6 support.
+
+<br/>
+
+- Broadcasting messages is now happening concurrently.
+
+Now new broadcast messages are handled (and re-transmitted) concurrently by a pool of workers (Go routines).
+You can control the size of the pool via the `--hub_gopool_size` configuration parameter of the `anycable-go` server (defaults to 16).
+
+<br/>
+
+---
+
+For internal changes see the corresponding change logs:
+
+- [`anycable` gem](https://github.com/anycable/anycable/blob/v1.1.0/CHANGELOG.md)
+- [`anycable-rails` gem](https://github.com/anycable/anycable-rails/blob/v1.1.0/CHANGELOG.md)
+- [`anycable-go`](https://github.com/anycable/anycable-go/blob/v1.1.0/CHANGELOG.md)
+- [`anycable-rack-server`](https://github.com/anycable/anycable-rack-server/blob/v0.4.0/CHANGELOG.md)
+
+---
+
 ## 1.0.0
 
 **tl;dr** API stabilization, better Action Cable compatibility, [Stimulus Reflex][stimulus_reflex] compatibility, improved RPC communication, state persistence, HTTP broadcast adapter, Rails generators.

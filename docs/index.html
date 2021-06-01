@@ -40,10 +40,15 @@
         '/rails/(.*)': 'https://raw.githubusercontent.com/anycable/anycable-rails/master/docs/$1',
         '/v06/(.*)': 'https://raw.githubusercontent.com/anycable/docs.anycable.io/0-6-stable/docs/$1',
         '/v1/anycable-go/(.*)': 'https://raw.githubusercontent.com/anycable/anycable-go/1-0-stable/docs/$1',
+        '/v1-1/anycable-go/(.*)': 'https://raw.githubusercontent.com/anycable/anycable-go/1-1-stable/docs/$1',
         '/v1/ruby/(.*)': 'https://raw.githubusercontent.com/anycable/anycable/1-0-stable/docs/$1',
+        '/v1-1/ruby/(.*)': 'https://raw.githubusercontent.com/anycable/anycable/1-1-stable/docs/$1',
         '/v1/rails/(.*)': 'https://raw.githubusercontent.com/anycable/anycable-rails/1-0-stable/docs/$1',
-        '/v1/': 'README.md',
-        '/v1/(.*)': '$1',
+        '/v1-1/rails/(.*)': 'https://raw.githubusercontent.com/anycable/anycable-rails/1-1-stable/docs/$1',
+        '/v1/': 'https://raw.githubusercontent.com/anycable/docs.anycable.io/1-0-stable/docs/README.md',
+        '/v1/(.*)': 'https://raw.githubusercontent.com/anycable/docs.anycable.io/1-0-stable/docs/$1',
+        '/v1-1/': 'README.md',
+        '/v1-1/(.*)': '$1',
       },
       name: '<a id="logo-link" class="app-name-link" data-nosearch href="/"><div class="sidebar-logo">' +
         '<img src="../assets/images/logo.svg" height="64px" class="is-light">' +
@@ -52,6 +57,7 @@
         '</div></a>' +
         '<select id="version-selector" name="version" class="sidebar-version-select">' +
           '<option value="">v1-edge</value>' +
+          '<option value="v1-1">v1.1</value>' +
           '<option value="v1">v1.0</value>' +
           '<option value="v06">v0.6</value>' +
         '</select>',
@@ -67,13 +73,13 @@
         namespace: 'docs-anycable',
         hideOtherSidebarContent: true,
         depth: 3,
-        pathNamespaces: ['/v06', '/v1']
+        pathNamespaces: ['/v06', '/v1-1', '/v1']
       },
       namespaces: [
         {
           id: "version",
-          values: ["v1", "v06"],
-          default: "v1",
+          values: ["v1-1", "v1", "v06"],
+          default: "v1-1",
           optional: true,
           selector: "#version-selector"
         }
