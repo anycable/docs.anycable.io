@@ -22,6 +22,8 @@
   <link rel="stylesheet" href="../assets/vue.min.css">
   <link rel="stylesheet" href="../assets/styles.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"/>
+  <!-- Use a global var to define the router mode to be able to redefine it by injecting a script (e.g., on Netlify) -->
+  <script>window.DOCSIFY_ROUTER_MODE = "hash"</script>
 </head>
 <body>
   <div id="app"></div>
@@ -73,7 +75,7 @@
       subMaxLevel: 2,
       ga: 'UA-88982723-3',
       auto2top: true,
-      routerMode: 'history',
+      routerMode: window.DOCSIFY_ROUTER_MODE,
       search: {
         paths: 'auto',
         namespace: 'docs-anycable',
