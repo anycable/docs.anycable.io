@@ -29,7 +29,10 @@
   <div id="app"></div>
   <script>
     if(rhash = sessionStorage.getItem("__redirect_hash__")) {
-      window.location.hash = rhash;
+      if (window.DOCSIFY_ROUTER_MODE === "hash")
+        window.location.hash = rhash;
+      else
+        window.location.url = rhash;
       sessionStorage.removeItem("__redirect_hash__");
     }
     window.$docsify = {
@@ -78,7 +81,7 @@
       routerMode: window.DOCSIFY_ROUTER_MODE,
       search: {
         paths: 'auto',
-        namespace: 'docs-anycable',
+        namespace: 'docs-anycable-'+window.DOCSIFY_ROUTER_MODE,
         hideOtherSidebarContent: true,
         depth: 3,
         pathNamespaces: ['/v06', '/v1-1', '/v1']
