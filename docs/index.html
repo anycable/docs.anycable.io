@@ -28,6 +28,12 @@
 <body>
   <div id="app"></div>
   <script>
+    if (window.DOCSIFY_ROUTER_MODE === "history"){
+      var clink = document.createElement("link")
+      clink.rel = "canonical"
+      document.getElementsByTagName("head")[0].appendChild(clink)
+    }
+
     if(rhash = sessionStorage.getItem("__redirect_hash__")) {
       if (window.DOCSIFY_ROUTER_MODE === "hash")
         window.location.hash = rhash;
@@ -102,6 +108,13 @@
             if (!appNameLink) return;
 
             appNameLink.href = vm.config.currentNamespace;
+          });
+        },
+        function(hook, vm) {
+          hook.beforeEach(function(){
+            if (clink) {
+              clink.href = "https://docs.anycable.io" + vm.route.path
+            }
           });
         }
       ]
