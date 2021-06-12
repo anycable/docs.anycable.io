@@ -4,6 +4,8 @@
 
 > The latest benchmark results are available at [the main repo](https://github.com/anycable/anycable/blob/master/benchmarks/2020-06-30.md).
 
+**NOTE:** We run Action Cable with **eight** Puma workers. Using lower number of processes results in a much higher latency during broadcasting as well as connection timeout errors.
+
 ## Broadcasting RTT
 
 Broadcasting round-trip time benchmark (based on [Hashrocket's bench](https://github.com/hashrocket/websocket-shootout)) measures how much time does it take for the server to re-transmit the message to all the connected clients–the less the time, the better the _real-time-ness_ of the server.
