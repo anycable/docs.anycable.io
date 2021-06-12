@@ -14,6 +14,7 @@ The results of this benchmark could be seen below.
   <img class="is-light" src="/assets/images/rtt_bench.png" alt="RTT" width="80%">
   <img class="is-dark" src="/assets/images/rtt_bench_invert.png" alt="RTT" width="80%">
 </div>
+
 ## Memory usage
 
 Memory usage of AnyCable is significantly lower than of Action Cable.
@@ -24,6 +25,7 @@ That's achieved by moving memory-intensive operations into (storing connection s
   <img class="is-light" src="/assets/images/ram_bench.png" alt="Memory usage" width="80%">
   <img class="is-dark" src="/assets/images/ram_bench_invert.png" alt="Memory usage" width="80%">
 </div>
+
 ## CPU usage
 
 Below you can see the snapshot of CPU usage during the RTT benchmark.
