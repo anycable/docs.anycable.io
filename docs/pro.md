@@ -1,6 +1,6 @@
 # Pro version overview <img class='pro-badge' src='https://docs.anycable.io/assets/pro.svg' alt='pro' />
 
-> ⏳ Our beta access program is coming soon. Stay tuned!
+> Our beta access program is open! <a href="https://form.typeform.com/to/BwBcZmdQ">Become an early adopter today!</a>
 
 AnyCable-Go Pro aims to bring AnyCable to the next level of efficient resources usage and developer ~~experience~~ happiness.
 
@@ -32,6 +32,50 @@ incoming messages, you might want to fallback to the _actor-per-connection_ mode
 
 ## Installation
 
-> _Coming soon ⏳_
+AnyCable Pro is distributed in two forms: a Docker image and pre-built binaries.
+
+**NOTE:** All distribution methods, currently, relies on GitHub **personal access tokens**. We can either grant an access to the packages/projects to your users or generate a token for you.
+
+### Docker
+
+We use [GitHub Container Registry][ghcr] to host images.
+
+See the [official documentation][ghcr-auth] on how to authenticate Docker to pull images from GHCR.
+
+Once authenticated, you can pull images using the following identifier: `ghcr.io/palkan/anycable-go-pro`. For example:
+
+```yml
+# docker-compose.yml
+services:
+  ws:
+    image: ghcr.io/palkan/anycable-go-pro:1.1.0-beta.1
+    ports:
+      - '8080:8080'
+    environment:
+      ANYCABLE_HOST: "0.0.0.0"
+```
+
+### Pre-built binaries
+
+We use a dedicated GitHub repo to host pre-built binaries via GitHub Releases: [github.com/anycable/anycable-go-pro-releases][releases-repo].
+
+We recommend using [`fetch`][fetch] to download releases via command line:
+
+```sh
+fetch --repo=https://github.com/anycable/anycable-go-pro-releases --tag="v1.1.0-beta.1" --release-asset="anycable-go-linux-amd64" --github-oauth-token="<access-token>" /tmp
+```
+
+### Heroku
+
+Our [heroku buildpack][buildpack] supports downloading binaries from the private GitHub releases repo.
+You need to provide the following configuration parameters:
+
+- `HEROKU_ANYCABLE_GO_REPO=https://github.com/anycable/anycable-go-pro-releases`
+- `HEROKU_ANYCABLE_GO_GITHUB_TOKEN=<access-token>`
 
 [websocket-bench]: https://github.com/anycable/websocket-bench
+[ghcr]: https://ghcr.io
+[ghcr-auth]: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry
+[releases-repo]: https://github.com/anycable/anycable-go-pro-releases
+[fetch]: https://github.com/gruntwork-io/fetch
+[buildpack]: https://github.com/anycable/heroku-anycable-go

@@ -1,5 +1,8 @@
 https://docs.anycable.io
 https://docs.anycable.io/getting_started
+https://docs.anycable.io/pro
+https://docs.anycable.io/anycable-go/binary_formats
+https://docs.anycable.io/anycable-go/apollo
 https://docs.anycable.io/architecture
 https://docs.anycable.io/websocket_servers
 https://docs.anycable.io/benchmarks

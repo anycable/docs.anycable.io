@@ -5,6 +5,7 @@
   * [Architecture](/architecture.md)
   * [WebSocket Servers](/websocket_servers.md)
   * [Benchmarks](/benchmarks.md)
+  * [Pro version <img class='pro-badge' src='https://docs.anycable.io/assets/pro.svg' alt='pro' />](/pro.md)
   * [Troubleshooting 🔥](/troubleshooting.md)
   * [Commercial Support 🆘](https://anycable.io/#custom-solutions)
   * [Release Notes](/release_notes.md)
@@ -29,6 +30,8 @@
   * [Health Checking](/anycable-go/health_checking.md)
   * [Tracing](/anycable-go/tracing.md)
   * [OS Tuning](/anycable-go/os_tuning.md)
+  * [Apollo GraphQL <img class='pro-badge' src='https://docs.anycable.io/assets/pro.svg' alt='pro' />](/anycable-go/apollo.md)
+  * [Binary formats <img class='pro-badge' src='https://docs.anycable.io/assets/pro.svg' alt='pro' />](/anycable-go/binary_formats.md)
 * Deployment
   * [Heroku](/deployment/heroku.md)
   * [Docker](/deployment/docker.md)
