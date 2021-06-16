@@ -7,7 +7,7 @@ pre-commit:
     liche:
       tags: links
       glob: "docs/**/*.md"
-      run: liche -c 2 -r docs/* -d docs/ -x "(anycable-go|ruby|rails)/"
+      run: liche -c 2 -r docs/* -d docs/ -x "(anycable-go|ruby|rails|anycable-go-pro-releases)/"
     forspell:
       tags: grammar
       glob: "**/*.md"
