@@ -44,13 +44,13 @@ We use [GitHub Container Registry][ghcr] to host images.
 
 See the [official documentation][ghcr-auth] on how to authenticate Docker to pull images from GHCR.
 
-Once authenticated, you can pull images using the following identifier: `ghcr.io/palkan/anycable-go-pro`. For example:
+Once authenticated, you can pull images using the following identifier: `ghcr.io/anycable/anycable-go-pro`. For example:
 
 ```yml
 # docker-compose.yml
 services:
   ws:
-    image: ghcr.io/palkan/anycable-go-pro:1.1.0-beta.1
+    image: ghcr.io/anycable/anycable-go-pro:1.1.0-beta.1
     ports:
       - '8080:8080'
     environment:
