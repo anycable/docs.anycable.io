@@ -1,6 +1,6 @@
 # Pro version overview <img class='pro-badge' src='https://docs.anycable.io/assets/pro.svg' alt='pro' />
 
-> Our beta access program is open! <a rel="noopener" href="https://form.typeform.com/to/BwBcZmdQ" target="_blank">Become an early adopter today!</a>
+> Our beta access program is open! <a rel="noopener" href="https://anycable.io/#pro" target="_blank">Become an early adopter today!</a>
 
 AnyCable-Go Pro aims to bring AnyCable to the next level of efficient resources usage and developer ~~experience~~ happiness.
 
