@@ -78,6 +78,6 @@ You need to provide the following configuration parameters:
 [websocket-bench]: https://github.com/anycable/websocket-bench
 [ghcr]: https://ghcr.io
 [ghcr-auth]: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry
-[releases-repo]: https://github.com/anycable/anycable-go-pro-releases
+[releases-repo]: https://github.com/anycable/anycable-go-pro-releases/
 [fetch]: https://github.com/gruntwork-io/fetch
 [buildpack]: https://github.com/anycable/heroku-anycable-go
