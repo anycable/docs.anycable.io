@@ -59,7 +59,7 @@ Installation process for Pro version is identical to non Pro one with two change
 
   ```yaml
   # values.yaml
-  anycable-go:  
+  anycable-go:
     image:
       repository: ghcr.io/anycable/anycable-go-pro
       tag: edge
