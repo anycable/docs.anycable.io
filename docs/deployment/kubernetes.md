@@ -49,6 +49,35 @@ anycable-go:
 
 Read the [chart’s README][anycable-helm] for more info.
 
+## AnyCable-Go Pro
+
+Installation process for Pro version is identical to non Pro one with two changes:
+
+- One have to use chart version `>= 0.5.1`
+
+- `image` section of configuration values has to contain `pullSecrets` section where you place credentials for private docker repository access:
+
+  ```yaml
+  # values.yaml
+  anycable-go:  
+    image:
+      repository: ghcr.io/anycable/anycable-go-pro
+      tag: edge
+      pullSecrets:
+        enabled: true
+        registry: "ghcr.io"
+        username: "username"
+        password: "github-token-here"
+  ```
+
+One can get list of existing tags of `anycable-go-pro` image using the command:
+
+```sh
+curl -X GET -H "Authorization: Bearer $(echo "github-token-here" | base64)" https://ghcr.io/v2/anycable/anycable-go-pro/tags/list
+```
+
+Read the [chart’s README][anycable-helm] for more info.
+
 ## RPC server
 
 To run Ruby counterpart of AnyCable which will handle connection authentication and execute your business logic we need to create a separate deployment and a corresponding service for it.
