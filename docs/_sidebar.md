@@ -19,6 +19,7 @@
   * [Health Checking](/ruby/health_checking.md)
   * [Logging](/ruby/logging.md)
   * [Exceptions Handling](/ruby/exceptions.md)
+  * <a rel="noopener" href="https://github.com/yabeda-rb/yabeda-anycable" target="_blank">Instrumentation via Yabeda 🔗</a>
   * [Action Cable Compatibility](/rails/compatibility.md)
   * [Using with Stimulus Reflex](/rails/stimulus_reflex.md)
   * [Non-Rails Usage](/ruby/non_rails.md)
