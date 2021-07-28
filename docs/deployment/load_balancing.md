@@ -6,7 +6,7 @@ You can use load balancers to scale your application and/or perform zero-disconn
 
 ### Using Envoy
 
-[Envoy](https://www.envoyproxy.io) is a modern proxy server which supports HTTP2 and gRPC.
+[Envoy](https://envoyproxy.io) is a modern proxy server which supports HTTP2 and gRPC.
 
 See [the example configuration](https://github.com/anycable/anycable-go/tree/master/etc/envoy) in the `anycable-go` repo.
 

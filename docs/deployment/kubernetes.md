@@ -51,11 +51,11 @@ Read the [chart’s README][anycable-helm] for more info.
 
 ## AnyCable-Go Pro
 
-Installation process for Pro version is identical to non Pro one with two changes:
+Installation process for Pro version is almost identical to the non-Pro one. There are the following changes:
 
-- One have to use chart version `>= 0.5.1`
+- Use Helm chart version `>= 0.5.1`.
 
-- `image` section of configuration values has to contain `pullSecrets` section where you place credentials for private docker repository access:
+- The `image` section of configuration values MUST contain `pullSecrets` section where you place credentials for private docker repository access:
 
   ```yaml
   # values.yaml
@@ -70,7 +70,7 @@ Installation process for Pro version is identical to non Pro one with two change
         password: "github-token-here"
   ```
 
-One can get list of existing tags of `anycable-go-pro` image using the command:
+You can get a list of available `anycable-go-pro` image versions using the following command:
 
 ```sh
 curl -X GET -H "Authorization: Bearer $(echo "github-token-here" | base64)" https://ghcr.io/v2/anycable/anycable-go-pro/tags/list
