@@ -36,7 +36,7 @@ incoming messages, you might want to fallback to the _actor-per-connection_ mode
 
 AnyCable Pro is distributed in two forms: a Docker image and pre-built binaries.
 
-**NOTE:** All distribution methods, currently, relies on GitHub **personal access tokens**. We can either grant an access to the packages/projects to your users or generate a token for you.
+**NOTE:** All distribution methods, currently, relies on GitHub **personal access tokens**. We can either grant an access to the packages/projects to your users or generate a token for you. You MUST enable the following permissions: `read:packages` to download Docker images and/or `repo` (full access) to download binary releases.
 
 ### Docker
 
