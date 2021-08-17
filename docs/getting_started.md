@@ -12,7 +12,7 @@ The primary goal of AnyCable is to make it possible to write a high-performant r
 
 This goal is achieved by _moving_ low-level responsibility (handling sockets, parsing frames, broadcasting data) to WebSocket servers written in other languages (such as Golang or Erlang).
 
-AnyCable could be used with the existing Action Cable clients (such as [JavaScript client](https://www.npmjs.com/package/actioncable) or [Action Cable CLI](https://github.com/palkan/acli)) without any change.
+AnyCable could be used with the existing Action Cable clients (such as [Rails JavaScript client](https://www.npmjs.com/package/actioncable) or [Action Cable CLI](https://github.com/palkan/acli)) without any change. However, for web development we recommend using [AnyCable JS/TS client](https://github.com/anycable/anycable-client), which provides better compatibility with AnyCable-specific features.
 
 You can use AnyCable with:
 
