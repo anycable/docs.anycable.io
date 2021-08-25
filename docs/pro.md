@@ -75,6 +75,10 @@ You need to provide the following configuration parameters:
 - `HEROKU_ANYCABLE_GO_REPO=https://github.com/anycable/anycable-go-pro-releases`
 - `HEROKU_ANYCABLE_GO_GITHUB_TOKEN=<access-token>`
 
+Currently, you also need to specify the version as well: `HEROKU_ANYCABLE_GO_VERSION=1.1.0-beta.1`.
+
+Make sure you're not using cached `anycable-go` binary by purging the Heroku cache: `heroku builds:cache:purge -a <your-app-name>`.
+
 [websocket-bench]: https://github.com/anycable/websocket-bench
 [ghcr]: https://ghcr.io
 [ghcr-auth]: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry
