@@ -35,6 +35,18 @@ server {
 }
 ```
 
+### Client-side load balancing
+
+gRPC clients (more precisely, [grpc-go](https://github.com/grpc/grpc-go) used by `anycable-go`) provide client-level load balancing via DNS resolving. If the provided hostname resolves to multiple A records, a client connect to all of them and use round-robin strategy to distribute the requests.
+
+To activate this mechanism, you MUST provide use the following schema to build an URI: `dns://[authority]/host[:port]`.
+
+For example, when using Docker, you can rely on its internal DNS server and omit the `authority` part altogether: `ANYCABLE_RPC_HOST=dns:///rpc:50051` (**three** slashes!). See the [docs](https://github.com/grpc/grpc/blob/master/doc/naming.md).
+
+Since gRPC clients performs the DNS resolution only during the connection initialization, newly added servers (in case of auto-scaling) are not picked up. To resolve this issue, you can configure a max connection lifetime at the server side, so, connections are recreated periodically (that also triggers re-resolution).
+
+To configure the max connection age, use the `rpc_server_args.max_connection_age_ms` configuration option for AnyCable RPC server (could be configured via the `ANYCABLE_RPC_SERVER_ARGS__MAX_CONNECTION_AGE_MS` env variable).
+
 ## WebSocket load balancing
 
 There is nothing specific in load balancing AnyCable WebSocket server comparing to other WebSocket applications. See, for example, [NGINX documentation](https://www.nginx.com/blog/websocket-nginx/).
