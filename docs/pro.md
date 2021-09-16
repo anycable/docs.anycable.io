@@ -31,6 +31,8 @@ incoming messages, you might want to fallback to the _actor-per-connection_ mode
 - [Binary messaging formats](anycable-go/binary_formats.md)
 - [Apollo GraphQL protocol support](anycable-go/apollo.md)
 - [StatsD instrumentation](anycable-go/instrumentation.md#statsd)
+- [JWT identification](anycable-go/jwt_identification.md)
+- [Signed streams (Hotwire, CableReady)](anycable-go/signed_streams.md)
 
 ## Installation
 
@@ -50,7 +52,7 @@ Once authenticated, you can pull images using the following identifier: `ghcr.io
 # docker-compose.yml
 services:
   ws:
-    image: ghcr.io/anycable/anycable-go-pro:1.1.0-beta.1
+    image: ghcr.io/anycable/anycable-go-pro:1.1.0-beta.2
     ports:
       - '8080:8080'
     environment:
@@ -64,7 +66,7 @@ We use a dedicated GitHub repo to host pre-built binaries via GitHub Releases: [
 We recommend using [`fetch`][fetch] to download releases via command line:
 
 ```sh
-fetch --repo=https://github.com/anycable/anycable-go-pro-releases --tag="v1.1.0-beta.1" --release-asset="anycable-go-linux-amd64" --github-oauth-token="<access-token>" /tmp
+fetch --repo=https://github.com/anycable/anycable-go-pro-releases --tag="v1.1.0-beta.2" --release-asset="anycable-go-linux-amd64" --github-oauth-token="<access-token>" /tmp
 ```
 
 ### Heroku
@@ -75,7 +77,7 @@ You need to provide the following configuration parameters:
 - `HEROKU_ANYCABLE_GO_REPO=https://github.com/anycable/anycable-go-pro-releases`
 - `HEROKU_ANYCABLE_GO_GITHUB_TOKEN=<access-token>`
 
-Currently, you also need to specify the version as well: `HEROKU_ANYCABLE_GO_VERSION=1.1.0-beta.1`.
+Currently, you also need to specify the version as well: `HEROKU_ANYCABLE_GO_VERSION=1.1.0-beta.2`.
 
 Make sure you're not using cached `anycable-go` binary by purging the Heroku cache: `heroku builds:cache:purge -a <your-app-name>`.
 
