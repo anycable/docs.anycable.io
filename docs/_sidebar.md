@@ -42,6 +42,7 @@
   * [Systemd](/deployment/systemd.md)
   * <a rel="noopener" href="https://jetrockets.pro/blog/scaling-rails-docker-aws-beanstalk" target="_blank">AWS Beanstalk 🔗</a>
   * [Load Balancing](/deployment/load_balancing.md)
+  * [Load Testing](/deployment/load_testing.md)
 * Misc
   * [Action Cable Protocol](/misc/action_cable_protocol.md)
   * [Protobuf Definitions](/misc/rpc_proto.md)
