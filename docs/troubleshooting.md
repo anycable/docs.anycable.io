@@ -117,6 +117,8 @@ Another option is to force Bundler to build native extensions during the install
 BUNDLE_FORCE_RUBY_PLATFORM=1 bundle install
 ```
 
+Or on per-gem basis using [this hack](https://github.com/grpc/grpc/issues/21514#issuecomment-581417788).
+
 See the [example Dockerfile](https://github.com/anycable/anycable/blob/master/etc/Dockerfile.alpine).
 
 Related issues: [#70](https://github.com/anycable/anycable-rails/issues/70), [#47](https://github.com/anycable/anycable/issues/47).
