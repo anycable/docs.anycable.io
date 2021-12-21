@@ -31,8 +31,8 @@
   * [Health Checking](/anycable-go/health_checking.md)
   * [Tracing](/anycable-go/tracing.md)
   * [OS Tuning](/anycable-go/os_tuning.md)
-  * [JWT Identification <img class='pro-badge' src='https://docs.anycable.io/assets/pro.svg' alt='pro' />](/anycable-go/jwt_identification.md)
-  * [Signed Streams (Hotwire, etc.) <img class='pro-badge' src='https://docs.anycable.io/assets/pro.svg' alt='pro' />](/anycable-go/signed_streams.md)
+  * [JWT Identification](/anycable-go/jwt_identification.md)
+  * [Hotwire & Cable Ready speedy streams](/anycable-go/signed_streams.md)
   * [Apollo GraphQL <img class='pro-badge' src='https://docs.anycable.io/assets/pro.svg' alt='pro' />](/anycable-go/apollo.md)
   * [Binary formats <img class='pro-badge' src='https://docs.anycable.io/assets/pro.svg' alt='pro' />](/anycable-go/binary_formats.md)
 * <a rel="noopener" href="https://github.com/anycable/anycable-client" target="_blank">JS/TS client 🔗</a>
