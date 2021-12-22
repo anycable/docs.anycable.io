@@ -2,6 +2,22 @@
 
 This page contains combined release notes for major and minor releases of all AnyCable libraries.
 
+## 1.2.0
+
+### Features
+
+- Add fastlane subscribing fr Hotwire (Turbo Streams) and CableReady.
+
+Make it possible to terminate subscription requests at AnyCable Go without performing RPC calls.
+
+See [documentation](./anycable-go/signed_streams.md).
+
+- Add JWT authentication/identification support.
+
+You can pass a properly structured token along the connection request to authorize the connection and set up _identifiers_ without peforming an RPC call.
+
+See [documentation](./anycable-go/jwt_identification.md).
+
 ## 1.1.0
 
 **tl;dr** Housekeeping and internals refactoring, prepare for non-gRPC RPC, minor but useful additions.
