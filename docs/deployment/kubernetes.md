@@ -1,5 +1,7 @@
 # Kubernetes Deployment
 
+> Check out our [Kuby plugin][kuby-anycable] and read the [Kubing Rails: stressless Kubernetes deployments with Kuby](https://evilmartians.com/chronicles/kubing-rails-stressless-kubernetes-deployments-with-kuby) blog post.
+
 ## AnyCable-Go
 
 AnyCable-Go can be easily deployed to your Kubernetes cluster using Helm and [our official Helm chart][anycable-helm].
@@ -166,3 +168,4 @@ spec:
 See detailed explanation in the docs and in this example: [Kubernetes network policy recipes: deny traffic from other namespaces](https://github.com/ahmetb/kubernetes-network-policy-recipes/blob/60f5b12f274472901ce79463ce0ba3a8f98b9a48/04-deny-traffic-from-other-namespaces.md)
 
 [anycable-helm]: https://github.com/anycable/anycable-helm/ "Helm charts for installing any cables into a Kubernetes cluster"
+[kuby-anycable]: https://github.com/anycable/kuby-anycable
