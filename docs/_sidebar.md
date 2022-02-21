@@ -21,6 +21,7 @@
   * [Exceptions Handling](/ruby/exceptions.md)
   * <a rel="noopener" href="https://github.com/yabeda-rb/yabeda-anycable" target="_blank">Instrumentation via Yabeda 🔗</a>
   * [Action Cable Compatibility](/rails/compatibility.md)
+  * [Using with Hotwire](/rails/hotwire.md)
   * [Using with Stimulus Reflex](/rails/stimulus_reflex.md)
   * [Non-Rails Usage](/ruby/non_rails.md)
   * [Broadcast Adapters](/ruby/broadcast_adapters.md)
