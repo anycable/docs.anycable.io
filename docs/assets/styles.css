@@ -512,3 +512,39 @@ section.cover .cover-main {
   height: 1em;
   vertical-align: middle;
 }
+
+
+.mermaid {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.mermaid > svg .messageText {
+  stroke: none !important;
+}
+
+.mermaid > svg .messageText {
+  font-family: 'Fira Code', monospace !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .mermaid > svg .sequenceNumber {
+    fill: #000 !important;
+  }
+}
+
+.mermaid > svg .actor {
+  font-family: 'Stem Text', Arial !important;
+  font-size: 18px !important;
+}
+
+.mermaid > svg .actor>tspan{
+  fill: #fff !important;
+}
+
+
+.mermaid > svg .noteText {
+  font-family: 'Stem Text', Arial !important;
+  font-size: 12px !important;
+}
