@@ -53,5 +53,5 @@
   * [From v1.0.x to v1.1.0](/upgrade-notes/1_0_0_to_1_1_0.md)
   * [From v0.6.x to v1.0.0](/upgrade-notes/0_6_0_to_1_0_0.md)
 * Community
-  * [Gitter](https://gitter.im/anycable/Lobby)
   * [Twitter](https://twitter.com/any_cable)
+  * [Discord](https://discord.com/channels/629472241427415060/944842112862670878)
