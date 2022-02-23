@@ -39,6 +39,6 @@ Below you can see the snapshot of CPU usage during the RTT benchmark.
   </div>
   <div class="captioned-figure">
     <img src="/assets/images/actioncable.gif" alt="Action Cable CPU">
-    <label>Acton Cable</label>
+    <label>Action Cable</label>
   </div>
 </div>
