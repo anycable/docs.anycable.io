@@ -140,6 +140,8 @@ spec:
   selector:
     component: anycable-rpc
   type: ClusterIP
+  # Uncomment this line if you're using the DNS-based load balancing
+  # clusterIP: None
   ports:
     # you should define these parameters in the values.yml file, we give them here directly for readability
     - port: 50051
