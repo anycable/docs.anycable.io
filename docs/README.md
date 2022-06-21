@@ -34,6 +34,10 @@ AnyCable uses [Action Cable protocol](misc/action_cable_protocol.md), so you can
 
 - [Official Website](https://anycable.io)
 
+- [AnyCable Blog](https://anycable.io/blog)
+
+- 🎥 [AnyCasts screencasts](https://www.youtube.com/playlist?list=PLAgBW0XUpyOVFnpoS6FKDszd8WEvXzg-A)
+
 ### Blog Posts
 
 - [Scaling Rails web sockets in Kubernetes with AnyCable](https://vitobotta.com/2022/06/18/scaling-rails-web-sockets-in-kubernetes-with-anycable/)
@@ -48,15 +52,11 @@ AnyCable uses [Action Cable protocol](misc/action_cable_protocol.md), so you can
 
 ### Talks
 
-- High-speed cables for Ruby, RubyConf 2018, [slides](https://speakerdeck.com/palkan/rubyconf-2018-high-speed-cables-for-ruby) and [video](https://www.youtube.com/watch?v=8XRcOZXOzV4) (EN)
+- [The pitfalls of realtime-ification](https://noti.st/palkan/MeBUVe/the-pitfalls-of-realtime-ification), RailsConf 2022
 
-- One cable to rule them all, [RubyKaigi 2018](http://rubykaigi.org/2018/presentations/palkan_tula.html), [slides](https://speakerdeck.com/palkan/rubykaigi-2018-anycable-one-cable-to-rule-them-all) and [video](https://www.youtube.com/watch?v=jXCPuNICT8s) (EN)
+- [High-speed cables for Ruby](https://noti.st/palkan/Y1bPpn/high-speed-cables-for-ruby), RubyConf 2018
 
-- Wroc_Love.rb 2018 [slides](https://speakerdeck.com/palkan/wroc-love-dot-rb-2018-cables-cables-cables) and [video](https://www.youtube.com/watch?v=AUxFFOehiy0) (EN)
-
-- RubyConfMY 2017 [slides](https://speakerdeck.com/palkan/rubyconf-malaysia-2017-anycable) and [video](https://www.youtube.com/watch?v=j5oFx525zNw) (EN)
-
-- RailsClub Moscow 2016 [slides](https://speakerdeck.com/palkan/railsclub-moscow-2016-anycable) and [video](https://www.youtube.com/watch?v=-k7GQKuBevY&list=PLiWUIs1hSNeOXZhotgDX7Y7qBsr24cu7o&index=4) (RU)
+- [One cable to rule them all](https://noti.st/palkan/ALKDiC/anycable-one-cable-to-rule-them-all), RubyKaigi 2018
 
 ## License
 
