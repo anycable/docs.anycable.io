@@ -4,6 +4,10 @@
 
 You can use load balancers to scale your application and/or perform zero-disconnect deployments (by doing a rolling update of RPC servers without restarting WebSocket servers).
 
+### Using Linkerd
+
+Check out this blog post: [Scaling Rails web sockets in Kubernetes with AnyCable](https://vitobotta.com/2022/06/18/scaling-rails-web-sockets-in-kubernetes-with-anycable/).
+
 ### Using Envoy
 
 [Envoy](https://envoyproxy.io) is a modern proxy server which supports HTTP2 and gRPC.
