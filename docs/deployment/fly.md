@@ -10,16 +10,16 @@ Follow the [official documentation][fly-docs-rails] on how to deploy a Rails app
 
 Then, we need to configure AnyCable broadcast adapter. Check out the [official docs][fly-docs-redis] on how to create a Redis instance. **Don't forget to add `REDIS_URL` to your app's secrets**
 
-Finally, we need to add an AnyCable RPC server. We can do that either by defining a separate process or by embedding it into a Rails web server.
+Finally, we need to add an AnyCable RPC server.
 
-### Standalone RPC process
+### Standalone RPC process (default)
 
 You can define multiple processes in your `fly.toml` like this:
 
 ```toml
 [processes]
   web = "bundle exec puma" # or whatever command you use to run a web server
-  worker = "bundle exec anycable"
+  rpc = "bundle exec anycable"
 ```
 
 Don't forget to update the `services` definition:
@@ -30,9 +30,13 @@ Don't forget to update the `services` definition:
 +   processes = ["web"]
 ```
 
+**NOTE**: Keep in mind that each process is executed within its own [Firecracker VM](https://fly.io/docs/reference/machines/). This brings a benefit of independent scaling, e.g., `fly scale count web=2 rpc=1`.
+
 ### Embedded RPC
 
-You can run RPC server along with the Rails web server by using the embedded mode. Just add the following to your configuration:
+You can run RPC server along with the Rails web server by using the embedded mode. This way you can reduce the number of VMs used (and hence, reduce the costs or fit into the free tier).
+
+Just add the following to your configuration:
 
 ```toml
 [env]
@@ -51,7 +55,7 @@ To make RPC accessible from other applications, you must add the following env v
   ANYCABLE_RPC_HOST = "0.0.0.0:50051"
 ```
 
-Also, since we rely on [client-side load balancing](./load_balancing.md), it worths adding a max live time for gRPC connections. In your `anycable.yml`:
+Also, since we rely on [client-side load balancing](./load_balancing.md), it's worth adding a max live time for gRPC connections. In your `anycable.yml`:
 
 ```yml
 production:
@@ -62,16 +66,26 @@ production:
 
 ## Deploying AnyCable-Go
 
-To deploy AnyCable-Go server, create a new app first:
+To deploy AnyCable-Go server, we need to create a separate Fly application.
+Following [the official docs][fly-multiple-apps], we should do the following:
+
+- Create a `.fly/applications/anycable-go` folder and use it as a working directory for subsequent commands:
 
 ```sh
-fly apps create
+mkdir -p .fly/applications/anycable-go
+cd .fly/applications/anycable-go
 ```
 
-Then, create a separate configuration file, `fly.anycable.toml`:
+- Run the following command:
+
+```sh
+fly launch --image anycable/anycable-go:1 --no-deploy --name my-cable
+```
+
+- Create a configuration file, `fly.toml`:
 
 ```toml
-app = "cable" # use the name you chose on creation
+app = "my-cable" # use the name you chose on creation
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
@@ -110,7 +124,13 @@ processes = []
     timeout = "2s"
 ```
 
-Now you can run `fly deploy --config fly.anycable.toml` to deploy your AnyCable-Go server.
+- Add `REDIS_URL` obtained during the Rails application configuration to the _cable_ app:
+
+```sh
+fly secrets set REDIS_URL=<url>
+```
+
+Now you can run `fly deploy` to deploy your AnyCable-Go server.
 
 ## Linking Rails and anycable-go apps
 
@@ -146,3 +166,4 @@ At the AnyCable-Go side (`fly.anycable.toml`), add the RPC host to the env varia
 [fly]: https://fly.io
 [fly-docs-rails]: https://fly.io/docs/rails/
 [fly-docs-redis]: https://fly.io/docs/reference/redis/
+[fly-multiple-apps]: https://fly.io/docs/laravel/advanced-guides/multiple-applications/#creating-a-fly-application-within-a-fly-application
