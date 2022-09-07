@@ -39,6 +39,7 @@
 * <a rel="noopener" href="https://github.com/anycable/anycable-client" target="_blank">JS/TS client 🔗</a>
 * Deployment
   * [Heroku](/deployment/heroku.md)
+  * [Fly.io](/deployment/fly.md)
   * [Docker](/deployment/docker.md)
   * [Kubernetes](/deployment/kubernetes.md)
   * [Capistrano](/deployment/capistrano.md)
