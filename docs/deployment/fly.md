@@ -130,6 +130,8 @@ processes = []
 fly secrets set REDIS_URL=<url>
 ```
 
+You can always look up your `REDIS_URL` by running the following command: `fly redis status <name>`.
+
 Now you can run `fly deploy` to deploy your AnyCable-Go server.
 
 ## Linking Rails and anycable-go apps
@@ -163,7 +165,24 @@ At the AnyCable-Go side (`fly.anycable.toml`), add the RPC host to the env varia
   ANYCABLE_RPC_HOST="dns:///lhr.my-app.internal:50051"
 ```
 
+## Authentication
+
+The described approach assumes running two Fly applications on two separate domains. If you're using cookie-based authentication, make sure you configured your Rails cookie settings accordingly:
+
+```ruby
+# session_store.rb
+Rails.application.config.session_store :cookie_store,
+  key: "_any_cable_session",
+  domain: :all # or domain: '.example.com'
+
+# anywhere setting cookie
+cookies[:val] = {value: "1", domain: :all}
+```
+
+**IMPORTANT:** It's impossible to share cookies between `.fly.dev` domains, so cookie-based authentication wouldn't work. We recommend using [JWT authentication instead][jwt-id].
+
 [fly]: https://fly.io
 [fly-docs-rails]: https://fly.io/docs/rails/
 [fly-docs-redis]: https://fly.io/docs/reference/redis/
 [fly-multiple-apps]: https://fly.io/docs/laravel/advanced-guides/multiple-applications/#creating-a-fly-application-within-a-fly-application
+[jwt-id]: /anycable-go/jwt_identification
