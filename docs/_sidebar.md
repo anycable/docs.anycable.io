@@ -40,6 +40,7 @@
 * Deployment
   * [Heroku](/deployment/heroku.md)
   * [Fly.io](/deployment/fly.md)
+  * [Render](/deployment/render.md)
   * [Docker](/deployment/docker.md)
   * [Kubernetes](/deployment/kubernetes.md)
   * [Capistrano](/deployment/capistrano.md)
