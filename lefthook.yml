@@ -4,10 +4,10 @@ pre-commit:
       tags: style
       glob: "**/*.md"
       run: mdl {staged_files}
-    liche:
+    lychee:
       tags: links
       glob: "docs/**/*.md"
-      run: liche -c 2 -r docs/* -d docs/ -x "(anycable-go|ruby|rails|anycable-go-pro-releases)/"
+      run: lychee docs/* --exclude "(anycable-go|ruby|rails|anycable-go-pro-releases)/" --exclude "jetrockets" --exclude "(master|stable)/docs"
     forspell:
       tags: grammar
       glob: "**/*.md"

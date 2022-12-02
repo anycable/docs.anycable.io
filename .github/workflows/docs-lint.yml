@@ -56,21 +56,14 @@ jobs:
       run: gem install forspell
     - name: Run Forspell
       run: forspell docs/**/*.md
-  liche:
+  lychee:
     runs-on: ubuntu-latest
-    env:
-      GO111MODULE: on
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Go
-      uses: actions/setup-go@v1
+    - name: Link Checker
+      id: lychee
+      uses: lycheeverse/lychee-action@v1.5.1
+      env:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       with:
-        go-version: 1.13.x
-    - name: Install liche
-      run: |
-        export PATH=$PATH:$(go env GOPATH)/bin
-        go get -u github.com/raviqqe/liche
-    - name: Run liche
-      run: |
-        export PATH=$PATH:$(go env GOPATH)/bin
-        liche -c 2 -r docs/* -d docs/ -x "(anycable-go|ruby|rails|anycable-go-pro-releases)/" -x "envoyproxy"
+        args: docs/* --exclude "(anycable-go|ruby|rails|anycable-go-pro-releases)/" --exclude "jetrockets" --exclude "(master|stable)/docs"
