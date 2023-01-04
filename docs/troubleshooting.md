@@ -20,14 +20,13 @@ Make sure that both servers use the same Redis channel (`__anycable__` in the ex
 
 Related issues: [#78](https://github.com/anycable/anycable/issues/78), [#45](https://github.com/anycable/anycable/issues/45).
 
-## Server raises an `ArgumentError` exception when client tries to connect
+## Server raises an `NotImplementedError: nil` exception when client tries to connect
 
-If you encounter the following exception:
+If you encounter an exception like this:
 
 ```sh
-Exception: ArgumentError: wrong number of arguments (given 2, expected 1)
-  .../gems/anycable-rails-0.6.1/lib/anycable/rails/actioncable/connection.rb:34:in initialize'
-  .../gems/actioncable-5.1.7/lib/action_cable/server/base.rb:28:in
+There was an exception - NotImplementedError(NotImplementedError)
+  .../gems/actioncable-7.0.4/lib/action_cable/subscription_adapter/base.rb:22:in `unsubscribe':in
   ...
 ```
 
@@ -36,9 +35,11 @@ that means you're client tries to connect to the built-in Action Cable server, a
 Check that:
 
 - `config.action_cable.url` points to the AnyCable server and not to the Rails one
+- make sure your client is configured to connect to AnyCable server
+- drop `mount ActionCable.server => "/cable"` from your `routes.rb`
 - in case of using a reverse proxy (e.g. Nginx), check that it points to the correct server as well.
 
-Related issues: [#88](https://github.com/anycable/anycable-rails/issues/88), [#22](https://github.com/anycable/anycable-rails/issues/22).
+Related issues: [#181](https://github.com/orgs/anycable/discussions/181), [#88](https://github.com/anycable/anycable-rails/issues/88), [#22](https://github.com/anycable/anycable-rails/issues/22).
 
 ## Authentication fails with `undefined method 'protocol' for nil:NilClass`
 
