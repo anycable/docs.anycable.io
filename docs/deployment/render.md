@@ -23,7 +23,7 @@ We're going to call our Rails app **"xylophone"** for the remainder of this guid
 
 Provision the normal public Rails app web service as you usually would on Render. I'm also assuming you've provisioned a Redis server; remember the `REDIS_URL` because we'll need it later.
 
-We're going to asssume you set up your custom domain under _Settings_ (e.g. `xylophone.com`)
+We're going to assume you set up your custom domain under _Settings_ (e.g. `xylophone.com`)
 
 ## gRPC Private Service
 
@@ -76,9 +76,9 @@ Now that you've got all three services running, you need to go back to the publi
 This assumes that your `production.rb` has something like this:
 
 ```ruby
-  config.after_initialize do
-    config.action_cable.url = ENV.fetch("CABLE_URL", "/cable") if AnyCable::Rails.enabled?
-  end
+config.after_initialize do
+  config.action_cable.url = ENV.fetch("CABLE_URL", "/cable") if AnyCable::Rails.enabled?
+end
 ```
 
 If so, all you need to do on Render is change the Rails app **Environment** variables again:
@@ -103,7 +103,8 @@ production:
 If, like me, you're using the `redis_session_store` gem for session handling, you may need to tweak the config some...
 
 ```ruby
-Rails.application.config.session_store :redis_session_store,
+Rails.application.config.session_store(
+  :redis_session_store,
   key: "_session_#{Rails.env}",
   serializer: :json,
   domain: :all, # <-- THIS IS IMPORTANT
@@ -111,8 +112,9 @@ Rails.application.config.session_store :redis_session_store,
     expire_after: 1.year,
     ttl: 1.year,
     key_prefix: "xylophone:session:",
-    url: ENV['REDIS_URL']
+    url: ENV["REDIS_URL"]
   }
+)
 ```
 
 ⚠️ Note the change to `domain: :all`. This ensures that your clients' session cookie key can be shared between your primary domain (`xylophone.com`) and your websocket subdomain (`ws.xylophone.com`)
