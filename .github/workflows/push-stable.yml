@@ -1,0 +1,24 @@
+name: Push Stable
+
+on:
+  push:
+    tags:
+      - v1.0.*
+      - v1.1.*
+      - v1.2.*
+  workflow_dispatch:
+
+jobs:
+  push-1-1-stable:
+    if: ${{ contains(github.ref, 'refs/tags/v1.1.') || contains(github.ref, 'refs/tags/v1.2.') || github.event_name == 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+        fetch-depth: 0
+    - uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: 1-1-stable
+        force: true
