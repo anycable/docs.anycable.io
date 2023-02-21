@@ -49,7 +49,9 @@ For example, when using Docker, you can rely on its internal DNS server and omit
 
 Since gRPC clients performs the DNS resolution only during the connection initialization, newly added servers (in case of auto-scaling) are not picked up. To resolve this issue, you can configure a max connection lifetime at the server side, so, connections are recreated periodically (that also triggers re-resolution).
 
-To configure the max connection age, use the `rpc_server_args.max_connection_age_ms` configuration option for AnyCable RPC server (could be configured via the `ANYCABLE_RPC_SERVER_ARGS__MAX_CONNECTION_AGE_MS` env variable). We recommend starting with 300000 (5 minutes), and tune the values to your needs (depending on how often to change your cluster formation).
+You can control gRPC connection lifetimes via the `rpc_max_connection_age` configuration option for AnyCable RPC server (could be also configured via the `ANYCABLE_RPC_MAX_CONNECTION_AGE` env variable). It's set to 300 (seconds, thus, 5 minutes) by default, so you're likely don't want to change it.
+
+You can also monitor the current number of gRPC connections by looking at the AnyCable-Go's `grpc_active_conn_num` metrics value.
 
 ## WebSocket load balancing
 
