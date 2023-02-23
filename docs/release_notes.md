@@ -11,13 +11,13 @@ This page contains combined release notes for major and minor releases of all An
 
 - Added adaptive concurrency support.
 
-  Now AnyCable-Go can adjust its concurrency limit depending on the current load (up) or exhausted errors (down).
+  Users of AnyCable had to scale and balance resources on two sides: RPC and AnyCable-Go. Now AnyCable-Go can adjust its concurrency limit automatically to minimize errors (`ResourcesExhausted`) and maximize throughput (thus, reduce the backlog size) if possible. This means, you only have to scale the Rails application, and AnyCable-Go will balance itself alongside automatically.
 
   See [documentation](./anycable-go/configuration.md#adaptive-concurrency).
 
 #### AnyCable-Go
 
-- StatsD and metric tags are now general available (dowstreamed from PRO).
+- StatsD and metric tags are now generally available (dowstreamed from PRO).
 
   See [documentation](./anycable-go/instrumentation.md#statsd).
 
