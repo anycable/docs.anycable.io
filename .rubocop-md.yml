@@ -1,0 +1,13 @@
+require:
+  - standard/cop/block_single_line_braces
+  - rubocop-md
+
+inherit_gem:
+  standard: config/base.yml
+
+Standard/BlockSingleLineBraces:
+  Enabled: false
+
+Layout/InitialIndentation:
+  Exclude:
+    - docs/release_notes.md

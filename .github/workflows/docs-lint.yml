@@ -18,4 +18,4 @@ jobs:
     with:
       mdl-path: docs
       forspell-args: docs/**/*.md
-      lychee-args: docs/* --exclude "(anycable-go|ruby|rails|anycable-go-pro-releases)/" --exclude "jetrockets" --exclude "(master|stable)/docs"
+      lychee-args: docs/* --exclude "(anycable-go|ruby|rails|anycable-go-pro-releases)/" --exclude "jetrockets" --exclude "(master|stable)/docs" --exclude-mail

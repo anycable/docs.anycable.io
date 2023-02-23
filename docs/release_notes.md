@@ -7,7 +7,7 @@ This page contains combined release notes for major and minor releases of all An
 ### Features
 
 #### AnyCable-Go
-<p class="pro-badge-header"></p>
+  <p class="pro-badge-header"></p>
 
 - Added adaptive concurrency support.
 
@@ -173,7 +173,6 @@ See also [upgrade notes](./upgrade-notes/0_6_0_to_1_0_0.md).
   Using `state_attr_accessor :a, :b` (from `anycable-rails`) you can define readers and writers to keep channel state between commands. When AnyCable is not activated (i.e., a different adapter is used for Action Cable), this method behaves like `attr_accessor`.
 
   \* GlobalID is used for serialization and deserialization of non-primitive objects.
-
 
 - Rack middlewares support in Rails.
 
