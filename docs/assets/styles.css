@@ -551,7 +551,8 @@ section.cover .cover-main {
 
 h2:has(+.pro-badge-header):after {
   content: "";
-  display: block;
+  display: inline-block;
+  vertical-align: bottom;
   width: 64px;
   height: 27px;
   background-repeat: no-repeat;
