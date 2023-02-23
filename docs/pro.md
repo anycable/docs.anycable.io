@@ -1,7 +1,5 @@
 # Pro version overview <img class='pro-badge' src='https://docs.anycable.io/assets/pro.svg' alt='pro' />
 
-> Our early access program is open! <a rel="noopener" href="https://anycable.io/#pro" target="_blank">Go Pro today!</a>
-
 AnyCable-Go Pro aims to bring AnyCable to the next level of efficient resources usage and developer ~~experience~~ happiness.
 
 Read also <a rel="noopener" href="https://evilmartians.com/chronicles/anycable-goes-pro-fast-websockets-for-ruby-at-scale" target="_blank">AnyCable Goes Pro: Fast WebSockets for Ruby, at scale</a>.
@@ -16,9 +14,9 @@ Here is the results of running [websocket-bench][] `broadcast` and `connect` ben
 
 version | broadcast 5k | connect 10k |  connect 15k
 ---|----|---|---
-1.1.0-pro               |  142MB | 280MB | 351MB
-1.1.0-pro (w/o poll)\*  |  207MB | 343MB | 480MB
-1.1.0                   |  217MB | 430MB | 613MB
+1.3.0-pro               |  142MB | 280MB | 351MB
+1.3.0-pro (w/o poll)\*  |  207MB | 343MB | 480MB
+1.3.0                   |  217MB | 430MB | 613MB
 
 \* AnyCable-Go Pro uses epoll/kqueue to react on incoming messages by default.
 In most cases, that should work the same way as with non-Pro version; however, if you have a really high rate of
@@ -28,11 +26,9 @@ incoming messages, you might want to fallback to the _actor-per-connection_ mode
 
 ### More features
 
+- [Adaptive RPC concurrency](anycable-go/configuration.md#adaptive-concurrency)
 - [Binary messaging formats](anycable-go/binary_formats.md)
 - [Apollo GraphQL protocol support](anycable-go/apollo.md)
-- [StatsD instrumentation](anycable-go/instrumentation.md#statsd)
-- [JWT identification](anycable-go/jwt_identification.md)
-- [Signed streams (Hotwire, CableReady)](anycable-go/signed_streams.md)
 
 ## Installation
 
@@ -52,7 +48,7 @@ Once authenticated, you can pull images using the following identifier: `ghcr.io
 # docker-compose.yml
 services:
   ws:
-    image: ghcr.io/anycable/anycable-go-pro:1.1
+    image: ghcr.io/anycable/anycable-go-pro:1.3
     ports:
       - '8080:8080'
     environment:
@@ -66,7 +62,7 @@ We use a dedicated GitHub repo to host pre-built binaries via GitHub Releases: [
 We recommend using [`fetch`][fetch] to download releases via command line:
 
 ```sh
-fetch --repo=https://github.com/anycable/anycable-go-pro-releases --tag="v1.1.0" --release-asset="anycable-go-linux-amd64" --github-oauth-token="<access-token>" /tmp
+fetch --repo=https://github.com/anycable/anycable-go-pro-releases --tag="v1.3.0" --release-asset="anycable-go-linux-amd64" --github-oauth-token="<access-token>" /tmp
 ```
 
 ### Heroku
@@ -77,7 +73,7 @@ You need to provide the following configuration parameters:
 - `HEROKU_ANYCABLE_GO_REPO=https://github.com/anycable/anycable-go-pro-releases`
 - `HEROKU_ANYCABLE_GO_GITHUB_TOKEN=<access-token>`
 
-Currently, you also need to specify the version as well: `HEROKU_ANYCABLE_GO_VERSION=1.2.2`.
+Currently, you also need to specify the version as well: `HEROKU_ANYCABLE_GO_VERSION=1.3.0`.
 
 Make sure you're not using cached `anycable-go` binary by purging the Heroku cache: `heroku builds:cache:purge -a <your-app-name>`.
 
