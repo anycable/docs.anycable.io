@@ -36,6 +36,7 @@
   * [Speedy Hotwire & Cable Ready](/anycable-go/signed_streams.md)
   * [Apollo GraphQL <img class='pro-badge' src='https://docs.anycable.io/assets/pro.svg' alt='pro' />](/anycable-go/apollo.md)
   * [Binary formats <img class='pro-badge' src='https://docs.anycable.io/assets/pro.svg' alt='pro' />](/anycable-go/binary_formats.md)
+  * [Embedded NATS](/anycable-go/embedded_nats.md)
 * <a rel="noopener" href="https://github.com/anycable/anycable-client" target="_blank">JS/TS client 🔗</a>
 * Deployment
   * [Heroku](/deployment/heroku.md)
