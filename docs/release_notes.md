@@ -10,7 +10,7 @@ This page contains combined release notes for major and minor releases of all An
 
 - Configuration presets (aka sensible defaults).
 
-  AnyCable now automatically detects known platforms (Heroku, Fly) and tune configuration accordingly. Right now, Fly.io support is the most comprehensive and allows you to automatically connect Ruby and AnyCable-Go apps to each other (by setting correct RPC and broadcasting URLs).
+  AnyCable now automatically detects known platforms (Heroku, Fly) and tunes configuration accordingly. Right now, Fly.io support is the most comprehensive and allows you to automatically connect Ruby and AnyCable-Go apps to each other (by setting correct RPC and broadcasting URLs).
 
   See documentation for [AnyCable](./ruby/configuration.md#presets) and [AnyCable-Go](./anycable-go/configuration.md#presets).
 
