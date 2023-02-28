@@ -8,15 +8,32 @@ The recommended way to deploy AnyCable apps to [Fly.io][fly] is to have two appl
 
 Follow the [official documentation][fly-docs-rails] on how to deploy a Rails app.
 
-Then, we need to configure AnyCable broadcast adapter. Check out the [official docs][fly-docs-redis] on how to create a Redis instance. **Don't forget to add `REDIS_URL` to your app's secrets**
+Then, we need to configure AnyCable broadcast adapter. For multi-node applications (i.e., if you want to sacle WebSocket servers horizontally), you need a distributed pub/sub engine, such as Redis or NATS.
 
-Finally, we need to add an AnyCable RPC server.
+The quickest way to deploy AnyCable on Fly is to use [embedded NATS](/anycable-go/embedded_nats.md), so we'll be using it for the rest of the article. Thus, upgrade your `anycable.yml` by specifying `nats` as a broadcast adapter:
+
+```yml
+# config/anycable.yml
+production:
+  <<: *default
+  # Use NATS in production
+  broadcast_adapter: nats
+```
+
+Using Redis is similar to other deployment methods, please, check the corresponding [documentation][fly-docs-redis] on how to create a Redis instance on Fly.
+
+### Configuration
+
+AnyCable can automatically infer sensible defaults for applications running on Fly.io. You only need to [link Rails and AnyCable-Go apps with each other](#linking-rails-and-anycable-go-apps).
+
+We will rely on [client-side load balancing](./load_balancing.md), so make sure max connection age is set to some short period (minutes). The default value of 5 minutes is a good starting point, so you shouldn't change anything in the configuration.
 
 ### Standalone RPC process (default)
 
 You can define multiple processes in your `fly.toml` like this:
 
 ```toml
+# fly.toml
 [processes]
   web = "bundle exec puma" # or whatever command you use to run a web server
   rpc = "bundle exec anycable"
@@ -39,30 +56,13 @@ You can run RPC server along with the Rails web server by using the embedded mod
 Just add the following to your configuration:
 
 ```toml
+# fly.toml
 [env]
   # ...
   ANYCABLE_EMBEDDED = "true"
 ```
 
 Embedding the RPC server could help to reduce the overall RAM usage (since there is a single Ruby process), but would increase the GVL contention (since more threads would compete for Ruby VM).
-
-### RPC configuration
-
-To make RPC accessible from other applications, you must add the following env variable:
-
-```toml
-[env]
-  ANYCABLE_RPC_HOST = "0.0.0.0:50051"
-```
-
-Also, since we rely on [client-side load balancing](./load_balancing.md), it's worth adding a max live time for gRPC connections. In your `anycable.yml`:
-
-```yml
-production:
-  # ...
-  server_args:
-    max_connection_age_ms: 60000
-```
 
 ## Deploying AnyCable-Go
 
@@ -85,6 +85,7 @@ fly launch --image anycable/anycable-go:1 --no-deploy --name my-cable
 - Create a configuration file, `fly.toml`:
 
 ```toml
+# .fly/applications/anycable-go/fly.toml
 app = "my-cable" # use the name you chose on creation
 kill_signal = "SIGINT"
 kill_timeout = 5
@@ -95,7 +96,6 @@ processes = []
 
 [env]
   PORT = "8080"
-  ANYCABLE_HOST = "0.0.0.0"
 
 [experimental]
   allowed_public_ports = []
@@ -124,7 +124,7 @@ processes = []
     timeout = "2s"
 ```
 
-- Add `REDIS_URL` obtained during the Rails application configuration to the _cable_ app:
+- If you use Redis, add `REDIS_URL` obtained during the Rails application configuration to the _cable_ app:
 
 ```sh
 fly secrets set REDIS_URL=<url>
@@ -134,7 +134,7 @@ You can always look up your `REDIS_URL` by running the following command: `fly r
 
 Now you can run `fly deploy` to deploy your AnyCable-Go server.
 
-## Linking Rails and anycable-go apps
+## Linking Rails and AnyCable-Go apps
 
 Finally, we need to _connect_ both parts to each other.
 
@@ -157,13 +157,26 @@ Rails.application.configure do
 end
 ```
 
-At the AnyCable-Go side (`fly.anycable.toml`), add the RPC host to the env variables:
+When using embedded NATS or HTTP broadcast adapter, we also need to specify the AnyCable-Go application name, so it can locate WebSocket servers automatically:
 
 ```toml
+# fly.toml
+[env]
+  ANYCABLE_FLY_WS_APP_NAME = "my-cable"
+```
+
+**NOTE:** By default, AnyCable resolves the address within the current region. For example, if you run Rails application in the `lhr` region, than the resulting NATS url will be `nats://lhr.my-cable.internal:4222`.
+
+At the AnyCable-Go side, we must provide the name of the Rails application:
+
+```toml
+# .fly/applications/anycable-go/fly.toml
 [env]
   # ...
-  ANYCABLE_RPC_HOST="dns:///lhr.my-app.internal:50051"
+  FLY_ANYCABLE_RPC_APP_NAME="my-app"
 ```
+
+The name will be used, for example, to generate an RPC address: `my-app -> dns:///lhr.my-app.internal:50051`. **NOTE:** The generated RPC url points to the instances located in the same region as the AnyCable-Go server.
 
 ## Authentication
 
