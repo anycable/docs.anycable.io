@@ -6,6 +6,14 @@ This page contains combined release notes for major and minor releases of all An
 
 ### Features
 
+#### Common
+
+- Configuration presets (aka sensible defaults).
+
+  AnyCable now automatically detects known platforms (Heroku, Fly) and tune configuration accordingly. Right now, Fly.io support is the most comprehensive and allows you to automatically connect Ruby and AnyCable-Go apps to each other (by setting correct RPC and broadcasting URLs).
+
+  See documentation for [AnyCable](./ruby/configuration.md#presets) and [AnyCable-Go](./anycable-go/configuration.md#presets).
+
 #### AnyCable-Go
   <p class="pro-badge-header"></p>
 
@@ -16,6 +24,12 @@ This page contains combined release notes for major and minor releases of all An
   See [documentation](./anycable-go/configuration.md#adaptive-concurrency).
 
 #### AnyCable-Go
+
+- **Embedded NATS** support.
+
+  Now it's possible to run a NATS server within an AnyCable-Go process, so you don't need to deploy a pub/sub engine yourself.
+
+  See [documentation](./anycable-go/embedded_nats.md).
 
 - StatsD and metric tags are now generally available (dowstreamed from PRO).
 
