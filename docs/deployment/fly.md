@@ -10,7 +10,7 @@ Follow the [official documentation][fly-docs-rails] on how to deploy a Rails app
 
 Then, we need to configure AnyCable broadcast adapter. For multi-node applications (i.e., if you want to sacle WebSocket servers horizontally), you need a distributed pub/sub engine, such as Redis or NATS.
 
-The quickest way to deploy AnyCable on Fly is to use [embedded NATS](/anycable-go/embedded_nats.md), so we'll be using it for the rest of the article. Thus, upgrade your `anycable.yml` by specifying `nats` as a broadcast adapter:
+The quickest way to deploy AnyCable on Fly is to use [embedded NATS](../anycable-go/embedded_nats.md), so we'll be using it for the rest of the article. Thus, upgrade your `anycable.yml` by specifying `nats` as a broadcast adapter:
 
 ```yml
 # config/anycable.yml
