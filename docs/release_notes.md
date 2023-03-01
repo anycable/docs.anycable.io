@@ -59,6 +59,8 @@ This page contains combined release notes for major and minor releases of all An
 
 #### AnyCable Rails
 
+**NOTE:** Changes below are for v1.3.7 of the `anycable-rails` gem.
+
 - Added Rails 7+ error reporting interface integration.
 
   If your error reporting software supports Rails built-in error reporting (e.g., Sentry does), you no longer need to configure `AnyCable.capture_exception { ... }` yourself.
