@@ -246,6 +246,21 @@ For 1X/2X dynos this limit is 10k. That means that the max number of connections
 
 Thus, the max practical number of connections per dyno is 9k.
 
+## Using with third-party services
+
+### Datadog
+
+1. Install [Datadog agent to Heroku](https://docs.datadoghq.com/agent/basic_agent_usage/heroku)
+2. Add environment variable for AnyCable to send metrics via StatsD to Datadog
+
+```sh
+heroku config:add ANYCABLE_STATSD_HOST=localhost:8125
+```
+In case, you've changed default port of Datadog agent set your port.
+
+3. Restart the application
+4. Open [Datadog metrics page](https://us5.datadoghq.com/metric/explorer) and type any `anycable_go.*` metric name
+
 ## Links
 
 - [Demo application](https://github.com/anycable/anycable_rails_demo/pull/4)
