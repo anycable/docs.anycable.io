@@ -246,7 +246,7 @@ For 1X/2X dynos this limit is 10k. That means that the max number of connections
 
 Thus, the max practical number of connections per dyno is 9k.
 
-## Using with third-party services
+## Integrations
 
 ### Datadog
 
