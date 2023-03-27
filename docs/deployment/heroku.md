@@ -246,7 +246,7 @@ For 1X/2X dynos this limit is 10k. That means that the max number of connections
 
 Thus, the max practical number of connections per dyno is 9k.
 
-## Integrations
+## Integration
 
 ### Datadog
 
@@ -256,6 +256,7 @@ Thus, the max practical number of connections per dyno is 9k.
 ```sh
 heroku config:add ANYCABLE_STATSD_HOST=localhost:8125
 ```
+
 In case, you've changed default port of Datadog agent set your port.
 
 3. Restart the application

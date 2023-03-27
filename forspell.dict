@@ -9,6 +9,7 @@ anycable-go
 Balancer
 balancers
 buildpack
+Datadog
 Dockerfile
 dynos
 erlgrpc
