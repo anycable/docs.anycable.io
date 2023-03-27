@@ -11,7 +11,7 @@ pre-commit:
     forspell:
       tags: grammar
       glob: "**/*.md"
-      run: forspell {staged_files}
+      run: BUNDLE_GEMFILE=gemfiles/forspell.gemfile bundle exec forspell {staged_files}
     rubocop:
       tags: style
       glob: "**/*.md"

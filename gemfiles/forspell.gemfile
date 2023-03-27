@@ -1,0 +1,1 @@
+gem "forspell", github: "kalashnikovisme/forspell", branch: "ruby-3.2-support"
