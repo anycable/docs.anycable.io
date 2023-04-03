@@ -260,7 +260,8 @@ heroku config:add ANYCABLE_STATSD_HOST=localhost:8125
 In case, you've changed default port of Datadog agent set your port.
 
 3. Restart the application
-4. Open [Datadog metrics page](https://us5.datadoghq.com/metric/explorer) and type any `anycable_go.*` metric name
+4. Open `https://DATADOG_SITE/metric/explorer`. `DATADOG_SITE` is the domain where your Datadog account is registered. [Read more](https://docs.datadoghq.com/getting_started/site/)
+5. Type any `anycable_go.*` metric name
 
 ## Links
 
