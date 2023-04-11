@@ -98,9 +98,9 @@ production:
   adapter: any_cable
 ```
 
-## redis_session_store config
+## redis-session-store config
 
-If, like me, you're using the `redis_session_store` gem for session handling, you may need to tweak the config some...
+If, like me, you're using the `redis-session-store` gem for session handling, you may need to tweak the config some...
 
 ```ruby
 Rails.application.config.session_store(
