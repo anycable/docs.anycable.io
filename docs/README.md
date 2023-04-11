@@ -40,6 +40,8 @@ AnyCable uses [Action Cable protocol](misc/action_cable_protocol.md), so you can
 
 ### Blog Posts
 
+- [AnyCable off Rails: connecting Twilio streams with Hanami](https://evilmartians.com/chronicles/anycable-goes-off-rails-connecting-twilio-streams-with-hanami)
+
 - [Scaling Rails web sockets in Kubernetes with AnyCable](https://vitobotta.com/2022/06/18/scaling-rails-web-sockets-in-kubernetes-with-anycable/)
 
 - [AnyCable Goes Pro: Fast WebSockets for Ruby, at scale](https://evilmartians.com/chronicles/anycable-goes-pro-fast-websockets-for-ruby-at-scale)
