@@ -116,7 +116,7 @@ For example, default Action Cable client reconnects if no `ping` messages have b
 
 The `actioncable-v1-ext-json` protocol adds new message types and extends the existing ones.
 
-> You can find the example implementaion of the protocol in the [anycable-client library](https://github.com/anycable/anycable-client/blob/master/packages/core/action_cable_ext/index.js).
+> You can find the example implementation of the protocol in the [anycable-client library](https://github.com/anycable/anycable-client/blob/master/packages/core/action_cable_ext/index.js).
 
 ### New command: `history`
 
@@ -148,7 +148,7 @@ A history request contains two fields:
 
 * `streams` is a map of stream IDs to observed offsets. Stream IDs, offsets, and epochs are received along with the messages. It's the responsibility of the client to track them and use for `history` requests. The `epoch` parameter specified the current state of the memory backend; if the current server's epoch doesn't match the requested one, the server fail to retrieve the history. For example, if in-memory backend is used to store streams history, every time a server restarts a new epoch starts.
 
-In response to a `history` request, the server MUST respond with the requested historical messages (sent one by one, like during normal broadcasts, so the client shouldn't handle them specifically). Then, the server sends an acknolegment message (`confirm_history`). If case messages couldn't be retrieved from the server (e.g., history has been evicted for a stream), the server MUST respond with the `reject_history` message.
+In response to a `history` request, the server MUST respond with the requested historical messages (sent one by one, like during normal broadcasts, so the client shouldn't handle them specifically). Then, the server sends an acknowledgment message (`confirm_history`). If case messages couldn't be retrieved from the server (e.g., history has been evicted for a stream), the server MUST respond with the `reject_history` message.
 
 ### Requesting history during subscription
 
@@ -175,7 +175,7 @@ Two new message types (server-client) are added:
 * [`confirm_history`]
 * [`reject_history`]
 
-Both messages act as acknowledgements for the `history` command and contain the `identifier` key. The `confirm_history` message is sent to the client to indicate that the requested historical messages for the channel have been successfully sent to the client. The `reject_history` indicates that the server failed to retrieve the requested messages and no historical message have been sent (the client must implement a fallback mechanism to restore the consistency).
+Both messages act as acknowledgments for the `history` command and contain the `identifier` key. The `confirm_history` message is sent to the client to indicate that the requested historical messages for the channel have been successfully sent to the client. The `reject_history` indicates that the server failed to retrieve the requested messages and no historical message have been sent (the client must implement a fallback mechanism to restore the consistency).
 
 ### Incoming messages extensions
 
@@ -199,7 +199,7 @@ Broadcasted messages MAY contain metadata regarding their position in the stream
 
 ### Handshake extensions
 
-During the handshake, the server MAY send a unique _session id_ alongs with the welcome message:
+During the handshake, the server MAY send a unique _session id_ along with the welcome message:
 
 ```js
 {
