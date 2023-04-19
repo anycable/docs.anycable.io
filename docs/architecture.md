@@ -2,8 +2,8 @@
 
 ## Overview
 
-<img class="is-light" alt="AnyCable arhictecture" src="/assets/images/scheme.png">
-<img class="is-dark" alt="AnyCable arhictecture" src="/assets/images/scheme_invert.png">
+<img class="is-light" alt="AnyCable arhictecture" src="/assets/images/scheme_new.png">
+<img class="is-dark" alt="AnyCable arhictecture" src="/assets/images/scheme_invert_new.png">
 
 AnyCable **WebSocket server** (WS) is responsible for handling clients, or sockets. That includes:
 
