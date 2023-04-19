@@ -2,7 +2,9 @@
 
 This page contains combined release notes for major and minor releases of all AnyCable libraries.
 
-## 1.4.0 (unreleased)
+## 1.4.0-rc.1
+
+**NOTE:** Currently, only AnyCable-Go release candidate has been released. You can use Ruby gems v1.3.x with it.
 
 ### Features
 
