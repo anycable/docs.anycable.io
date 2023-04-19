@@ -28,6 +28,8 @@
 * AnyCable-Go
   * [Getting Started](/anycable-go/getting_started.md)
   * [Configuration](/anycable-go/configuration.md)
+  * [Streams history 🆕](/anycable-go/broker.md)
+  * [Pub/sub (node-node) 🆕](/anycable-go/pubsub.md)
   * [Instrumentation](/anycable-go/instrumentation.md)
   * [Health Checking](/anycable-go/health_checking.md)
   * [Tracing](/anycable-go/tracing.md)
@@ -52,7 +54,7 @@
   * [Load Balancing](/deployment/load_balancing.md)
   * [Load Testing](/deployment/load_testing.md)
 * Misc
-  * [Action Cable Protocol](/misc/action_cable_protocol.md)
+  * [Action Cable Protocols 🆕](/misc/action_cable_protocol.md)
   * [Protobuf Definitions](/misc/rpc_proto.md)
   * [How to Write AnyCable-Compatible Server](/misc/how_to_anycable_server.md)
 * Upgrade Notes

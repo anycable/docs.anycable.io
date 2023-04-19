@@ -2,6 +2,32 @@
 
 This page contains combined release notes for major and minor releases of all AnyCable libraries.
 
+## 1.4.0 (unreleased)
+
+### Features
+
+- **Improved consistency**.
+
+  AnyCable-Go provides a new `history` command to catch-up with missed messages. This is a part of the [Action Cable Extended protocol](./misc/action_cable_protocol.md#action-cable-extended-protocol).
+
+  To enable this feature, you must configure a _broker_ instance.
+
+  See [documentation](/anycable-go/broker.md) for details.
+
+- **Session restoration** (fast-track handshake).
+
+  AnyCable-Go provides an ability to restore the connection state by specifying the _session ID_ during the re-connection. When connection is restored successfully, you don't need to authenticate it again and re-subscribe to channels.
+
+  This is also a part of the [Action Cable Extended protocol](./misc/action_cable_protocol.md#action-cable-extended-protocol).
+
+### Changes
+
+- New publishing/broadcasting architecture.
+
+  AnyCable now separates the _publisher_ and _pubsub_ components. The first one is used to consume broadcasts from the application; the second one is used to distribute messages across the AnyCable cluster.
+
+  See [pub/sub documentation](/anycable-go/pubsub.md).
+
 ## 1.3.0
 
 ### Features

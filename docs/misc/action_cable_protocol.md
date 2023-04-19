@@ -4,6 +4,8 @@
 
 It uses a simple JSON-based protocol for client-server communication.
 
+AnyCable also implements an [extended version of the protocol](#action-cable-extended-protocol) to provide better consistency guarantees.
+
 ## Messages
 
 Communication is based on messages. Every message is an object.
@@ -107,3 +109,120 @@ Server sends `ping` messages (`{ "type": "ping", "message": <Time.now.to_i>}`) e
 Client MAY track this messages and decide to re-connect if no `ping` messages have been observed in the last Y seconds.
 
 For example, default Action Cable client reconnects if no `ping` messages have been received in 6 seconds.
+
+## Action Cable Extended protocol
+
+**NOTE:** This protocol extension is only supported by AnyCable-Go v1.4+.
+
+The `actioncable-v1-ext-json` protocol adds new message types and extends the existing ones.
+
+> You can find the example implementaion of the protocol in the [anycable-client library](https://github.com/anycable/anycable-client/blob/master/packages/core/action_cable_ext/index.js).
+
+### New command: `history`
+
+The new command type is added, `history`. It is used by the client to request historical messages for the channel. It MUST contain the `identifier`, `type` ("history"), and `history` fields, where `history` contains the _history request_ object:
+
+```js
+{
+  "identifier": "{\"channel\":\"ChatChannel\",\"id\":42}",
+  "type": "history",
+  "history": {
+    "since": 1681828329,
+    "streams": {
+      "stream_id_1": {
+        "offset": 32,
+        "epoch": "x123"
+      },
+      "stream_id_2": {
+        "offset": 54,
+        "epoch": "x123"
+      }
+    }
+  }
+}
+```
+
+A history request contains two fields:
+
+* `since` is a UNIX timestamp in seconds indicating the time since when to fetch the history. Optional. It is used only for streams with no offset specified (usually, during the initial subscription).
+
+* `streams` is a map of stream IDs to observed offsets. Stream IDs, offsets, and epochs are received along with the messages. It's the responsibility of the client to track them and use for `history` requests. The `epoch` parameter specified the current state of the memory backend; if the current server's epoch doesn't match the requested one, the server fail to retrieve the history. For example, if in-memory backend is used to store streams history, every time a server restarts a new epoch starts.
+
+In response to a `history` request, the server MUST respond with the requested historical messages (sent one by one, like during normal broadcasts, so the client shouldn't handle them specifically). Then, the server sends an acknolegment message (`confirm_history`). If case messages couldn't be retrieved from the server (e.g., history has been evicted for a stream), the server MUST respond with the `reject_history` message.
+
+### Requesting history during subscription
+
+It's possible to request history along with the `subscribe` request by adding the `history` field to the command payload:
+
+```js
+{
+  "identifier": "{\"channel\":\"ChatChannel\",\"id\":42}",
+  "command": "subscribe",
+  "history": {
+    "since": 1681828329
+  }
+}
+```
+
+Usually, in this case we can only specify the `since` parameter.
+
+In response, the server MUST first confirm the subscription and then execute the history request. If the subscription is rejected, no history request is made.
+
+### New message types
+
+Two new message types (server-client) are added:
+
+* [`confirm_history`]
+* [`reject_history`]
+
+Both messages act as acknowledgements for the `history` command and contain the `identifier` key. The `confirm_history` message is sent to the client to indicate that the requested historical messages for the channel have been successfully sent to the client. The `reject_history` indicates that the server failed to retrieve the requested messages and no historical message have been sent (the client must implement a fallback mechanism to restore the consistency).
+
+### Incoming messages extensions
+
+Broadcasted messages MAY contain metadata regarding their position in the stream. This information MUST be used with the subsequent `history` requests:
+
+```js
+{
+  "identifier": "{\"channel\":\"ChatChannel\",\"id\":42}",
+  "message": {
+    "text": "hello!",
+    "user_id": 43
+  },
+  // NEW FIELDS:
+  "stream_id": "chat_42",
+  "epoch": "x123",
+  "offset": 32
+}
+```
+
+**NOTE:** The messages are not guaranteed to be in order (due to concurrent broadcasts), so, offsets may be non-monotonic. It's the client responsibility to keep track of offsets. Also, there is a small chance that the same message may arrive twice (from broadcast and from the history); to provide exactly-once delivery guarantees, the client MUST keep track of seen offsets and ignore duplicates.
+
+### Handshake extensions
+
+During the handshake, the server MAY send a unique _session id_ alongs with the welcome message:
+
+```js
+{
+  "type": "welcome",
+  "sid": "rcl245"
+}
+```
+
+The client MAY use this ID during re-connection to restore the session state (subscriptions, channel states, etc.) and avoid re-subscribing to the channels. For that, the previously obtained session ID must be provided either as a query parameter (`?sid=rcl245`) or via an HTTP header (`X-ANYCABLE-RESTORE-SID`).
+
+If the server's attempt to restore the session from the _sid_ succeeds, it MUST respond with the `welcome` message with the additional fields indicating that the session was restored:
+
+```js
+{
+  "type": "welcome",
+  "sid": "yi421", // Note that session ID has changed
+  "restored": true,
+  "restored_ids": [
+    "{\"channel\":\"ChatChannel\",\"id\":42}"
+  ]
+}
+```
+
+The `restored` flag indicates whether the session state has been restored. **NOTE:** In this case, no `connect` method is invoked at the Action Cable side.
+
+The optional `restored_ids` field contains the list of channel identifiers that has been re-subscribed automatically at the server side. The client MUST NOT try to resubscribe to the specified channels and consider them connected. It's recommended to perform `history` requests for all the restored channels to catch up with the messages.
