@@ -12,7 +12,7 @@ This page contains combined release notes for major and minor releases of all An
 
   To enable this feature, you must configure a _broker_ instance.
 
-  See [documentation](/anycable-go/broker.md) for details.
+  See [documentation](./anycable-go/broker.md) for details.
 
 - **Session restoration** (fast-track handshake).
 
@@ -26,7 +26,7 @@ This page contains combined release notes for major and minor releases of all An
 
   AnyCable now separates the _publisher_ and _pubsub_ components. The first one is used to consume broadcasts from the application; the second one is used to distribute messages across the AnyCable cluster.
 
-  See [pub/sub documentation](/anycable-go/pubsub.md).
+  See [pub/sub documentation](./anycable-go/pubsub.md).
 
 ## 1.3.0
 
