@@ -5,7 +5,7 @@
   * [Architecture](/architecture.md)
   * [WebSocket Servers](/websocket_servers.md)
   * [Benchmarks](/benchmarks.md)
-  * [Pro version <img class='pro-badge' src='https://docs.anycable.io/assets/pro.svg' alt='pro' />](/pro.md)
+  * [Pro version <img class='pro-badge' src='/assets/pro.svg' alt='pro' />](/pro.md)
   * [Troubleshooting 🔥](/troubleshooting.md)
   * [Commercial Support 🆘](https://anycable.io/#custom-solutions)
   * [Release Notes](/release_notes.md)
@@ -28,16 +28,16 @@
 * AnyCable-Go
   * [Getting Started](/anycable-go/getting_started.md)
   * [Configuration](/anycable-go/configuration.md)
-  * [Streams history 🆕](/anycable-go/broker.md)
-  * [Pub/sub (node-node) 🆕](/anycable-go/pubsub.md)
+  * [Streams history <img class='pro-badge' src='/assets/new.svg' alt='new' />](/anycable-go/broker.md)
+  * [Pub/sub (node-node) <img class='pro-badge' src='/assets/new.svg' alt='new' />](/anycable-go/pubsub.md)
   * [Instrumentation](/anycable-go/instrumentation.md)
   * [Health Checking](/anycable-go/health_checking.md)
   * [Tracing](/anycable-go/tracing.md)
   * [OS Tuning](/anycable-go/os_tuning.md)
   * [JWT Identification](/anycable-go/jwt_identification.md)
   * [Speedy Hotwire & Cable Ready](/anycable-go/signed_streams.md)
-  * [Apollo GraphQL <img class='pro-badge' src='https://docs.anycable.io/assets/pro.svg' alt='pro' />](/anycable-go/apollo.md)
-  * [Binary formats <img class='pro-badge' src='https://docs.anycable.io/assets/pro.svg' alt='pro' />](/anycable-go/binary_formats.md)
+  * [Apollo GraphQL <img class='pro-badge' src='/assets/pro.svg' alt='pro' />](/anycable-go/apollo.md)
+  * [Binary formats <img class='pro-badge' src='/assets/pro.svg' alt='pro' />](/anycable-go/binary_formats.md)
   * [Embedded NATS](/anycable-go/embedded_nats.md)
   * [Using as a Library](/anycable-go/library.md)
 * <a rel="noopener" href="https://github.com/anycable/anycable-client" target="_blank">JS/TS client 🔗</a>
@@ -54,7 +54,7 @@
   * [Load Balancing](/deployment/load_balancing.md)
   * [Load Testing](/deployment/load_testing.md)
 * Misc
-  * [Action Cable Protocols 🆕](/misc/action_cable_protocol.md)
+  * [Action Cable Protocols](/misc/action_cable_protocol.md)
   * [Protobuf Definitions](/misc/rpc_proto.md)
   * [How to Write AnyCable-Compatible Server](/misc/how_to_anycable_server.md)
 * Upgrade Notes
