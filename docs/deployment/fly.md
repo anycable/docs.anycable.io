@@ -1,6 +1,6 @@
 # Fly.io Deployment
 
-> 🎥 Check out this [AnyCasts episode](https://anycable.io/blog/anycasts-rails-7-hotwire-and-anycable/) to learn how to deploy AnyCable applications to [Fly.io][fly]
+> 🎥 Check out this [AnyCasts episode](https://anycable.io/anycasts/learn-to-fly-io-with-anycable/) to learn how to deploy AnyCable applications to [Fly.io][fly]
 
 The recommended way to deploy AnyCable apps to [Fly.io][fly] is to have two applications: one with a Rails app and another one with `anycable-go` (backed by the official Docker image).
 
