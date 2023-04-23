@@ -1,42 +1,48 @@
 # MRSK Deployment
 
-You can deploy AnyCable using the provided mrsk deploy scenario.
+You can deploy AnyCable using the provided mrsk deploy scenario. Here is example of `config/deploy.yml` for AnyCable deployment
 
-*config/deploy.yml*
+```yml
+servers:
+  # ...
+  anycable_rpc:
+    traefik: true
+    hosts:
+      - <%= ENV['MAIN_HOST'] %>
+    cmd: bundle exec anycable
+    env:
+      clear:
+        ANYCABLE_RPC_HOST: 0.0.0.0:50051
+    labels:
+      traefik.tcp.routers.anycable_rpc.rule: 'HostSNI(`*`)'
+      traefik.tcp.routers.anycable_rpc.entrypoints: anycable_rpc
+      traefik.tcp.services.anycable_rpc.loadbalancer.server.port: 50051
 
-```yaml
+traefik:
+  options:
+    publish:
+      - 50051:50051
+  args:
+    entrypoints.rpc.address: ":50051"
+
+    # In case you create another traefik endpoint, don't forget to this line for the main endpoint of the application
+    entrypoints.web.address: ":80"
+
 env:
   clear:
-    ANYCABLE_REDIS_URL: redis://localhost:6379/0
-    ANYCABLE_RPC_HOST: localhost:50051
-    CABLE_URL: ws://anycable.your.domain:8080/cable
-    # ...
-  secret:
-    # ...
+    ANYCABLE_REDIS_URL: <%= ENV['REDIS_URL'] %>
+    CABLE_URL: "ws://<%= ENV['ANYCABLE_GO_HOST'] %>/cable"
 
 accessories:
-  redis:
-    image: redis:latest
-    roles:
-      - web
-    port: "6379:6379"
-    volumes:
-      - /var/lib/redis:/data
-
+  # ...
   ws:
-    image: anycable/anycable-go:1.2
-    host: anycable.your.domain
-    port: "8080:8080"
+    image: anycable/anycable-go:1.3
+    host: <%= ENV['ANYCABLE_GO_HOST'] %>
+    port: "80:8080"
     env:
       clear:
         ANYCABLE_HOST: "0.0.0.0"
         ANYCABLE_PORT: 8080
-        ANYCABLE_REDIS_URL: redis://your.domain:6379/0
-        ANYCABLE_RPC_HOST: your.domain:50051
-```
-
-Also, you should add to your *docker-entrypoint* file this line to start AnyCable RPC server
-
-```shell
-bundle exec anycable &
+        ANYCABLE_REDIS_URL: <%= ENV['REDIS_URL'] %>
+        ANYCABLE_RPC_HOST: "<%= ENV['MAIN_HOST'] %>:50051"
 ```
