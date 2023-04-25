@@ -42,6 +42,6 @@ accessories:
       clear:
         ANYCABLE_HOST: "0.0.0.0"
         ANYCABLE_PORT: 8080
-        ANYCABLE_REDIS_URL: <%= ENV['REDIS_URL'] %>
+        ANYCABLE_REDIS_URL: <%= ENV['ANYCABLE_REDIS_URL'] %>
         ANYCABLE_RPC_HOST: "<%= ENV['MAIN_HOST'] %>:50051"
 ```
