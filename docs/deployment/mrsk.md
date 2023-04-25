@@ -23,10 +23,9 @@ traefik:
     publish:
       - 50051:50051
   args:
-    entrypoints.rpc.address: ":50051"
-
     # In case you create another traefik endpoint, don't forget to this line for the main endpoint of the application
     entrypoints.web.address: ":80"
+    entrypoints.anycable_rpc.address: ":50051"
 
 env:
   clear:

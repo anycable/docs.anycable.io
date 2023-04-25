@@ -32,6 +32,7 @@ https://docs.anycable.io/deployment/docker
 https://docs.anycable.io/deployment/kubernetes
 https://docs.anycable.io/deployment/capistrano
 https://docs.anycable.io/deployment/systemd
+https://docs.anycable.io/deployment/mrsk
 https://docs.anycable.io/deployment/load_balancing
 https://docs.anycable.io/misc/action_cable_protocol
 https://docs.anycable.io/misc/rpc_proto
