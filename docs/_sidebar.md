@@ -36,11 +36,14 @@
   * [OS Tuning](/anycable-go/os_tuning.md)
   * [JWT Identification](/anycable-go/jwt_identification.md)
   * [Speedy Hotwire & Cable Ready](/anycable-go/signed_streams.md)
-  * [Apollo GraphQL <img class='pro-badge' src='/assets/pro.svg' alt='pro' />](/anycable-go/apollo.md)
-  * [Binary formats <img class='pro-badge' src='/assets/pro.svg' alt='pro' />](/anycable-go/binary_formats.md)
   * [Embedded NATS](/anycable-go/embedded_nats.md)
   * [Using as a Library](/anycable-go/library.md)
-* <a rel="noopener" href="https://github.com/anycable/anycable-client" target="_blank">JS/TS client 🔗</a>
+* AnyCable-Go <img class='pro-badge' src='/assets/pro.svg' alt='pro' />
+  * [Going PRO](/pro.md)
+  * [Apollo GraphQL](/anycable-go/apollo.md)
+  * [Binary formats](/anycable-go/binary_formats.md)
+* AnyCable Client
+  * <a rel="noopener" href="https://github.com/anycable/anycable-client" target="_blank">JS/TS client 🔗</a>
 * Deployment
   * [Heroku](/deployment/heroku.md)
   * [Fly.io](/deployment/fly.md)
