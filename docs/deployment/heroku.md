@@ -132,7 +132,7 @@ heroku config:set HEROKU_ANYCABLE_GO_VERSION
 For example, you **must** use the same `SECRET_KEY_BASE` if you're going to use cookies for authentication or
 utilize some other encryption-related functionality in your channels code.
 
-Here is an example Rake task to sync env vars between two applications on Heroku: [heroku.rake](https://github.com/anycable/anycable_demo/blob/master/lib/tasks/heroku.rake).
+Here is an example Rake task to sync env vars between two applications on Heroku: [heroku.rake][].
 
 We recommend using Rails credentials (or alternative secure store implementation, e.g., [chamber](https://github.com/thekompanee/chamber)) to store the application configuration. This way you won't need to think about manual and even automated env syncing.
 
@@ -267,3 +267,5 @@ In case, you've changed default port of Datadog agent set your port.
 
 - [Demo application](https://github.com/anycable/anycable_rails_demo/pull/4)
 - [Deployed application](http://demo.anycable.io/)
+
+[heroku.rake]: https://github.com/anycable/anycable_rails_demo/blob/demo/heroku/lib/tasks/heroku.rake
