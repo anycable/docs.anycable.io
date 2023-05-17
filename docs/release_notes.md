@@ -2,6 +2,16 @@
 
 This page contains combined release notes for major and minor releases of all AnyCable libraries.
 
+## Unreleased
+
+### Features
+
+- **Redis X** broadcasting adapter.
+
+  Redis X is a next-gen, broker-compatible adapter using Redis Streams instead of Publish/Subscribe to deliver broadcasting messages from your application to WebSocket servers. It also provides better delivery guarantees when used with a broker.
+
+  See [documentation](./ruby/broadcast_adapters.md#redis-x) for details.
+
 ## 1.4.0-rc.1
 
 **NOTE:** Currently, only AnyCable-Go release candidate has been released. You can use Ruby gems v1.3.x with it.
