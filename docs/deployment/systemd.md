@@ -81,4 +81,4 @@ WantedBy=multi-user.target
 
 ## Resources
 
-- [Deploy AnyCable with Capistrano and systemd](https://jetrockets.pro/blog/deploy-anycable-with-capistrano-and-systemd) by [JetRockets](https://jetrockets.pro).
+- [Deploy AnyCable with Capistrano and systemd](https://jetrockets.com/blog/deploy-anycable-with-capistrano-and-systemd) by [JetRockets](https://jetrockets.com).
