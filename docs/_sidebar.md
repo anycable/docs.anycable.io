@@ -52,7 +52,7 @@
   * [Kubernetes](/deployment/kubernetes.md)
   * [Capistrano](/deployment/capistrano.md)
   * [Systemd](/deployment/systemd.md)
-  * <a rel="noopener" href="https://jetrockets.pro/blog/scaling-rails-docker-aws-beanstalk" target="_blank">AWS Beanstalk 🔗</a>
+  * <a rel="noopener" href="https://jetrockets.com/blog/scaling-rails-docker-aws-beanstalk" target="_blank">AWS Beanstalk 🔗</a>
   * <a rel="noopener" href="https://medium.com/expsoftwareengineering/deploying-ruby-on-rails-with-anycable-using-docker-ecs-80f0da2051ba" target="_blank">AWS ECS 🔗</a>
   * [Load Balancing](/deployment/load_balancing.md)
   * [Load Testing](/deployment/load_testing.md)
