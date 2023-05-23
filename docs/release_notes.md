@@ -12,6 +12,28 @@ This page contains combined release notes for major and minor releases of all An
 
   See [documentation](./ruby/broadcast_adapters.md#redis-x) for details.
 
+### Changes
+
+- Broadcasted messages are now delivered in the order they were received by the server.
+
+  Previously, we used an executor pool internally to deliver broadcasted messages concurrently (to reduce the latency). That led to underterministic order of messages within a single stream delivered in a short period of time. Now, we preserve the order of messages within a stream—the delivered as they were accepted by the server.
+
+  That means, with a single AnyCable-Go server, the following snippet will result in clients receiving the messages in the same order they were broadcasted:
+
+  ```ruby
+  10.times { ActionCable.server.broadcast "test", {text: "Count: #{_1}"} }
+
+  # Client will receive the following messages:
+  #
+  #=> {"text"=>"Count: 0"}
+  #=> {"text"=>"Count: 1"}
+  #=> {"text"=>"Count: 2"}
+  # ...
+  #=> {"text"=>"Count: 9"}
+  ```
+
+  **NOTE:** In a clustered setup, the order of messages is not always guaranteed. For example, when using `http` or `redisx` adapter, each broadcasted message is handled by a single AnyCable-Go server independently, thus, there can be race conditions.
+
 ## 1.4.0-rc.1
 
 **NOTE:** Currently, only AnyCable-Go release candidate has been released. You can use Ruby gems v1.3.x with it.
