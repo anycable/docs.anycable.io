@@ -34,6 +34,14 @@ This page contains combined release notes for major and minor releases of all An
 
   **NOTE:** In a clustered setup, the order of messages is not always guaranteed. For example, when using `http` or `redisx` adapter, each broadcasted message is handled by a single AnyCable-Go server independently, thus, there can be race conditions.
 
+#### AnyCable-Go
+
+- New disconnect modes and `--disable_disconnect` deprecation.
+
+  AnyCable-Go becomes smarter with regards to performing Disconnect calls. In the default mode ("auto"), clients not relying on `#disconnect` / `#unsubscribed` callbacks do not trigger Disconnect RPC calls on connection close. Thus, if you use JWT identification and Hotwire signed streams with AnyCable-Go, you don't need to worry about the `--disable_disconnect` option to use AnyCable in the RPC-less mode.
+
+  The previous `--disable_disconnect` behaviour can be achieved by setting `--disconnect_mode=never`.
+
 ## 1.4.0-rc.1
 
 **NOTE:** Currently, only AnyCable-Go release candidate has been released. You can use Ruby gems v1.3.x with it.

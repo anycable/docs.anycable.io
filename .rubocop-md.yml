@@ -22,5 +22,4 @@ Standard/BlockSingleLineBraces:
   Enabled: false
 
 Layout/InitialIndentation:
-  Exclude:
-    - docs/release_notes.md
+  Enabled: false
