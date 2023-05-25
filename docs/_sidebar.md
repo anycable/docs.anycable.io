@@ -50,6 +50,7 @@
   * [Heroku](/deployment/heroku.md)
   * [Fly.io](/deployment/fly.md)
   * [Render](/deployment/render.md)
+  * <a rel="noopener" href="https://hatchbox.relationkit.io/articles/12-does-hatchbox-support-anycable" target="_blank">Hatchbox 🔗</a>
   * [Docker](/deployment/docker.md)
   * [Kubernetes](/deployment/kubernetes.md)
   * [Capistrano](/deployment/capistrano.md)
