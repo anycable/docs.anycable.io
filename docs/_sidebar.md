@@ -39,6 +39,7 @@
   * [Speedy Hotwire & Cable Ready](/anycable-go/signed_streams.md)
   * [Embedded NATS](/anycable-go/embedded_nats.md)
   * [Using as a Library](/anycable-go/library.md)
+  * [Telemetry](/anycable-go/telemetry.md)
 * AnyCable-Go <img class='pro-badge' src='/assets/pro.svg' alt='pro' />
   * [Going PRO](/pro.md)
   * [Apollo GraphQL](/anycable-go/apollo.md)
