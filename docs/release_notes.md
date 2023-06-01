@@ -4,6 +4,10 @@ This page contains combined release notes for major and minor releases of all An
 
 ## Unreleased
 
+## 1.4.0-rc.2
+
+**NOTE:** Use AnyCable-Go v1.4.0-rc.2 and Ruby gems v1.4.0.rc.1 with it (gems v1.3.x can also be used but w/o some new features).
+
 ### Features
 
 - **Redis X** broadcasting adapter.
