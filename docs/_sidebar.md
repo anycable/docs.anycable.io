@@ -11,7 +11,7 @@
   * [Release Notes](/release_notes.md)
 * Guides
   * [Using with Rails](/rails/getting_started.md)
-  * [Using with Hotwire](/guides/hotwire.md)
+  * [Using with Hotwire <img class='pro-badge' src='/assets/new.svg' alt='new' />](/guides/hotwire.md)
   * [Using with Ruby](/ruby/non_rails.md)
 * Ruby/Rails
   * [CLI](/ruby/cli.md)
@@ -39,7 +39,7 @@
   * [Speedy Hotwire & Cable Ready](/anycable-go/signed_streams.md)
   * [Embedded NATS](/anycable-go/embedded_nats.md)
   * [Using as a Library](/anycable-go/library.md)
-  * [Telemetry](/anycable-go/telemetry.md)
+  * [Telemetry <img class='pro-badge' src='/assets/new.svg' alt='new' />](/anycable-go/telemetry.md)
 * AnyCable-Go <img class='pro-badge' src='/assets/pro.svg' alt='pro' />
   * [Going PRO](/pro.md)
   * [Apollo GraphQL](/anycable-go/apollo.md)
