@@ -32,11 +32,11 @@ AnyCable uses [Action Cable protocol](misc/action_cable_protocol.md), so you can
 
 ## Latest updates 🆕
 
+- **2023-06-28**: [Long polling support](./anycable-go/long-polling.md)
+
 - **2023-06-09**: [Using AnyCable with Hotwire applications (incl. non-Ruby apps)](./guides/hotwire.md)
 
-- **2023-04-18**: [Action Cable extended protocol](./misc/action_cable_protocol.md#action-cable-extended-protocol)
-
-- **2023-04-18**: [Broker (streams history)](./anycable-go/broker.md)
+- **2023-04-18**: [Streams history](./anycable-go/broker.md)
 
 - **2023-02-28**: [Adaptive concurrency support](./anycable-go/configuration.md#adaptive-concurrency)
 

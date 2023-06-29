@@ -44,6 +44,7 @@
   * [Going PRO](/pro.md)
   * [Apollo GraphQL](/anycable-go/apollo.md)
   * [Binary formats](/anycable-go/binary_formats.md)
+  * [Long polling](/anycable-go/long_polling.md)
 * AnyCable Client
   * <a rel="noopener" href="https://github.com/anycable/anycable-client" target="_blank">JS/TS client 🔗</a>
 * Deployment
