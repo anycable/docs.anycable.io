@@ -4,6 +4,16 @@ This page contains combined release notes for major and minor releases of all An
 
 ## Unreleased
 
+## 1.4.0-rc.3
+
+### Features
+
+- **RPC over HTTP**.
+
+  AnyCable now supports RPC over HTTP communication as an alternative to gRPC one. This allows you to embed AnyCable RPC part into your web server (e.g., Puma) without requiring a separate process or port. This is especially useful for Heroku deployments.
+
+  See [documentation](./ruby/http_rpc.md) for details.
+
 ## 1.4.0-rc.2
 
 **NOTE:** Use AnyCable-Go v1.4.0-rc.2 and Ruby gems v1.4.0.rc.1 with it (gems v1.3.x can also be used but w/o some new features).

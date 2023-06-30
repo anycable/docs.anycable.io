@@ -32,6 +32,8 @@ AnyCable uses [Action Cable protocol](misc/action_cable_protocol.md), so you can
 
 ## Latest updates 🆕
 
+- **2023-06-30**: [RPC over HTTP](./ruby/http_rpc.md)
+
 - **2023-06-28**: [Long polling support](./anycable-go/long-polling.md)
 
 - **2023-06-09**: [Using AnyCable with Hotwire applications (incl. non-Ruby apps)](./guides/hotwire.md)

@@ -11,11 +11,11 @@ AnyCable **WebSocket server** (WS) is responsible for handling clients, or socke
 - subscriptions management
 - broadcasting messages to clients
 
-WebSocket server should include gRPC client built from AnyCable [`rpc.proto`](misc/rpc_proto.md).
+WebSocket server should include gRPC client built from AnyCable [`rpc.proto`](misc/rpc_proto.md) or a compatible HTTP implementation (for [RPC over HTTP](../ruby/http_rpc.md)).
 
-**RPC server** is a connector between the Ruby application (e.g. Rails) and WebSocket server. It’s an instance of your application with a [gRPC](https://grpc.io) endpoint which implements `rpc.proto`.
+**RPC server** is a connector between the Ruby application (e.g. Rails) and WebSocket server. It’s an instance of your application with a [gRPC](https://grpc.io) endpoint which implements `rpc.proto`. This server is a part of the [`anycable` CLI](ruby/cli.md).
 
-This server is a part of the [`anycable` CLI](ruby/cli.md).
+**NOTE:** It's also possible to use an [HTTP RPC](../ruby/http_rpc.md), which can be embedded into your main web server (e.g. Puma). Thus, you can avoid running a separate RPC server process.
 
 The application publish broadcast messages to the WebSocket server (directly via HTTP or via some **queuing service**, see [broadcast adapters](/ruby/broadcast_adapters.md)). In case of running a WebSocket cluster (multiple nodes), there is also can be a **Pub/Sub service** responsible for re-transmitting broadcast messages between nodes. You can use [embedded NATS](/anycable-go/embedded_nats.md) as a pub/sub service to miminalize the number of infrastructure dependencies. See [Pub/Sub documentation](/anycable-go/pubsub.md) for other options.
 

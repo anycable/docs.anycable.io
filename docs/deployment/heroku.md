@@ -1,8 +1,16 @@
 # Heroku Deployment
 
-## Setting up a pipeline
+## Simplified (with HTTP RPC)
 
-Deploying applications using AnyCable on Heroku is a little bit tricky due to the following limitations:
+Since v1.4, AnyCable supports [RPC over HTTP](./ruby/http_rpc.md) which allows us to use a single Heroku application for both regular and AnyCable RPC HTTP requests.
+
+All you need is to deploy `anycable-go` as a separate Heroku application, configure it to use HTTP RPC and point it to your main application.
+
+🚧 _Documentation is in progress_ 🚧
+
+## Full mode (with gRPC)
+
+Deploying applications using AnyCable with gRPC on Heroku is a little bit tricky due to the following limitations:
 
 - **Missing HTTP/2 support.** AnyCable relies on HTTP/2 ('cause it uses [gRPC](https://grpc.io)).
 - **The only `web` service.** It is not possible to have two HTTP services within one application (only `web` service is open the world).
@@ -195,7 +203,9 @@ And set `"CABLE_ADAPTER": "redis"` (or any other built-in adapter, e.g. `"CABLE_
 
 ## Choosing the right formation
 
-How do to choose the right dyno type and the number of AnyCable dynos? Since we run both RPC and WebSocket servers within the same dyno, we need to think about the resources usage carefully.
+How do to choose the right dyno type and the number of AnyCable dynos? Let's consider the full mode (with gRPC server).
+
+Since we run both RPC and WebSocket servers within the same dyno, we need to think about the resources usage carefully.
 
 The following formula could be used to estimate the necessary formation configuration:
 
@@ -223,6 +233,8 @@ Thus, the theoretical number for required 1X dynos is 3.
 For 2X dynos it’s just 1 (the formula above gives 0.56).
 
 We recommend to analyze the application size and try to reduce it (e.g., drop unused gems, disable parts of the application for the AnyCable process) in order to leave more RAM for WebSocket connections.
+
+For HTTP RPC mode, the formula is the same, but with $R=0$.
 
 ### Preboot and load balancing
 
