@@ -16,6 +16,7 @@
 * Ruby/Rails
   * [CLI](/ruby/cli.md)
   * [Configuration](/ruby/configuration.md)
+  * [HTTP RPC <img class='pro-badge' src='/assets/new.svg' alt='new' />](/ruby/http_rpc.md)
   * [Authentication](/rails/authentication.md)
   * [Channels State](/rails/channels_state.md)
   * [gRPC Middlewares](/ruby/middlewares.md)
