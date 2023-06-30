@@ -120,12 +120,12 @@ The `actioncable-v1-ext-json` protocol adds new message types and extends the ex
 
 ### New command: `history`
 
-The new command type is added, `history`. It is used by the client to request historical messages for the channel. It MUST contain the `identifier`, `type` ("history"), and `history` fields, where `history` contains the _history request_ object:
+The new command type is added, `history`. It is used by the client to request historical messages for the channel. It MUST contain the `identifier`, `command` ("history"), and `history` fields, where `history` contains the _history request_ object:
 
 ```js
 {
   "identifier": "{\"channel\":\"ChatChannel\",\"id\":42}",
-  "type": "history",
+  "command": "history",
   "history": {
     "since": 1681828329,
     "streams": {
