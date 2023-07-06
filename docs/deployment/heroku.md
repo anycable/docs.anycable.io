@@ -2,11 +2,39 @@
 
 ## Simplified (with HTTP RPC)
 
-Since v1.4, AnyCable supports [RPC over HTTP](./ruby/http_rpc.md) which allows us to use a single Heroku application for both regular and AnyCable RPC HTTP requests.
+Since v1.4, AnyCable supports [RPC over HTTP](../ruby/http_rpc.md) which allows us to use a single Heroku application for both regular and AnyCable RPC HTTP requests.
 
 All you need is to deploy `anycable-go` as a separate Heroku application, configure it to use HTTP RPC and point it to your main application.
 
-🚧 _Documentation is in progress_ 🚧
+> See the [demo](https://github.com/anycable/anycable_rails_demo/pull/32) of preparing the app for a simplified Heroku deployment.
+
+### Deploying AnyCable-Go
+
+Deploy AnyCable-Go by simply cliking the button below:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/anycable/anycable-go)
+
+**NOTE:** To recreate the button-deployed application later, you must create [`heroku.yml`](https://github.com/anycable/anycable-go/blob/master/heroku.yml) and a [Dockerfile](https://github.com/anycable/anycable-go/blob/master/.docker/Dockerfile.heroku) and put them into your repository.
+
+Fill the required information:
+
+- `ANYCABLE_RPC_HOST`: the URL of your web application containing the mount path of the AnyCable HTTP RPC server (e.g., `https://my-app.herokuapp.com/_anycable`).
+
+- `ANYCABLE_HTTP_RPC_SECRET`: A secret token to authenticate HTTP RPC requests.
+
+Make sure to set the same values in your web application configuration (`http_rpc_mount_path: "/_anycable"` in `config/anycable.yml` and the `ANYCABLE_HTTP_RPC_SECRET` env var).
+
+We recommend enabling [Dyno Metadata](https://devcenter.heroku.com/articles/dyno-metadata) to activate the [Heroku configuration preset](../anycable-go/configuration.md#presets). Otherwise, don't forget to set `ANYCABLE_HOST=0.0.0.0` in the application configuration.
+
+Other configuration parameters depend on the features you use.
+
+### Configuring web application
+
+At the web application (Rails) side, you must also configure:
+
+- `config.action_cable.url`: the URL of your AnyCable-Go application (e.g., `wss://anycable-go.herokuapp.com/cable`).
+
+- `config.session_store :cookie_store, key: "_<my-app>_sid", domain: :all` to share the session between the web and AnyCable-Go applications. **NOTE:** Sharing cookies across domains doesn't work with `*.herokuapp.com` domains; you must use custom domains (or put a CDN in front of your applications to server both from the same hostname).
 
 ## Full mode (with gRPC)
 

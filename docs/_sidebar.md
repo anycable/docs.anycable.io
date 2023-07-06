@@ -12,6 +12,7 @@
 * Guides
   * [Using with Rails](/rails/getting_started.md)
   * [Using with Hotwire <img class='pro-badge' src='/assets/new.svg' alt='new' />](/guides/hotwire.md)
+  * [Reliable streams <img class='pro-badge' src='/assets/new.svg' alt='new' />](/anycable-go/reliable_streams.md)
   * [Using with Ruby](/ruby/non_rails.md)
 * Ruby/Rails
   * [CLI](/ruby/cli.md)
@@ -30,7 +31,7 @@
 * AnyCable-Go
   * [Getting Started](/anycable-go/getting_started.md)
   * [Configuration](/anycable-go/configuration.md)
-  * [Streams history <img class='pro-badge' src='/assets/new.svg' alt='new' />](/anycable-go/broker.md)
+  * [Broker deep dive <img class='pro-badge' src='/assets/new.svg' alt='new' />](/anycable-go/broker.md)
   * [Pub/sub (node-node) <img class='pro-badge' src='/assets/new.svg' alt='new' />](/anycable-go/pubsub.md)
   * [Instrumentation](/anycable-go/instrumentation.md)
   * [Health Checking](/anycable-go/health_checking.md)
