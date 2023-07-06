@@ -10,7 +10,7 @@ All you need is to deploy `anycable-go` as a separate Heroku application, config
 
 ### Deploying AnyCable-Go
 
-Deploy AnyCable-Go by simply cliking the button below:
+Deploy AnyCable-Go by simply clicking the button below:
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/anycable/anycable-go)
 
@@ -27,6 +27,10 @@ Make sure to set the same values in your web application configuration (`http_rp
 We recommend enabling [Dyno Metadata](https://devcenter.heroku.com/articles/dyno-metadata) to activate the [Heroku configuration preset](../anycable-go/configuration.md#presets). Otherwise, don't forget to set `ANYCABLE_HOST=0.0.0.0` in the application configuration.
 
 Other configuration parameters depend on the features you use.
+
+### Deploying AnyCable-Go PRO
+
+Heroku supports only public Docker registries when deploying using the `heroku.yml` config. To deploy AnyCable-Go PRO, you can use Heroku _Container Registry and Runtime_: pull an AnyCable-Go PRO image from our private registry, push it to your Heroku registry and deploy. See [the official documentation](https://devcenter.heroku.com/articles/container-registry-and-runtime).
 
 ### Configuring web application
 

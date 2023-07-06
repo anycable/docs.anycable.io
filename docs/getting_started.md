@@ -16,7 +16,8 @@ AnyCable could be used with the existing Action Cable clients (such as [Rails Ja
 
 You can use AnyCable with:
 
-- Action Cable (Rails) apps (see [Using with Rails](rails/getting_started.md))
+- Action Cable (Rails) applications (see [Using with Rails](rails/getting_started.md))
+- Hotwire applications (see [Using with Hotwire](guides/hotwire.md))
 - [Lite Cable](https://github.com/palkan/litecable) for  _plain_ Ruby projects (see [Using with Ruby](ruby/non_rails.md))
 - your own [AnyCable-compatible framework](ruby/non_rails.md).
 

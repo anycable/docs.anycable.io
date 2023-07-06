@@ -49,3 +49,17 @@ This results in a slightly different behaviour comparing to persistent, long-liv
 For example, if you use an Active Record object as an identifier (e.g., `user`), it's _reloaded_ in every RPC action it's used.
 
 To use arbitrary Ruby objects as identifiers, you must add GlobalID support for them (see [AnyCable setup demo](https://github.com/anycable/anycable_rails_demo/pull/2)).
+
+## WebSocket servers
+
+Since AnyCable uses a well-defined protocol for communication between a WebSocket server and a primary web application (e.g., Rails), any WebSocket server that implements AnyCable [gRPC](https://grpc.io) or HTTP API can be used.
+
+Since v1.0 the only officially supported (i.e., recommended for production usage) server is [`anycable-go`](anycable-go/getting_started.md) (written in Golang).
+
+For older versions you can still use [`erlycable`](https://github.com/anycable/erlycable) (Erlang).
+
+We also have a server written in Ruby–[AnyCable Rack Server](https://github.com/anycable/anycable-rack-server)–which could be used for local experiments to emulate the same architecture as with _real_ AnyCable server.
+
+> See [the demo](https://github.com/anycable/anycable_rails_demo/pull/1) of how you can use anycable-rack-server to run system tests.
+
+If you're not happy with the above implementations, you can build your own [AnyCable-compatible server](misc/how_to_anycable_server.md).
