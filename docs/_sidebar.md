@@ -22,6 +22,7 @@
   * [Apollo GraphQL](/anycable-go/apollo.md)
   * [Binary formats](/anycable-go/binary_formats.md)
   * [Long polling](/anycable-go/long_polling.md)
+  * [OCPP support](/anycable-go/ocpp.md)
 
 * Deployment
   * [Heroku](/deployment/heroku.md)
