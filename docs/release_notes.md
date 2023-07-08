@@ -2,11 +2,17 @@
 
 This page contains combined release notes for major and minor releases of all AnyCable libraries.
 
-## Unreleased
+## 1.4.0
 
-## 1.4.0-rc.3
+### Highlights
 
-### Features
+- **Reliable streams and resumable sessions**.
+
+  AnyCable-Go improves data consistency of your real-time applications by allowing clients to request the missed messages on re-connection and restore their state without re-authentication and re-subscription to channels.
+
+  The features require using the [extended version of Action Cable protocol](./misc/action_cable_protocol.md#action-cable-extended-protocol), which is supported by the [AnyCable JS client](https://github.com/anycable/anycable-client) out-of-the-box—no application level changes required.
+
+  See [documentation](./anycable-go/reliable_streams.md) for details.
 
 - **RPC over HTTP**.
 
@@ -14,15 +20,11 @@ This page contains combined release notes for major and minor releases of all An
 
   See [documentation](./ruby/http_rpc.md) for details.
 
-## 1.4.0-rc.2
-
-**NOTE:** Use AnyCable-Go v1.4.0-rc.2 and Ruby gems v1.4.0.rc.1 with it (gems v1.3.x can also be used but w/o some new features).
-
 ### Features
 
 - **Redis X** broadcasting adapter.
 
-  Redis X is a next-gen, broker-compatible adapter using Redis Streams instead of Publish/Subscribe to deliver broadcasting messages from your application to WebSocket servers. It also provides better delivery guarantees when used with a broker.
+  Redis X is a new broadcasting adapter that use Redis Streams instead of Publish/Subscribe to deliver broadcasting messages from your application to WebSocket servers. This is another step towards improved consistency: no message broadcasted from your application will be lost, even if WebSocket servers are temporarily unavailable. This is especially useful in combination with reliable streams.
 
   See [documentation](./ruby/broadcast_adapters.md#redis-x) for details.
 
@@ -55,34 +57,6 @@ This page contains combined release notes for major and minor releases of all An
   AnyCable-Go becomes smarter with regards to performing Disconnect calls. In the default mode ("auto"), clients not relying on `#disconnect` / `#unsubscribed` callbacks do not trigger Disconnect RPC calls on connection close. Thus, if you use JWT identification and Hotwire signed streams with AnyCable-Go, you don't need to worry about the `--disable_disconnect` option to use AnyCable in the RPC-less mode.
 
   The previous `--disable_disconnect` behaviour can be achieved by setting `--disconnect_mode=never`.
-
-## 1.4.0-rc.1
-
-**NOTE:** Currently, only AnyCable-Go release candidate has been released. You can use Ruby gems v1.3.x with it.
-
-### Features
-
-- **Improved consistency**.
-
-  AnyCable-Go provides a new `history` command to catch-up with missed messages. This is a part of the [Action Cable Extended protocol](./misc/action_cable_protocol.md#action-cable-extended-protocol).
-
-  To enable this feature, you must configure a _broker_ instance.
-
-  See [documentation](./anycable-go/broker.md) for details.
-
-- **Session restoration** (fast-track handshake).
-
-  AnyCable-Go provides an ability to restore the connection state by specifying the _session ID_ during the re-connection. When connection is restored successfully, you don't need to authenticate it again and re-subscribe to channels.
-
-  This is also a part of the [Action Cable Extended protocol](./misc/action_cable_protocol.md#action-cable-extended-protocol).
-
-### Changes
-
-- New publishing/broadcasting architecture.
-
-  AnyCable now separates the _publisher_ and _pubsub_ components. The first one is used to consume broadcasts from the application; the second one is used to distribute messages across the AnyCable cluster.
-
-  See [pub/sub documentation](./anycable-go/pubsub.md).
 
 ## 1.3.0
 
