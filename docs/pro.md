@@ -27,9 +27,11 @@ incoming messages, you might want to fallback to the _actor-per-connection_ mode
 ## More features
 
 - [Adaptive RPC concurrency](anycable-go/configuration.md#adaptive-concurrency)
+- [Multi-node streams history](anycable-go/reliable_streams.md#redis)
 - [Binary messaging formats](anycable-go/binary_formats.md)
 - [Apollo GraphQL protocol support](anycable-go/apollo.md)
 - [Long polling support](anycable-go/long_polling.md)
+- [OCCP support](anycable-go/occp.md)
 
 ## Installation
 
