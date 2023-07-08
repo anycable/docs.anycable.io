@@ -32,7 +32,7 @@ This page contains combined release notes for major and minor releases of all An
 
 - Broadcasted messages are now delivered in the order they were received by the server.
 
-  Previously, we used an executor pool internally to deliver broadcasted messages concurrently (to reduce the latency). That led to underterministic order of messages within a single stream delivered in a short period of time. Now, we preserve the order of messages within a stream—the delivered as they were accepted by the server.
+  Previously, we used an executor pool internally to deliver broadcasted messages concurrently (to reduce the latency). That led to nonderterministic order of messages within a single stream delivered in a short period of time. Now, we preserve the order of messages within a stream—the delivered as they were accepted by the server.
 
   That means, with a single AnyCable-Go server, the following snippet will result in clients receiving the messages in the same order they were broadcasted:
 
