@@ -45,7 +45,7 @@ You need to provide the following configuration parameters:
 
 Currently, you also need to specify the version as well: `HEROKU_ANYCABLE_GO_VERSION=1.3.0`.
 
-Make sure you're not using cached `anycable-go` binary by purging the Heroku cache: `heroku builds:cache:purge -a <your-app-name>`.
+Make sure you're not using cached `anycable-go` binary by purging the Heroku cache: `heroku builds:cache:purge -a <your-app-name>`. See [documentation](https://help.heroku.com/18PI5RSY/how-do-i-clear-the-build-cache) for more details.
 
 ### Using Docker images
 
