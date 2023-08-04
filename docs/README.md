@@ -34,6 +34,8 @@ Besides from being Action Cable-compatible, AnyCable comes with an exclusive set
 
 ## Latest updates 🆕
 
+- **2023-08-04**: [Slow drain mode for disconnecting clients on shutdown <img class='pro-badge' src='/assets/pro.svg' alt='pro' />](./anycable-go/configuration.md#slow-drain-mode)
+
 - **2023-07-05**: [Reliable streams](./anycable-go/reliable_streams.md)
 
 - **2023-06-30**: [RPC over HTTP](./ruby/http_rpc.md)
