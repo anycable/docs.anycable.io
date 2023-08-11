@@ -34,6 +34,8 @@ Besides from being Action Cable-compatible, AnyCable comes with an exclusive set
 
 ## Latest updates 🆕
 
+- **2023-08-09**: `pong` command is added to the [extended Action Cable protocol](./misc/action_cable_protocol.md#action-cable-extended-protocol) and is supported by AnyCable-Go 1.4.3+.
+
 - **2023-08-04**: [Slow drain mode for disconnecting clients on shutdown <img class='pro-badge' src='/assets/pro.svg' alt='pro' />](./anycable-go/configuration.md#slow-drain-mode)
 
 - **2023-07-05**: [Reliable streams](./anycable-go/reliable_streams.md)

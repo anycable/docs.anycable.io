@@ -226,3 +226,7 @@ If the server's attempt to restore the session from the _sid_ succeeds, it MUST 
 The `restored` flag indicates whether the session state has been restored. **NOTE:** In this case, no `connect` method is invoked at the Action Cable side.
 
 The optional `restored_ids` field contains the list of channel identifiers that has been re-subscribed automatically at the server side. The client MUST NOT try to resubscribe to the specified channels and consider them connected. It's recommended to perform `history` requests for all the restored channels to catch up with the messages.
+
+### New command: `pong` <img class='pro-badge' src='/assets/new.svg' alt='new' />
+
+The `pong` command MAY be sent in response to the `ping` message if the server requires pongs. It could be used to improve broken connections detection.
