@@ -5,9 +5,9 @@
 <img class="is-light" alt="AnyCable arhictecture" src="/assets/images/scheme_new.png">
 <img class="is-dark" alt="AnyCable arhictecture" src="/assets/images/scheme_invert_new.png">
 
-AnyCable **WebSocket server** (WS) is responsible for handling clients, or sockets. That includes:
+AnyCable **real-time server** (WS, or WebSocket, since it's a primary transport) is responsible for handling clients, or connections. That includes:
 
-- low-level connections (sockets) management
+- low-level connections management
 - subscriptions management
 - broadcasting messages to clients
 
@@ -54,7 +54,7 @@ To use arbitrary Ruby objects as identifiers, you must add GlobalID support for 
 
 Since AnyCable uses a well-defined protocol for communication between a WebSocket server and a primary web application (e.g., Rails), any WebSocket server that implements AnyCable [gRPC](https://grpc.io) or HTTP API can be used.
 
-Since v1.0 the only officially supported (i.e., recommended for production usage) server is [`anycable-go`](anycable-go/getting_started.md) (written in Golang).
+Since v1.0 the only officially supported (i.e., recommended for production usage) server is [AnyCable-Go](anycable-go/getting_started.md) (written in Golang). AnyCable-Go also supports alternative transports such as Server-Sent Events and long-polling.
 
 For older versions you can still use [`erlycable`](https://github.com/anycable/erlycable) (Erlang).
 

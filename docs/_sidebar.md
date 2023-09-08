@@ -60,6 +60,7 @@
   * AnyCable-Go
     * [Getting started](/anycable-go/getting_started.md)
     * [Configuration](/anycable-go/configuration.md)
+    * [Server-sent events <img class='pro-badge' src='/assets/new.svg' alt='new' />](/anycable-go/sse.md)
     * [Broker deep dive <img class='pro-badge' src='/assets/new.svg' alt='new' />](/anycable-go/broker.md)
     * [Pub/sub (node-node) <img class='pro-badge' src='/assets/new.svg' alt='new' />](/anycable-go/pubsub.md)
     * [Instrumentation](/anycable-go/instrumentation.md)

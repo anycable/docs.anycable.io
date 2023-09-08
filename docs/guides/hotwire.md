@@ -131,6 +131,20 @@ The complete setup looks as follows:
 
 \* It's possible to use unsigned stream names, too. For that, you need to specify the additional option when running AnyCable-Go: `--turbo_rails_cleartext`. This way, you don't need to implement stream signing and rely only on JWT for authentication.
 
+## Turbo Streams over Server-Sent Events
+
+AnyCable-Go supports [Server-Sent Events](../anycable-go/sse.md) (SSE) as a transport protocol. This means that you can use Turbo Streams with AnyCable-Go without WebSockets and Action Cable (or AnyCable) client libraries—just with the help of the browser native `EventSource` API.
+
+To create a Turbo Stream subscription over SSE, you must provide an URL to AnyCable SSE endpoint with the signed stream name as a query parameter when adding a `<turbo-stream-source>` element on the page:
+
+```html
+<turbo-stream-source src="https://cable.example.com/events?turbo_signed_stream_name=<signed-name>" />
+```
+
+That's it! Now you can broadcast Turbo Stream updates from your backend. Moreover, AnyCable supports the `Last-Event-ID` feature of EventSource, which means your **connection is reliable** and you won't miss any updates even if network is unstable. Don't forget to enable the [reliable streams](../anycable-go/reliable_streams.md) feature.
+
+**NOTE:** If you use unsigned streams (`--turbo_rails_cleartext`), you should pass the plain stream name as a query parameter, e.g. `?turbo_stream_name=chat_42`.
+
 ## RPC-less setup in detail
 
 > 📖 See also [JWT identification and “hot streams”](https://anycable.io/blog/jwt-identification-and-hot-streams/).
