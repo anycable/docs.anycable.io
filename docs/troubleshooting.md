@@ -122,6 +122,8 @@ Or on per-gem basis using [this hack](https://github.com/grpc/grpc/issues/21514#
 
 See the [example Dockerfile](https://github.com/anycable/anycable/blob/master/etc/Dockerfile.alpine).
 
+Another option to consider is switching to `grpc_kit` gem. See [documentation](./ruby/configuration.md#alternative-grpc-implementations) for more details.
+
 Related issues: [#70](https://github.com/anycable/anycable-rails/issues/70), [#47](https://github.com/anycable/anycable/issues/47).
 
 ## Client connection fails with `ActionController::RoutingError (No route matches [GET] "/cable")`
