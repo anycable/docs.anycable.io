@@ -12,11 +12,11 @@ Pro version uses a different memory model under the hood, which gives you yet an
 
 Here is the results of running [websocket-bench][] `broadcast` and `connect` benchmarks and measuring RAM used:
 
-version | broadcast 5k | connect 10k |  connect 15k
----|----|---|---
-1.3.0-pro               |  142MB | 280MB | 351MB
-1.3.0-pro (w/o poll)\*  |  207MB | 343MB | 480MB
-1.3.0                   |  217MB | 430MB | 613MB
+| version | broadcast 5k | connect 10k |  connect 15k |
+|---|----|---|---|
+| 1.3.0-pro               |  142MB | 280MB | 351MB |
+| 1.3.0-pro (w/o poll)\*  |  207MB | 343MB | 480MB |
+| 1.3.0                   |  217MB | 430MB | 613MB |
 
 \* AnyCable-Go Pro uses epoll/kqueue to react on incoming messages by default.
 In most cases, that should work the same way as with non-Pro version; however, if you have a really high rate of
