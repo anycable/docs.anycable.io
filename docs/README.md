@@ -34,6 +34,8 @@ Besides from being Action Cable-compatible, AnyCable comes with an exclusive set
 
 ## Latest updates 🆕
 
+- **2023-10-13**: [Batch broadcasts](./ruby/broadcast_adapters.md#broadcast-options) and [broadcasting to others](./rails/getting_started.md#action-cable-extensions).
+
 - **2023-09-07**: [Server-sent events](./anycable-go/sse.md) suppport is added to AnyCable-Go 1.4.4+.
 
 - **2023-08-09**: `pong` command is added to the [extended Action Cable protocol](./misc/action_cable_protocol.md#action-cable-extended-protocol) and is supported by AnyCable-Go 1.4.3+.
