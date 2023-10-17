@@ -2,8 +2,10 @@
 
 ## Overview
 
-<img class="is-light" alt="AnyCable arhictecture" src="/assets/images/scheme_new.png">
-<img class="is-dark" alt="AnyCable arhictecture" src="/assets/images/scheme_invert_new.png">
+<div data-view-transition="chart">
+  <img class="is-light" alt="AnyCable arhictecture" src="/assets/images/scheme_new.png">
+  <img class="is-dark" alt="AnyCable arhictecture" src="/assets/images/scheme_invert_new.png">
+</div>
 
 AnyCable **real-time server** (WS, or WebSocket, since it's a primary transport) is responsible for handling clients, or connections. That includes:
 

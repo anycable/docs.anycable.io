@@ -605,3 +605,40 @@ h4:has(+.pro-badge-header):after {
   /* color: var(--theme-color-dark); */
   font-weight: 600;
 }
+
+@keyframes full-slide-right {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+
+@keyframes full-slide-left {
+  from { transform: translateX(100%); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+
+::view-transition-old(section) {
+  animation: 700ms ease-in 0ms both full-slide-right, 500ms ease-out 0ms both fade-out;
+}
+
+::view-transition-new(section) {
+  animation: 500ms ease-in 0ms both fade-in;
+}
+
+section.content {
+  view-transition-name: section;
+}
+
+@media (prefers-reduced-motion) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

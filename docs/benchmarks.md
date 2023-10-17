@@ -12,7 +12,7 @@ Broadcasting round-trip time benchmark (based on [Hashrocket's bench](https://gi
 
 The results of this benchmark could be seen below.
 
-<div class="chart-container">
+<div class="chart-container" data-view-transition="chart">
   <img class="is-light" src="/assets/images/rtt_bench.png" alt="RTT" width="80%">
   <img class="is-dark" src="/assets/images/rtt_bench_invert.png" alt="RTT" width="80%">
 </div>

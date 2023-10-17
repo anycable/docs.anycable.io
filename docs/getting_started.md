@@ -3,7 +3,7 @@
 
 AnyCable acts like a bridge between _logic-less_ real-time server and _Action Cable-like_ Ruby framework (i.e. framework which support [Action Cable protocol](misc/action_cable_protocol.md)). AnyCable is a multi-transport server supporting WebSockets, [Server-Sent Events](/anycable-go/sse.md) and [long-polling](/anycable-go/long_polling.md).
 
-<div class="chart-container">
+<div class="chart-container" data-view-transition="chart">
   <img class="is-light" src="/assets/images/anycable.svg" alt="AnyCable diagram" width="40%">
   <img class="is-dark" src="/assets/images/anycable_dark.svg" alt="AnyCable diagram" width="40%">
 </div>

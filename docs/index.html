@@ -19,6 +19,7 @@
   <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
   <meta name="keywords" content="rails, actioncable, websocket, anycable, grpc, ruby, erlang, golang" />
   <meta name="theme-color" content="#000000" />
+  <meta name="view-transition" content="same-origin" />
   <link rel="stylesheet" href="/assets/vue.min.css">
   <link rel="stylesheet" href="/assets/styles.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"/>
@@ -181,11 +182,29 @@
               clink.href = "https://docs.anycable.io" + vm.route.path
             }
           });
+        },
+        function(hook, vm) {
+          if (!TurboViewTransitions.shouldPerformTransition()) return;
+
+          hook.afterEach(function(html, next) {
+            let newEl = document.createElement("div");
+            newEl.innerHTML = html;
+
+            let oldEl = document.querySelector("section.content")
+
+            TurboViewTransitions.performTransition(oldEl, newEl, function() {
+              next(newEl.innerHTML);
+            },
+            {
+              transitionAttr: 'data-view-transition',
+              activeAttr: 'data-active-view-transition'
+            });
+          })
         }
       ]
     }
   </script>
-  <script src="/assets/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
   <script src="/assets/docsify-search.js"></script>
   <script src="//unpkg.com/docsify-namespaced@0.1.1/dist/docsify-namespaced.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-katex@1.4.4/dist/docsify-katex.js"></script>
@@ -194,5 +213,6 @@
   <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
   <script src="/assets/prism-ruby.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
+  <script src="/assets/turbo-view-transitions.js"></script>
 </body>
 </html>
