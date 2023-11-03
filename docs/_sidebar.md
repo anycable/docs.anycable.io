@@ -10,10 +10,10 @@
 
 * Guides
   * [Using with Rails](/rails/getting_started.md)
-  * [Using with Hotwire <img class='pro-badge' src='/assets/new.svg' alt='new' />](/guides/hotwire.md)
-  * [Reliable streams <img class='pro-badge' src='/assets/new.svg' alt='new' />](/anycable-go/reliable_streams.md)
+  * [Using with Node.js (serverless)](/guides/serverless.md)
+  * [Using with Hotwire](/guides/hotwire.md)
+  * [Reliable streams](/anycable-go/reliable_streams.md)
   * [Using with Ruby](/ruby/non_rails.md)
-  * [Using with Stimulus Reflex](/rails/stimulus_reflex.md)
   * [JWT authentication](/anycable-go/jwt_identification.md)
 
 * AnyCable-Go <img class='pro-badge' src='/assets/pro.svg' alt='pro' />
@@ -46,7 +46,7 @@
   * Ruby/Rails
     * [CLI](/ruby/cli.md)
     * [Configuration](/ruby/configuration.md)
-    * [HTTP RPC <img class='pro-badge' src='/assets/new.svg' alt='new' />](/ruby/http_rpc.md)
+    * [HTTP RPC](/ruby/http_rpc.md)
     * [Authentication](/rails/authentication.md)
     * [Channels state](/rails/channels_state.md)
     * [gRPC middlewares](/ruby/middlewares.md)
@@ -60,9 +60,9 @@
   * AnyCable-Go
     * [Getting started](/anycable-go/getting_started.md)
     * [Configuration](/anycable-go/configuration.md)
-    * [Server-sent events <img class='pro-badge' src='/assets/new.svg' alt='new' />](/anycable-go/sse.md)
-    * [Broker deep dive <img class='pro-badge' src='/assets/new.svg' alt='new' />](/anycable-go/broker.md)
-    * [Pub/sub (node-node) <img class='pro-badge' src='/assets/new.svg' alt='new' />](/anycable-go/pubsub.md)
+    * [Server-sent events](/anycable-go/sse.md)
+    * [Broker deep dive](/anycable-go/broker.md)
+    * [Pub/sub (node-node)](/anycable-go/pubsub.md)
     * [Instrumentation](/anycable-go/instrumentation.md)
     * [Health checking](/anycable-go/health_checking.md)
     * [Tracing](/anycable-go/tracing.md)
@@ -70,7 +70,7 @@
     * [Signed streams (Hotwire / Cable Ready)](/anycable-go/signed_streams.md)
     * [Embedded NATS](/anycable-go/embedded_nats.md)
     * [Using as a library](/anycable-go/library.md)
-    * [Telemetry <img class='pro-badge' src='/assets/new.svg' alt='new' />](/anycable-go/telemetry.md)
+    * [Telemetry](/anycable-go/telemetry.md)
 
   * JavaScript
     * <a rel="noopener" href="https://github.com/anycable/anycable-client" target="_blank">AnyCable Client SDK 🔗</a>

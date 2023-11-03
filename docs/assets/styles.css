@@ -306,6 +306,10 @@ section.cover .cover-main {
   margin-bottom: 1rem;
 }
 
+.markdown-section li:first-child {
+  margin-top: 1rem;
+}
+
 .markdown-section li pre {
   padding: 1rem;
 }
