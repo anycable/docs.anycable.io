@@ -195,6 +195,21 @@ fly launch --image anycable/anycable-go:1 --generate-name --ha=false \
   --env ANYCABLE_RPC_HOST=https://<YOUR_JS_APP_HOSTNAME>/api/anycable
 ```
 
+## Running AnyCable-Go locally
+
+There are plenty of ways of installing `anycable-go` binary on your machine (see [../anycable-go/getting_started.md]). For your convinience, we also provide an NPM package that can be used to install and run `anycable-go`:
+
+```sh
+npm install --save-dev @anycable/anycable-go
+pnpm install --save-dev @anycable/anycable-go
+yarn add --dev @anycable/anycable-go
+
+# and run as follows
+npx anycable-go
+```
+
+**NOTE:** The version of the NPM package is the same as the version of the AnyCable-Go binary (which is downloaded automatically on the first run).
+
 [vercel-anycable-demo]: https://github.com/anycable/vercel-anycable-demo
 [Fly]: https://fly.io
 [anycable-serverless-js]: https://github.com/anycable/anycable-serverless-js
