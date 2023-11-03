@@ -12,10 +12,10 @@ Broadcasting round-trip time benchmark (based on [Hashrocket's bench](https://gi
 
 The results of this benchmark could be seen below.
 
-<div class="chart-container" data-view-transition="chart">
-  <img class="is-light" src="/assets/images/rtt_bench.png" alt="RTT" width="80%">
-  <img class="is-dark" src="/assets/images/rtt_bench_invert.png" alt="RTT" width="80%">
-</div>
+<picture>
+  <source srcset="/assets/images/rtt_bench_invert.png" media="(prefers-color-scheme: dark)">
+  <img class="chart-container" alt="RTT" src="/assets/images/rtt_bench.png" width="80%">
+</picture>
 
 ## Memory usage
 
@@ -23,10 +23,10 @@ Memory usage of AnyCable is significantly lower than of Action Cable.
 
 That's achieved by moving memory-intensive operations into (storing connection states and subscriptions maps, serializing data into a standalone WebSocket server.
 
-<div class="chart-container">
-  <img class="is-light" src="/assets/images/ram_bench.png" alt="Memory usage" width="80%">
-  <img class="is-dark" src="/assets/images/ram_bench_invert.png" alt="Memory usage" width="80%">
-</div>
+<picture>
+  <source srcset="/assets/images/ram_bench_invert.png" media="(prefers-color-scheme: dark)">
+  <img class="chart-container" alt="Memory usage" src="/assets/images/ram_bench.png" width="80%">
+</picture>
 
 ## CPU usage
 

@@ -74,6 +74,7 @@
 
   * JavaScript
     * <a rel="noopener" href="https://github.com/anycable/anycable-client" target="_blank">AnyCable Client SDK 🔗</a>
+    * <a rel="noopener" href="https://github.com/anycable/anycable-serverless-js" target="_blank">AnyCable Serverless 🔗</a>
 
 * Misc
   * [Action Cable protocols](/misc/action_cable_protocol.md)

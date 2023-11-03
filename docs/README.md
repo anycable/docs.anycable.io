@@ -2,10 +2,10 @@
 
 > Build lightning fast, reliable real-time applications with Ruby and Rails
 
-<img class="is-light" align="right" height="150" width="129"
-     title="AnyCable logo" class="home-logo" src="/assets/images/logo.svg">
-<img class="is-dark" align="right" height="150" width="129"
-     title="AnyCable logo" class="home-logo" src="/assets/images/logo_invert.svg">
+<picture>
+     <source srcset="/assets/images/logo_invert.svg" media="(prefers-color-scheme: dark)">
+     <img class="home-logo" align="right" height="150" width="129" title="AnyCable logo" src="/assets/images/logo.svg">
+</picture>
 
 AnyCable helps you build reliable and fast real-time features—notifications, chats, Hotwire frontends, and more—natively on Ruby on Rails without using 3rd-party services. Stay productive by writing clean, maintainable code in Ruby with the assurance that your application scales efficiently.
 
@@ -13,26 +13,18 @@ Save up to 10x on infrastructure compared to built-in Action Cable without sacri
 
 Besides from being Action Cable-compatible, AnyCable comes with an exclusive set of features, including [reliable streams](./anycable-go/reliable_streams.md), [JWT authentication](./anycable-go/jwt_identifications.md), etc.
 
-<br/>
-<a href="https://evilmartians.com/">
-<img class="is-light" src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" alt="Sponsored by Evil Martians" width="236" height="54">
-<img class="is-dark" src="https://evilmartians.com/badges/sponsored-by-evil-martians_v2.0_for-dark-bg.svg" alt="Sponsored by Evil Martians" width="236" height="54">
-</a>
-
 <!-- markdownlint-disable no-trailing-punctuation -->
-## Where to go from here?
-
-- [How it works?](architecture.md)
+## Getting started
 
 - [Using AnyCable with Rails](rails/getting_started.md)
 
+- [Using AnyCable with Hotwire applications](guides/hotwire.md)
+
 - [Using AnyCable with other Ruby frameworks](ruby/non_rails.md)
 
-- [🔥 Troubleshooting](troubleshooting.md)
-
-- [🆘 Commercial support](https://anycable.io/#custom-solutions)
-
 ## Latest updates 🆕
+
+- **2023-11-03**: [NATS JetStream broker](./anycable-go/reliable_streams.md#nats) support is added to AnyCable-Go v1.4.7+.
 
 - **2023-10-13**: [Batch broadcasts](./ruby/broadcast_adapters.md#broadcast-options) and [broadcasting to others](./rails/getting_started.md#action-cable-extensions).
 
@@ -44,16 +36,6 @@ Besides from being Action Cable-compatible, AnyCable comes with an exclusive set
 
 - **2023-07-05**: [Reliable streams](./anycable-go/reliable_streams.md)
 
-- **2023-06-30**: [RPC over HTTP](./ruby/http_rpc.md)
-
-- **2023-06-28**: [Long polling support <img class='pro-badge' src='/assets/pro.svg' alt='pro' />](./anycable-go/long-polling.md)
-
-- **2023-06-09**: [Using AnyCable with Hotwire applications (incl. non-Ruby apps)](./guides/hotwire.md)
-
-- **2023-02-28**: [Adaptive concurrency support](./anycable-go/configuration.md#adaptive-concurrency)
-
-- **2023-02-28**: [Embedded NATS](./anycable-go/embedded_nats.md)
-
 ## Resources
 
 - [Official Website](https://anycable.io)
@@ -61,20 +43,6 @@ Besides from being Action Cable-compatible, AnyCable comes with an exclusive set
 - [AnyCable Blog](https://anycable.io/blog)
 
 - 🎥 [AnyCasts screencasts](https://www.youtube.com/playlist?list=PLAgBW0XUpyOVFnpoS6FKDszd8WEvXzg-A)
-
-### Blog Posts
-
-- [AnyCable off Rails: connecting Twilio streams with Hanami](https://evilmartians.com/chronicles/anycable-goes-off-rails-connecting-twilio-streams-with-hanami)
-
-- [Scaling Rails web sockets in Kubernetes with AnyCable](https://vitobotta.com/2022/06/18/scaling-rails-web-sockets-in-kubernetes-with-anycable/)
-
-- [AnyCable Goes Pro: Fast WebSockets for Ruby, at scale](https://evilmartians.com/chronicles/anycable-goes-pro-fast-websockets-for-ruby-at-scale)
-
-- [AnyCable 1.0: Four years of real-time web with Ruby and Go](https://evilmartians.com/chronicles/anycable-1-0-four-years-of-real-time-web-with-ruby-and-go)
-
-- [AnyCable: Action Cable on steroids!](https://evilmartians.com/chronicles/anycable-actioncable-on-steroids)
-
-- [Connecting LiteCable to Hanami](http://gabrielmalakias.com.br/ruby/hanami/iot/2017/05/26/websockets-connecting-litecable-to-hanami.html) by [@GabrielMalakias](https://github.com/GabrielMalakias)
 
 ### Talks
 
@@ -84,6 +52,22 @@ Besides from being Action Cable-compatible, AnyCable comes with an exclusive set
 
 - [One cable to rule them all](https://noti.st/palkan/ALKDiC/anycable-one-cable-to-rule-them-all), RubyKaigi 2018
 
-## License
+## Acknowledgements
 
-Gems and libraries are available as open source under the terms of the MIT License.
+<br/>
+
+<div style="display:flex;flex-direction: row;gap:20px">
+<a href="https://evilmartians.com/">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://evilmartians.com/badges/sponsored-by-evil-martians_v2.0_for-dark-bg.svg">
+  <img alt="Evil Martians logo" src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" width="236" height="54">
+</picture>
+</a>
+
+<br/>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="/assets/fly-sponsored-landscape-dark.svg">
+  <img alt="Sponsored by Fly.io" src="/assets/fly-sponsored-landscape-light.svg" height="97" width="259">
+</picture>
+</div>
