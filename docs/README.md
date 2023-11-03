@@ -1,17 +1,17 @@
 # AnyCable
 
-> Real-time server for Rails, Node.js, and Hotwire applications that runs on your servers and scales.
+> A real-time server for Rails, Node.js, and Hotwire applications that runs on your servers and scales.
 
 <picture>
   <source srcset="/assets/images/logo_invert.svg" media="(prefers-color-scheme: dark)">
   <img class="home-logo" align="right" height="150" width="129" title="AnyCable logo" src="/assets/images/logo.svg">
 </picture>
 
-AnyCable helps you build reliable and fast real-time features—notifications, chats, Hotwire frontends, and more. Works with any backend, comes with seamless integrations for Ruby on Rails and serverless Node.js applications. Stay productive by writing clean, maintainable code in your language of choice with the assurance that your application scales efficiently.
+AnyCable helps you build reliable and fast real-time features—notifications, chats, Hotwire frontends, and more. It works with any backend and provides seamless integrations for Ruby on Rails and serverless Node.js applications. Stay productive by writing clean, maintainable code in your language of choice with the assurance that your application scales efficiently.
 
-Save up on infrastructure and PaaS bills without sacrificing productivity: a fast Go server handles the load, your application deals with business-logic. The [Pro version](./pro.md) offers even more benefits: an additional 40% reduced memory footprint, DX improvements, and priority support.
+Save up on infrastructure and PaaS bills without sacrificing productivity: a fast Go server handles the load, and your application deals with business logic. The [Pro version](./pro.md) offers even more benefits: an additional 40% reduced memory footprint, DX improvements, and priority support.
 
-Make your real-time comminication fast and [reliable](./anycable-go/reliable_streams.md) with AnyCable!
+Make your real-time communication fast and [reliable](./anycable-go/reliable_streams.md) with AnyCable!
 
 <!-- markdownlint-disable no-trailing-punctuation -->
 ## Getting started

@@ -1,6 +1,6 @@
 # Using AnyCable to power serverless Node.js applications
 
-AnyCable is a great companion for your serverless Node.js applications in need of real-time features. It can be used as a real-time server with no strings attached: no vendor lock-in, no microservices spaghetti, no unexpected PaaS bills. Keep your logic in one place (your JS application) and let AnyCable handle the low-level stuff.
+AnyCable is a great companion for your serverless Node.js applications needing real-time features. It can be used as a real-time server with no strings attached: no vendor lock-in, no microservices spaghetti, no unexpected PaaS bills. Keep your logic in one place (your JS application) and let AnyCable handle the low-level stuff.
 
 ## Overview
 
@@ -14,11 +14,11 @@ To use AnyCable with a serverless Node.js application, you need to:
      <img align="center" alt="AnyCable + Node.js serverless architecture" style="max-width:80%" title="AnyCable + Node.js serverless architecture" src="/assets/serverless-light.png">
 </picture>
 
-AnyCable-Go will handle WebSocket connections and translate incoming commands into API calls to your serverless functions, where you can manage authorization, subscriptions, and respond to commands. The client-server communication is expected to use [Action Cable protocol](../misc/action_cable_protocol.md).
+AnyCable-Go will handle WebSocket connections and translate incoming commands into API calls to your serverless functions, where you can manage subscriptions and respond to commands. The client-server communication is expected to use [Action Cable protocol](../misc/action_cable_protocol.md).
 
-Broadcasting real-time updates is as easy as peforming a POST requests to AnyCable-Go.
+Broadcasting real-time updates is as easy as performing POST requests to AnyCable-Go.
 
-Luckily, you don't need to write all this code from scratch. We have a JS SDK that makes it easy to integrate AnyCable with your serverless application.
+Luckily, you don't need to write all this code from scratch. Our JS SDK makes it easy to integrate AnyCable with your serverless application.
 
 ## AnyCable Serverless SDK
 
@@ -33,10 +33,10 @@ import { Channel } from "@anycable/serverless-js";
 
 export default class ChatChannel extends {
   // The `subscribed` method is called when the client subscribes to the channel
-  // You can use it to authorize the subscription and setup streaming
+  // You can use it to authorize the subscription and set up streaming
   async subscribed(handle, params) {
-    // Subscribe request may contain additional parameters.
-    // Here we require the `roomId` parameter.
+    // Subscribe requests may contain additional parameters.
+    // Here, we require the `roomId` parameter.
     if (!params?.roomId) {
       handle.reject();
       return;
@@ -87,7 +87,7 @@ class CableApplication extends Application {
       if (payload) {
         const { userId } = payload;
 
-        // Here we associate user-specific data with the connection
+        // Here, we associate user-specific data with the connection
         handle.identifiedBy({ userId });
       }
       return;
@@ -103,7 +103,7 @@ class CableApplication extends Application {
   }
 }
 
-// Create and instance of the class to use in HTTP handlers (see the next section)
+// Create an instance of the class to use in HTTP handlers (see the next section)
 const app = new CableApplication();
 
 // Register channel
@@ -150,15 +150,15 @@ export async function POST(request: Request) {
 }
 ```
 
-At the client-side, you can use our [AnyCable Client SDK][anycable-client]. The corresponding code may look like this:
+You can use our [AnyCable Client SDK][anycable-client] on the client side. The corresponding code may look like this:
 
 ```js
 import { createCable, Channel } from "@anycable/web";
 
-// set up a connection
+//Set up a connection
 export const cable = createCable();
 
-// define a client-side class for the channel
+//Define a client-side class for the channel
 export class ChatChannel extends Channel {
   static identifier = "chat";
 
@@ -169,7 +169,7 @@ export class ChatChannel extends Channel {
 
 // create a channel instance
 const channel = new ChatChannel({ roomId });
-// subscribe it to the server-side channel
+// subscribe to the server-side channel
 cable.subscribe(channel);
 
 channel.on("message", (message) => {
@@ -180,13 +180,13 @@ channel.on("message", (message) => {
 channel.sendMessage({ body: "Hello, world!" });
 ```
 
-**NOTE:** Both serverless and client SDKs support TypeScript, so you can leverage the power of static typing in your real-time application.
+**NOTE:** Both serverless and client SDKs support TypeScript so that you can leverage the power of static typing in your real-time application.
 
 ## Deploying AnyCable-Go
 
-AnyCable-Go can be deployed pretty much anywhere from modern clouds to good old bare-metal servers. Check out the [deployment guide](../deployment.md) for more details.
+AnyCable-Go can be deployed anywhere from modern clouds to good old bare-metal servers. Check out the [deployment guide](../deployment.md) for more details.
 
-As a quickest option, we recommend using [Fly][]. You can deploy AnyCable-Go in a few minutes using a single command:
+As the quickest option, we recommend using [Fly][]. You can deploy AnyCable-Go in a few minutes using a single command:
 
 ```sh
 fly launch --image anycable/anycable-go:1 --generate-name --ha=false \
