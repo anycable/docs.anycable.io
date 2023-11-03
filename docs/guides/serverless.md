@@ -1,0 +1,201 @@
+# Using AnyCable to power serverless Node.js applications
+
+AnyCable is a great companion for your serverless Node.js applications in need of real-time features. It can be used as a real-time server with no strings attached: no vendor lock-in, no microservices spaghetti, no unexpected PaaS bills. Keep your logic in one place (your JS application) and let AnyCable handle the low-level stuff.
+
+## Overview
+
+To use AnyCable with a serverless Node.js application, you need to:
+
+- Deploy AnyCable-Go to a platform of your choice (see [below](#deploying-anycable-go)).
+- Configure AnyCable API handler in your JS application.
+
+<picture class="captioned-figure">
+     <source srcset="/assets/serverless-dark.png" media="(prefers-color-scheme: dark)">
+     <img align="center" alt="AnyCable + Node.js serverless architecture" style="max-width:80%" title="AnyCable + Node.js serverless architecture" src="/assets/serverless-light.png">
+</picture>
+
+AnyCable-Go will handle WebSocket connections and translate incoming commands into API calls to your serverless functions, where you can manage authorization, subscriptions, and respond to commands. The client-server communication is expected to use [Action Cable protocol](../misc/action_cable_protocol.md).
+
+Broadcasting real-time updates is as easy as peforming a POST requests to AnyCable-Go.
+
+Luckily, you don't need to write all this code from scratch. We have a JS SDK that makes it easy to integrate AnyCable with your serverless application.
+
+## AnyCable Serverless SDK
+
+[AnyCable Serverless SDK][anycable-serverless-js] is a Node.js package that provides a set of helpers to integrate AnyCable with your serverless application.
+
+> Check out our demo Next.js application to see the complete example: [vercel-anycable-demo][]
+
+AnyCable SDK uses Rails Action Cable concepts, such as _channels_, to encapsulate real-time logic. For example, a channel representing a chat room may be defined as follows:
+
+```js
+import { Channel } from "@anycable/serverless-js";
+
+export default class ChatChannel extends {
+  // The `subscribed` method is called when the client subscribes to the channel
+  // You can use it to authorize the subscription and setup streaming
+  async subscribed(handle, params) {
+    // Subscribe request may contain additional parameters.
+    // Here we require the `roomId` parameter.
+    if (!params?.roomId) {
+      handle.reject();
+      return;
+    }
+
+    // We set up a subscription; now, the client will receive real-time updates
+    // sent to the `room:${params.roomId}` stream.
+    handle.streamFrom(`room:${params.roomId}`);
+  }
+
+  // This method is called by the client
+  async sendMessage(handle, params, data) {
+    const { body } = data;
+
+    if (!body) {
+      throw new Error("Body is required");
+    }
+
+    const message = {
+      id: Math.random().toString(36).substr(2, 9),
+      body,
+      createdAt: new Date().toISOString(),
+    };
+
+    // Broadcast the message to all subscribers (see below)
+    await broadcastTo(`room:${params.roomId}`, message);
+  }
+}
+```
+
+Channels are registered within an _application_ instance, which is also responsible for authenticating connections (before they are subscribed to channels):
+
+```js
+import { Application } from "@anycable/serverless-js";
+
+import ChatChannel from "./channels/chat";
+
+// Application instance handles connection lifecycle events
+class CableApplication extends Application {
+  async connect(handle) {
+    // You can access the original WebSocket request data via `handle.env`
+    const url = handle.env.url;
+    const params = new URL(url).searchParams;
+
+    if (params.has("token")) {
+      const payload = await verifyToken(params.get("token")!);
+
+      if (payload) {
+        const { userId } = payload;
+
+        // Here we associate user-specific data with the connection
+        handle.identifiedBy({ userId });
+      }
+      return;
+    }
+
+    // Reject connection if not authenticated
+    handle.reject();
+  }
+
+  async disconnect(handle: ConnectionHandle<CableIdentifiers>) {
+    // Here you can perform any cleanup work
+    console.log(`User ${handle.identifiers?.userId} disconnected`);
+  }
+}
+
+// Create and instance of the class to use in HTTP handlers (see the next section)
+const app = new CableApplication();
+
+// Register channel
+app.register("chat", ChatChannel);
+```
+
+Finally, SDK provides utilities to publish messages to streams:
+
+```js
+import { broadcaster } from "@anycable/serverless-js";
+
+// Broadcasting configuration
+const broadcastURL =
+  process.env.ANYCABLE_BROADCAST_URL || "http://127.0.0.1:8090/_broadcast";
+const broadcastToken = process.env.ANYCABLE_HTTP_BROADCAST_SECRET || "";
+
+// Create a broadcasting function to send broadcast messages via HTTP API
+export const broadcastTo = broadcaster(broadcastURL, broadcastToken);
+```
+
+The final step is to set up an HTTP handler to process AnyCable requests and translate them into channel actions. Here is, for example, how you can do this with Next.js via [Vercel serverless functions](https://vercel.com/docs/functions/serverless-functions):
+
+```js
+// api/anycable/route.ts
+import { NextResponse } from "next/server";
+import { handler, Status } from "@anycable/serverless-js";
+
+// Your cable application instance
+import app from "../../cable";
+
+export async function POST(request: Request) {
+  try {
+    const response = await handler(request, app);
+    return NextResponse.json(response, {
+      status: 200,
+    });
+  } catch (e) {
+    console.error(e);
+    return NextResponse.json({
+      status: Status.ERROR,
+      error_msg: "Server error",
+    });
+  }
+}
+```
+
+At the client-side, you can use our [AnyCable Client SDK][anycable-client]. The corresponding code may look like this:
+
+```js
+import { createCable, Channel } from "@anycable/web";
+
+// set up a connection
+export const cable = createCable();
+
+// define a client-side class for the channel
+export class ChatChannel extends Channel {
+  static identifier = "chat";
+
+  sendMessage(message: SentMessage) {
+    this.perform("sendMessage", message);
+  }
+}
+
+// create a channel instance
+const channel = new ChatChannel({ roomId });
+// subscribe it to the server-side channel
+cable.subscribe(channel);
+
+channel.on("message", (message) => {
+  console.log("New message", message);
+});
+
+// perform remote commands
+channel.sendMessage({ body: "Hello, world!" });
+```
+
+**NOTE:** Both serverless and client SDKs support TypeScript, so you can leverage the power of static typing in your real-time application.
+
+## Deploying AnyCable-Go
+
+AnyCable-Go can be deployed pretty much anywhere from modern clouds to good old bare-metal servers. Check out the [deployment guide](../deployment.md) for more details.
+
+As a quickest option, we recommend using [Fly][]. You can deploy AnyCable-Go in a few minutes using a single command:
+
+```sh
+fly launch --image anycable/anycable-go:1 --generate-name --ha=false \
+  --internal-port 8080 --env PORT=8080 \
+  --env ANYCABLE_PRESETS=fly,broker \
+  --env ANYCABLE_RPC_HOST=https://<YOUR_JS_APP_HOSTNAME>/api/anycable
+```
+
+[vercel-anycable-demo]: https://github.com/anycable/vercel-anycable-demo
+[Fly]: https://fly.io
+[anycable-serverless-js]: https://github.com/anycable/anycable-serverless-js
+[anycable-client]: https://github.com/anycable/anycable-client

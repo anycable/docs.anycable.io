@@ -1,22 +1,24 @@
 # AnyCable
 
-> Build lightning fast, reliable real-time applications with Ruby and Rails
+> Real-time server for Rails, Node.js, and Hotwire applications that runs on your servers and scales.
 
 <picture>
-     <source srcset="/assets/images/logo_invert.svg" media="(prefers-color-scheme: dark)">
-     <img class="home-logo" align="right" height="150" width="129" title="AnyCable logo" src="/assets/images/logo.svg">
+  <source srcset="/assets/images/logo_invert.svg" media="(prefers-color-scheme: dark)">
+  <img class="home-logo" align="right" height="150" width="129" title="AnyCable logo" src="/assets/images/logo.svg">
 </picture>
 
-AnyCable helps you build reliable and fast real-time features—notifications, chats, Hotwire frontends, and more—natively on Ruby on Rails without using 3rd-party services. Stay productive by writing clean, maintainable code in Ruby with the assurance that your application scales efficiently.
+AnyCable helps you build reliable and fast real-time features—notifications, chats, Hotwire frontends, and more. Works with any backend, comes with seamless integrations for Ruby on Rails and serverless Node.js applications. Stay productive by writing clean, maintainable code in your language of choice with the assurance that your application scales efficiently.
 
-Save up to 10x on infrastructure compared to built-in Action Cable without sacrificing Rails productivity by switching to third-party services: a fast Golang server handles the load, a gRPC-driven Rails application deals with business-logic. The [Pro version](./pro.md) offers even more benefits: an additional 40% reduced memory footprint, DX improvements, and priority support.
+Save up on infrastructure and PaaS bills without sacrificing productivity: a fast Go server handles the load, your application deals with business-logic. The [Pro version](./pro.md) offers even more benefits: an additional 40% reduced memory footprint, DX improvements, and priority support.
 
-Besides from being Action Cable-compatible, AnyCable comes with an exclusive set of features, including [reliable streams](./anycable-go/reliable_streams.md), [JWT authentication](./anycable-go/jwt_identifications.md), etc.
+Make your real-time comminication fast and [reliable](./anycable-go/reliable_streams.md) with AnyCable!
 
 <!-- markdownlint-disable no-trailing-punctuation -->
 ## Getting started
 
 - [Using AnyCable with Rails](rails/getting_started.md)
+
+- [AnyCable as a real-time server for Node.js (serverless)](guides/serverless.md)
 
 - [Using AnyCable with Hotwire applications](guides/hotwire.md)
 
