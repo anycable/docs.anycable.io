@@ -9,7 +9,7 @@
 
 AnyCable helps you build reliable and fast real-time features—notifications, chats, Hotwire frontends, and more. It works with any backend and provides seamless integrations for Ruby on Rails and serverless Node.js applications. Stay productive by writing clean, maintainable code in your language of choice with the assurance that your application scales efficiently.
 
-Save up on infrastructure and PaaS bills without sacrificing productivity: a fast Go server handles the load, and your application deals with business logic. The [Pro version](./pro.md) offers even more benefits: an additional 40% reduced memory footprint, DX improvements, and priority support.
+Save up on infrastructure and PaaS bills without sacrificing productivity: a fast Go server handles the load, and your application deals with business logic. The [Pro version](./pro.md) offers even more benefits: delivery guarantees in cluster mode, fallback transport for private networks, GraphQL integration, added memory efficiency and more.
 
 Make your real-time communication fast and [reliable](./anycable-go/reliable_streams.md) with AnyCable!
 

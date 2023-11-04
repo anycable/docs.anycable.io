@@ -14,7 +14,7 @@ To use AnyCable with a serverless Node.js application, you need to:
      <img align="center" alt="AnyCable + Node.js serverless architecture" style="max-width:80%" title="AnyCable + Node.js serverless architecture" src="/assets/serverless-light.png">
 </picture>
 
-AnyCable-Go will handle WebSocket connections and translate incoming commands into API calls to your serverless functions, where you can manage subscriptions and respond to commands. The client-server communication is expected to use [Action Cable protocol](../misc/action_cable_protocol.md).
+AnyCable-Go will handle WebSocket connections and translate incoming commands into API calls to your serverless functions, where you can manage subscriptions and respond to commands.
 
 Broadcasting real-time updates is as easy as performing POST requests to AnyCable-Go.
 
@@ -197,7 +197,7 @@ fly launch --image anycable/anycable-go:1 --generate-name --ha=false \
 
 ## Running AnyCable-Go locally
 
-There are plenty of ways of installing `anycable-go` binary on your machine (see [../anycable-go/getting_started.md]). For your convinience, we also provide an NPM package that can be used to install and run `anycable-go`:
+There are plenty of ways of installing `anycable-go` binary on your machine (see [../anycable-go/getting_started.md]). For your convenience, we also provide an NPM package that can be used to install and run `anycable-go`:
 
 ```sh
 npm install --save-dev @anycable/anycable-go
