@@ -18,7 +18,7 @@ Make your real-time communication fast and [reliable](./anycable-go/reliable_str
 
 - [Using AnyCable with Rails](rails/getting_started.md)
 
-- [AnyCable as a real-time server for Node.js (serverless)](guides/serverless.md)
+- [AnyCable as a real-time server for serverless JavaScript](guides/serverless.md)
 
 - [Using AnyCable with Hotwire applications](guides/hotwire.md)
 

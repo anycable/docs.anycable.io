@@ -1,10 +1,10 @@
-# Using AnyCable to power serverless Node.js applications
+# Using AnyCable to power serverless JavaScript applications
 
-AnyCable is a great companion for your serverless Node.js applications needing real-time features. It can be used as a real-time server with no strings attached: no vendor lock-in, no microservices spaghetti, no unexpected PaaS bills. Keep your logic in one place (your JS application) and let AnyCable handle the low-level stuff.
+AnyCable is a great companion for your serverless JavaScript (and TypeScript) applications needing real-time features. It can be used as a real-time server with no strings attached: no vendor lock-in, no microservices spaghetti, no unexpected PaaS bills. Keep your logic in one place (your JS application) and let AnyCable handle the low-level stuff.
 
 ## Overview
 
-To use AnyCable with a serverless Node.js application, you need to:
+To use AnyCable with a serverless JS application, you need to:
 
 - Deploy AnyCable-Go to a platform of your choice (see [below](#deploying-anycable-go)).
 - Configure AnyCable API handler in your JS application.
@@ -26,7 +26,7 @@ Luckily, you don't need to write all this code from scratch. Our JS SDK makes it
 
 > Check out our demo Next.js application to see the complete example: [vercel-anycable-demo][]
 
-AnyCable SDK uses Rails Action Cable concepts, such as _channels_, to encapsulate real-time logic. For example, a channel representing a chat room may be defined as follows:
+AnyCable SDK uses _channels_ to encapsulate real-time logic. For example, a channel representing a chat room may be defined as follows:
 
 ```js
 import { Channel } from "@anycable/serverless-js";

@@ -10,7 +10,7 @@
 
 * Guides
   * [Using with Rails](/rails/getting_started.md)
-  * [Using with Node.js (serverless)](/guides/serverless.md)
+  * [Using with JavaScript (serverless)](/guides/serverless.md)
   * [Using with Hotwire](/guides/hotwire.md)
   * [Reliable streams](/anycable-go/reliable_streams.md)
   * [Using with Ruby](/ruby/non_rails.md)
