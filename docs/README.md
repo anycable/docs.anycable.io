@@ -26,6 +26,8 @@ Make your real-time communication fast and [reliable](./anycable-go/reliable_str
 
 ## Latest updates 🆕
 
+- **2023-11-08**: [AnyCable for serverlsess JavaScript applications](./guides/serverless.md)
+
 - **2023-11-03**: [NATS JetStream broker](./anycable-go/reliable_streams.md#nats) support is added to AnyCable-Go v1.4.7+.
 
 - **2023-10-13**: [Batch broadcasts](./ruby/broadcast_adapters.md#broadcast-options) and [broadcasting to others](./rails/getting_started.md#action-cable-extensions).
