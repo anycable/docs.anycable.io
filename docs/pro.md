@@ -22,7 +22,7 @@ Here is the results of running [websocket-bench][] `broadcast` and `connect` ben
 In most cases, that should work the same way as with non-Pro version; however, if you have a really high rate of
 incoming messages, you might want to fallback to the _actor-per-connection_ model (you can do this by specifying `--netpoll_enabled=false`).
 
-**NOTE:** Currently, using net polling is not compatible with WebSocket per-message compression and the built-in TLS support.
+**NOTE:** Currently, using net polling is not compatible with WebSocket per-message compression (it's disabled even if you enabled it explicitly).
 
 ## More features
 
