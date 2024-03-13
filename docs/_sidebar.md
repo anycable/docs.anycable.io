@@ -12,13 +12,16 @@
   * [Using with Rails](/rails/getting_started.md)
   * [Using with JavaScript (serverless)](/guides/serverless.md)
   * [Using with Hotwire](/guides/hotwire.md)
+  * [Broadcasting](/anycable-go/broadcasting.md)
+  * [Signed streams](/anycable-go/signed_streams.md)
   * [Reliable streams](/anycable-go/reliable_streams.md)
   * [Using with Ruby](/ruby/non_rails.md)
   * [JWT authentication](/anycable-go/jwt_identification.md)
 
-* AnyCable-Go <img class='pro-badge' src='/assets/pro.svg' alt='pro' />
+* AnyCable <img class='pro-badge' src='/assets/pro.svg' alt='pro' />
   * [Going PRO](/pro.md)
   * [Install PRO](/pro/install.md)
+  * [AnyCable RPC](/anycable-go/rpc.md)
   * [Apollo GraphQL](/anycable-go/apollo.md)
   * [Binary formats](/anycable-go/binary_formats.md)
   * [Long polling](/anycable-go/long_polling.md)
@@ -47,6 +50,7 @@
     * [CLI](/ruby/cli.md)
     * [Configuration](/ruby/configuration.md)
     * [HTTP RPC](/ruby/http_rpc.md)
+    * [Rails extensions](/rails/extensions.md)
     * [Authentication](/rails/authentication.md)
     * [Channels state](/rails/channels_state.md)
     * [gRPC middlewares](/ruby/middlewares.md)
@@ -60,6 +64,7 @@
   * AnyCable-Go
     * [Getting started](/anycable-go/getting_started.md)
     * [Configuration](/anycable-go/configuration.md)
+    * [AnyCable RPC](/anycable-go/rpc.md)
     * [Server-sent events](/anycable-go/sse.md)
     * [Broker deep dive](/anycable-go/broker.md)
     * [Pub/sub (node-node)](/anycable-go/pubsub.md)
@@ -82,6 +87,7 @@
   * [AnyCable server spec](/misc/how_to_anycable_server.md)
 
 * Upgrade Notes
+  * [From v1.4.x to v1.5.0](/upgrade-notes/1_4_0_to_1_5_0.md)
   * [From v1.3.x to v1.4.0](/upgrade-notes/1_3_0_to_1_4_0.md)
   * [From v1.2.x to v1.3.0](/upgrade-notes/1_2_0_to_1_3_0.md)
   * [From v1.0.x to v1.1.0](/upgrade-notes/1_0_0_to_1_1_0.md)

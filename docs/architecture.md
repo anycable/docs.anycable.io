@@ -13,11 +13,7 @@ AnyCable **real-time server** (WS, or WebSocket, since it's a primary transport)
 - subscriptions management
 - broadcasting messages to clients
 
-WebSocket server should include gRPC client built from AnyCable [`rpc.proto`](misc/rpc_proto.md) or a compatible HTTP implementation (for [RPC over HTTP](../ruby/http_rpc.md)).
-
-**RPC server** is a connector between the Ruby application (e.g. Rails) and WebSocket server. It’s an instance of your application with a [gRPC](https://grpc.io) endpoint which implements `rpc.proto`. This server is a part of the [`anycable` CLI](ruby/cli.md).
-
-**NOTE:** It's also possible to use an [HTTP RPC](../ruby/http_rpc.md), which can be embedded into your main web server (e.g. Puma). Thus, you can avoid running a separate RPC server process.
+AnyCable can be used in a standalone mode as a typical pub/sub server. However, it was primarily designed to act as a _business-logic proxy_ allowing you to avoid duplicating real-time logic between multiple apps. For that, we use an [RPC protocol](/anycable-go/rpc) to delegate subscriptions, authentication and authorization logic to your backend.
 
 The application publish broadcast messages to the WebSocket server (directly via HTTP or via some **queuing service**, see [broadcast adapters](/ruby/broadcast_adapters.md)). In case of running a WebSocket cluster (multiple nodes), there is also can be a **Pub/Sub service** responsible for re-transmitting broadcast messages between nodes. You can use [embedded NATS](/anycable-go/embedded_nats.md) as a pub/sub service to miminalize the number of infrastructure dependencies. See [Pub/Sub documentation](/anycable-go/pubsub.md) for other options.
 
@@ -51,17 +47,3 @@ This results in a slightly different behaviour comparing to persistent, long-liv
 For example, if you use an Active Record object as an identifier (e.g., `user`), it's _reloaded_ in every RPC action it's used.
 
 To use arbitrary Ruby objects as identifiers, you must add GlobalID support for them (see [AnyCable setup demo](https://github.com/anycable/anycable_rails_demo/pull/2)).
-
-## WebSocket servers
-
-Since AnyCable uses a well-defined protocol for communication between a WebSocket server and a primary web application (e.g., Rails), any WebSocket server that implements AnyCable [gRPC](https://grpc.io) or HTTP API can be used.
-
-Since v1.0 the only officially supported (i.e., recommended for production usage) server is [AnyCable-Go](anycable-go/getting_started.md) (written in Golang). AnyCable-Go also supports alternative transports such as Server-Sent Events and long-polling.
-
-For older versions you can still use [`erlycable`](https://github.com/anycable/erlycable) (Erlang).
-
-We also have a server written in Ruby–[AnyCable Rack Server](https://github.com/anycable/anycable-rack-server)–which could be used for local experiments to emulate the same architecture as with _real_ AnyCable server.
-
-> See [the demo](https://github.com/anycable/anycable_rails_demo/pull/1) of how you can use anycable-rack-server to run system tests.
-
-If you're not happy with the above implementations, you can build your own [AnyCable-compatible server](misc/how_to_anycable_server.md).

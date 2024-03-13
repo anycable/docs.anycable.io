@@ -2,6 +2,18 @@
 
 This page contains combined release notes for major and minor releases of all AnyCable libraries.
 
+## 1.5.0
+
+### Highlights
+
+- **Signed streams and public streams**
+
+TBD
+
+- **One secret to rule them all**
+
+TBD
+
 ## 1.4.0
 
 ### Highlights

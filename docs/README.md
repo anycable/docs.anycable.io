@@ -26,6 +26,8 @@ Make your real-time communication fast and [reliable](./anycable-go/reliable_str
 
 ## Latest updates 🆕
 
+- **2024-03-12**: [Standalone mode via signed streams](./anycable-go/signed_streams.md)
+
 - **2023-11-08**: [AnyCable for serverlsess JavaScript applications](./guides/serverless.md)
 
 - **2023-11-03**: [NATS JetStream broker](./anycable-go/reliable_streams.md#nats) support is added to AnyCable-Go v1.4.7+.
