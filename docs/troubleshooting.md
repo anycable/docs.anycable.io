@@ -1,5 +1,9 @@
 # Troubleshooting 🔥
 
+## `Failed to connect to Redis: unknown command 'CLIENT', with args beginning with: 'TRACKING'`
+
+Some managed Redis (e.g., Google Cloud) providers block many Redis commands, including [client-side server tracking](https://redis.io/commands/client-tracking/), which is enabled in AnyCable by default. If you experience this issue, set the `--redis_disable_cache` flag (or `ANYCABLE_REDIS_DISABLE_CACHE=true`).
+
 ## `ActionCable.server.broadcast` doesn't send messages
 
 The most common problem is using different Redis channels within RPC instance and `anycable-go`. Find the following line in the logs:
