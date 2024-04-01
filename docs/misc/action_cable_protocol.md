@@ -227,6 +227,29 @@ The `restored` flag indicates whether the session state has been restored. **NOT
 
 The optional `restored_ids` field contains the list of channel identifiers that has been re-subscribed automatically at the server side. The client MUST NOT try to resubscribe to the specified channels and consider them connected. It's recommended to perform `history` requests for all the restored channels to catch up with the messages.
 
-### New command: `pong` <img class='pro-badge' src='/assets/new.svg' alt='new' />
+### New command: `pong`
 
 The `pong` command MAY be sent in response to the `ping` message if the server requires pongs. It could be used to improve broken connections detection.
+
+### New command: `whisper` <img class='pro-badge' src='/assets/new.svg' alt='new' />
+
+The `whisper` can be used to publish broadcast messages from the client (if the whisper stream has been configured for it) to a particular _channel_.
+
+The payload MUST contain `command` ("whisper"), `identifier` fields, and `data` fields.
+
+The `data` field MAY contain a string or an object.
+
+For example:
+
+```json
+{
+  "identifier": "{\"channel\":\"ChatChannel\",\"id\":42}",
+  "command": "whisper",
+  "data": {
+    "event":"typing",
+    "user":"Jack"
+  }
+}
+```
+
+**IMPORTANT**: Unlike actions (`message` command), the data is not JSON-serialized. It's broadcasted to connected clients as is.

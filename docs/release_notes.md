@@ -46,6 +46,12 @@ This page contains combined release notes for major and minor releases of all An
 
   See [docs](/rails/extensions?id=broadcast-to-objects).
 
+- Whispering support.
+
+  You can specify the whispering stream (for client-initiated broadcasts) by using the `#stream_from(..., whisper: true)` or `#stream_for(..., whisper: true)` in your channel classes.
+
+   See [docs](/rails/extensions?id=whispering).
+
 - Added `rails g anycable:bin`.
 
   This generator creates a `bin/anycable-go` script to run (and install) AnyCable server locally.
