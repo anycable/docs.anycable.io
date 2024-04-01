@@ -38,7 +38,7 @@ Hotwire is not limited to Ruby on Rails. You can use Turbo with any backend. Liv
 
 You can use AnyCable as a real-time server for Turbo Streams as follows:
 
-- Use [JWT authentication](../anycable-go/jwt_identification.md) to authenticate conenctions (or run your AnyCable server with authentication disabled via the `--noauth` option)
+- Use [JWT authentication](../anycable-go/jwt_identification.md) to authenticate connections (or run your AnyCable server with authentication disabled via the `--noauth` option)
 
 - Enable [Turbo signed streams](../anycable-go/signed_streams.md#hotwire-and-cableready-support) support.
 
