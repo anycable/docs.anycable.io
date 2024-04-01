@@ -8,11 +8,67 @@ This page contains combined release notes for major and minor releases of all An
 
 - **Signed streams and public streams**
 
-TBD
+  We made signed streams functionality previously available for Hotwire applications (Turbo Streams) generic and available to everyone. Thus, it's now possible to use AnyCable without RPC as a regular pub/sub server with plain channels (but with all other features, like reliability, available 😉).
+
+  This feature also comes with the initial support for **client-initiated broadcasts**, or _whispers_.
+
+  See [docs](/anycable-go/signed_streams).
 
 - **One secret to rule them all**
 
-TBD
+  Now a single secret is enough to secure all AnyCable features; we call it an **application secret**. You can provide it via the `--secret` flag or the `ANYCABLE_SECRET=<val>` env var. It's used as is for JWT and signed streams (unless specific secrets specified) and as a secret base for HTTP RPC and HTTP broadcasting (again, unless specific keys specified).
+
+  There is also new `--broadast_key` (`ANYCABLE_BROADCAST_KEY`) that is meant to be used to authenticate broadcast actions. Currently, it's only used by HTTP broadcasting (as a replacement for `http_broadcast_secret`).
+
+### Features
+
+- **Public mode**.
+
+  You can run AnyCable in an insecure mode (at your own risk): no authentication (unless JWT specified), public streams, no HTTP broadcasting authentication. You can enable this mode via the `--public` toggle or by setting `ANYCABLE_PUBLIC=true`.
+
+  It's also possible to partially disable protections via `--noauth` and `--public_streams` parameters.
+
+- **Embedding**.
+
+  AnyCable Go library now provides interface that allows you to embed an AnyCable server into an existing Go web applications and use its HTTP handlers (for WebSockets, SSE, broadcasting).
+
+  See [docs](https://docs.anycable.io/edge/anycable-go/library?id=embedding).
+
+#### Rails
+
+- Added `websocket_url` parameter to provide a WebSocket server address for clients.
+
+  This new parameter automatically updates the `config.action_cable.url` to provide the WebSocket server information to clients via the `#action_cable_meta_tag` (or `#action_cable_with_jwt_meta_tag`) helpers. Thus, all you need to point your clients to AnyCable is configure the `websocket_url` (or `ANYCABLE_WEBSOCKET_URL`) value, no code changes required.
+
+- Broadcasting to objects.
+
+  Extended `ActionCable.server.broadcast` to accept not only strings but objects (similar to `Channel.broadcast_to(...)`).
+
+  See [docs](/rails/extensions?id=broadcast-to-objects).
+
+- Added `rails g anycable:bin`.
+
+  This generator creates a `bin/anycable-go` script to run (and install) AnyCable server locally.
+
+### Changes
+
+#### AnyCable server
+
+- Logging format has changed.
+
+  We migrated to Go `log/slog` package for performance and DX reasons and decided to stick to the default Go log formatting.
+
+- HTTP broadcasting endpoint is enabled by default.
+
+  Depending on security settings (whether the application secret or broadcast key is present), we expose HTTP broadcasting endpoint on the main application port (when secured) or `:8090` (when no authentication required, previous behaviour).
+
+- Multiple configuration parameters name changes.
+
+  You will see deprecation warning on the server start with instructions on how to migrate.
+
+#### AnyCable Ruby/Rails
+
+- The `anycable-rails-jwt` gem has been merged into the `anycable` and `anycable-rails` gems.
 
 ## 1.4.0
 
