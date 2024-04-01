@@ -6,27 +6,86 @@ AnyCable is a great companion for your serverless JavaScript (and TypeScript) ap
 
 To use AnyCable with a serverless JS application, you need to:
 
-- Deploy AnyCable-Go to a platform of your choice (see [below](#deploying-anycable-go)).
+- Deploy AnyCable server to a platform of your choice (see [below](#deploying-anycable)).
 - Configure AnyCable API handler in your JS application.
+- Use [AnyCable Client SDK][anycable-client] to communicate with the AnyCable server from your client.
 
 <picture class="captioned-figure">
      <source srcset="/assets/serverless-dark.png" media="(prefers-color-scheme: dark)">
      <img align="center" alt="AnyCable + Node.js serverless architecture" style="max-width:80%" title="AnyCable + Node.js serverless architecture" src="/assets/serverless-light.png">
 </picture>
 
-AnyCable-Go will handle WebSocket connections and translate incoming commands into API calls to your serverless functions, where you can manage subscriptions and respond to commands.
+AnyCable will handle WebSocket/SSE connections and translate incoming commands into API calls to your serverless functions, where you can manage subscriptions and respond to commands.
 
-Broadcasting real-time updates is as easy as performing POST requests to AnyCable-Go.
+Broadcasting real-time updates is as easy as performing POST requests to AnyCable.
 
 Luckily, you don't need to write all this code from scratch. Our JS SDK makes it easy to integrate AnyCable with your serverless application.
 
+### Standalone real-time server
+
+You can run AnyCable in a standalone mode by using [signed pub/sub streams](../anycable-go/signed_streams.md) and [JWT authentication](../anycable-go/jwt_identification.md). In this case, all real-time actions are pre-authorized and no API handlers are required.
+
+> Check out this Next.js demo chat application running fully within Stackblitz and backed by AnyCable pub/sub streams: [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/anycable-pubsub?file=README.md)
+
 ## AnyCable Serverless SDK
 
-[AnyCable Serverless SDK][anycable-serverless-js] is a Node.js package that provides a set of helpers to integrate AnyCable with your serverless application.
+[AnyCable Serverless SDK][anycable-serverless-js] is a Node.js package that provides a set of helpers to integrate AnyCable into your JavaScript backend application.
 
 > Check out our demo Next.js application to see the complete example: [vercel-anycable-demo][]
 
-AnyCable SDK uses _channels_ to encapsulate real-time logic. For example, a channel representing a chat room may be defined as follows:
+AnyCable Serverless SDK contains the following components:
+
+- JWT authentication and signed streams.
+- Broadcasting.
+- Channels.
+
+### JWT authentication
+
+AnyCable support [JWT-based authentication](../anycable-go/jwt_identification.md). With the SDK, you can generate tokens as follows:
+
+```js
+import { identificator } from "@anycable/serverless-js";
+
+const jwtSecret = "very-secret";
+const jwtTTL = "1h";
+
+export const identifier = identificator(jwtSecret, jwtTTL);
+
+// Then, somewhere in your code, generate a token and provide it to the client
+const userId = authenticatedUser.id;
+const token = await identifier.generateToken({ userId });
+```
+
+### Signed streams
+
+_🛠️ Coming soon_. Check out the [signed streams documentation](../anycable-go/signed_streams.md)_.
+
+### Broadcasting
+
+SDK provides utilities to publish messages to AnyCable streams via HTTP:
+
+```js
+import { broadcaster } from "@anycable/serverless-js";
+
+// Broadcasting configuration
+const broadcastURL =
+  process.env.ANYCABLE_BROADCAST_URL || "http://127.0.0.1:8090/_broadcast";
+const broadcastKey = process.env.ANYCABLE_BROADCAST_KEY || "";
+
+// Create a broadcasting function to send broadcast messages via HTTP API
+export const broadcastTo = broadcaster(broadcastURL, broadcastKey);
+
+// Now, you can use the initialized broadcaster to publish messages
+broadcastTo("chat/42", message);
+```
+
+Learn more about [broadcasting](../anycable-go/broadcasting.md).
+
+### Channels
+
+Channels help to encapsulate your real-time logic and enhance typical pub/sub capabilities with the ability to handle incoming client commands.
+
+For example, a channel representing a chat room may be defined as follows:
 
 ```js
 import { Channel } from "@anycable/serverless-js";
@@ -67,7 +126,7 @@ export default class ChatChannel extends {
 }
 ```
 
-Channels are registered within an _application_ instance, which is also responsible for authenticating connections (before they are subscribed to channels):
+Channels are registered within an _application_ instance, which can also be used to authenticate connections (if JWT is not being used):
 
 ```js
 import { Application } from "@anycable/serverless-js";
@@ -110,21 +169,9 @@ const app = new CableApplication();
 app.register("chat", ChatChannel);
 ```
 
-Finally, SDK provides utilities to publish messages to streams:
+To connect your channels to an AnyCable server, you MUST add AnyCable API endpoint to your HTTP server (or serverless function). The SDK provides HTTP handlers for that.
 
-```js
-import { broadcaster } from "@anycable/serverless-js";
-
-// Broadcasting configuration
-const broadcastURL =
-  process.env.ANYCABLE_BROADCAST_URL || "http://127.0.0.1:8090/_broadcast";
-const broadcastToken = process.env.ANYCABLE_HTTP_BROADCAST_SECRET || "";
-
-// Create a broadcasting function to send broadcast messages via HTTP API
-export const broadcastTo = broadcaster(broadcastURL, broadcastToken);
-```
-
-The final step is to set up an HTTP handler to process AnyCable requests and translate them into channel actions. Here is, for example, how you can do this with Next.js via [Vercel serverless functions](https://vercel.com/docs/functions/serverless-functions):
+Here is an example setup for Next.js via [Vercel serverless functions](https://vercel.com/docs/functions/serverless-functions):
 
 ```js
 // api/anycable/route.ts
@@ -182,20 +229,21 @@ channel.sendMessage({ body: "Hello, world!" });
 
 **NOTE:** Both serverless and client SDKs support TypeScript so that you can leverage the power of static typing in your real-time application.
 
-## Deploying AnyCable-Go
+## Deploying AnyCable
 
-AnyCable-Go can be deployed anywhere from modern clouds to good old bare-metal servers. Check out the [deployment guide](../deployment.md) for more details.
+> The quickest way to get AnyCable is to use our managed (and free) solution: [plus.anycable.io](https://plus.anycable.io)
 
-As the quickest option, we recommend using [Fly][]. You can deploy AnyCable-Go in a few minutes using a single command:
+AnyCable can be deployed anywhere from modern clouds to good old bare-metal servers. Check out the [deployment guide](../deployment.md) for more details. We recommend using [Fly][], as you can deploy AnyCable in a few minutes with just a single command:
 
 ```sh
-fly launch --image anycable/anycable-go:1 --generate-name --ha=false \
+fly launch --image anycable/anycable-go:1.5 --generate-name --ha=false \
   --internal-port 8080 --env PORT=8080 \
+  --env ANYCABLE_SECERT=<YOUR_SECRET> \
   --env ANYCABLE_PRESETS=fly,broker \
   --env ANYCABLE_RPC_HOST=https://<YOUR_JS_APP_HOSTNAME>/api/anycable
 ```
 
-## Running AnyCable-Go locally
+## Running AnyCable locally
 
 There are plenty of ways of installing `anycable-go` binary on your machine (see [../anycable-go/getting_started.md]). For your convenience, we also provide an NPM package that can be used to install and run `anycable-go`:
 
