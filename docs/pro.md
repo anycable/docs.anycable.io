@@ -26,7 +26,7 @@ incoming messages, you might want to fallback to the _actor-per-connection_ mode
 
 ## More features
 
-- [Adaptive RPC concurrency](anycable-go/configuration.md#adaptive-concurrency)
+- [Adaptive RPC concurrency](anycable-go/rpc.md#adaptive-concurrency)
 - [Multi-node streams history](anycable-go/reliable_streams.md#redis)
 - [Slow drain mode for disconnecting clients on shutdown](anycable-go/configuration.md#slow-drain-mode)
 - [Binary messaging formats](anycable-go/binary_formats.md)

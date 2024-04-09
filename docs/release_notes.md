@@ -151,7 +151,7 @@ This page contains combined release notes for major and minor releases of all An
 
   Users of AnyCable had to scale and balance resources on two sides: RPC and AnyCable-Go. Now AnyCable-Go can adjust its concurrency limit automatically to minimize errors (`ResourcesExhausted`) and maximize throughput (thus, reduce the backlog size) if possible. This means, you only have to scale the Rails application, and AnyCable-Go will balance itself alongside automatically.
 
-  See [documentation](./anycable-go/configuration.md#adaptive-concurrency).
+  See [documentation](./anycable-go/rpc.md#adaptive-concurrency).
 
 #### AnyCable-Go
 
