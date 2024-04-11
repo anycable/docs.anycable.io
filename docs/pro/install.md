@@ -16,7 +16,7 @@ Once authenticated, you can pull images using the following identifier: `ghcr.io
 # docker-compose.yml
 services:
   ws:
-    image: ghcr.io/anycable/anycable-go-pro:1.4
+    image: ghcr.io/anycable/anycable-go-pro:1.5
     ports:
       - '8080:8080'
     environment:
