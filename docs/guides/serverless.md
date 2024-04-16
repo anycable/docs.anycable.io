@@ -58,7 +58,31 @@ const token = await identifier.generateToken({ userId });
 
 ### Signed streams
 
-_🛠️ Coming soon_. Check out the [signed streams documentation](../anycable-go/signed_streams.md)_.
+SDK provides functionality to generate [signed stream names](/anycable-go/signed_streams). For that, you can create a _signer_ instance with the corresponding secret:
+
+```js
+import { signer } from "@anycable/serverless-js";
+
+const streamsSecret = process.env.ANYCABLE_STREAMS_SECRET;
+
+const sign = signer(secret);
+
+const signedStreamName = sign("room/13");
+```
+
+Then, you can use the generated stream name with your client (using [AnyCable JS client SDK](https://github.com/anycable/anycable-client)):
+
+```js
+import { createCable } from "@anycable/web";
+
+const cable = createCable(WEBSOCKET_URL);
+const stream = await fetchStreamForRoom("13");
+
+const channel = cable.streamFromSigned(stream);
+channel.on("message", (msg) => {
+  // handle notification
+})
+```
 
 ### Broadcasting
 
