@@ -35,11 +35,12 @@
       },
       body: JSON.stringify({
         query: query,
-        search_type: "semantic",
+        search_type: "hybrid",
         highlight_delimiters: [" "],
         highlight_max_length: 100,
         highlight_max_num: 2,
         highlight_window: 20,
+        highlight_threshold: 0.9,
         score_threshold: 0.05,
       }),
       signal: abortController.signal,
