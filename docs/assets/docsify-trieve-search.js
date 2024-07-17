@@ -26,31 +26,36 @@
 
     abortController = new AbortController();
 
-    const response = await fetch(`https://api.trieve.ai/api/chunk/search`, {
-      method: "POST",
-      headers: {
-        Authorization: `${CONFIG.api_key}`,
-        "TR-Dataset": `${CONFIG.dataset}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: query,
-        search_type: "hybrid",
-        highlight_delimiters: [" "],
-        highlight_max_length: 100,
-        highlight_max_num: 2,
-        highlight_window: 20,
-        highlight_threshold: 0.9,
-        score_threshold: 0.05,
-      }),
-      signal: abortController.signal,
-    });
+    const response = await fetch(
+      `https://api.trieve.ai/api/chunk/autocomplete`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `${CONFIG.api_key}`,
+          "TR-Dataset": `${CONFIG.dataset}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          query: query,
+          search_type: "semantic",
+          highlight_delimiters: [" "],
+          highlight_max_length: 100,
+          highlight_max_num: 2,
+          highlight_window: 20,
+          highlight_threshold: 0.9,
+          score_threshold: 0.05,
+        }),
+        signal: abortController.signal,
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Failed to fetch search results");
     }
 
     results = await response.json();
+
+    // console.log(results);
 
     let matches = [];
 
