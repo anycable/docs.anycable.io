@@ -6,6 +6,9 @@ groups:
   - name: Deployment
     tracking_id: deployment
 
+defaults:
+  tags: ["docs"]
+
 pages:
   - "./getting_started.md"
   - source: "./pro.md"
