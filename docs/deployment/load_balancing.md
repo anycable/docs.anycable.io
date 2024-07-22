@@ -6,7 +6,7 @@ You can use load balancers to scale your application and/or perform zero-disconn
 
 ### Using Linkerd
 
-Check out this blog post: [Scaling Rails web sockets in Kubernetes with AnyCable](https://vitobotta.com/2022/06/18/scaling-rails-web-sockets-in-kubernetes-with-anycable/).
+Check out this blog post: [Scaling Rails web sockets in Kubernetes with AnyCable](https://blog.anycable.io/p/scaling-rails-websockets-in-kubernetes).
 
 ### Using Envoy
 
