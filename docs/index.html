@@ -33,9 +33,6 @@
   <script> !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     posthog.init('phc_fc9VFWdFAAm5gSlCodHq93iaxxnTTKbjOwsWgAS1FMP',{api_host:'https://app.posthog.com'})</script>
   <!-- End Posthog -->
-  <!-- Trieve -->
-  <script>window.TRIEVE_DATASET = "38d0ad51-82d5-45dc-b8b6-817bcf49da35"; window.TRIEVE_API_KEY = "tr-JtPZuXATfHbKLyKxsHFa66tVqXZ0wUvM"</script>
-  <!-- End Trieve -->
 </head>
 <body>
   <div id="app"></div>
@@ -140,11 +137,16 @@
       auto2top: true,
       routerMode: window.DOCSIFY_ROUTER_MODE,
       search: {
-        paths: 'auto',
-        namespace: 'docs-anycable-'+window.DOCSIFY_ROUTER_MODE,
         hideOtherSidebarContent: true,
-        depth: 3,
-        pathNamespaces: ['/v06', '/v1-1', '/v1-2', '/v1-3', '/v1-4', '/v1-5', '/v1']
+        api_key: "tr-JtPZuXATfHbKLyKxsHFa66tVqXZ0wUvM",
+        dataset: "38d0ad51-82d5-45dc-b8b6-817bcf49da35",
+        tags: ["v1.5"],
+        namespaceTags: {
+          "edge": ["edge"],
+          "v1-5": ["v1.5"],
+          "v1-4": ["v1.4"],
+          "v1-3": ["v1.3"]
+        }
       },
       namespaces: [
         {

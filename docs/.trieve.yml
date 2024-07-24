@@ -1,13 +1,16 @@
 ignore:
  - "**/*/Readme.md"
 hostname: https://docs.anycable.io
+url_prefix: <%= ENV.fetch("VERSION_PREFIX", "edge") %>
 
 groups:
   - name: Deployment
     tracking_id: deployment
 
 defaults:
-  tags: ["docs"]
+  tags:
+    - docs
+    - <%= ENV.fetch("VERSION_TAG", "edge") %>
 
 pages:
   - "./getting_started.md"
