@@ -16,6 +16,7 @@
   }
 
   var abortController;
+  var currentTags;
 
   /**
    * @param {String} query Search query
@@ -25,6 +26,17 @@
     if (abortController) abortController.abort();
 
     abortController = new AbortController();
+
+    let filters = {};
+
+    if (currentTags && Object.keys(currentTags).length) {
+      filters.must = [
+        {
+          field: "tag_set",
+          match: currentTags,
+        },
+      ];
+    }
 
     const response = await fetch(
       `https://api.trieve.ai/api/chunk/autocomplete`,
@@ -44,6 +56,7 @@
           highlight_window: 20,
           highlight_threshold: 0.9,
           score_threshold: 0.05,
+          filters,
         }),
         signal: abortController.signal,
       }
@@ -225,9 +238,25 @@
     options = opts;
   }
 
+  function updateTags(opts, vm) {
+    if (vm.config.currentNamespace) {
+      namespace = vm.config.currentNamespace.replace(
+        /^[^\/]+\/([^\/]+)\//,
+        "$1"
+      );
+      console.log("Namespace: ", namespace);
+      currentTags = CONFIG.namespaceTags[namespace] || CONFIG.tags;
+    } else {
+      currentDataset = CONFIG.tags;
+    }
+
+    console.log("Tags: ", currentTags);
+  }
+
   function init(opts, vm) {
     var keywords = vm.router.parse().query.s;
 
+    updateTags(opts, vm);
     updateOptions(opts);
     style();
     tpl(keywords);
@@ -239,6 +268,7 @@
   }
 
   function update(opts, vm) {
+    updateTags(opts, vm);
     updateOptions(opts);
     updatePlaceholder(opts.placeholder, vm.route.path);
     updateNoData(opts.noData, vm.route.path);
@@ -261,6 +291,10 @@
     CONFIG.noData = opts.noData || CONFIG.noData;
     CONFIG.hideOtherSidebarContent =
       opts.hideOtherSidebarContent || CONFIG.hideOtherSidebarContent;
+    CONFIG.api_key = opts.api_key || CONFIG.api_key;
+    CONFIG.dataset = opts.dataset || CONFIG.dataset;
+    CONFIG.tags = opts.tags || [];
+    CONFIG.namespaceTags = opts.namespaceTags || {};
 
     hook.mounted(function (_) {
       init(CONFIG, vm);
