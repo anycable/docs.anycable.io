@@ -241,16 +241,16 @@
   function updateTags(opts, vm) {
     if (vm.config.currentNamespace) {
       namespace = vm.config.currentNamespace.replace(
-        /^[^\/]+\/([^\/]+)\//,
+        /^[^\/]*\/([^\/]+)\//,
         "$1"
       );
-      console.log("Namespace: ", namespace);
+      // console.log("Namespace: ", namespace);
       currentTags = CONFIG.namespaceTags[namespace] || CONFIG.tags;
     } else {
       currentDataset = CONFIG.tags;
     }
 
-    console.log("Tags: ", currentTags);
+    // console.log("Tags: ", currentTags);
   }
 
   function init(opts, vm) {
