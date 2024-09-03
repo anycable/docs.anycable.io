@@ -20,9 +20,9 @@ Fill the required information:
 
 - `ANYCABLE_RPC_HOST`: the URL of your web application containing the mount path of the AnyCable HTTP RPC server (e.g., `https://my-app.herokuapp.com/_anycable`).
 
-- `ANYCABLE_HTTP_RPC_SECRET`: A secret token to authenticate HTTP RPC requests.
+- `ANYCABLE_SECRET`: A secret that will be used to generate an authentication token for HTTP RPC requests.
 
-Make sure to set the same values in your web application configuration (`http_rpc_mount_path: "/_anycable"` in `config/anycable.yml` and the `ANYCABLE_HTTP_RPC_SECRET` env var).
+Make sure to set the same values in your web application configuration (e.g., for Rails, `http_rpc_mount_path: "/_anycable"` in `config/anycable.yml` and the `ANYCABLE_SECRET` env var).
 
 We recommend enabling [Dyno Metadata](https://devcenter.heroku.com/articles/dyno-metadata) to activate the [Heroku configuration preset](../anycable-go/configuration.md#presets). Otherwise, don't forget to set `ANYCABLE_HOST=0.0.0.0` in the application configuration.
 
