@@ -12,7 +12,7 @@ All you need is to deploy `anycable-go` as a separate Heroku application, config
 
 Deploy AnyCable-Go by simply clicking the button below:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/anycable/anycable-go)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https://github.com/anycable/anycable-go)
 
 **NOTE:** To recreate the button-deployed application later, you must create [`heroku.yml`](https://github.com/anycable/anycable-go/blob/master/heroku.yml) and a [Dockerfile](https://github.com/anycable/anycable-go/blob/master/.docker/Dockerfile.heroku) and put them into your repository.
 
