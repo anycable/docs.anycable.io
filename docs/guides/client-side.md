@@ -186,11 +186,12 @@ For that, you must install the [`@anycable/turbo-stream` package](https://github
 
 Here is how to switch `@hotwired/turbo` to use AnyCable client:
 
-```diff
-- import "@hotwired/turbo-rails";
-+ import "@hotwired/turbo";
-+ import { start } from "@anycable/turbo-stream";
-+ import cable from "cable"
-+
-+ start(cable, { delayedUnsubscribe: true })
+```js
+// IMPORTANT: Do not import turbo-rails, just turbo
+// import "@hotwired/turbo-rails";
+import "@hotwired/turbo";
+import { start } from "@anycable/turbo-stream";
+import cable from "cable"
+
+start(cable, { delayedUnsubscribe: true })
 ```
