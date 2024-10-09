@@ -26,17 +26,13 @@ Make your real-time communication fast and [reliable](./anycable-go/reliable_str
 
 ## Latest updates 🆕
 
+- **2024-10-08**: [File-based configuration (`anycable.toml`)](./anycable-go/configuration.md)
+
 - **2024-03-12**: [Standalone mode via signed streams](./anycable-go/signed_streams.md)
 
 - **2023-11-08**: [AnyCable for serverlsess JavaScript applications](./guides/serverless.md)
 
-- **2023-11-03**: [NATS JetStream broker](./anycable-go/reliable_streams.md#nats) support is added to AnyCable-Go v1.4.7+.
-
-- **2023-10-13**: [Batch broadcasts](./ruby/broadcast_adapters.md#broadcast-options) and [broadcasting to others](./rails/getting_started.md#action-cable-extensions).
-
 - **2023-09-07**: [Server-sent events](./anycable-go/sse.md) suppport is added to AnyCable-Go 1.4.4+.
-
-- **2023-08-09**: `pong` command is added to the [extended Action Cable protocol](./misc/action_cable_protocol.md#action-cable-extended-protocol) and is supported by AnyCable-Go 1.4.3+.
 
 - **2023-08-04**: [Slow drain mode for disconnecting clients on shutdown <img class='pro-badge' src='/assets/pro.svg' alt='pro' />](./anycable-go/configuration.md#slow-drain-mode)
 

@@ -10,6 +10,7 @@
 
 * Guides
   * [Using with Rails](/rails/getting_started.md)
+  * [Client-side usage](/guides/client-side.md)
   * [Using with JavaScript (serverless)](/guides/serverless.md)
   * [Using with Hotwire](/guides/hotwire.md)
   * [Broadcasting](/anycable-go/broadcasting.md)
