@@ -1,8 +1,10 @@
-# Install AnyCable-Go Pro
+# Install AnyCable Pro
 
-AnyCable-Go Pro is distributed in two forms: a Docker image and pre-built binaries.
+AnyCable Pro is distributed in two forms: a Docker image and pre-built binaries.
 
 **NOTE:** All distribution methods, currently, relies on GitHub **personal access tokens**. We can either grant an access to the packages/projects to your users or generate a token for you. You MUST enable the following permissions: `read:packages` to download Docker images and/or `repo` (full access) to download binary releases.
+
+**IMPORTANT**: Make sure you accepted the invitation to the AnyCable releases repository (if you haven't received it, please contact us).
 
 ## Docker
 
