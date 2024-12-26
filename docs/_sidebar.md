@@ -16,6 +16,7 @@
   * [Broadcasting](/anycable-go/broadcasting.md)
   * [Signed streams](/anycable-go/signed_streams.md)
   * [Reliable streams](/anycable-go/reliable_streams.md)
+  * [Presence](/anycable-go/presence.md)
   * [Using with Ruby](/ruby/non_rails.md)
   * [JWT authentication](/anycable-go/jwt_identification.md)
 
