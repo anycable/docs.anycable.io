@@ -26,6 +26,8 @@ Make your real-time communication fast and [reliable](./anycable-go/reliable_str
 
 ## Latest updates 🆕
 
+- **2025-03-18**: [Presence tracking](./anycable-go/presence.md)
+
 - **2024-10-08**: [File-based configuration (`anycable.toml`)](./anycable-go/configuration.md)
 
 - **2024-03-12**: [Standalone mode via signed streams](./anycable-go/signed_streams.md)
@@ -33,8 +35,6 @@ Make your real-time communication fast and [reliable](./anycable-go/reliable_str
 - **2023-11-08**: [AnyCable for serverlsess JavaScript applications](./guides/serverless.md)
 
 - **2023-09-07**: [Server-sent events](./anycable-go/sse.md) suppport is added to AnyCable-Go 1.4.4+.
-
-- **2023-08-04**: [Slow drain mode for disconnecting clients on shutdown <img class='pro-badge' src='/assets/pro.svg' alt='pro' />](./anycable-go/configuration.md#slow-drain-mode)
 
 - **2023-07-05**: [Reliable streams](./anycable-go/reliable_streams.md)
 
