@@ -245,7 +245,7 @@ $$
 N = \frac{\mu\frac{C}{1000}}{\phi(D - R)}
 $$
 
-$\mu$ — MiB required to serve 1k connections by AnyCable-Go (currently, it equals to 50MiB for most use-cases)
+$\mu$ — MiB required to serve 1k connections by AnyCable (currently, it equals to 50MiB for most use-cases)
 
 $\phi$ — fill factor ($0 \le \phi \le 1$): what portion of all the available RAM we want to use (to leave a room for load spikes)
 

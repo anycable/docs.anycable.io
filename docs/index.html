@@ -84,9 +84,9 @@
         '/v1-6/anycable-go/(.*)': 'https://raw.githubusercontent.com/anycable/anycable/1-6-stable/docs/$1',
         '/v1-6/ruby/(.*)': 'https://raw.githubusercontent.com/anycable/anycable-rb/1-6-stable/docs/$1',
         '/v1-6/rails/(.*)': 'https://raw.githubusercontent.com/anycable/anycable-rails/1-6-stable/docs/$1',
-        '/anycable-go/(.*)': 'https://raw.githubusercontent.com/anycable/anycable-go/1-5-stable/docs/$1',
-        '/ruby/(.*)': 'https://raw.githubusercontent.com/anycable/anycable/1-5-stable/docs/$1',
-        '/rails/(.*)': 'https://raw.githubusercontent.com/anycable/anycable-rails/1-5-stable/docs/$1',
+        '/anycable-go/(.*)': 'https://raw.githubusercontent.com/anycable/anycable/1-6-stable/docs/$1',
+        '/ruby/(.*)': 'https://raw.githubusercontent.com/anycable/anycable-rb/1-6-stable/docs/$1',
+        '/rails/(.*)': 'https://raw.githubusercontent.com/anycable/anycable-rails/1-6-stable/docs/$1',
         '/v1-3/': 'https://raw.githubusercontent.com/anycable/docs.anycable.io/1-3-stable/docs/README.md',
         '/v1-3/(.*)': 'https://raw.githubusercontent.com/anycable/docs.anycable.io/1-3-stable/docs/$1',
         '/v1-4/': 'https://raw.githubusercontent.com/anycable/docs.anycable.io/1-4-stable/docs/README.md',
@@ -107,9 +107,9 @@
         '</div></a>' +
         '<select id="version-selector" name="version" class="sidebar-version-select">' +
           '<option value="edge">edge</value>' +
-          '<option value="">v1.5</value>' +
+          '<option value="">v1.6</value>' +
+          '<option value="v1-5">v1.5</value>' +
           '<option value="v1-4">v1.4</value>' +
-          '<option value="v1-3">v1.3</value>' +
         '</select>',
       repo: 'https://github.com/anycable',
       loadSidebar: true,
@@ -125,6 +125,7 @@
         tags: ["latest"],
         namespaceTags: {
           "edge": ["edge"],
+          "v1-6": ["v1.6"],
           "v1-5": ["v1.5"],
           "v1-4": ["v1.4"],
           "v1-3": ["v1.3"]
@@ -133,7 +134,7 @@
       namespaces: [
         {
           id: "version",
-          values: ["edge", "v1", "v1-1", "v1-2", "v1-3", "v1-4", "v1-5", "v06"],
+          values: ["edge", "v1", "v1-1", "v1-2", "v1-3", "v1-4", "v1-5", "v1-6", "v06"],
           optional: true,
           selector: "#version-selector"
         }
