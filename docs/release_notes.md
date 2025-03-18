@@ -2,6 +2,30 @@
 
 This page contains combined release notes for major and minor releases of all AnyCable libraries.
 
+## 1.6.0
+
+**IMPORTANT**: the development of the AnyCable server has moved to [anycable/anycable](https://github.com/anycable/anycable). Ruby SDK now lives in [anycable/anycable-rb](https://github.com/anycable/anycable-rb).
+
+### Highlights
+
+- **Presence tracking**
+
+  We continued extending Action Cable protocol and added presence tracking support, so you can keep track channel/stream subscribers in real-time. See [docs](https://docs.anycable.io/anycable-go/presence).
+
+### Features
+
+- Token-based authentication using a WebSocket sub-protocol.
+
+  You can pass a token as a `anycable-token.<token>` subprotocol to a WebSocket client.
+  This way, token is not exposed in the URL. [AnyCable JS SDK](https://github.com/anycable/anycable-client) supports this feature out of the box.
+
+### Improvements
+
+- Better handling of slow clients.
+
+  AnyCable server now buffers outgoing messages using size-limited queues.
+  Tuning the new configuration settings, `ws_write_timeout` and `ws_max_pending_size`, can help you deal with slow clients the way you want (let them buffer a lot of messages or disconnect).
+
 ## 1.5.0
 
 ### Highlights
