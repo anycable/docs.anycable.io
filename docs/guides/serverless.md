@@ -262,7 +262,7 @@ AnyCable can be deployed anywhere from modern clouds to good old bare-metal serv
 ```sh
 fly launch --image anycable/anycable-go:1.5 --generate-name --ha=false \
   --internal-port 8080 --env PORT=8080 \
-  --env ANYCABLE_SECERT=<YOUR_SECRET> \
+  --env ANYCABLE_SECRET=<YOUR_SECRET> \
   --env ANYCABLE_PRESETS=fly,broker \
   --env ANYCABLE_RPC_HOST=https://<YOUR_JS_APP_HOSTNAME>/api/anycable
 ```
