@@ -1,6 +1,6 @@
 # AnyCable
 
-> A real-time server for Rails, Node.js, and Hotwire applications that runs on your servers and scales.
+> A real-time server for Rails, Laravel, Node.js, and Hotwire applications that runs on your servers and scales.
 
 <picture>
   <source srcset="/assets/images/logo_invert.svg" media="(prefers-color-scheme: dark)">
@@ -22,9 +22,13 @@ Make your real-time communication fast and [reliable](./anycable-go/reliable_str
 
 - [Using AnyCable with Hotwire applications](guides/hotwire.md)
 
+- [Using AnyCable with Laravel](guides/laravel.md)
+
 - [Using AnyCable with other Ruby frameworks](ruby/non_rails.md)
 
 ## Latest updates 🆕
+
+- **2025-05-30**: [Laravel support](guides/laravel.md)
 
 - **2025-03-18**: [Presence tracking](./anycable-go/presence.md)
 

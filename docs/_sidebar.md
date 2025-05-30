@@ -13,6 +13,7 @@
   * [Client-side usage](/guides/client-side.md)
   * [Using with JavaScript (serverless)](/guides/serverless.md)
   * [Using with Hotwire](/guides/hotwire.md)
+  * [Using with Laravel](/guides/laravel.md)
   * [Broadcasting](/anycable-go/broadcasting.md)
   * [Signed streams](/anycable-go/signed_streams.md)
   * [Reliable streams](/anycable-go/reliable_streams.md)
