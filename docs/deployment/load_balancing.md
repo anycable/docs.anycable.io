@@ -53,6 +53,19 @@ You can control gRPC connection lifetimes via the `rpc_max_connection_age` confi
 
 You can also monitor the current number of gRPC connections by looking at the AnyCable-Go's `grpc_active_conn_num` metrics value.
 
+### Using a fixed list of RPC addresses
+
+You can also provide a static list of gRPC servers to spread out the calls using the special `grpc-list://` scheme:
+
+```sh
+$ anycable-go --rpc_host=grpc-list://grpc-list://rpc1.example.com:50051,rpc2.example.com:50051
+
+...
+RPC controller initialized: grpc-list://grpc-list://rpc1.example.com:50051,rpc2.example.com:50051 (concurrency: 28, impl: grpc, enable_tls: false, proto_versions: v1, proxy_headers: cookie, proxy_cookies: <all>) context=rpc
+```
+
+This is useful when you run AnyCable in environments without service discovery and a known list of server addresses (e.g., when using Kamal).
+
 ## WebSocket load balancing
 
 There is nothing specific in load balancing AnyCable WebSocket server comparing to other WebSocket applications. See, for example, [NGINX documentation](https://www.nginx.com/blog/websocket-nginx/).
