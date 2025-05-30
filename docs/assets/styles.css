@@ -610,6 +610,24 @@ h4:has(+.pro-badge-header):after {
   font-weight: 600;
 }
 
+h1:has(+.preview-badge-header) {
+  position: relative;
+}
+
+h1:has(+.preview-badge-header):after {
+  content: "preview";
+  border: 1px var(--text-color-active) solid;
+  border-radius: 8px;
+  padding: 4px 8px;
+  padding-top: 5px;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  position: absolute;
+  top: calc(50% - 0.6rem - 5px);
+  margin-left: 10px;
+  text-transform: uppercase;
+}
+
 @keyframes full-slide-right {
   from { transform: translateX(0); }
   to { transform: translateX(100%); }
