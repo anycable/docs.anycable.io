@@ -146,3 +146,10 @@ Related issues: [#115](https://github.com/anycable/anycable-rails/issues/115)
 ## Websocket connections are not closed by load balancer
 
 Check out the [#83](https://github.com/anycable/anycable-go/issues/83) and [this comment](https://github.com/anycable/anycable-go/issues/83#issuecomment-597769178) in particular.
+
+## RPC error: `missing selected ALPN property`
+
+In the recent versions, `grpc-go` introduced APLN enforcement which may cause connectivity issues.
+A quick fix is to provide the `GRPC_ENFORCE_ALPN_ENABLED=false` environment variable.
+
+See issues: [#256](https://github.com/anycable/anycable/issues/256).
