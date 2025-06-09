@@ -17,7 +17,7 @@ AnyCable is a battle-proofed real-time server that's been in production at scale
 First, install the [anycable-laravel][] library:
 
 ```sh
-composer require anycable-laravel
+composer require anycable/laravel-broadcaster
 ```
 
 Then, configure the application to use `anycable` broadcasting driver. For that, add the AnyCable service provider to the `bootstrap/providers.php` file:
