@@ -244,4 +244,30 @@ accessories:
 
 **IMPORTANT**: The setup above expose the gRPC server to the public (so it's reachable from other machines). We recommend securing access either by setting up firewall rules / virtual network within the cluster or using TLS with a private certificate for gRPC (see [configuration docs](https://docs.anycable.io/anycable-go/configuration?id=tls)).
 
-Alternatively, you may consider adding a standalone load balancer with gRPC support (this is out of scope of this guide).
+The setup above has one caveat: since we publish RPC port (`50051`) to the host system, default Kamal rolling updates would fail with the `port is already in use` after Kamal would have tried to launch a new copy of the `rpc` container. To avoid that, we can use the `pre-app-boot` hook to stop RPC containers (it's okay to have a short downtime here, AnyCable server would take care of recovering). This is an example `.kamal/hooks/pre-app-boot` code:
+
+```sh
+#!/bin/bash
+# This script is a Kamal pre-app-boot hook.
+# It uses 'kamal app stop' to stop old containers of the 'rpc' role
+# This helps prevent "port already allocated" errors for services with fixed published ports.
+
+# Exit immediately if any command fails.
+set -e
+
+KAMAL_CMD="kamal" # Or "./bin/kamal" or "/path/to/kamal_executable"
+
+# The role whose containers need to be stopped.
+# This must match the role name in your deploy.yml
+ROLES_TO_STOP="rpc"
+KAMAL_ARGS=(--roles "$ROLES_TO_STOP")
+
+if "$KAMAL_CMD" app stop --roles "${ROLES_TO_STOP}"; then
+  echo "'kamal app stop --roles $ROLES_TO_STOP' completed successfully."
+else
+  exit_code=$?
+  echo "Error: '$KAMAL_CMD app stop --roles $ROLES_TO_STOP' failed with exit code $exit_code." >&2
+
+  exit $exit_code
+fi
+```
