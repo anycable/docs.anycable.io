@@ -153,3 +153,9 @@ In the recent versions, `grpc-go` introduced APLN enforcement which may cause co
 A quick fix is to provide the `GRPC_ENFORCE_ALPN_ENABLED=false` environment variable.
 
 See issues: [#256](https://github.com/anycable/anycable/issues/256).
+
+## Abnormal socket closure spikes (AWS ALB)
+
+You may experience abnormal socket closure spikes (the `abnormal_socket_closure_total` metrics) leading to RPC load spikes when using AWS ALB. AWS ALBs scale in and out based on traffic patterns: they disconnect all remaining connections after a grace period (unknown), thus, persistent websocket connections are killed and showing up as abnormal socket closures. That could be 100s of killed connections per second causing load on gRPC servers (unless disconnect notices are disabled).
+
+AWS does not expose any ALB scale related metrics or events, so there is currently no good workaround for this problem.
