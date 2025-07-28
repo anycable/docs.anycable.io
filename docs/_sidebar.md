@@ -75,6 +75,7 @@
     * [Instrumentation](/anycable-go/instrumentation.md)
     * [Health checking](/anycable-go/health_checking.md)
     * [Tracing](/anycable-go/tracing.md)
+    * [Pusher support](/anycable-go/pusher.md)
     * [OS Tuning](/anycable-go/os_tuning.md)
     * [Signed streams (Hotwire / Cable Ready)](/anycable-go/signed_streams.md)
     * [Embedded NATS](/anycable-go/embedded_nats.md)
