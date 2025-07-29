@@ -72,7 +72,6 @@ Then, register the `anycable` driver in your `config/broadcasting.php` file:
 
 Now, install the `@anycable/echo` JS package and configure your Echo instance:
 
-
 ```js
 import Echo from "laravel-echo";
 import { EchoCable } from "@anycable/echo";
@@ -110,7 +109,7 @@ That's it! Run your Laravel application, launch AnyCable server, and you should 
 
 You can find the benchmarks here: https://github.com/anycable/anycable-laravel/tree/master/benchmarks
 
-_tl;dr AnyCable shows slightly better performance and lesser memory usage during broadcast benchmarks compared to Reverb; however, AnyCable handles connection avalanches much better_
+**tl;dr** AnyCable shows slightly better performance and lesser memory usage during broadcast benchmarks compared to Reverb; however, AnyCable handles connection avalanches much better.
 
 [anycable-laravel]: https://github.com/anycable/anycable-laravel
 [laravel-anycable-demo]: https://github.com/anycable/larachat
