@@ -6,7 +6,7 @@ Why choosing AnyCable over Reverb et al?
 
 AnyCable is a battle-proofed real-time server that's been in production at scale for many years. It comes with extensive features set (reliability, various protocols support, observability tools, etc.) and it's **free to use**.
 
-You can use AnyCable server in a [Pusher mode](/anycable-go/pusher.md) or _natively_ using a custom broadcasting and Echo adapter. In the latter, you can benefit from such AnyCable features as streams history and resumable sessions (see [Reliable streams](/anycable-go/reliable_streams.md)).
+You can use AnyCable server in a [Pusher mode](/anycable-go/pusher.md) or _natively_ using a custom broadcasting and Echo adapter. In the latter, you can benefit from such AnyCable features as streams history and resumeable sessions (see [Reliable streams](/anycable-go/reliable_streams.md)).
 
 ## Pusher mode
 
@@ -39,8 +39,6 @@ php artisan anycable:server
 When running with this command, AnyCable automatically recognizes the following Reverb environment variables and uses them: `REVERB_APP_ID`, `REVERB_APP_KEY`, `REVERB_APP_SECRET`.
 
 ## AnyCable mode
-
-**IMPORTANT:** This feature is currently in progress. Coming soon!
 
 > Check out our demo Laravel application to see the complete example: [laravel-anycable-demo][]
 
@@ -77,23 +75,16 @@ Now, install the `@anycable/echo` JS package and configure your Echo instance:
 
 ```js
 import Echo from "laravel-echo";
-import { createCable } from "@anycable/web";
-import EchoCable from "@anycable/echo";
-
-// Example options
-const cableOptions = {
-  protocol: "actioncable-v1-ext-json" // supports stream history and presence
-}
+import { EchoCable } from "@anycable/echo";
 
 window.Echo = new Echo({
   broadcaster: EchoCable,
-  cable: createCable(cableOptions),
+  cableOptions: {
+    url: url: import.meta.env.VITE_WEBSOCKET_URL || 'ws://localhost:8080/cable',
+  },
   // other configuration options such as auth, etc
 });
 ```
-
-By default, AnyCable client looks up a WebSocket server URL from the `<meta name="cable-url">` tag on the page.
-You can also specify it explicitly in the options.
 
 Finally, install AnyCable server. We provide a convenient Artisan command that automatically downloads (when necessary) and runs the server:
 
@@ -104,7 +95,8 @@ php artisan anycable:server
 You can specify AnyCable configuration in the `.env` file:
 
 - `ANYCABLE_SECRET=secret`
-- `ANYCABLE_PUBLIC_STREAMS=true` (to enable public channels—they're disable by default)
+- `ANYCABLE_PUBLIC=true`: This MUST be set to true to allow connection (however, we highly recommend looking at the [JWT Authentication feature](/anycable-go/jwt_identification.md)).
+- `ANYCABLE_PUBLIC_STREAMS=true`: Enables public channels—they're disabled by default.
 
 You can also create an `anycable.toml` configuration file to fine-tune your AnyCable server (see [docs](/anycable-go/configuration?id=configuration-files)).
 
@@ -116,8 +108,10 @@ That's it! Run your Laravel application, launch AnyCable server, and you should 
 
 ## Benchmarks
 
-TBD
+You can find the benchmarks here: https://github.com/anycable/anycable-laravel/tree/master/benchmarks
+
+_tl;dr AnyCable shows slightly better performance and lesser memory usage during broadcast benchmarks compared to Reverb; however, AnyCable handles connection avalanches much better_
 
 [anycable-laravel]: https://github.com/anycable/anycable-laravel
 [laravel-anycable-demo]: https://github.com/anycable/larachat
-[anycable-client]:  https://github.com/anycable/anycable-client
+[anycable-client]: https://github.com/anycable/anycable-client/tree/master/packages/echo
