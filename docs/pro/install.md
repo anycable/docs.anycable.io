@@ -55,8 +55,31 @@ You can use Heroku _Container Registry and Runtime_ feature to deploy AnyCable-G
 
 The basic steps are: pull an AnyCable-Go PRO image from our private registry, push it to your Heroku registry and deploy. See [the official documentation](https://devcenter.heroku.com/articles/container-registry-and-runtime).
 
+## AnyCable Thruster Pro
+
+We also ship Pro versions of [AnyCable Thruster][thruster] binaries via the same [releases repo][releases-repo].
+
+You can download them using `fetch` as follows:
+
+```sh
+fetch --repo=https://github.com/anycable/anycable-go-pro-releases --tag="v1.6.5" --release-asset="anycable-thruster-linux-amd64" --github-oauth-token="<access-token>" /tmp
+```
+
+Then, when running the `thrust` command (provided by the `anycable-thruster` gem), specify the path to the downloaded binary as `ANYCABLE_THRUSTER_BIN_PATH=path/to/anycable-thruster`.
+
+### Installing AnyCable Thruster Pro on Heroku
+
+Our buildpack supports downloading custom binaries. To donwload `anycable-thruster` binaries, set the following environment vars:
+
+```
+HEROKU_ANYCABLE_GO_BINARY_NAME=anycable-thruster
+
+HEROKU_ANYCABLE_GO_SKIP_VERSION_CHECK=1 // skip the default version check on installation, since Thruster has no -v flag
+```
+
 [ghcr]: https://ghcr.io
 [ghcr-auth]: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry#authenticating-to-the-container-registry
 [releases-repo]: https://github.com/anycable/anycable-go-pro-releases/
 [fetch]: https://github.com/gruntwork-io/fetch
 [buildpack]: https://github.com/anycable/heroku-anycable-go
+[thruster]: https://github.com/anycable/thruster
