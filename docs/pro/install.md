@@ -69,7 +69,7 @@ Then, when running the `thrust` command (provided by the `anycable-thruster` gem
 
 ### Installing AnyCable Thruster Pro on Heroku
 
-Our buildpack supports downloading custom binaries. To donwload `anycable-thruster` binaries, set the following environment vars:
+Our buildpack supports downloading custom binaries. To download `anycable-thruster` binaries, set the following environment vars:
 
 ```
 HEROKU_ANYCABLE_GO_BINARY_NAME=anycable-thruster
