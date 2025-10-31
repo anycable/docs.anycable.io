@@ -168,7 +168,7 @@ Usually, in this case we can only specify the `since` parameter.
 
 In response, the server MUST first confirm the subscription and then execute the history request. If the subscription is rejected, no history request is made.
 
-### New message types
+### New message types: `confirm_history` and `reject_history`
 
 Two new message types (server-client) are added:
 
@@ -177,7 +177,7 @@ Two new message types (server-client) are added:
 
 Both messages act as acknowledgments for the `history` command and contain the `identifier` key. The `confirm_history` message is sent to the client to indicate that the requested historical messages for the channel have been successfully sent to the client. The `reject_history` indicates that the server failed to retrieve the requested messages and no historical message have been sent (the client must implement a fallback mechanism to restore the consistency).
 
-### Incoming messages extensions
+### History metadata in broadcasted messages
 
 Broadcasted messages MAY contain metadata regarding their position in the stream. This information MUST be used with the subsequent `history` requests:
 
@@ -195,9 +195,9 @@ Broadcasted messages MAY contain metadata regarding their position in the stream
 }
 ```
 
-**NOTE:** The messages are not guaranteed to be in order (due to concurrent broadcasts), so, offsets may be non-monotonic. It's the client responsibility to keep track of offsets. Also, there is a small chance that the same message may arrive twice (from broadcast and from the history); to provide exactly-once delivery guarantees, the client MUST keep track of seen offsets and ignore duplicates.
+**NOTE:** Offsets are assumed to be in order (however, some history backends may lift this requirement, check the corresponding documentation). There is a small chance that the same message may arrive twice (from broadcast and from the history); to provide exactly-once delivery guarantees, the client MUST keep track of seen offsets and ignore duplicates.
 
-### Handshake extensions
+### Handshake metadata
 
 During the handshake, the server MAY send a unique _session id_ along with the welcome message:
 
@@ -231,7 +231,7 @@ The optional `restored_ids` field contains the list of channel identifiers that 
 
 The `pong` command MAY be sent in response to the `ping` message if the server requires pongs. It could be used to improve broken connections detection.
 
-### New command: `whisper` <img class='pro-badge' src='/assets/new.svg' alt='new' />
+### New command: `whisper`
 
 The `whisper` can be used to publish broadcast messages from the client (if the whisper stream has been configured for it) to a particular _channel_.
 
@@ -253,3 +253,90 @@ For example:
 ```
 
 **IMPORTANT**: Unlike actions (`message` command), the data is not JSON-serialized. It's broadcasted to connected clients as is.
+
+### New commands: `join` and `leave`
+
+Presence commands allow the client to join or leave the presence set for a given channel:
+
+```js
+{
+  "command": "join",
+  "identifier": "<subscription identifier>",
+  "presence": {
+    "id": "<user id within the presence set>",
+    "info": "..." // any object or string
+  }
+}
+
+{
+  "command": "leave",
+  "identifier": "<subscription identifier>",
+  "presence": {
+    "id": "<user id within the presence set>"
+  }
+}
+```
+
+### New commands: `presence`
+
+The presence command is used to request the current presence state for a given channel:
+
+```js
+{
+  "command": "presence",
+  "identifier": "<subscription identifier>",
+}
+```
+
+You can also provide the "data" field with some configuration options:
+
+```js
+{
+  "command": "presence",
+  "identifier": "<subscription identifier>",
+  "data": {
+    "return_records": true // set to false to return only totals, see below
+  }
+}
+```
+
+### New message type: `presence`
+
+Presence messages have the following formats:
+
+```js
+{
+  "type": "presence",
+  "identifier": "<subscription identifier>",
+  "message": {
+    "id": "<user id within the presence set>",
+    "info": "..." // any object or string
+    "type": "join"
+  }
+}
+
+{
+  "type": "presence",
+  "identifier": "<subscription identifier>",
+  "message": {
+    "id": "<user id within the presence set>",
+    "type": "leave"
+  }
+}
+
+{
+  "type": "presence",
+  "identifier": "<subscription identifier>",
+  "message": {
+    "total": 123, // total number of present users
+    "records": [
+      {
+        "id": "...",
+        "info": "..."
+      },
+      ...
+    ], # presence records (missing if return_records is false)
+    "type": "info"
+  }
+}
+```
