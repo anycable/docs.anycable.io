@@ -15,8 +15,13 @@ We recommend using AnyCable in a _standalone mode_ (i.e., without running an [RP
 - Configure Turbo to use your AnyCable application secret for signing streams:
 
   ```ruby
-  # config/environments/production.rb
+  # config/environments/*.rb
   config.turbo.signed_stream_verifier_key = "<your-secret>"
+
+  # or
+   
+  # config/application.rb
+  config.turbo.signed_stream_verifier_key = AnyCable.config.secret
   ```
 
 - Enable Turbo Streams support for AnyCable server:
