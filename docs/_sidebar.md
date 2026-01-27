@@ -18,7 +18,7 @@
   * [Signed streams](/anycable-go/signed_streams.md)
   * [Reliable streams](/anycable-go/reliable_streams.md)
   * [Presence](/anycable-go/presence.md)
-  * [Using with Ruby](/ruby/non_rails.md)
+  * [REST API](/anycable-go/api.md)
   * [JWT authentication](/anycable-go/jwt_identification.md)
 
 * AnyCable <img class='pro-badge' src='/assets/pro.svg' alt='pro' />
@@ -27,6 +27,13 @@
   * [AnyCable RPC](/anycable-go/rpc.md)
   * [Apollo GraphQL](/anycable-go/apollo.md)
   * [Binary formats](/anycable-go/binary_formats.md)
+  * [Long polling](/anycable-go/long_polling.md)
+  * [OCPP support](/anycable-go/ocpp.md)
+
+* Protocols
+  * [Server-sent events](/anycable-go/sse.md)
+  * [Pusher](/anycable-go/pusher.md)
+  * [Durable Streams](/anycable-go/durable_streams.md)
   * [Long polling](/anycable-go/long_polling.md)
   * [OCPP support](/anycable-go/ocpp.md)
 
@@ -52,6 +59,7 @@
 
 * Libraries
   * Ruby/Rails
+    * [Non-Rails usage](/ruby/non_rails.md)
     * [CLI](/ruby/cli.md)
     * [Configuration](/ruby/configuration.md)
     * [HTTP RPC](/ruby/http_rpc.md)
@@ -70,13 +78,11 @@
     * [Getting started](/anycable-go/getting_started.md)
     * [Configuration](/anycable-go/configuration.md)
     * [AnyCable RPC](/anycable-go/rpc.md)
-    * [Server-sent events](/anycable-go/sse.md)
     * [Broker deep dive](/anycable-go/broker.md)
     * [Pub/sub (node-node)](/anycable-go/pubsub.md)
     * [Instrumentation](/anycable-go/instrumentation.md)
     * [Health checking](/anycable-go/health_checking.md)
     * [Tracing](/anycable-go/tracing.md)
-    * [Pusher support](/anycable-go/pusher.md)
     * [OS Tuning](/anycable-go/os_tuning.md)
     * [Signed streams (Hotwire / Cable Ready)](/anycable-go/signed_streams.md)
     * [Embedded NATS](/anycable-go/embedded_nats.md)

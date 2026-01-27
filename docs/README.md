@@ -28,19 +28,15 @@ Make your real-time communication fast and [reliable](./anycable-go/reliable_str
 
 ## Latest updates 🆕
 
+- **2026-01-27**: [REST API](./anycable-go/api.md)
+
+- **2026-01-27**: [Durable Streams support](./anycable-go/durable_streams.md)
+
+- **2025-07-29**: [Pusher support](./anycable-go/pusher.md)
+
 - **2025-05-30**: [Laravel support](guides/laravel.md)
 
 - **2025-03-18**: [Presence tracking](./anycable-go/presence.md)
-
-- **2024-10-08**: [File-based configuration (`anycable.toml`)](./anycable-go/configuration.md)
-
-- **2024-03-12**: [Standalone mode via signed streams](./anycable-go/signed_streams.md)
-
-- **2023-11-08**: [AnyCable for serverlsess JavaScript applications](./guides/serverless.md)
-
-- **2023-09-07**: [Server-sent events](./anycable-go/sse.md) suppport is added to AnyCable-Go 1.4.4+.
-
-- **2023-07-05**: [Reliable streams](./anycable-go/reliable_streams.md)
 
 ## Resources
 
