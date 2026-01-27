@@ -19,7 +19,7 @@ We recommend using AnyCable in a _standalone mode_ (i.e., without running an [RP
   config.turbo.signed_stream_verifier_key = "<your-secret>"
 
   # or
-   
+
   # config/application.rb
   config.turbo.signed_stream_verifier_key = AnyCable.config.secret
   ```
