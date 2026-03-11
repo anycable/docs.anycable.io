@@ -56,7 +56,7 @@ const { isDark } = useData()
           </a>
           <a class="path-card" href="/guides/serverless">
             <h3>TS/JS</h3>
-            <p>Use AnyCable as a real-time server for (serverless) TypeScript/JavaScript applications</p>
+            <p>Use AnyCable as a real-time server for (serverless) JavaScript apps</p>
           </a>
           <a class="path-card" href="/anycable-go/pusher">
             <h3>Pusher</h3>
@@ -97,12 +97,71 @@ const { isDark } = useData()
 .landing {
   font-family: var(--vp-font-family-base);
   color: var(--vp-c-text-1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient mesh background */
+.landing::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 60% 50% at 15% 20%,
+      rgba(255, 94, 94, 0.06),
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 85% 15%,
+      rgba(246, 66, 66, 0.04),
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 40% 50% at 50% 80%,
+      rgba(255, 94, 94, 0.03),
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle noise texture */
+.landing::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.02;
+  pointer-events: none;
+  z-index: 0;
+}
+
+:deep(.dark) .landing::before {
+  background:
+    radial-gradient(
+      ellipse 60% 50% at 15% 20%,
+      rgba(255, 94, 94, 0.08),
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 85% 15%,
+      rgba(246, 66, 66, 0.05),
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse 40% 50% at 50% 80%,
+      rgba(255, 94, 94, 0.04),
+      transparent 50%
+    );
 }
 
 /* Hero */
 .hero {
   text-align: center;
   padding: 80px 24px 64px;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-inner {
@@ -126,6 +185,12 @@ const { isDark } = useData()
   width: 120px;
   height: 120px;
   flex-shrink: 0;
+  filter: drop-shadow(0 8px 24px rgba(255, 94, 94, 0.15));
+  transition: filter 0.4s ease;
+}
+
+.hero-logo:hover {
+  filter: drop-shadow(0 12px 32px rgba(255, 94, 94, 0.25));
 }
 
 .hero-title {
@@ -134,6 +199,7 @@ const { isDark } = useData()
   line-height: 1.2;
   color: var(--vp-c-brand-2);
   margin: 0 0 8px;
+  letter-spacing: -0.02em;
 }
 
 .hero-tagline {
@@ -157,31 +223,60 @@ const { isDark } = useData()
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
-  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-brand {
-  background-color: var(--vp-c-brand-3);
+  background: linear-gradient(135deg, var(--vp-c-brand-3) 0%, var(--vp-c-brand-1) 100%);
   color: var(--vp-c-white);
+  box-shadow:
+    0 2px 8px rgba(224, 48, 48, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .btn-brand:hover {
-  background-color: var(--vp-c-brand-1);
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 20px rgba(224, 48, 48, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .btn-alt {
-  background-color: var(--vp-c-default-soft);
+  background-color: var(--vp-c-bg);
   color: var(--vp-c-text-1);
+  border: 1px solid var(--vp-c-divider);
+  backdrop-filter: blur(8px);
 }
 
 .btn-alt:hover {
-  background-color: var(--vp-c-default-3);
+  border-color: var(--vp-c-text-3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 /* Getting Started */
 .getting-started {
   padding: 48px 24px 64px;
+  position: relative;
+  z-index: 1;
   background-color: var(--vp-c-bg-soft);
+}
+
+/* Subtle glow above card section */
+.getting-started::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 160px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 94, 94, 0.06) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
 }
 
 .getting-started-inner {
@@ -204,17 +299,25 @@ const { isDark } = useData()
 
 .path-card {
   display: block;
+  position: relative;
   background-color: var(--vp-c-bg);
   border: 1px solid var(--vp-c-divider);
   border-radius: 12px;
   padding: 24px;
   text-decoration: none;
-  transition: box-shadow 0.2s, border-color 0.2s;
+  overflow: hidden;
+  transition:
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .path-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   border-color: var(--vp-c-brand-1);
+  box-shadow:
+    0 4px 16px rgba(255, 94, 94, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.04);
+  transform: translateY(-3px);
 }
 
 .path-card h3 {
@@ -222,6 +325,11 @@ const { isDark } = useData()
   font-weight: 700;
   margin: 0 0 8px;
   color: var(--vp-c-brand-1);
+  transition: color 0.3s ease;
+}
+
+.path-card:hover h3 {
+  color: var(--vp-c-brand-3);
 }
 
 .path-card p {
@@ -231,11 +339,25 @@ const { isDark } = useData()
   line-height: 1.5;
 }
 
+/* Dark mode card enhancements */
+:global(.dark) .path-card {
+  background-color: rgba(30, 30, 32, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+:global(.dark) .path-card:hover {
+  box-shadow:
+    0 4px 20px rgba(255, 94, 94, 0.12),
+    0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
 /* Footer */
 .landing-footer {
   padding: 40px 24px;
   border-top: 1px solid var(--vp-c-divider);
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .footer-sponsors {
@@ -253,10 +375,11 @@ const { isDark } = useData()
 .footer-inner a {
   color: var(--vp-c-brand-1);
   text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
 .footer-inner a:hover {
-  text-decoration: underline;
+  opacity: 0.8;
 }
 
 .sep {
@@ -291,6 +414,10 @@ const { isDark } = useData()
   .path-grid {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+
+  .path-card:hover {
+    transform: none;
   }
 }
 
