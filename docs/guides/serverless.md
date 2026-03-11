@@ -10,10 +10,8 @@ To use AnyCable with a serverless JS application, you need to:
 - Configure AnyCable API handler in your JS application.
 - Use [AnyCable Client SDK][anycable-client] to communicate with the AnyCable server from your client.
 
-<picture class="captioned-figure">
-     <source srcset="/assets/serverless-dark.png" media="(prefers-color-scheme: dark)">
-     <img align="center" alt="AnyCable + Node.js serverless architecture" style="max-width:80%" title="AnyCable + Node.js serverless architecture" src="/assets/serverless-light.png">
-</picture>
+<img class="captioned-figure light-only" align="center" alt="AnyCable + Node.js serverless architecture" style="max-width:80%" title="AnyCable + Node.js serverless architecture" src="/assets/serverless-light.png">
+<img class="captioned-figure dark-only" align="center" alt="AnyCable + Node.js serverless architecture" style="max-width:80%" title="AnyCable + Node.js serverless architecture" src="/assets/serverless-dark.png">
 
 AnyCable will handle WebSocket/SSE connections and translate incoming commands into API calls to your serverless functions, where you can manage subscriptions and respond to commands.
 

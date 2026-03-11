@@ -4,8 +4,8 @@
 AnyCable is a language-agnostic server for web applications that brings performance and reliability to your real-time features. It follows Rails Action Cable conventions and uses [Action Cable protocol](misc/action_cable_protocol.md) as a primary communication protocol (while supporting others as well). AnyCable is a multi-transport server supporting WebSockets, [Server-Sent Events](/anycable-go/sse.md) and [long-polling](/anycable-go/long_polling.md).
 
 <div class="chart-container" data-view-transition="chart">
-  <img class="is-light" src="/assets/images/anycable.svg" alt="AnyCable diagram" width="40%">
-  <img class="is-dark" src="/assets/images/anycable_dark.svg" alt="AnyCable diagram" width="40%">
+  <img class="light-only" src="/assets/images/anycable.svg" alt="AnyCable diagram" width="40%">
+  <img class="dark-only" src="/assets/images/anycable_dark.svg" alt="AnyCable diagram" width="40%">
 </div>
 
 The primary goal of AnyCable is to make it possible to write a high-performant real-time application keeping business-logic in your backend application (whether it's Ruby on Rails or serverless JavaScript or whatever).

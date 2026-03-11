@@ -47,16 +47,6 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: 'Overview',
-        items: [
-          { text: 'Getting Started', link: '/getting_started' },
-          { text: 'Architecture', link: '/architecture' },
-          { text: 'Benchmarks', link: '/benchmarks' },
-          { text: 'Troubleshooting', link: '/troubleshooting' },
-          { text: 'Release Notes', link: '/release_notes' },
-        ]
-      },
-      {
         text: 'Guides',
         items: [
           { text: 'Using with Rails', link: '/rails/getting_started' },
@@ -70,6 +60,7 @@ export default defineConfig({
           { text: 'Presence', link: '/anycable-go/presence' },
           { text: 'REST API', link: '/anycable-go/api' },
           { text: 'JWT authentication', link: '/anycable-go/jwt_identification' },
+          { text: '🔥 Troubleshooting', link: '/troubleshooting' },
         ]
       },
       {
@@ -160,6 +151,7 @@ export default defineConfig({
       {
         text: 'Misc',
         items: [
+          { text: 'Benchmarks', link: '/benchmarks' },
           { text: 'Action Cable protocols', link: '/misc/action_cable_protocol' },
           { text: 'Protobuf definitions', link: '/misc/rpc_proto' },
           { text: 'AnyCable server spec', link: '/misc/how_to_anycable_server' },
@@ -168,18 +160,17 @@ export default defineConfig({
       {
         text: 'Upgrade Notes',
         items: [
+          { text: 'Release Notes', link: '/release_notes' },
           { text: 'From v1.4.x to v1.5.0', link: '/upgrade-notes/1_4_0_to_1_5_0' },
           { text: 'From v1.3.x to v1.4.0', link: '/upgrade-notes/1_3_0_to_1_4_0' },
           { text: 'From v1.2.x to v1.3.0', link: '/upgrade-notes/1_2_0_to_1_3_0' },
           { text: 'From v1.0.x to v1.1.0', link: '/upgrade-notes/1_0_0_to_1_1_0' },
-          { text: 'From v0.6.x to v1.0.0', link: '/upgrade-notes/0_6_0_to_1_0_0' },
         ]
       },
     ],
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/anycable/anycable' },
-      { icon: 'discord', link: 'https://discord.com/channels/629472241427415060/944842112862670878' },
       { icon: 'x', link: 'https://twitter.com/any_cable' },
     ],
 

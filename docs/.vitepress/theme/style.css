@@ -155,8 +155,26 @@
 }
 
 /**
- * Component: Nav (dark mode)
+ * Component: Nav
  * -------------------------------------------------------------------------- */
+
+@media (min-width: 960px) {
+  .VPNavBar.has-sidebar .title {
+    background-color: var(--vp-nav-bg-color) !important;
+  }
+
+  .VPNavBar.has-sidebar .divider {
+    padding-left: 0 !important;
+  }
+
+  .VPSidebar .curtain {
+    background-color: var(--vp-nav-bg-color) !important;
+  }
+
+  .VPNavBar.has-sidebar .title {
+    border-bottom-color: transparent !important;
+  }
+}
 
 .dark {
   --vp-nav-bg-color: #1a1a1a;
@@ -170,6 +188,32 @@
 .dark .VPNavBar {
   background-color: #1a1a1a !important;
   border-bottom-color: #2a2a2a !important;
+}
+
+@media (min-width: 960px) {
+  .dark .VPNavBar.has-sidebar .title {
+    background-color: #1a1a1a !important;
+  }
+}
+
+/**
+ * Dark/light mode images
+ * -------------------------------------------------------------------------- */
+
+.dark .light-only,
+:not(.dark) .dark-only {
+  display: none !important;
+}
+
+/**
+ * Chart/image containers
+ * -------------------------------------------------------------------------- */
+
+.chart-container {
+  padding: 1em 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /**

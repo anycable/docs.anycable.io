@@ -20,7 +20,7 @@ const { isDark } = useData()
           </picture>
           <div class="hero-text">
             <h1 class="hero-title">AnyCable Documentation</h1>
-            <p class="hero-tagline">A real-time server for Rails, Laravel, Node.js, and Hotwire applications</p>
+            <p class="hero-tagline">Realtime server for reliable two-way communication</p>
           </div>
         </div>
         <div class="hero-actions">
@@ -46,25 +46,25 @@ const { isDark } = useData()
             <h3>Rails</h3>
             <p>Add real-time features to your Ruby on Rails application</p>
           </a>
+          <a class="path-card" href="/guides/laravel">
+            <h3>Laravel</h3>
+            <p>Integrate real-time capabilities into your Laravel app</p>
+          </a>
           <a class="path-card" href="/guides/hotwire">
             <h3>Hotwire</h3>
             <p>Build reactive frontends with Turbo Streams and AnyCable</p>
           </a>
           <a class="path-card" href="/guides/serverless">
-            <h3>Serverless JS</h3>
-            <p>Use AnyCable as a real-time server for serverless JavaScript</p>
+            <h3>TS/JS</h3>
+            <p>Use AnyCable as a real-time server for (serverless) TypeScript/JavaScript applications</p>
           </a>
-          <a class="path-card" href="/guides/laravel">
-            <h3>Laravel</h3>
-            <p>Integrate real-time capabilities into your Laravel app</p>
+          <a class="path-card" href="/anycable-go/pusher">
+            <h3>Pusher</h3>
+            <p>Drop-in Pusher-compatible real-time server</p>
           </a>
-          <a class="path-card" href="/ruby/non_rails">
-            <h3>Other Ruby</h3>
-            <p>Use AnyCable with any Ruby framework</p>
-          </a>
-          <a class="path-card" href="/architecture">
-            <h3>Architecture</h3>
-            <p>Understand how AnyCable works under the hood</p>
+          <a class="path-card" href="/anycable-go/durable_streams">
+            <h3>Durable Streams</h3>
+            <p>Reliable message delivery with automatic catch-up</p>
           </a>
         </div>
       </div>
@@ -84,11 +84,9 @@ const { isDark } = useData()
         <p class="footer-links">
           <a href="https://anycable.io" target="_blank" rel="noopener">Website</a>
           <span class="sep">&middot;</span>
-          <a href="https://anycable.io/blog" target="_blank" rel="noopener">Blog</a>
+          <a href="https://blog.anycable.io" target="_blank" rel="noopener">Blog</a>
           <span class="sep">&middot;</span>
           <a href="https://github.com/anycable/anycable" target="_blank" rel="noopener">GitHub</a>
-          <span class="sep">&middot;</span>
-          <a href="https://discord.com/channels/629472241427415060/944842112862670878" target="_blank" rel="noopener">Discord</a>
         </p>
       </div>
     </footer>
@@ -241,6 +239,8 @@ const { isDark } = useData()
 }
 
 .footer-sponsors {
+  display: flex;
+  justify-content: center;
   margin-bottom: 20px;
 }
 

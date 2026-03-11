@@ -55,7 +55,6 @@
 
 * Community
   * [Twitter](https://twitter.com/any_cable)
-  * [Discord](https://discord.com/channels/629472241427415060/944842112862670878)
 
 * Libraries
   * Ruby/Rails
