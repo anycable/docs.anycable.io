@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useData } from 'vitepress'
-
-const { isDark } = useData()
 </script>
 
 <template>
@@ -10,14 +7,16 @@ const { isDark } = useData()
     <section class="hero">
       <div class="hero-inner">
         <div class="hero-heading">
-          <picture>
-            <source v-if="isDark" srcset="/assets/images/logo_invert.svg">
-            <img
-              class="hero-logo"
-              src="/assets/images/logo.svg"
-              alt="AnyCable"
-            />
-          </picture>
+          <img
+            class="hero-logo light-only"
+            src="/assets/images/logo.svg"
+            alt="AnyCable"
+          />
+          <img
+            class="hero-logo dark-only"
+            src="/assets/images/logo_invert.svg"
+            alt="AnyCable"
+          />
           <div class="hero-text">
             <h1 class="hero-title">AnyCable Documentation</h1>
             <p class="hero-tagline">Realtime server for reliable two-way communication</p>
@@ -75,10 +74,8 @@ const { isDark } = useData()
       <div class="footer-inner">
         <div class="footer-sponsors">
           <a href="https://evilmartians.com/" target="_blank" rel="noopener">
-            <picture>
-              <source v-if="isDark" srcset="https://evilmartians.com/badges/sponsored-by-evil-martians_v2.0_for-dark-bg.svg">
-              <img alt="Sponsored by Evil Martians" src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" width="236" height="54">
-            </picture>
+            <img class="light-only" alt="Sponsored by Evil Martians" src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg" width="236" height="54">
+            <img class="dark-only" alt="Sponsored by Evil Martians" src="https://evilmartians.com/badges/sponsored-by-evil-martians_v2.0_for-dark-bg.svg" width="236" height="54">
           </a>
         </div>
         <p class="footer-links">
