@@ -49,6 +49,7 @@ export default defineConfig({
       {
         text: 'Guides',
         items: [
+          { text: 'Getting started', link: '/getting_started' },
           { text: 'Using with Rails', link: '/rails/getting_started' },
           { text: 'Client-side usage', link: '/guides/client-side' },
           { text: 'Using with JavaScript (serverless)', link: '/guides/serverless' },
@@ -126,7 +127,6 @@ export default defineConfig({
       {
         text: 'AnyCable-Go',
         items: [
-          { text: 'Getting started', link: '/anycable-go/getting_started' },
           { text: 'Configuration', link: '/anycable-go/configuration' },
           { text: 'AnyCable RPC', link: '/anycable-go/rpc' },
           { text: 'Broker deep dive', link: '/anycable-go/broker' },
