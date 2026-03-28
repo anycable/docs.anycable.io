@@ -60,3 +60,10 @@ observability
 Kamal
 Thruster
 resumeable
+importmap-rails
+jspm
+jsbundling-rails
+esbuild
+webpack
+rollup
+entrypoint
