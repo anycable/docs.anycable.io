@@ -1,9 +1,4 @@
 [build]
   base="docs"
-  publish="/"
-  command=""
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  publish = "docs/.vitepress/dist"
+  command="npm run build"

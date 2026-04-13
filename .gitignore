@@ -8,3 +8,6 @@ jspm_packages/
 coverage/
 gemfiles/*.lock
 lefthook-local.yml
+
+# Local Netlify folder
+.netlify
