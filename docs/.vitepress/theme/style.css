@@ -200,10 +200,10 @@
  * Dark/light mode images
  * -------------------------------------------------------------------------- */
 
-.dark .light-only,
-:not(.dark) .dark-only {
-  display: none !important;
-}
+ html.dark .light-only,
+ html:not(.dark) .dark-only {
+   display: none !important;
+ }
 
 /**
  * Chart/image containers
