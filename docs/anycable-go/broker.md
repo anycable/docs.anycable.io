@@ -80,9 +80,9 @@ graph LR
    ClientB[Client B]
   end
 
-  class node1 lightbg
-  class node2 lightbg
-  classDef lightbg fill:#ffe,stroke:#333,stroke-width:2px
+  class node1 nodeCluster
+  class node2 nodeCluster
+  classDef nodeCluster fill:transparent,stroke:#ff5e5e,stroke-width:2px,stroke-dasharray:4 2
 
   Publisher -.->|Message| Broadcaster
   Broadcaster -->|Message| Broker

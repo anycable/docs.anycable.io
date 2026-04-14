@@ -1,8 +1,9 @@
 import { defineConfig } from 'vitepress'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 import llmstxt from 'vitepress-plugin-llms'
 import { availableSinceMarkdownPlugin } from './availableSinceMarkdownPlugin'
 
-export default defineConfig({
+export default withMermaid(defineConfig({
   title: "AnyCable",
   description: "A real-time server for Rails, Laravel, Node.js, and Hotwire applications",
 
@@ -181,5 +182,17 @@ export default defineConfig({
     editLink: {
       pattern: 'https://github.com/anycable/docs.anycable.io/edit/master/docs/:path'
     },
-  }
-})
+  },
+
+  mermaid: {
+    theme: 'base',
+    themeVariables: {
+      primaryColor: '#FFF5F5',
+      primaryTextColor: '#363636',
+      primaryBorderColor: '#ff5e5e',
+      lineColor: '#ff5e5e',
+      secondaryColor: '#fff0e6',
+      tertiaryColor: '#ffffff',
+    },
+  },
+}))
