@@ -37,12 +37,17 @@ jobs:
       - name: Build with VitePress
         working-directory: docs/
         run: npm run build
-      - name: Upload artifact
+      - name: Upload dist
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: docs/.vitepress/dist
+      - name: Upload pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs/.vitepress/dist
 
-  deploy:
+  deploy-pages:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -53,3 +58,21 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  deploy-netlify:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: docs/.vitepress/dist
+      - uses: nwtgck/actions-netlify@v3
+        with:
+          publish-dir: './docs/.vitepress/dist'
+          netlify-config-path: './netlify.toml'
+          production-deploy: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
