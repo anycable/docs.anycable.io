@@ -34,3 +34,9 @@
 
 # Common misspelling of the OCPP page.
 /anycable-go/occp      /anycable-go/ocpp                    301
+
+# Reliable streams once lived under /guides; siblings stayed there, so list it explicitly.
+/guides/reliable_streams   /anycable-go/reliable_streams   301
+
+# Misspelling of broadcast_adapters.
+/ruby/broadast_adapters    /ruby/broadcast_adapters        301
