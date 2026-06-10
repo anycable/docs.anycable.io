@@ -10,6 +10,10 @@ export default withMermaid(defineConfig({
   cleanUrls: true,
   ignoreDeadLinks: true,
 
+  sitemap: {
+    hostname: 'https://docs.anycable.io',
+  },
+
   vite: {
     plugins: [
       llmstxt(),

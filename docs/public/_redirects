@@ -1,0 +1,29 @@
+# 301 redirects for the docs URL restructure.
+# Old flat slugs (indexed by Google/Common Crawl/LLMs) now live under /anycable-go/*.
+# Netlify reads this file from the published site root.
+
+/signed_streams        /anycable-go/signed_streams        301
+/reliable_streams      /anycable-go/reliable_streams      301
+/presence              /anycable-go/presence              301
+/broadcasting          /anycable-go/broadcasting          301
+/jwt_identification    /anycable-go/jwt_identification     301
+/rpc                   /anycable-go/rpc                    301
+/sse                   /anycable-go/sse                    301
+/apollo                /anycable-go/apollo                 301
+/binary_formats        /anycable-go/binary_formats         301
+/long_polling          /anycable-go/long_polling           301
+/ocpp                  /anycable-go/ocpp                    301
+/pusher                /anycable-go/pusher                  301
+/broker                /anycable-go/broker                  301
+/pubsub                /anycable-go/pubsub                  301
+/instrumentation       /anycable-go/instrumentation        301
+/tracing               /anycable-go/tracing                301
+/os_tuning             /anycable-go/os_tuning              301
+/embedded_nats         /anycable-go/embedded_nats          301
+/library               /anycable-go/library                301
+/telemetry             /anycable-go/telemetry              301
+/configuration         /anycable-go/configuration          301
+/health_checking       /anycable-go/health_checking        301
+
+# The standalone anycable-go landing page was merged into the top-level guide.
+/anycable-go/getting_started   /getting_started            301
