@@ -10,6 +10,12 @@ export default withMermaid(defineConfig({
   cleanUrls: true,
   ignoreDeadLinks: true,
 
+  sitemap: {
+    hostname: 'https://docs.anycable.io',
+    // Drop leftover docsify folder-index stubs (/deployment/Readme, etc.).
+    transformItems: (items) => items.filter((i) => !/\/Readme$/i.test(i.url)),
+  },
+
   vite: {
     plugins: [
       llmstxt(),
