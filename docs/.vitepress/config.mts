@@ -12,6 +12,8 @@ export default withMermaid(defineConfig({
 
   sitemap: {
     hostname: 'https://docs.anycable.io',
+    // Drop leftover docsify folder-index stubs (/deployment/Readme, etc.).
+    transformItems: (items) => items.filter((i) => !/\/Readme$/i.test(i.url)),
   },
 
   vite: {
