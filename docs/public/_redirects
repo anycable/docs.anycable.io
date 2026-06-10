@@ -27,3 +27,10 @@
 
 # The standalone anycable-go landing page was merged into the top-level guide.
 /anycable-go/getting_started   /getting_started            301
+
+# Older path schemes still linked around the web.
+/guides/anycable-go/*  /anycable-go/:splat                 301
+/edge/*                /:splat                              301
+
+# Common misspelling of the OCPP page.
+/anycable-go/occp      /anycable-go/ocpp                    301
