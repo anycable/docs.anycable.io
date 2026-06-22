@@ -1,10 +1,31 @@
 # AnyCable documentation
 
-AnyCable docs website driven by [`docsify`](https://docsify.js.org/#/).
+Source for the [AnyCable documentation website](https://docs.anycable.io), built with [VitePress](https://vitepress.dev).
+
+The Markdown content lives in [`docs/`](./docs).
+
+## Running locally
+
+You need [Node.js](https://nodejs.org) installed. Then, from the `docs/` directory:
+
+```sh
+cd docs
+
+# Install dependencies
+npm install
+
+# Start the dev server with hot reload
+npm run dev
+```
+
+Other available scripts:
+
+- `npm run build`—build the static site into `docs/.vitepress/dist`.
+- `npm run preview`—preview the production build locally.
 
 ## Contributing
 
-The quickest way to fix a typo or propose a small change is to use GitHub web interface (open a file, click on "Edit", create a PR).
+The quickest way to fix a typo or propose a small change is to use the GitHub web interface (open a file, click on "Edit", create a PR).
 
 If you want to propose a bigger change, you might want to use a common flow:
 
@@ -15,56 +36,10 @@ If you want to propose a bigger change, you might want to use a common flow:
 
 ### Linters
 
-We try to keep our documentation both correct and _stylish_ using the following tools:
+We keep the documentation both correct and _stylish_ using the following tools:
 
 - [mdl](https://github.com/markdownlint/markdownlint)—Markdown linter, Ruby edition.
-- [liche](https://github.com/raviqqe/liche)—links linter.
+- [lychee](https://github.com/lycheeverse/lychee)—links checker.
 - [forspell](https://github.com/kkuprikov/forspell)—spelling checker.
-- [rubocop]() with [rubocop-md]() and [standard]()—Ruby code snippets style checking.
 
-To run these tools locally we use [Lefthook](https://github.com/Arkweid/lefthook) (runs linters automatically for every commit).
-
-To sum up:
-
-- Install `mdl`:
-
-```sh
-gem install mdl
-```
-
-- Install `liche`:
-
-```sh
-go get -u github.com/raviqqe/liche
-```
-
-- Install Hunspell and Forspell:
-
-```sh
-# for MacOS (for other OS see Forspell documentation)
-brew install hunspell
-
-gem install forspell
-```
-
-- Install StandardRB and `rubocop-md`:
-
-```sh
-gem install standard
-gem install rubocop-md
-```
-
-- Install `lefthook`:
-
-```sh
-# for MacOS (for other OS see Lefthook documentation)
-brew install lefthook
-```
-
-- Initialize `lefthook`:
-
-```sh
-lefthook install
-```
-
-Or you can skip all of these and rely on our CI, which can do all the checks for you!
+These run automatically in CI for every pull request (see [`.github/workflows/docs-lint.yml`](./.github/workflows/docs-lint.yml)), so you can rely on CI to do the checks for you.
