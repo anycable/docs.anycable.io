@@ -57,7 +57,7 @@ per-connection loop in your code.
 ```js
 import { createCable } from '@anycable/web'
 
-const cable = createCable({ protocol: 'actioncable-v1-ext-json' })
+const cable = createCable('ws://localhost:8080/cable', { protocol: 'actioncable-v1-ext-json' })
 const ticker = cable.streamFrom('market/AAPL')
 
 ticker.on('message', (update) => {

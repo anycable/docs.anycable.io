@@ -83,7 +83,7 @@ the extended protocol so reconnection and catch-up happen automatically:
 ```js
 import { createCable } from '@anycable/web'
 
-const cable = createCable({ protocol: 'actioncable-v1-ext-json' })
+const cable = createCable('ws://localhost:8080/cable', { protocol: 'actioncable-v1-ext-json' })
 const channel = cable.streamFrom(`ai/conversation/${conversationId}`)
 
 let answer = ''

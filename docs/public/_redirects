@@ -25,8 +25,8 @@
 /configuration         /anycable-go/configuration          301
 /health_checking       /anycable-go/health_checking        301
 
-# The getting-started / standalone landing pages were merged into the Quick Start.
-/getting_started               /quickstart                 301
+# The old standalone anycable-go landing page now points to the Quick Start.
+# (Top-level /getting_started keeps a pointer page, so no redirect for it.)
 /anycable-go/getting_started   /quickstart                 301
 
 # Older path schemes still linked around the web.

@@ -59,7 +59,7 @@ dead zone catches up rather than jumping to a stale-then-current position.
 
 ```js
 import { createCable } from '@anycable/web'
-const cable = createCable({ protocol: 'actioncable-v1-ext-json' })
+const cable = createCable('ws://localhost:8080/cable', { protocol: 'actioncable-v1-ext-json' })
 
 // Follow one driver's position
 const track = cable.streamFrom('driver/42/location')

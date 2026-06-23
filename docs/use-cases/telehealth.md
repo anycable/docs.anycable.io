@@ -41,7 +41,7 @@ it fits on-premise and isolated environments. See [Docker](../deployment/docker.
 
 ```js
 import { createCable } from '@anycable/web'
-const cable = createCable({ protocol: 'actioncable-v1-ext-json' })
+const cable = createCable('ws://localhost:8080/cable', { protocol: 'actioncable-v1-ext-json' })
 
 const session = cable.streamFrom('consultation/abc123')
 

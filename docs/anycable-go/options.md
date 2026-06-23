@@ -245,7 +245,7 @@ These options are available in [AnyCable Pro](../pro.md) and AnyCable+, on top o
 | `--poll_path` | yes | `ANYCABLE_POLL_PATH` | `"/lp"` | Long polling endpoint path |
 | `--ocpp_channel` | yes | `ANYCABLE_OCPP_CHANNEL` | `"OCPPChannel"` | OCPP Action Cable channel class name |
 | `--ocpp_granular_actions` | — | `ANYCABLE_OCPP_GRANULAR_ACTIONS` | `true` | Translate each OCPP command into its own action |
-| `--ocpp_heartbeat_interval` | yes | `ANYCABLE_OCPP_HEARTBEAT_INTERVAL` | `30` | Default heartbeat interval in seconds |
+| `--ocpp_heartbeat_interval` | yes | `ANYCABLE_OCPP_HEARTBEAT_INTERVAL` | `30` | Default heartbeat interval in seconds. **Note:** current Pro builds (≤ `1.6.14-pro`) spell this `--ocpp_hearbeat_interval` / `ANYCABLE_OCPP_HEARBEAT_INTERVAL` (a known typo); use that spelling until the fix ships. |
 | `--ocpp_path` | yes | `ANYCABLE_OCPP_PATH` | — | WebSocket endpoint path prefix to accept OCPP connections |
 | `--rpc_concurrency_initial` | yes | `ANYCABLE_RPC_CONCURRENCY_INITIAL` | `25` | Initial concurrency (adaptive) |
 | `--rpc_concurrency_max` | yes | `ANYCABLE_RPC_CONCURRENCY_MAX` | `100` | Max concurrency (adaptive) |
