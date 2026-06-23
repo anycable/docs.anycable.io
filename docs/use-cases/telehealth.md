@@ -28,7 +28,9 @@ state, not the video itself.
 ## 1. Run the server
 
 ```sh
-anycable-go --presets=broker --broadcast_adapter=http
+anycable-go --presets=broker --broadcast_adapter=http --public
+# --public is for local dev only (the client below subscribes to unsigned streams);
+# in production, drop --public and require JWT + signed streams (see Production notes)
 ```
 
 For sensitive data, run AnyCable inside your own infrastructure. It is a single

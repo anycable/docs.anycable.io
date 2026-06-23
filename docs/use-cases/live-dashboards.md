@@ -24,7 +24,9 @@ once; AnyCable fans it out to every subscriber.
 ## 1. Run the server
 
 ```sh
-anycable-go --presets=broker --broadcast_adapter=http
+anycable-go --presets=broker --broadcast_adapter=http --public
+# --public is for local dev only (the client below subscribes to unsigned streams);
+# in production, drop --public and use signed streams + JWT
 ```
 
 The `broker` preset gives subscribers catch-up on reconnect, which matters for
