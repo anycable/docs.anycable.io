@@ -18,7 +18,7 @@ By default, the `--secret` configuration parameter is used as a JWT secret key. 
 
 Other configuration options are:
 
-- (_Optional_) **--jwt_param** (`ANYCABLE_ID_PARAM`, default: "jid"): the name of a query string param or an HTTP header, which carries a token. The header name is prefixed with `X-`.
+- (_Optional_) **--jwt_param** (`ANYCABLE_JWT_PARAM`, default: "jid"): the name of a query string param or an HTTP header, which carries a token. The header name is prefixed with `X-`.
 - (_Optional_) **--enforce_jwt** (`ANYCABLE_ENFORCE_JWT`, default: false): whether to require all connection requests to contain a token. Connections without a token would be rejected right away. If not set, the servers fallbacks to the RPC call (if RPC is configured) or would be accepted if authentication is disabled (`--noauth`).
 
 A client must provide an identification token either via a query param or via an HTTP header (if possible). For example:

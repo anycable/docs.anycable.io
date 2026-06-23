@@ -22,6 +22,7 @@ JWT, a signed stream name, an HTTP broadcast) are identical in every language.
 ## 1. Run the server
 
 ```sh
+export ANYCABLE_SECRET=$(openssl rand -hex 32)   # use a stable value in production
 anycable-go \
   --jwt_secret=$ANYCABLE_SECRET \
   --streams_secret=$ANYCABLE_SECRET \

@@ -109,6 +109,7 @@ For production, replace `--public` with real authorization. Two pieces:
 your backend so clients cannot subscribe to arbitrary streams:
 
 ```sh
+export ANYCABLE_SECRET=$(openssl rand -hex 32)   # use a stable value in production
 anycable-go --streams_secret=$ANYCABLE_SECRET --broadcast_adapter=http
 ```
 
