@@ -32,6 +32,10 @@ anycable-go --presets=broker --broadcast_adapter=http --public
 The `broker` preset gives subscribers catch-up on reconnect, which matters for
 dashboards where a missed update leaves stale numbers on screen.
 
+> Testing locally? Open the dashboard client (step 3) before publishing: a new
+> subscriber receives updates sent after it connects, and catch-up replays what it
+> missed on reconnect.
+
 ## 2. Publish updates
 
 Broadcast each update to the feed's stream. The producer can be a cron job, a
@@ -40,7 +44,7 @@ market-data consumer, or your application reacting to changes.
 ```python
 import os, json, httpx
 
-BROADCAST_URL = os.environ["ANYCABLE_BROADCAST_URL"]  # e.g. http://localhost:8090/_broadcast
+BROADCAST_URL = os.environ.get("ANYCABLE_BROADCAST_URL", "http://localhost:8090/_broadcast")
 
 def publish(stream, payload):
     httpx.post(BROADCAST_URL, json={"stream": stream, "data": json.dumps(payload)})
@@ -73,7 +77,7 @@ each widget calls `streamFrom` with its own feed name.
 - **Fan-out is one broadcast.** Verified with multiple subscribers on one
   stream: a single publish reaches all of them. In the
   [benchmark](https://anycable.io/compare/nodejs-websocket/)'s broadcast-throughput
-  test (10,000 subscribers, 1M messages from 40 parallel publishers), AnyCable
+  test (10,000 subscribers, 1M deliveries from 40 parallel publishers), AnyCable
   delivered at a **4 ms median** versus 155 ms for default Socket.IO. (This is the
   fan-out throughput test, distinct from the latency numbers on the
   [Capabilities](../capabilities.md#efficiency) page.)

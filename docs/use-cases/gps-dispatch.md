@@ -43,7 +43,7 @@ backend broadcasts each one to the asset's stream:
 ```python
 import os, json, httpx
 
-BROADCAST_URL = os.environ["ANYCABLE_BROADCAST_URL"]  # e.g. http://localhost:8090/_broadcast
+BROADCAST_URL = os.environ.get("ANYCABLE_BROADCAST_URL", "http://localhost:8090/_broadcast")
 
 def publish(stream, payload):
     httpx.post(BROADCAST_URL, json={"stream": stream, "data": json.dumps(payload)})
@@ -71,12 +71,16 @@ board.on('presence', ({ type, id, info }) => {
   if (type === 'join') addDriver(id, info)
   if (type === 'leave') removeDriver(id)
 })
-const online = await board.presence.info()
+renderRoster(await board.presence.info())   // seed the board with whoever is already online
 ```
 
-A driver's app joins the presence set when it goes on shift:
+A driver's app joins the presence set when it goes on shift (`driver` is the
+signed-in driver record from your app):
 
 ```js
+import { createCable } from '@anycable/web'
+
+const cable = createCable('ws://localhost:8080/cable', { protocol: 'actioncable-v1-ext-json' })
 const board = cable.streamFrom('dispatch/online-drivers')
 await board.presence.join(driver.id, { name: driver.name, vehicle: driver.vehicle })
 ```
@@ -105,7 +109,12 @@ await board.presence.join(driver.id, { name: driver.name, vehicle: driver.vehicl
   own delivery, and authenticate devices with
   [JWT](../anycable-go/jwt_identification.md).
 - **IoT protocols.** For EV-charging stations, AnyCable Pro speaks the
-  [OCPP](../anycable-go/ocpp.md) WebSocket protocol (currently alpha).
+  [OCPP](../anycable-go/ocpp.md) WebSocket protocol (alpha; integrates through
+  Action Cable on a Ruby/Rails backend).
+- **Multi-node presence.** The in-memory `broker` preset above is single-node. To
+  run more than one AnyCable instance, use the Redis broker on [Pro](../pro.md)
+  (Redis 7.4+ / Valkey 9.0+ required) so presence and history span nodes. See
+  [presence](../anycable-go/presence.md).
 
 ## Related
 

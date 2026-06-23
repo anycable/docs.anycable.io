@@ -22,8 +22,8 @@ recoverable messaging, and self-hosted or on-premise deployment for compliance.
 ```
 
 One stream per session (`consultation/<id>`) carries presence and messages.
-WebRTC media flows peer-to-peer; AnyCable carries the signaling and session
-state, not the video itself.
+WebRTC media flows peer-to-peer; AnyCable carries only the signaling and session
+state.
 
 ## 1. Run the server
 
@@ -71,7 +71,7 @@ your backend:
 ```python
 import os, json, httpx
 
-BROADCAST_URL = os.environ["ANYCABLE_BROADCAST_URL"]  # e.g. http://localhost:8090/_broadcast
+BROADCAST_URL = os.environ.get("ANYCABLE_BROADCAST_URL", "http://localhost:8090/_broadcast")
 
 def publish(stream, payload):
     httpx.post(BROADCAST_URL, json={"stream": stream, "data": json.dumps(payload)})
@@ -108,6 +108,9 @@ them. See [delivery guarantees](../capabilities.md#delivery-guarantees).
 - **Audit and data residency.** Running the server yourself keeps session
   metadata within your boundary. Pair with your existing logging and audit
   pipeline.
+- **Multi-node presence.** The in-memory `broker` preset is single-node. To scale
+  beyond one AnyCable instance, use the Redis broker on [Pro](../pro.md) (Redis
+  7.4+ / Valkey 9.0+ required) so presence and history are shared across nodes.
 
 ## Related
 

@@ -1,4 +1,4 @@
-# Streaming AI responses
+# AI response streaming
 
 Streaming tokens from an LLM to the browser as they are generated is the
 expected UX for AI products. It looks simple until you account for reality: a
@@ -37,17 +37,23 @@ anycable-go --presets=broker --broadcast_adapter=http --public
 # in production, drop --public and use signed streams + JWT
 ```
 
+> Testing locally? Start the client (step 3) before broadcasting: a fresh
+> subscriber only receives messages sent after it connects, and reconnection is
+> what triggers history catch-up.
+
 ## 2. Stream tokens from your backend
 
 Pick a stream name per conversation, for example `ai/conversation/<id>`. As the
 LLM yields tokens, broadcast each one (or small groups, to reduce HTTP overhead).
+The `llm`, `prompt`, and `conversation_id`/`conversationId` below are your
+application's own objects.
 
 ::: code-group
 
 ```python [Python]
 import os, json, httpx
 
-url = os.environ["ANYCABLE_BROADCAST_URL"]  # e.g. http://localhost:8090/_broadcast
+url = os.environ.get("ANYCABLE_BROADCAST_URL", "http://localhost:8090/_broadcast")
 stream = f"ai/conversation/{conversation_id}"
 
 for chunk in llm.stream(prompt):           # your LLM client's streaming API
@@ -56,7 +62,7 @@ httpx.post(url, json={"stream": stream, "data": json.dumps({"done": True})})
 ```
 
 ```js [Node.js]
-const url = process.env.ANYCABLE_BROADCAST_URL // http://localhost:8090/_broadcast
+const url = process.env.ANYCABLE_BROADCAST_URL ?? 'http://localhost:8090/_broadcast'
 
 async function publish(stream, payload) {
   await fetch(url, {
@@ -135,14 +141,15 @@ The same properties give you two more things for free:
 - **Chunking.** Broadcasting every single token is fine for moderate volumes;
   batch a few tokens per broadcast if you are generating very fast or serving
   many concurrent conversations.
-- **Multi-node.** For more than one AnyCable instance, use a distributed broker
-  (NATS, or Redis on [Pro](../pro.md)) so history is shared across nodes.
+- **Multi-node.** For more than one AnyCable instance, use a distributed broker so
+  history is shared across nodes: NATS (currently experimental, and requiring a 3+
+  node JetStream cluster) or Redis on [Pro](../pro.md).
 
 ## Example apps
 
-- [twilio-ai-js-demo](https://github.com/anycable/twilio-ai-js-demo) — Next.js app
+- [twilio-ai-js-demo](https://github.com/anycable/twilio-ai-js-demo): a Next.js app
   streaming an OpenAI Realtime voice agent over Twilio Media Streams and AnyCable.
-- [twilio-ai-demo](https://github.com/anycable/twilio-ai-demo) — the same idea with
+- [twilio-ai-demo](https://github.com/anycable/twilio-ai-demo): the same idea with
   a Ruby backend.
 
 ## Related
