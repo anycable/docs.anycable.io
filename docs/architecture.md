@@ -13,7 +13,7 @@ AnyCable **real-time server** (WS, or WebSocket, since it's a primary transport)
 
 AnyCable can be used in a standalone mode as a typical pub/sub server. However, it was primarily designed to act as a _business-logic proxy_ allowing you to avoid duplicating real-time logic between multiple apps. For that, we use an [RPC protocol](/anycable-go/rpc) to delegate subscriptions, authentication and authorization logic to your backend.
 
-The application publish broadcast messages to the WebSocket server (directly via HTTP or via some **queuing service**, see [broadcast adapters](/ruby/broadcast_adapters.md)). In case of running a WebSocket cluster (multiple nodes), there is also can be a **Pub/Sub service** responsible for re-transmitting broadcast messages between nodes. You can use [embedded NATS](/anycable-go/embedded_nats.md) as a pub/sub service to miminalize the number of infrastructure dependencies. See [Pub/Sub documentation](/anycable-go/pubsub.md) for other options.
+The application publish broadcast messages to the WebSocket server (directly via HTTP or via some **queuing service**, see [broadcast adapters](/ruby/broadcast_adapters.md)). In case of running a WebSocket cluster (multiple nodes), there is also can be a **Pub/Sub service** responsible for re-transmitting broadcast messages between nodes. You can use [embedded NATS](/anycable-go/embedded_nats.md) as a pub/sub service to minimize the number of infrastructure dependencies. See [Pub/Sub documentation](/anycable-go/pubsub.md) for other options.
 
 ## State management
 

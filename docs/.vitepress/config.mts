@@ -5,7 +5,7 @@ import { availableSinceMarkdownPlugin } from './availableSinceMarkdownPlugin'
 
 export default withMermaid(defineConfig({
   title: "AnyCable",
-  description: "A real-time server for Rails, Laravel, Node.js, and Hotwire applications",
+  description: "AnyCable: a realtime server with delivery guarantees for Rails, Laravel, Node.js, Python, and any backend.",
 
   cleanUrls: true,
   ignoreDeadLinks: true,
@@ -34,10 +34,10 @@ export default withMermaid(defineConfig({
     ['link', { rel: 'apple-touch-icon', href: '/assets/images/apple-touch-icon.png' }],
     ['meta', { name: 'theme-color', content: '#ff5e5e' }],
     ['meta', { property: 'og:title', content: 'AnyCable Documentation' }],
-    ['meta', { property: 'og:description', content: 'A real-time server for Rails, Laravel, Node.js, and Hotwire applications' }],
+    ['meta', { property: 'og:description', content: 'A realtime server with delivery guarantees for Rails, Laravel, Node.js, Python, and any backend.' }],
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:site', content: '@any_cable' }],
-    ['meta', { name: 'keywords', content: 'ruby, rails, websockets, real-time, action-cable, anycable, hotwire, laravel' }],
+    ['meta', { name: 'keywords', content: 'anycable, websockets, real-time, realtime server, delivery guarantees, reliable streams, presence, action-cable, ruby, rails, hotwire, laravel, nodejs, python, go' }],
   ],
 
   themeConfig: {
@@ -47,40 +47,43 @@ export default withMermaid(defineConfig({
     },
 
     nav: [
-      { text: 'Guide', link: '/getting_started', activeMatch: '/' },
+      { text: 'Guide', link: '/overview', activeMatch: '/' },
       { text: 'anycable.io', link: 'https://anycable.io' },
       { text: 'LLMs', link: '/llms-full.txt' },
     ],
 
     sidebar: [
       {
-        text: 'Guides',
+        text: 'Start here',
         items: [
-          { text: 'Getting started', link: '/getting_started' },
-          { text: 'Using with Rails', link: '/rails/getting_started' },
-          { text: 'Client-side usage', link: '/guides/client-side' },
-          { text: 'Using with JavaScript (serverless)', link: '/guides/serverless' },
-          { text: 'Using with Hotwire', link: '/guides/hotwire' },
-          { text: 'Using with Laravel', link: '/guides/laravel' },
-          { text: 'Broadcasting', link: '/anycable-go/broadcasting' },
-          { text: 'Signed streams', link: '/anycable-go/signed_streams' },
-          { text: 'Reliable streams', link: '/anycable-go/reliable_streams' },
-          { text: 'Presence', link: '/anycable-go/presence' },
-          { text: 'REST API', link: '/anycable-go/api' },
-          { text: 'JWT authentication', link: '/anycable-go/jwt_identification' },
+          { text: 'What is AnyCable', link: '/overview' },
+          { text: 'Quick start', link: '/quickstart' },
+          { text: 'Capabilities', link: '/capabilities' },
           { text: '🔥 Troubleshooting', link: '/troubleshooting' },
         ]
       },
       {
-        text: 'AnyCable PRO',
+        text: 'By backend',
         items: [
-          { text: 'Going PRO', link: '/pro' },
-          { text: 'Install PRO', link: '/pro/install' },
-          { text: 'AnyCable RPC', link: '/anycable-go/rpc' },
-          { text: 'Apollo GraphQL', link: '/anycable-go/apollo' },
-          { text: 'Binary formats', link: '/anycable-go/binary_formats' },
-          { text: 'Long polling', link: '/anycable-go/long_polling' },
-          { text: 'OCPP support', link: '/anycable-go/ocpp' },
+          { text: 'Rails', link: '/rails/getting_started' },
+          { text: 'Laravel', link: '/guides/laravel' },
+          { text: 'Node.js (serverless)', link: '/guides/serverless' },
+          { text: 'Python & any HTTP backend', link: '/guides/python' },
+          { text: 'Hotwire', link: '/guides/hotwire' },
+          { text: 'Client-side usage', link: '/guides/client-side' },
+        ]
+      },
+      {
+        text: 'Capabilities',
+        items: [
+          { text: 'Reliable streams & recovery', link: '/anycable-go/reliable_streams' },
+          { text: 'Presence', link: '/anycable-go/presence' },
+          { text: 'Broadcasting', link: '/anycable-go/broadcasting' },
+          { text: 'Signed streams', link: '/anycable-go/signed_streams' },
+          { text: 'JWT authentication', link: '/anycable-go/jwt_identification' },
+          { text: 'Broker deep dive', link: '/anycable-go/broker' },
+          { text: 'Pub/sub (node-node)', link: '/anycable-go/pubsub' },
+          { text: 'REST API', link: '/anycable-go/api' },
         ]
       },
       {
@@ -88,13 +91,23 @@ export default withMermaid(defineConfig({
         items: [
           { text: 'Server-sent events', link: '/anycable-go/sse' },
           { text: 'Pusher', link: '/anycable-go/pusher' },
+          { text: 'Apollo GraphQL', link: '/anycable-go/apollo' },
           { text: 'Durable Streams', link: '/anycable-go/durable_streams' },
           { text: 'Long polling', link: '/anycable-go/long_polling' },
           { text: 'OCPP support', link: '/anycable-go/ocpp' },
+          { text: 'Binary formats', link: '/anycable-go/binary_formats' },
         ]
       },
       {
-        text: 'Deployment',
+        text: 'Editions & Pro',
+        items: [
+          { text: 'Editions', link: '/editions' },
+          { text: 'Going Pro', link: '/pro' },
+          { text: 'Install Pro', link: '/pro/install' },
+        ]
+      },
+      {
+        text: 'Deploy & operate',
         items: [
           { text: 'Heroku', link: '/deployment/heroku' },
           { text: 'Fly.io', link: '/deployment/fly' },
@@ -110,6 +123,11 @@ export default withMermaid(defineConfig({
           { text: 'AWS ECS', link: 'https://medium.com/expsoftwareengineering/deploying-ruby-on-rails-with-anycable-using-docker-ecs-80f0da2051ba' },
           { text: 'Load Balancing', link: '/deployment/load_balancing' },
           { text: 'Load Testing', link: '/deployment/load_testing' },
+          { text: 'Instrumentation', link: '/anycable-go/instrumentation' },
+          { text: 'Health checking', link: '/anycable-go/health_checking' },
+          { text: 'Tracing', link: '/anycable-go/tracing' },
+          { text: 'OS Tuning', link: '/anycable-go/os_tuning' },
+          { text: 'Telemetry', link: '/anycable-go/telemetry' },
         ]
       },
       {
@@ -132,20 +150,13 @@ export default withMermaid(defineConfig({
         ]
       },
       {
-        text: 'AnyCable-Go',
+        text: 'AnyCable-Go (server)',
         items: [
           { text: 'Configuration', link: '/anycable-go/configuration' },
+          { text: 'All server options', link: '/anycable-go/options' },
           { text: 'AnyCable RPC', link: '/anycable-go/rpc' },
-          { text: 'Broker deep dive', link: '/anycable-go/broker' },
-          { text: 'Pub/sub (node-node)', link: '/anycable-go/pubsub' },
-          { text: 'Instrumentation', link: '/anycable-go/instrumentation' },
-          { text: 'Health checking', link: '/anycable-go/health_checking' },
-          { text: 'Tracing', link: '/anycable-go/tracing' },
-          { text: 'OS Tuning', link: '/anycable-go/os_tuning' },
-          { text: 'Signed streams', link: '/anycable-go/signed_streams' },
           { text: 'Embedded NATS', link: '/anycable-go/embedded_nats' },
           { text: 'Using as a library', link: '/anycable-go/library' },
-          { text: 'Telemetry', link: '/anycable-go/telemetry' },
         ]
       },
       {
@@ -156,7 +167,7 @@ export default withMermaid(defineConfig({
         ]
       },
       {
-        text: 'Misc',
+        text: 'Reference',
         items: [
           { text: 'Benchmarks', link: '/benchmarks' },
           { text: 'Action Cable protocols', link: '/misc/action_cable_protocol' },

@@ -42,7 +42,7 @@ This page contains combined release notes for major and minor releases of all An
 
   Now a single secret is enough to secure all AnyCable features; we call it an **application secret**. You can provide it via the `--secret` flag or the `ANYCABLE_SECRET=<val>` env var. It's used as is for JWT and signed streams (unless specific secrets specified) and as a secret base for HTTP RPC and HTTP broadcasting (again, unless specific keys specified).
 
-  There is also new `--broadast_key` (`ANYCABLE_BROADCAST_KEY`) that is meant to be used to authenticate broadcast actions. Currently, it's only used by HTTP broadcasting (as a replacement for `http_broadcast_secret`).
+  There is also new `--broadcast_key` (`ANYCABLE_BROADCAST_KEY`) that is meant to be used to authenticate broadcast actions. Currently, it's only used by HTTP broadcasting (as a replacement for `http_broadcast_secret`).
 
 ### Features
 
@@ -130,7 +130,7 @@ This page contains combined release notes for major and minor releases of all An
 
 - Broadcasted messages are now delivered in the order they were received by the server.
 
-  Previously, we used an executor pool internally to deliver broadcasted messages concurrently (to reduce the latency). That led to nonderterministic order of messages within a single stream delivered in a short period of time. Now, we preserve the order of messages within a stream—the delivered as they were accepted by the server.
+  Previously, we used an executor pool internally to deliver broadcasted messages concurrently (to reduce the latency). That led to nondeterministic order of messages within a single stream delivered in a short period of time. Now, we preserve the order of messages within a stream—the delivered as they were accepted by the server.
 
   That means, with a single AnyCable-Go server, the following snippet will result in clients receiving the messages in the same order they were broadcasted:
 
@@ -185,7 +185,7 @@ This page contains combined release notes for major and minor releases of all An
 
   See [documentation](./anycable-go/embedded_nats.md).
 
-- StatsD and metric tags are now generally available (dowstreamed from PRO).
+- StatsD and metric tags are now generally available (downstreamed from PRO).
 
   See [documentation](./anycable-go/instrumentation.md#statsd).
 
@@ -223,7 +223,7 @@ This page contains combined release notes for major and minor releases of all An
 
 #### AnyCable Ruby
 
-- A new configuration paramter, `rpc_max_connection_age`, has been added to replace the previous `rpc_server_args.max_connection_age_ms` (or `ANYCABLE_RPC_SERVER_ARGS__MAX_CONNECTION_AGE_MS`).
+- A new configuration parameter, `rpc_max_connection_age`, has been added to replace the previous `rpc_server_args.max_connection_age_ms` (or `ANYCABLE_RPC_SERVER_ARGS__MAX_CONNECTION_AGE_MS`).
 
   It comes with the **default value of 300 (5 minutes)**.
 
@@ -249,7 +249,7 @@ For full list of changes see the corresponding change logs:
 
 - Add JWT authentication/identification support.
 
-  You can pass a properly structured token along the connection request to authorize the connection and set up _identifiers_ without peforming an RPC call.
+  You can pass a properly structured token along the connection request to authorize the connection and set up _identifiers_ without performing an RPC call.
 
   See [documentation](./anycable-go/jwt_identification.md).
 

@@ -1,5 +1,7 @@
 # AnyCable server configuration
 
+> Looking for a specific flag? See the [complete server options reference](./options.md) for every option and environment variable.
+
 You can configure AnyCable server via CLI options, e.g.:
 
 ```sh
@@ -108,6 +110,8 @@ This is a shortcut to specify both `--noauth`, `--public_streams` and `--broadca
 You can specify on which port to receive broadcasting requests (NOTE: it could be the same port as the main HTTP server listens to).
 
 ## Redis configuration
+
+> [Valkey](https://valkey.io), the open-source fork of Redis, works as a drop-in alternative everywhere AnyCable uses Redis. Some features require recent versions: Redis-backed presence needs **Redis 7.4+** or **Valkey 9.0+**.
 
 **--redis_url** (`ANYCABLE_REDIS_URL` or `REDIS_URL`)
 

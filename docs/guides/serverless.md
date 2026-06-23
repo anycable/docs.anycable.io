@@ -267,7 +267,7 @@ fly launch --image anycable/anycable-go:1.5 --generate-name --ha=false \
 
 ## Running AnyCable locally
 
-There are plenty of ways of installing `anycable-go` binary on your machine (see [../anycable-go/getting_started.md]). For your convenience, we also provide an NPM package that can be used to install and run `anycable-go`:
+There are plenty of ways of installing `anycable-go` binary on your machine (see [Quick Start](../quickstart.md#install)). For your convenience, we also provide an NPM package that can be used to install and run `anycable-go`:
 
 ```sh
 npm install --save-dev @anycable/anycable-go

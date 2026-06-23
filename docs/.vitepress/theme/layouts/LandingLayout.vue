@@ -19,11 +19,12 @@
           />
           <div class="hero-text">
             <h1 class="hero-title">AnyCable Documentation</h1>
-            <p class="hero-tagline">Realtime server for reliable two-way communication</p>
+            <p class="hero-tagline">Realtime server with delivery guarantees for Rails, Laravel, Node.js, Python, and any backend</p>
           </div>
         </div>
         <div class="hero-actions">
-          <a class="btn btn-brand" href="/getting_started">Get Started</a>
+          <a class="btn btn-brand" href="/quickstart">Get Started</a>
+          <a class="btn btn-alt" href="/overview">What is AnyCable?</a>
           <a
             class="btn btn-alt"
             href="https://github.com/anycable/anycable"
@@ -47,23 +48,35 @@
           </a>
           <a class="path-card" href="/guides/laravel">
             <h3>Laravel</h3>
-            <p>Integrate real-time capabilities into your Laravel app</p>
+            <p>Drop-in replacement for Reverb or Pusher in your Laravel app</p>
+          </a>
+          <a class="path-card" href="/guides/serverless">
+            <h3>Node.js &amp; TypeScript</h3>
+            <p>Use AnyCable as a real-time server for (serverless) JS apps</p>
+          </a>
+          <a class="path-card" href="/guides/python">
+            <h3>Python</h3>
+            <p>Power realtime in Django, FastAPI, or any Python backend</p>
           </a>
           <a class="path-card" href="/guides/hotwire">
             <h3>Hotwire</h3>
             <p>Build reactive frontends with Turbo Streams and AnyCable</p>
           </a>
-          <a class="path-card" href="/guides/serverless">
-            <h3>TS/JS</h3>
-            <p>Use AnyCable as a real-time server for (serverless) JavaScript apps</p>
+          <a class="path-card" href="/quickstart#any-backend">
+            <h3>Any backend</h3>
+            <p>Pub/sub over a plain HTTP API, from any language</p>
           </a>
-          <a class="path-card" href="/anycable-go/pusher">
-            <h3>Pusher</h3>
-            <p>Drop-in Pusher-compatible real-time server</p>
+        </div>
+
+        <h2 class="explore-heading">Explore</h2>
+        <div class="path-grid">
+          <a class="path-card" href="/capabilities">
+            <h3>Capabilities</h3>
+            <p>Delivery guarantees, recovery, presence, and zero-downtime deploys</p>
           </a>
-          <a class="path-card" href="/anycable-go/durable_streams">
-            <h3>Durable Streams</h3>
-            <p>Reliable message delivery with automatic catch-up</p>
+          <a class="path-card" href="/editions">
+            <h3>Editions</h3>
+            <p>Open source, Pro, and managed AnyCable+</p>
           </a>
         </div>
       </div>
@@ -286,6 +299,10 @@
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0 0 32px;
+}
+
+.getting-started-inner .explore-heading {
+  margin-top: 48px;
 }
 
 .path-grid {

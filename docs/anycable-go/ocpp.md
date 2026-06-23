@@ -14,9 +14,9 @@ AnyCable-Go Pro supports OCPP and allows you to _connect_ your charging stations
 - The station sends a `BootNotification` request to initialize the connection
 - AnyCable transforms this request into several AnyCable RPC calls to match the Action Cable interface:
   1) `Authenticate -> Connection#connect` to authenticate the station.
-  2) `Command{subscribe} -> OCCPChannel#subscribed` to initialize a channel entity to association with this station.
-  3) `Command{perform} -> OCCPChannel#boot_notification` to handle the `BootNotification` request.
-- Subsequent requests from the station are converted into `OCCPChannel` action calls (e.g., `Authorize -> OCCPChannel#authorize`, `StartTransaction -> OCCPChannel#start_transaction`).
+  2) `Command{subscribe} -> OCPPChannel#subscribed` to initialize a channel entity to association with this station.
+  3) `Command{perform} -> OCPPChannel#boot_notification` to handle the `BootNotification` request.
+- Subsequent requests from the station are converted into `OCPPChannel` action calls (e.g., `Authorize -> OCPPChannel#authorize`, `StartTransaction -> OCPPChannel#start_transaction`).
 
 AnyCable also takes care of heartbeats and acknowledgment messages (unless you send them manually, see below).
 
@@ -120,7 +120,7 @@ end
 
 ### Single-action variant
 
-It's possible to handle all OCCP commands with a single `#receive` method at the channel class. For that, you must configure `anycable-go` to not use granular actions for OCPP:
+It's possible to handle all OCPP commands with a single `#receive` method at the channel class. For that, you must configure `anycable-go` to not use granular actions for OCPP:
 
 ```sh
 anycable-go --ocpp_granular_actions=false
@@ -152,7 +152,7 @@ end
 You can send remote commands to stations via Action Cable broadcasts:
 
 ```ruby
-OCCPChannel.broadcast_to(
+OCPPChannel.broadcast_to(
   "ev/#{serial_number}",
   {
     command: "TriggerMessage",
