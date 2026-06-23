@@ -163,6 +163,7 @@ export default withMermaid(defineConfig({
         text: 'AnyCable-Go (server)',
         items: [
           { text: 'Configuration', link: '/anycable-go/configuration' },
+          { text: 'All server options', link: '/anycable-go/options' },
           { text: 'AnyCable RPC', link: '/anycable-go/rpc' },
           { text: 'Embedded NATS', link: '/anycable-go/embedded_nats' },
           { text: 'Using as a library', link: '/anycable-go/library' },
