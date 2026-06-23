@@ -39,6 +39,13 @@ Devices send updates to your backend (HTTP, MQTT, whatever you already use). You
 backend broadcasts each one to the asset's stream:
 
 ```python
+import os, json, httpx
+
+BROADCAST_URL = os.environ["ANYCABLE_BROADCAST_URL"]  # e.g. http://localhost:8090/_broadcast
+
+def publish(stream, payload):
+    httpx.post(BROADCAST_URL, json={"stream": stream, "data": json.dumps(payload)})
+
 def on_location(driver_id, lat, lng, ts):
     publish(f"driver/{driver_id}/location", {"lat": lat, "lng": lng, "ts": ts})
 ```
@@ -95,8 +102,8 @@ await board.presence.join(driver.id, { name: driver.name, vehicle: driver.vehicl
   streams](../anycable-go/signed_streams.md) so a customer can only watch their
   own delivery, and authenticate devices with
   [JWT](../anycable-go/jwt_identification.md).
-- **IoT protocols.** For non-HTTP devices, AnyCable Pro also speaks
-  [OCPP](../anycable-go/ocpp.md) (EV charging) and other WebSocket subprotocols.
+- **IoT protocols.** For EV-charging stations, AnyCable Pro speaks the
+  [OCPP](../anycable-go/ocpp.md) WebSocket protocol (currently alpha).
 
 ## Related
 

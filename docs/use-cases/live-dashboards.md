@@ -36,7 +36,9 @@ Broadcast each update to the feed's stream. The producer can be a cron job, a
 market-data consumer, or your application reacting to changes.
 
 ```python
-import json, httpx
+import os, json, httpx
+
+BROADCAST_URL = os.environ["ANYCABLE_BROADCAST_URL"]  # e.g. http://localhost:8090/_broadcast
 
 def publish(stream, payload):
     httpx.post(BROADCAST_URL, json={"stream": stream, "data": json.dumps(payload)})
@@ -68,9 +70,11 @@ each widget calls `streamFrom` with its own feed name.
 
 - **Fan-out is one broadcast.** Verified with multiple subscribers on one
   stream: a single publish reaches all of them. In the
-  [benchmark](https://anycable.io/compare/nodejs-websocket/), AnyCable delivered
-  1M messages to 10K subscribers at a **4 ms median**, against 155 ms for default
-  Socket.IO under the same parallel-publisher load.
+  [benchmark](https://anycable.io/compare/nodejs-websocket/)'s broadcast-throughput
+  test (10,000 subscribers, 1M messages from 40 parallel publishers), AnyCable
+  delivered at a **4 ms median** versus 155 ms for default Socket.IO. (This is the
+  fan-out throughput test, distinct from the latency numbers on the
+  [Capabilities](../capabilities.md#efficiency) page.)
 - **No stale screens after a blip.** Updates carry ordered offsets, so a viewer
   that reconnects pulls the updates it missed rather than waiting for the next
   tick. See [delivery guarantees](../capabilities.md#delivery-guarantees).
@@ -88,8 +92,9 @@ each widget calls `streamFrom` with its own feed name.
 - **Authorization.** Use [signed streams](../anycable-go/signed_streams.md) so a
   viewer only subscribes to feeds they are entitled to (per-tenant dashboards,
   paid symbols).
-- **Public read-only feeds.** For genuinely public data, you can enable public
-  streams instead of signing each name.
+- **Public read-only feeds.** For genuinely public data, you can enable
+  [public streams](../anycable-go/signed_streams.md#public-unsigned-streams)
+  (`--public_streams` / `ANYCABLE_PUBLIC_STREAMS`) instead of signing each name.
 
 ## Related
 

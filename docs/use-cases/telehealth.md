@@ -33,7 +33,7 @@ anycable-go --presets=broker --broadcast_adapter=http
 
 For sensitive data, run AnyCable inside your own infrastructure. It is a single
 self-hosted Go binary with no external dependencies in the standalone setup, so
-it fits on-premise and isolated environments. See [deployment](../deployment/heroku.md).
+it fits on-premise and isolated environments. See [Docker](../deployment/docker.md) or [Kubernetes](../deployment/kubernetes.md) deployment.
 
 ## 2. Join the session and track presence
 
@@ -67,6 +67,13 @@ Broadcast chat, status changes, and WebRTC signaling to the session stream from
 your backend:
 
 ```python
+import os, json, httpx
+
+BROADCAST_URL = os.environ["ANYCABLE_BROADCAST_URL"]  # e.g. http://localhost:8090/_broadcast
+
+def publish(stream, payload):
+    httpx.post(BROADCAST_URL, json={"stream": stream, "data": json.dumps(payload)})
+
 def send_to_session(session_id, event):
     publish(f"consultation/{session_id}", event)
 

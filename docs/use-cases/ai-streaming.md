@@ -32,8 +32,9 @@ For reliable, replayable delivery you need the [broker](../anycable-go/broker.md
 enabled. The `broker` preset does that:
 
 ```sh
-anycable-go --presets=broker --broadcast_adapter=http
-# add --public for local dev; secure with signed streams + JWT in production
+anycable-go --presets=broker --broadcast_adapter=http --public
+# --public is for local dev only (step 3 subscribes to an unsigned stream);
+# in production, drop --public and use signed streams + JWT
 ```
 
 ## 2. Stream tokens from your backend
