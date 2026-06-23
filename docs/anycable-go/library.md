@@ -22,27 +22,27 @@ Here is a minimal example Go code (you can find the full and up-to-date version 
 package main
 
 import (
-	"net/http"
+  "net/http"
 
-	"github.com/anycable/anycable-go/cli"
+  "github.com/anycable/anycable-go/cli"
 )
 
 func main() {
-	opts := []cli.Option{
-		cli.WithName("AnyCable"),
-		cli.WithDefaultRPCController(),
-		cli.WithDefaultBroker(),
-		cli.WithDefaultSubscriber(),
-		cli.WithDefaultBroadcaster(),
-	}
+  opts := []cli.Option{
+    cli.WithName("AnyCable"),
+    cli.WithDefaultRPCController(),
+    cli.WithDefaultBroker(),
+    cli.WithDefaultSubscriber(),
+    cli.WithDefaultBroadcaster(),
+  }
 
-	c := cli.NewConfig()
-	runner, _ := cli.NewRunner(c, opts)
-	anycable, _ := runner.Embed()
+  c := cli.NewConfig()
+  runner, _ := cli.NewRunner(c, opts)
+  anycable, _ := runner.Embed()
 
-	wsHandler, _ := anycable.WebSocketHandler()
-	http.Handle("/cable", wsHandler)
+  wsHandler, _ := anycable.WebSocketHandler()
+  http.Handle("/cable", wsHandler)
 
-	http.ListenAndServe(":8080", nil)
+  http.ListenAndServe(":8080", nil)
 }
 ```
