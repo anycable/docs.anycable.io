@@ -74,6 +74,10 @@
             <h3>Capabilities</h3>
             <p>Delivery guarantees, recovery, presence, and zero-downtime deploys</p>
           </a>
+          <a class="path-card" href="/use-cases/">
+            <h3>Build by use case</h3>
+            <p>AI streaming, live dashboards, GPS dispatch, telehealth</p>
+          </a>
           <a class="path-card" href="/editions">
             <h3>Editions</h3>
             <p>Open source, Pro, and managed AnyCable+</p>

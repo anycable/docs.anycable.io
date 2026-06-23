@@ -63,6 +63,16 @@ export default withMermaid(defineConfig({
         ]
       },
       {
+        text: 'Build by use case',
+        items: [
+          { text: 'Overview', link: '/use-cases/' },
+          { text: 'AI response streaming', link: '/use-cases/ai-streaming' },
+          { text: 'Live dashboards', link: '/use-cases/live-dashboards' },
+          { text: 'GPS tracking & dispatch', link: '/use-cases/gps-dispatch' },
+          { text: 'Telehealth & collaboration', link: '/use-cases/telehealth' },
+        ]
+      },
+      {
         text: 'By backend',
         items: [
           { text: 'Rails', link: '/rails/getting_started' },
