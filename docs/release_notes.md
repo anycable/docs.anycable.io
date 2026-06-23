@@ -42,7 +42,7 @@ This page contains combined release notes for major and minor releases of all An
 
   Now a single secret is enough to secure all AnyCable features; we call it an **application secret**. You can provide it via the `--secret` flag or the `ANYCABLE_SECRET=<val>` env var. It's used as is for JWT and signed streams (unless specific secrets specified) and as a secret base for HTTP RPC and HTTP broadcasting (again, unless specific keys specified).
 
-  There is also new `--broadast_key` (`ANYCABLE_BROADCAST_KEY`) that is meant to be used to authenticate broadcast actions. Currently, it's only used by HTTP broadcasting (as a replacement for `http_broadcast_secret`).
+  There is also new `--broadcast_key` (`ANYCABLE_BROADCAST_KEY`) that is meant to be used to authenticate broadcast actions. Currently, it's only used by HTTP broadcasting (as a replacement for `http_broadcast_secret`).
 
 ### Features
 
