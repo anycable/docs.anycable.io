@@ -25,7 +25,7 @@ If your HTTP broadcasting endpoint is secured, use the `broadcast_key` option to
 ### Redis Pub/Sub
 
 > Enable via `broadcast_adapter: redis` in `anycable.yml` or `ANYCABLE_BROADCAST_ADAPTER=redis`.
-
+>
 > [Valkey](https://valkey.io), the open-source Redis fork, works as a drop-in alternative here and for all Redis-based adapters.
 
 **NOTE:** To use Redis adapters, you MUST add the `redis` gem to your Gemfile yourself.

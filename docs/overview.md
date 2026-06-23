@@ -1,4 +1,4 @@
-# What is AnyCable?
+# What is AnyCable
 
 AnyCable is a realtime server with **delivery guarantees** for Rails, Laravel,
 Node.js, Python, and any backend that can speak HTTP. It handles the hard parts

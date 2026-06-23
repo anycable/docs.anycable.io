@@ -56,7 +56,7 @@ export default withMermaid(defineConfig({
       {
         text: 'Start here',
         items: [
-          { text: 'What is AnyCable?', link: '/overview' },
+          { text: 'What is AnyCable', link: '/overview' },
           { text: 'Quick start', link: '/quickstart' },
           { text: 'Capabilities', link: '/capabilities' },
           { text: '🔥 Troubleshooting', link: '/troubleshooting' },

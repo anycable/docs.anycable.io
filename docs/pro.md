@@ -5,7 +5,7 @@
 AnyCable Pro aims to bring AnyCable to the next level of efficient resources usage and developer ~~experience~~ happiness.
 
 > Not sure which edition you need? See [Editions](./editions.md) for a comparison of open source, Pro, and AnyCable+.
-
+>
 > Read also <a rel="noopener" href="https://evilmartians.com/chronicles/anycable-goes-pro-fast-websockets-for-ruby-at-scale" target="_blank">AnyCable Goes Pro: Fast WebSockets for Ruby, at scale</a>.
 
 ## Memory usage

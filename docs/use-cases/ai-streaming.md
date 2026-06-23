@@ -46,21 +46,18 @@ LLM yields tokens, broadcast each one (or small groups, to reduce HTTP overhead)
 ```python [Python]
 import os, json, httpx
 
-ANYCABLE_URL = os.environ["ANYCABLE_BROADCAST_URL"]  # e.g. http://localhost:8090/_broadcast
-
-def broadcast(stream: str, payload: dict):
-    httpx.post(ANYCABLE_URL, json={"stream": stream, "data": json.dumps(payload)})
-
+url = os.environ["ANYCABLE_BROADCAST_URL"]  # e.g. http://localhost:8090/_broadcast
 stream = f"ai/conversation/{conversation_id}"
+
 for chunk in llm.stream(prompt):           # your LLM client's streaming API
-    broadcast(stream, {"token": chunk.text})
-broadcast(stream, {"done": True})
+    httpx.post(url, json={"stream": stream, "data": json.dumps({"token": chunk.text})})
+httpx.post(url, json={"stream": stream, "data": json.dumps({"done": True})})
 ```
 
 ```js [Node.js]
 const url = process.env.ANYCABLE_BROADCAST_URL // http://localhost:8090/_broadcast
 
-async function broadcast(stream, payload) {
+async function publish(stream, payload) {
   await fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -70,9 +67,9 @@ async function broadcast(stream, payload) {
 
 const stream = `ai/conversation/${conversationId}`
 for await (const chunk of llm.stream(prompt)) {  // your LLM client's streaming API
-  await broadcast(stream, { token: chunk.text })
+  await publish(stream, { token: chunk.text })
 }
-await broadcast(stream, { done: true })
+await publish(stream, { done: true })
 ```
 
 :::

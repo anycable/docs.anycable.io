@@ -33,7 +33,7 @@ anycable-go --presets=broker --broadcast_adapter=http
 
 For sensitive data, run AnyCable inside your own infrastructure. It is a single
 self-hosted Go binary with no external dependencies in the standalone setup, so
-it fits on-premise and air-gapped environments. See [deployment](../deployment/heroku.md).
+it fits on-premise and isolated environments. See [deployment](../deployment/heroku.md).
 
 ## 2. Join the session and track presence
 
