@@ -12,8 +12,6 @@ lefthook-local.yml
 # Local Netlify folder
 .netlify
 
-# Internal docs-rework working files (not for publication)
-DOCS_IMPROVEMENTS_SPEC.md
-FACT_CHECK.md
-DOCS_NOTES.md
+# Internal LLM working files (specs, notes, drafts) - not for publication
+.llm-docs/
 .DS_Store
