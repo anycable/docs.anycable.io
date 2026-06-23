@@ -2,7 +2,7 @@
 
 AnyCable allows you to control all the real-time communication logic from your backend application. For that, AnyCable uses a _remote procedure call_ (RPC) mechanism to delegate handling of connection lifecycle events and processing of incoming messages (subscriptions, arbitrary actions).
 
-Using RPC is required if you design your real-time logic using _Channels_ (like in Rails Action Cable). For primitive pub/sub, you can run AnyCable in a [standalone mode](./getting_started.md#standalone-mode-pubsub-only), i.e., without RPC.
+Using RPC is required if you design your real-time logic using _Channels_ (like in Rails Action Cable). For primitive pub/sub, you can run AnyCable in a [standalone mode](../quickstart.md#any-backend), i.e., without RPC.
 
 ## RPC over gRPC
 

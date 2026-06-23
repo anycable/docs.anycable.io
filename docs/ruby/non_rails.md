@@ -20,7 +20,7 @@ If you don't plan to use _channels_ (RPC), you can go with the `anycable-core` g
 
 ## Pub/Sub only mode
 
-To use AnyCable in a standalone (pub/sub only) mode (see [docs](../anycable-go/getting_started.md)), you need to use the following APIs:
+To use AnyCable in a standalone (pub/sub only) mode (see [docs](../quickstart.md#any-backend)), you need to use the following APIs:
 
 - Broadcasting.
 

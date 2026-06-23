@@ -109,6 +109,8 @@ You can specify on which port to receive broadcasting requests (NOTE: it could b
 
 ## Redis configuration
 
+> [Valkey](https://valkey.io), the open-source fork of Redis, works as a drop-in alternative everywhere AnyCable uses Redis. Some features require recent versions: Redis-backed presence needs **Redis 7.4+** or **Valkey 9.0+**.
+
 **--redis_url** (`ANYCABLE_REDIS_URL` or `REDIS_URL`)
 
 Redis URL to connect to (default: `"redis://localhost:6379/5"`). Used by the corresponding pub/sub, broadcasting, and broker adapters.

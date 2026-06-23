@@ -101,7 +101,7 @@ You can also create an `anycable.toml` configuration file to fine-tune your AnyC
 
 **NOTE:** The Artisan command automatically configures [AnyCable broadcasting adapter](/anycable-go/broadcasting.md) to HTTP and enables [the "broker" preset](/anycable-go/reliable_streams.md) (streams history).
 
-Alternatively, you can install AnyCable using [other available options](/anycable-go/getting_started?id=installation).
+Alternatively, you can install AnyCable using [other available options](../quickstart.md#install).
 
 That's it! Run your Laravel application, launch AnyCable server, and you should see your Echo client connecting to it and receiving updates.
 

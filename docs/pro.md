@@ -1,8 +1,10 @@
-# AnyCable-Go
+# AnyCable Pro
 
 <p class="pro-badge-header"></p>
 
-AnyCable-Go Pro aims to bring AnyCable to the next level of efficient resources usage and developer ~~experience~~ happiness.
+AnyCable Pro aims to bring AnyCable to the next level of efficient resources usage and developer ~~experience~~ happiness.
+
+> Not sure which edition you need? See [Editions](./editions.md) for a comparison of open source, Pro, and AnyCable+.
 
 > Read also <a rel="noopener" href="https://evilmartians.com/chronicles/anycable-goes-pro-fast-websockets-for-ruby-at-scale" target="_blank">AnyCable Goes Pro: Fast WebSockets for Ruby, at scale</a>.
 
@@ -10,7 +12,9 @@ AnyCable-Go Pro aims to bring AnyCable to the next level of efficient resources 
 
 Pro version uses a different memory model under the hood, which gives you yet another **30-50% RAM usage reduction**.
 
-Here is the results of running [websocket-bench][] `broadcast` and `connect` benchmarks and measuring RAM used:
+> In the current [Node.js WebSocket benchmark](https://anycable.io/compare/nodejs-websocket/), Pro held connections at ~18 KB each versus ~34 KB for the open-source build on the same hardware.
+
+Here is the results of running [websocket-bench][] `broadcast` and `connect` benchmarks and measuring RAM used (from an earlier release):
 
 | version | broadcast 5k | connect 10k |  connect 15k |
 |---|----|---|---|
@@ -32,7 +36,7 @@ incoming messages, you might want to fallback to the _actor-per-connection_ mode
 - [Binary messaging formats](anycable-go/binary_formats.md)
 - [Apollo GraphQL protocol support](anycable-go/apollo.md)
 - [Long polling support](anycable-go/long_polling.md)
-- [OCCP support](anycable-go/occp.md)
+- [OCPP support](anycable-go/ocpp.md)
 
 ## Installation
 

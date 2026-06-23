@@ -149,7 +149,7 @@ $ anycable-go --embed_nats --broker=nats
 
 <p class="pro-badge-header"></p>
 
-AnyCable Pro comes with a Redis-based broker adapter. It stores all data in Redis and, thus, can be used in multi-node installations.
+AnyCable Pro comes with a Redis-based broker adapter. It stores all data in Redis and, thus, can be used in multi-node installations. [Valkey](https://valkey.io), the open-source Redis fork, works as a drop-in alternative (note that Redis-backed presence requires **Redis 7.4+** or **Valkey 9.0+**).
 
 To use Redis broker, you need to provide the `--broker` option with the `redis` adapter name:
 

@@ -65,6 +65,8 @@ echo -n 'broadcast-cable' | openssl dgst -sha256 -hmac '<your secret>' | awk '{p
 
 > Enable via `--broadcast_adapter=redis` (or `ANYCABLE_BROADCAST_ADAPTER=redis`).
 
+> [Valkey](https://valkey.io), the open-source Redis fork, works as a drop-in alternative for this and the Redis X adapter below.
+
 This broadcaster uses Redis [Pub/Sub](https://redis.io/topics/pubsub) feature under the hood, and, thus, publications are delivered to all subscribed AnyCable servers simultaneously.
 
 All broadcast messages are published to a single channel (configured via the `--redis_channel`, defaults to `__anycable__`) as follows:
