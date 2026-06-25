@@ -38,6 +38,10 @@ export default withMermaid(defineConfig({
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:site', content: '@any_cable' }],
     ['meta', { name: 'keywords', content: 'anycable, websockets, real-time, realtime server, delivery guarantees, reliable streams, presence, action-cable, ruby, rails, hotwire, laravel, nodejs, python, go' }],
+    // Privacy-friendly analytics by Plausible (cookieless, no PII). The script ID is a
+    // public client-side identifier, not a secret; spoofing is blocked via hostname Shields.
+    ['script', { async: '', src: 'https://plausible.io/js/pa-sk7JDKlDe3CHAdBbykSWN.js' }],
+    ['script', {}, 'window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};\n  plausible.init()'],
   ],
 
   themeConfig: {
