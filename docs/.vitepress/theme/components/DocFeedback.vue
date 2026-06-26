@@ -22,6 +22,7 @@ const issueUrl = computed(() => {
   const params = new URLSearchParams({
     title: `Docs feedback: ${path}`,
     body,
+    labels: 'docs-feedback',
   })
   return `https://github.com/anycable/docs.anycable.io/issues/new?${params.toString()}`
 })
