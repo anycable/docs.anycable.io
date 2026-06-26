@@ -10,15 +10,6 @@ This is the same [standalone pub/sub](../quickstart.md#any-backend) model used b
 any HTTP backend. The examples below are Python, but the three moving parts (a
 JWT, a signed stream name, an HTTP broadcast) are identical in every language.
 
-## Architecture
-
-```
-  Browser ◄── WebSocket ── AnyCable ◄── POST /_broadcast ── Your Python app
-                              ▲                              (Django / FastAPI /
-                              │ JWT (?jid=...) on connect     Flask / ...)
-                              │ signed stream names
-```
-
 ## 1. Run the server
 
 ```sh
@@ -101,6 +92,10 @@ broadcast("chat/1", {"text": "Hello from Python"})
 > port and require an auth key, see [securing the broadcast
 > endpoint](../anycable-go/broadcasting.md#securing-http-endpoint).
 
+That's it. Your Python backend now drives realtime through three HTTP-level
+pieces: a token, a signed stream name, and a POST. No SDK, no persistent
+connection to maintain.
+
 ## Framework notes
 
 The integration is the same regardless of framework, because it is just token
@@ -111,13 +106,6 @@ issuing, stream signing, and HTTP POSTs:
 - **FastAPI / Flask**: issue tokens in a route; broadcast from request handlers
   or background workers.
 - **Any other backend**: replicate the three snippets above in your language.
-
-## Verified behavior
-
-Every step here is exercised against a running server: a Python-generated JWT is
-accepted (and a missing one rejected with `unauthorized`), a Python-signed stream
-name is accepted for subscription, and an HTTP broadcast is delivered to the
-subscribed client.
 
 ## Related
 
