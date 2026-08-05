@@ -61,6 +61,7 @@ export default withMermaid(defineConfig({
         text: 'Start here',
         items: [
           { text: 'What is AnyCable', link: '/overview' },
+          { text: 'Intro to realtime web', link: '/realtime-web' },
           { text: 'Quick start', link: '/quickstart' },
           { text: 'Capabilities', link: '/capabilities' },
           { text: '🔥 Troubleshooting', link: '/troubleshooting' },

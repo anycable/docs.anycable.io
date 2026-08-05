@@ -90,6 +90,7 @@ configuration, so you can move between them as your needs change.
 
 ## Next steps
 
+- [An Introduction to Realtime Web](./realtime-web.md): new to WebSockets, streams, and presence? Start with the concepts.
 - [Quick Start](./quickstart.md): get a server running and a client connected, by stack.
 - [Capabilities](./capabilities.md): the features that make AnyCable a realtime framework, not just a transport.
 - [Using with Rails](./rails/getting_started.md): the Action Cable drop-in path.
