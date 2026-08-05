@@ -9,7 +9,8 @@ integrate.
 - **[Pro](./pro.md)** — the same server with a denser memory model, cluster
   features, and extra protocols. A drop-in replacement for the open-source binary.
 - **[AnyCable+](https://plus.anycable.io)** — Pro as a managed service, so you do
-  not operate the server yourself. Free tier available.
+  not operate the server yourself. Free tier available. Provision servers from
+  the terminal with the [AnyCable+ CLI](./plus/cli.md).
 
 ## Which one
 
