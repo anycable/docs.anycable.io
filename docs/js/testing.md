@@ -68,7 +68,24 @@ channel.perform('type') //=> compile error: unknown action
 ## Test channels with TestCable
 
 `@anycable/core/testing` provides a test cable implementation that records
-performed actions instead of sending them to a server. Given a channel:
+performed actions instead of sending them to a server.
+
+:::warning The `@anycable/core/testing` import needs a resolver workaround
+As of `@anycable/core` v1.1.6, the package `exports` map omits the `./testing`
+subpath, so Node ESM, Vite, and Jest 28+ fail to resolve the import with
+`ERR_PACKAGE_PATH_NOT_EXPORTED`. Until a fixed version ships, map the import
+to the file directly. For Jest:
+
+```js
+// jest.config.js
+moduleNameMapper: {
+  '^@anycable/core/testing$': '<rootDir>/node_modules/@anycable/core/testing/index.js'
+}
+```
+
+:::
+
+Given a channel:
 
 ```js
 import { Channel } from '@anycable/core'

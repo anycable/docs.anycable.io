@@ -188,12 +188,15 @@ The most useful `createCable` options (defaults shown):
 
 ```js
 const cable = createCable({
-  logLevel: 'info', // use 'debug' for troubleshooting
+  logLevel: 'warn', // use 'debug' for troubleshooting
   performFailures: 'throw', // how to treat channel.perform() failures ('warn', 'ignore')
-  lazy: true, // connect only when the first subscription is made
-  logger: console // custom logger (log, info, warn, error, debug)
+  lazy: true // connect only when the first subscription is made
 })
 ```
+
+With `@anycable/web`, logs go to the browser console. With `@anycable/core`,
+the default logger is silent, so `logLevel` alone has no effect; pass a
+`logger` to see logs (see [Node.js](../js/platforms.md#nodejs)).
 
 See the [TS definitions](https://github.com/anycable/anycable-client/blob/master/packages/core/cable/index.d.ts) for the full list.
 

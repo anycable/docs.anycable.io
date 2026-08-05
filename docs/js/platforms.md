@@ -25,6 +25,24 @@ const cableWithHeader = createCable('ws://localhost:8080/cable', {
 })
 ```
 
+The default logger in `@anycable/core` is silent, so `logLevel` alone has no
+effect. To see logs in Node, pass a logger:
+
+```js
+import { createCable, BaseLogger } from '@anycable/core'
+
+class ConsoleLogger extends BaseLogger {
+  writeLogEntry(level, msg, details) {
+    console[level](msg, details || '')
+  }
+}
+
+const cable = createCable('ws://localhost:8080/cable', {
+  websocketImplementation: WebSocket,
+  logger: new ConsoleLogger('debug')
+})
+```
+
 The packages are ESM-only. If your tooling requires CommonJS, see the
 [bundler notes](#bundler-notes) below.
 
