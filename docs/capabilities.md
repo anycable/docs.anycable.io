@@ -88,8 +88,8 @@ every connection on each deploy and, at 20K clients, only 33% reconnected within
 the measurement window. AnyCable lost **zero** connections, because the deploy
 never restarted it.
 
-For RPC-backed (Rails) setups, you roll your application and RPC servers while
-the WebSocket server keeps running. Pro adds a
+For Rails setups, you roll your application servers while the WebSocket server
+keeps running. Pro adds a
 [slow drain mode](./anycable-go/configuration.md#slow-drain-mode) to spread
 reconnects when you do restart the WebSocket layer.
 
