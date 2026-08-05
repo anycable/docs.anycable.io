@@ -48,6 +48,43 @@ messages after a disconnect, and holds
 [over 800,000 connections](https://anycable.io/compare/nodejs-websocket/) per
 instance while application deploys leave live connections untouched.
 
+## Key terms
+
+The vocabulary of realtime systems, with each term defined so it can stand on
+its own. These are the definitions used throughout the AnyCable documentation.
+
+- A **WebSocket** is a connection that begins as an ordinary HTTP request and
+  upgrades into a persistent, bidirectional channel, allowing the client and
+  the server to send messages to each other at any time.
+- **Server-Sent Events (SSE)** is a browser standard in which the server keeps
+  an HTTP response open and pushes a one-directional stream of events to the
+  client, suitable for feeds that never need to flow the other way.
+- **Publish-subscribe (pub/sub)** is a messaging pattern that decouples senders
+  from receivers: publishers send messages to named streams without knowing the
+  audience, and a broker delivers each message to every subscriber of that
+  stream.
+- A **stream** is a named feed of messages, such as `chat/42`, that clients
+  subscribe to and backends publish to; the stream name is the address that
+  connects the two.
+- A **broadcast** is the act of publishing one message to a stream so that
+  every subscribed client receives its own copy.
+- **[Presence](./anycable-go/presence.md)** is the live roster of clients
+  subscribed to a stream, kept accurate through heartbeats and expiry, and
+  delivered to applications as join and leave events.
+- A **[signed stream](./anycable-go/signed_streams.md)** is a stream name
+  accompanied by a cryptographic signature that the application generates with
+  a secret key, letting a realtime server such as AnyCable authorize the
+  subscription by verifying the signature instead of calling the application.
+- A **[reliable stream](./anycable-go/reliable_streams.md)** is a stream whose
+  recent history the server retains, so that a client reconnecting after a
+  network drop receives every message it missed, in the original order.
+- A **[whisper](./js/presence.md)** is a message that one client sends directly
+  to the other subscribers of a stream through the realtime server, without
+  involving the backend application; typing indicators and live cursor
+  positions are typical whispers.
+
+## Where to go next
+
 To see these concepts as working code, continue with the
 [Quick Start](./quickstart.md), or read [What is AnyCable](./overview.md) and
 [Capabilities](./capabilities.md) for how each guarantee is implemented.
