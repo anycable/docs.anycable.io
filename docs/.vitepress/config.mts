@@ -166,13 +166,13 @@ export default withMermaid(defineConfig({
       {
         text: 'JavaScript',
         items: [
-          { text: 'JS SDK overview', link: '/guides/client-side' },
+          { text: 'Client SDK overview', link: '/guides/client-side' },
           { text: 'Reliable connections', link: '/js/reliability' },
           { text: 'Authentication & tokens', link: '/js/authentication' },
           { text: 'Presence & whispering', link: '/js/presence' },
           { text: 'Node.js, React Native & fallbacks', link: '/js/platforms' },
           { text: 'TypeScript & testing', link: '/js/testing' },
-          { text: 'Serverless backends', link: '/guides/serverless' },
+          { text: 'Serverless backends (server SDK)', link: '/guides/serverless' },
           { text: 'Source: anycable-client', link: 'https://github.com/anycable/anycable-client' },
           { text: 'Source: anycable-serverless-js', link: 'https://github.com/anycable/anycable-serverless-js' },
         ]
