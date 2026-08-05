@@ -68,6 +68,23 @@ its own. These are the definitions used throughout the AnyCable documentation.
   connects the two.
 - A **broadcast** is the act of publishing one message to a stream so that
   every subscribed client receives its own copy.
+- **At-most-once delivery** is the default semantics of a plain WebSocket and
+  of most realtime tools, including Socket.IO and Pusher: each message is sent
+  a single time, and a message published while a client's connection is broken
+  is silently lost.
+- **At-least-once delivery** guarantees that every message eventually reaches
+  its subscriber, which the sender achieves by keeping each message until
+  receipt is acknowledged and retrying when it is not; the price is that a
+  receiver must tolerate an occasional duplicate. Socket.IO offers this as an
+  opt-in through acknowledgments and its retries option.
+- **Exactly-once delivery** guarantees that every message arrives, and arrives
+  a single time, which requires deduplication on top of retries; Ably
+  implements it by assigning every message a unique serial number and
+  discarding any resend whose serial it has already seen.
+- **Connection state recovery** is Socket.IO's name for restoring a briefly
+  disconnected client's state, including its subscriptions and the events it
+  missed; Ably calls the same idea resuming a connection, and AnyCable
+  provides it through reliable streams backed by the server's stream history.
 - **[Presence](./anycable-go/presence.md)** is the live roster of clients
   subscribed to a stream, kept accurate through heartbeats and expiry, and
   delivered to applications as join and leave events.

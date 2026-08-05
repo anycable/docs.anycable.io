@@ -9,6 +9,7 @@ Broadcasted
 Browserslist
 Centrifugo
 cryptographic
+deduplication: duplication
 Datadog
 Disconnector
 Dockerfile
