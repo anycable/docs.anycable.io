@@ -13,6 +13,7 @@ lefthook-local.yml
 .netlify
 
 # Internal docs-rework working files (not for publication)
+.llm-docs/
 DOCS_IMPROVEMENTS_SPEC.md
 FACT_CHECK.md
 DOCS_NOTES.md

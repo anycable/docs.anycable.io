@@ -77,20 +77,31 @@ channel.on('message', (msg) => render(msg))
 Publishing is an HTTP POST. The `data` field is a string; clients receive it
 parsed:
 
-```python
-import json, httpx   # or requests
+Since your server runs with a secret (step 1), the broadcast endpoint requires
+authorization. The key is derived from the secret, so there is nothing new to
+configure or share:
 
+```python
+import hashlib, hmac, json, os
+import httpx   # or requests
+
+SECRET = os.environ["ANYCABLE_SECRET"]
 BROADCAST_URL = "http://localhost:8090/_broadcast"
+BROADCAST_KEY = hmac.new(SECRET.encode(), b"broadcast-cable", hashlib.sha256).hexdigest()
 
 def broadcast(stream, payload):
-    httpx.post(BROADCAST_URL, json={"stream": stream, "data": json.dumps(payload)})
+    httpx.post(
+        BROADCAST_URL,
+        json={"stream": stream, "data": json.dumps(payload)},
+        headers={"Authorization": f"Bearer {BROADCAST_KEY}"},
+    )
 
 broadcast("chat/1", {"text": "Hello from Python"})
 ```
 
-> The broadcast endpoint runs on port `8090` by default. To serve it on the main
-> port and require an auth key, see [securing the broadcast
-> endpoint](../anycable-go/broadcasting.md#securing-http-endpoint).
+> The broadcast endpoint runs on port `8090` by default. See [securing the
+> broadcast endpoint](../anycable-go/broadcasting.md#securing-http-endpoint)
+> for serving it on the main port or using an explicit `--broadcast_key`.
 
 That's it. Your Python backend now drives realtime through three HTTP-level
 pieces: a token, a signed stream name, and a POST. No SDK, no persistent

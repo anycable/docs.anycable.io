@@ -105,5 +105,5 @@ When long polling enabled, the following metrics are available:
 - `long_poll_clients_num`: number of active long polling clients.
 - `long_poll_stale_requests_total`: number of stale requests (i.e., requests that were sent after the poll session was closed).
 
-[anycable-client]: https://github.com/anycable/anycable-client
-[@anycable/long-polling]: https://github.com/anycable/anycable-client/tree/master/packages/long-polling
+[anycable-client]: ../guides/client-side.md
+[@anycable/long-polling]: ../js/platforms.md#long-polling-fallback

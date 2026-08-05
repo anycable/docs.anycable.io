@@ -31,11 +31,17 @@ You can run AnyCable in a standalone mode by using [signed pub/sub streams](../a
 
 > Check out our demo Next.js application to see the complete example: [vercel-anycable-demo][]
 
-AnyCable Serverless SDK contains the following components:
+AnyCable Serverless SDK (`@anycable/serverless-js`, v0.2+) contains the
+following components:
 
 - JWT authentication and signed streams.
 - Broadcasting.
 - Channels.
+
+> Presence and whispering currently have no dedicated helpers in the serverless
+> SDK. Both work with this setup anyway: they are implemented by the client SDK
+> and the AnyCable server (with the broker enabled), without backend involvement.
+> See [presence and whispering](../js/presence.md).
 
 ### JWT authentication
 
@@ -63,12 +69,13 @@ import { signer } from "@anycable/serverless-js";
 
 const streamsSecret = process.env.ANYCABLE_STREAMS_SECRET;
 
-const sign = signer(secret);
+const sign = signer(streamsSecret);
 
 const signedStreamName = sign("room/13");
 ```
 
-Then, you can use the generated stream name with your client (using [AnyCable JS client SDK](https://github.com/anycable/anycable-client)):
+Then, you can use the generated stream name with your client (using the
+[AnyCable JS client SDK](./client-side.md)):
 
 ```js
 import { createCable } from "@anycable/web";
@@ -112,7 +119,7 @@ For example, a channel representing a chat room may be defined as follows:
 ```js
 import { Channel } from "@anycable/serverless-js";
 
-export default class ChatChannel extends {
+export default class ChatChannel extends Channel {
   // The `subscribed` method is called when the client subscribes to the channel
   // You can use it to authorize the subscription and set up streaming
   async subscribed(handle, params) {
@@ -150,7 +157,7 @@ export default class ChatChannel extends {
 
 Channels are registered within an _application_ instance, which can also be used to authenticate connections (if JWT is not being used):
 
-```js
+```ts
 import { Application } from "@anycable/serverless-js";
 
 import ChatChannel from "./channels/chat";
@@ -187,15 +194,15 @@ class CableApplication extends Application {
 // Create an instance of the class to use in HTTP handlers (see the next section)
 const app = new CableApplication();
 
-// Register channel
-app.register("chat", ChatChannel);
+// Register a channel instance under the identifier clients subscribe with
+app.registerChannel("chat", new ChatChannel());
 ```
 
 To connect your channels to an AnyCable server, you MUST add AnyCable API endpoint to your HTTP server (or serverless function). The SDK provides HTTP handlers for that.
 
 Here is an example setup for Next.js via [Vercel serverless functions](https://vercel.com/docs/functions/serverless-functions):
 
-```js
+```ts
 // api/anycable/route.ts
 import { NextResponse } from "next/server";
 import { handler, Status } from "@anycable/serverless-js";
@@ -221,7 +228,7 @@ export async function POST(request: Request) {
 
 You can use our [AnyCable Client SDK][anycable-client] on the client side. The corresponding code may look like this:
 
-```js
+```ts
 import { createCable, Channel } from "@anycable/web";
 
 //Set up a connection
@@ -258,7 +265,7 @@ channel.sendMessage({ body: "Hello, world!" });
 AnyCable can be deployed anywhere from modern clouds to good old bare-metal servers. Check out the [deployment guide](../deployment.md) for more details. We recommend using [Fly][], as you can deploy AnyCable in a few minutes with just a single command:
 
 ```sh
-fly launch --image anycable/anycable-go:1.5 --generate-name --ha=false \
+fly launch --image anycable/anycable-go:1.6 --generate-name --ha=false \
   --internal-port 8080 --env PORT=8080 \
   --env ANYCABLE_SECRET=<YOUR_SECRET> \
   --env ANYCABLE_PRESETS=fly,broker \
@@ -283,4 +290,4 @@ npx anycable-go
 [vercel-anycable-demo]: https://github.com/anycable/vercel-anycable-demo
 [Fly]: https://fly.io
 [anycable-serverless-js]: https://github.com/anycable/anycable-serverless-js
-[anycable-client]: https://github.com/anycable/anycable-client
+[anycable-client]: ./client-side.md

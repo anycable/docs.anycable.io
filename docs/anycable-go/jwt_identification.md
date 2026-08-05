@@ -136,7 +136,7 @@ jwt.encode(payload, ENCRYPTION_KEY, algorithm='HS256')
 
 Whenever a server encounters a token that has expired, it rejects the connection and send the `disconnect` message with `reason: "token_expired"`. It's a client responsibility to handle this situation and refresh the token.
 
-See, for example, how [anycable-client handles this](https://github.com/anycable/anycable-client#refreshing-authentication-tokens).
+The AnyCable JS SDK handles this via the [`tokenRefresher` option](../js/authentication.md#refresh-expired-tokens).
 
 [jwt]: https://jwt.io
 [anycable-client]: https://github.com/anycable/anycable-client
