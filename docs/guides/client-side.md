@@ -51,7 +51,8 @@ createCable('ws://cable.example.com/cable')
 ## Subscribe to streams (pub/sub)
 
 Subscribe directly to data streams, with no channel classes involved. This is
-the primary mode when AnyCable runs standalone (without an RPC backend):
+the primary mode when AnyCable runs standalone and your backend only
+broadcasts events:
 
 ```js
 import cable from 'cable'
@@ -77,9 +78,9 @@ const chatChannel = cable.streamFromSigned(signedName)
 
 ## Use channels
 
-When your backend implements channel logic (via [RPC](../anycable-go/rpc.md)
-or [HTTP RPC](../ruby/http_rpc.md)), subscribe with channels: class-based or
-_headless_.
+When [your backend defines channels](../anycable-go/rpc.md) (for example,
+Rails Action Cable channels or a [serverless backend](./serverless.md)),
+subscribe with channels: class-based or _headless_.
 
 ### Class-based subscriptions
 
