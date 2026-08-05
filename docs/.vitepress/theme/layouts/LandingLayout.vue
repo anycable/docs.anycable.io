@@ -74,6 +74,10 @@
             <h3>Capabilities</h3>
             <p>Delivery guarantees, recovery, presence, and zero-downtime deploys</p>
           </a>
+          <a class="path-card" href="/guides/client-side">
+            <h3>Client SDK</h3>
+            <p>JavaScript client for web, Node.js, and React Native</p>
+          </a>
           <a class="path-card" href="/editions">
             <h3>Editions</h3>
             <p>Open source, Pro, and managed AnyCable+</p>
