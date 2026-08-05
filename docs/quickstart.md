@@ -40,13 +40,20 @@ managed one instead:
 
 ```sh
 curl -LSs https://anycable-plus.terminalwire.sh | bash
+```
+
+The installer adds the CLI to your PATH; restart your shell (or open a new
+terminal), then log in and create a cable:
+
+```sh
 anycable-plus login
 anycable-plus cable create my-app --public --wait
 ```
 
-The last command prints your cable's WebSocket URL and broadcast URL. The
-steps below work the same for a hosted server: use those two URLs in place
-of the `localhost` ones (and skip running `anycable-go`).
+The last command prints your cable's WebSocket URL and broadcast URL. Steps
+1–3 below work the same for a hosted server: use those two URLs in place
+of the `localhost` ones (and skip running `anycable-go`). Step 4 notes the
+one difference: you set the secret on the cable rather than via server flags.
 
 ## Any backend (standalone pub/sub) {#any-backend}
 
@@ -126,6 +133,10 @@ your backend so clients cannot subscribe to arbitrary streams:
 export ANYCABLE_SECRET=$(openssl rand -hex 32)   # use a stable value in production
 anycable-go --streams_secret=$ANYCABLE_SECRET --broadcast_adapter=http
 ```
+
+> On a hosted [AnyCable+](./plus/cli.md) cable, set the secret on the cable
+> itself: `anycable-plus cable update <id> --secret=$ANYCABLE_SECRET`. The
+> signing and client steps below stay the same.
 
 Generate a signed name in your backend and hand it to the client. The algorithm
 is HMAC-SHA256, identical across languages. Node.js:
