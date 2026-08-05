@@ -26,7 +26,7 @@ anycable-go --broker=redis
 
 **NOTE:** Redis broker is the only broker that works in the cluster mode. **Redis 7.4+** or **Valkey 9.0+** is required for Redis-backed presence to work.
 
-Now, you can use the presence API in your application. For example, using [AnyCable JS client](https://github.com/anycable/anycable-client):
+Now, you can use the presence API in your application. For example, using the [AnyCable JS client](../js/presence.md):
 
 ```js
 import { createCable } from '@anycable/web'

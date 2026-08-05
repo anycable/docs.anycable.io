@@ -49,7 +49,7 @@ sequenceDiagram
 
 To support these features, an [extended Action Cable protocol](/misc/action_cable_protocol.md#action-cable-extended-protocol) is used for communication.
 
-You can use [AnyCable JS client](https://github.com/anycable/anycable-client) library at the client-side to use the extended protocol.
+You can use the [AnyCable JS client](../js/reliability.md) at the client-side to use the extended protocol.
 
 ## Broadcasting messages
 

@@ -74,7 +74,8 @@ const sign = signer(streamsSecret);
 const signedStreamName = sign("room/13");
 ```
 
-Then, you can use the generated stream name with your client (using [AnyCable JS client SDK](https://github.com/anycable/anycable-client)):
+Then, you can use the generated stream name with your client (using the
+[AnyCable JS client SDK](./client-side.md)):
 
 ```js
 import { createCable } from "@anycable/web";
@@ -289,4 +290,4 @@ npx anycable-go
 [vercel-anycable-demo]: https://github.com/anycable/vercel-anycable-demo
 [Fly]: https://fly.io
 [anycable-serverless-js]: https://github.com/anycable/anycable-serverless-js
-[anycable-client]: https://github.com/anycable/anycable-client
+[anycable-client]: ./client-side.md

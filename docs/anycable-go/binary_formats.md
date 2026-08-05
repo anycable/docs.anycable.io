@@ -277,4 +277,4 @@ And the long one is:
 ```
 
 [websocket-bench]: https://github.com/anycable/websocket-bench
-[anycable-client]: https://github.com/anycable/anycable-client
+[anycable-client]: ../js/platforms.md#binary-encoders-pro
