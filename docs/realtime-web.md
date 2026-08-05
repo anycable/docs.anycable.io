@@ -45,8 +45,8 @@ Laravel, Node.js, Python, and any HTTP backend, implements
 [JWT authentication](./anycable-go/jwt_identification.md), and
 [reliable streams](./anycable-go/reliable_streams.md) that restore missed
 messages after a disconnect, and holds
-[over 800,000 connections](https://anycable.io/compare/nodejs-websocket/) per
-instance while application deploys leave live connections untouched.
+[over 800,000 idle connections](https://anycable.io/compare/nodejs-websocket/)
+per instance while application deploys leave live connections untouched.
 
 ## Key terms
 
@@ -119,9 +119,10 @@ its own. These are the definitions used throughout the AnyCable documentation.
   paired with the AnyCable client SDK, it upgrades delivery from at-most-once
   to exactly-once.
 - The **[broker](./anycable-go/broker.md)** is the component of a realtime
-  server that keeps recent stream history and session state in a short-lived
-  cache, turning a bare transport into a delivery system; AnyCable's built-in
-  broker is what makes reliable streams and resumable sessions possible.
+  server that keeps recent stream history, session state, and presence
+  information in a short-lived cache, turning a bare transport into a delivery
+  system; AnyCable's built-in broker is what makes reliable streams and
+  resumable sessions possible.
 - A **[whisper](./js/presence.md)** is a message that one client sends directly
   to the other subscribers of a stream through the realtime server, without
   involving the backend application; typing indicators and live cursor
