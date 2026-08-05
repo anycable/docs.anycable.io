@@ -59,7 +59,7 @@ configuration and a [React Native demo](https://github.com/anycable/anycable_rai
 
 With Rails and graphql-ruby, clients can also connect over the standard
 Action Cable protocol using graphql-ruby's [ActionCableLink](https://graphql-ruby.org/javascript_client/apollo_subscriptions.html),
-passing a consumer created by the [AnyCable JS SDK](../guides/client-side.md#migrate-from-railsactioncable).
+passing a consumer created by the [AnyCable JS SDK](../guides/client-side.md#migrate-from-rails-actioncable).
 
 ## Read next
 
