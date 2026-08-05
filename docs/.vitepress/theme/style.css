@@ -224,3 +224,11 @@
   height: 1em;
   vertical-align: middle;
 }
+
+.pro-badge-header::before {
+  content: "";
+  display: inline-block;
+  width: 64px;
+  height: 27px;
+  background: url("../../assets/pro.svg") no-repeat center / contain;
+}
