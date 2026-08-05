@@ -1,9 +1,9 @@
 # Client authentication and tokens
 
 Pass an authentication token from the client, refresh it when it expires, and
-choose how it travels with the WebSocket connection. The server side of this
-story is [JWT authentication](../anycable-go/jwt_identification.md); the SDK
-works the same way with custom token schemes.
+choose how it is sent with the WebSocket connection. The server counterpart is
+[JWT authentication](../anycable-go/jwt_identification.md); the SDK works the
+same way with custom token schemes.
 
 ## Provide the initial token
 
@@ -15,7 +15,7 @@ import { createCable } from '@anycable/web'
 export default createCable(`ws://localhost:8080/cable?jid=${token}`)
 ```
 
-Or let the SDK attach it for you via the `auth` option:
+Or pass it via the `auth` option:
 
 ```js
 export default createCable({
@@ -68,11 +68,11 @@ below for long-lived clients.
 
 ## Refresh expired tokens
 
-Tokens expire; sessions outlive them. The server checks the token when a
-connection is established, so the typical failure is a client reconnecting
-after a network blip with a token that has expired in the meantime. The server
-rejects it with the reason `token_expired`, and the SDK can then fetch a fresh
-token and reconnect on its own. Provide a `tokenRefresher` function:
+The server checks the token only when a connection is established. The typical
+failure: a client reconnects after a network interruption, and its token has
+expired in the meantime. The server rejects it with the reason `token_expired`,
+and the SDK can then fetch a fresh token and reconnect on its own. Provide a
+`tokenRefresher` function:
 
 ```js
 // cable.js
@@ -116,11 +116,11 @@ with its request. Detect it on the backend and render only the meta tags
 instead of the full page.
 :::
 
-## Choose how the token travels
+## Choose how the token is sent
 
-Browsers give WebSockets no custom headers, so query parameters are the
-default. In other environments you have more options, controlled by
-`websocketAuthStrategy`:
+Browsers cannot set custom headers on WebSocket connections, so query
+parameters are the default. In other environments you have more options,
+controlled by `websocketAuthStrategy`:
 
 ```js
 import WebSocket from 'ws'
@@ -133,8 +133,8 @@ const cable = createCable(url, {
 })
 ```
 
-- `'header'` (Node.js, React Native): adds an `x-jid: <token>` header to the
-  connection request.
+- `'header'` (Node.js, React Native): adds an `x-<param>: <token>` header to
+  the connection request (`x-jid` with the default param name).
 - `'sub-protocol'`: appends an `anycable-token.<token>` entry to the WebSocket
   sub-protocols (the `sec-websocket-protocol` header). This works in browsers
   too and is supported by AnyCable server since v1.6.

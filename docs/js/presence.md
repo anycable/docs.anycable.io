@@ -27,7 +27,7 @@ Join once; the SDK re-joins automatically after every reconnection.
 ## React to joins and leaves
 
 ```js
-chatChannel.presence.on('presence', (ev) => {
+chatChannel.on('presence', (ev) => {
   const { type, id, info } = ev
 
   if (type === 'join') {
@@ -41,7 +41,8 @@ chatChannel.presence.on('presence', (ev) => {
 })
 ```
 
-The event `type` is one of `join`, `leave`, `presence`, or `error`.
+The event `type` is one of `join`, `leave`, `info` (the full presence state),
+or `error`.
 
 ## Read the current state
 
@@ -62,16 +63,16 @@ chatChannel.presence.leave()
 ```
 
 Users also leave automatically on unsubscribe or disconnect. A client that
-drops without leaving lingers for the server's `--presence_ttl` (15 seconds by
-default), so a brief network blip does not flicker anyone offline.
+disconnects without leaving stays in the presence set for the server's
+`--presence_ttl` (15 seconds by default), so a brief network interruption does
+not make the user appear offline.
 
 ## Whisper client-to-client
 
-Whispers are broadcasts published by clients, delivered to everyone else on
-the stream without touching your backend. They are transient: no history, no
-persistence, gone if you were offline. That makes them a fit for typing
-indicators and live cursors, and a poor fit for anything you would need to
-replay.
+Whispers are broadcasts published by clients and delivered to everyone else on
+the stream, bypassing your backend. They are transient: never stored, and
+clients that are offline miss them. Use them for typing indicators and live
+cursors; use regular broadcasts for anything that must be replayable.
 
 ```js
 // Publish

@@ -53,7 +53,7 @@ With this setup, you can use `@hotwired/turbo-rails` or [@anycable/turbo-stream]
 
 ## Using the AnyCable client with Turbo
 
-The default `@hotwired/turbo-rails` package is hard-wired to the Action Cable
+The default `@hotwired/turbo-rails` package only works with the Action Cable
 client. The [@anycable/turbo-stream][] package activates
 `<turbo-cable-stream-source>` elements with an AnyCable cable instance instead,
 so Turbo Streams benefit from [reliable streams](../js/reliability.md),

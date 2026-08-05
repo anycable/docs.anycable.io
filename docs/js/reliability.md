@@ -38,9 +38,9 @@ History and recovery require the broker: `anycable-go --presets=broker`. Tune
 ## Reconnect automatically
 
 Reconnection works out of the box. The component responsible for it is called
-_Monitor_; `createCable` sets it up with exponential backoff and jitter, so a
-mass reconnect does not stampede the server. To disable automatic reconnection
-(for example, in tests), pass `monitor: false`:
+_Monitor_; `createCable` sets it up with exponential backoff and jitter, so
+many clients reconnecting at once do not overload the server. To disable
+automatic reconnection (for example, in tests), pass `monitor: false`:
 
 ```js
 const cable = createCable({ monitor: false })
@@ -74,9 +74,9 @@ session, the value is adjusted automatically to the last received ping. Set
 
 ## Handle history retrieval failures
 
-History is finite (size limit and TTL), so a client that was away too long may
-fail to catch up. The server tells you about it via the protocol-level `info`
-event; react by resetting state instead of silently missing messages:
+History is finite (size limit and TTL), so a client that was offline too long
+may fail to catch up. The server reports this via the protocol-level `info`
+event; handle it by restoring the state from your backend:
 
 ```js
 import { createCable, Channel } from '@anycable/web'
@@ -104,7 +104,7 @@ class ChatChannel extends Channel {
 ## Watch lifecycle events
 
 Both cables and channels emit lifecycle events. Use them to drive connection
-UI (an "offline" banner, disabled inputs) instead of guessing.
+UI (an "offline" banner, disabled inputs).
 
 Cable events:
 
@@ -170,7 +170,7 @@ export default createCable({
 
 ## Fine-tune for high loads
 
-Three knobs matter when you have many subscriptions or many clients
+Three settings matter when you have many subscriptions or many clients
 reconnecting at once:
 
 - **Ping interval.** The default is 3 seconds and is dictated by the server
@@ -184,7 +184,7 @@ reconnecting at once:
 
 - **Subscription confirmation timeout.** The client expects a confirmation
   within 5 seconds, retries once, then treats the subscription as rejected.
-  Under connection avalanches, give the server more room:
+  When many clients reconnect at once, increase the timeout:
 
   ```js
   export default createCable({

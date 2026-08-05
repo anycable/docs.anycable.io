@@ -51,7 +51,7 @@ export class ChatChannel extends Channel<Params, Message, Events, Actions> {
 }
 ```
 
-The compiler now catches the usual realtime bugs:
+The compiler now catches mistakes in params, events, and actions:
 
 ```ts
 let channel = new ChatChannel({ roomId: '2021' }) //=> OK

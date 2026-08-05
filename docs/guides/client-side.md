@@ -2,8 +2,7 @@
 
 AnyCable speaks the Action Cable protocol, so existing clients (such as
 `@rails/actioncable`) work as-is. The AnyCable JS SDK is the recommended
-client, because it unlocks the parts of AnyCable that generic clients cannot
-see:
+client, because it supports AnyCable features that generic clients do not:
 
 - [Reliable streams](../js/reliability.md): session recovery and missed-message
   catch-up via the extended protocol.
@@ -84,8 +83,8 @@ _headless_.
 
 ### Class-based subscriptions
 
-A channel class hides subscription details behind a domain API. You can add
-methods, dispatch custom events, and intercept messages:
+A channel class wraps a subscription in an application-specific API. You can
+add methods, dispatch custom events, and intercept messages:
 
 ```js
 import { Channel } from '@anycable/web'
@@ -139,8 +138,8 @@ cable is connected, and retries automatically until the subscription is
 confirmed or rejected. Calling `channel.disconnect()` removes the subscription
 immediately and sends the `unsubscribe` command asynchronously.
 
-Multiple instances with the same identifier are safe: the SDK makes a single
-real subscription and fans messages out to every instance. Two components can
+Multiple instances with the same identifier are safe: the SDK creates a single
+real subscription and delivers messages to every instance. Two components can
 independently `new NotificationsChannel()` + `cable.subscribe(...)` and both
 receive updates; the server-side unsubscribe happens only when the last one
 disconnects.
@@ -195,7 +194,7 @@ const cable = createCable({
 })
 ```
 
-The full list lives in the [TS definitions](https://github.com/anycable/anycable-client/blob/master/packages/core/cable/index.d.ts).
+See the [TS definitions](https://github.com/anycable/anycable-client/blob/master/packages/core/cable/index.d.ts) for the full list.
 
 ## Hotwire integration
 

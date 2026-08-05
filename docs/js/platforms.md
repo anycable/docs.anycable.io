@@ -42,14 +42,14 @@ const cable = createCable('wss://cable.example.com/cable', {
 ```
 
 Since headers are available here, consider the `header` [auth
-strategy](./authentication.md#choose-how-the-token-travels) instead of query
+strategy](./authentication.md#choose-how-the-token-is-sent) instead of query
 parameters.
 
 ## Long polling fallback
 
-WebSockets still get blocked by some corporate firewalls and proxies. The
-`@anycable/long-polling` package adds an HTTP long-polling transport that
-kicks in when the WebSocket connection fails:
+Some corporate firewalls and proxies block WebSockets. The
+`@anycable/long-polling` package adds an HTTP long-polling transport that is
+used when the WebSocket connection fails:
 
 ```js
 import { createCable } from '@anycable/web'
@@ -72,7 +72,7 @@ Constructor options (defaults shown):
 new LongPollingTransport(url, {
   cooldownPeriod: 500, // ms to wait before the next poll request
   sendBuffer: 500, // ms to buffer outgoing commands before sending
-  pingInterval: 30000, // ms between emulated pings (keeps the monitor calm)
+  pingInterval: 30000, // ms between emulated pings (so the monitor does not reconnect)
   credentials: 'same-origin', // fetch credentials mode
   fetchImplementation: fetch // a fetch-compatible function
 })
@@ -83,9 +83,10 @@ Long polling support on the server is an [AnyCable Pro](../pro.md) feature.
 See [long polling](../anycable-go/long_polling.md) for server configuration.
 :::
 
-Cookie-based auth caveat: with the `headers` authentication method, requests
-are sent with `credentials: "omit"`; cookies are only sent when using the
-`cookies` method (`credentials: "include"`).
+Cookie-based auth caveat: the `credentials` option controls whether cookies
+accompany the requests. The default `same-origin` sends cookies for same-origin
+requests. With the `headers` authentication method, requests are sent with
+`credentials: "omit"`; with the `cookies` method, `credentials: "include"`.
 
 ## Binary encoders (Pro)
 
@@ -132,7 +133,8 @@ with `MsgpackEncoder`, or `actioncable-v1-ext-protobuf` with
   ```
 
 - The packages are ESM-only, with no CommonJS builds planned; tools like
-  [commonizer](https://github.com/wintercounter/commonizer) can bridge the gap.
+  [commonizer](https://github.com/wintercounter/commonizer) can generate
+  CommonJS versions.
 - The long-polling package relies on `fetch` and `AbortController`; polyfill
   them for legacy browsers.
 
