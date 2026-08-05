@@ -51,6 +51,52 @@ You can use AnyCable as a real-time server for Turbo Streams as follows:
 
 With this setup, you can use `@hotwired/turbo-rails` or [@anycable/turbo-stream][] JavaScript libraries in your application without any modification.
 
+## Using the AnyCable client with Turbo
+
+The default `@hotwired/turbo-rails` package is hard-wired to the Action Cable
+client. The [@anycable/turbo-stream][] package activates
+`<turbo-cable-stream-source>` elements with an AnyCable cable instance instead,
+so Turbo Streams benefit from [reliable streams](../js/reliability.md),
+[token refresh](../js/authentication.md), and the rest of the SDK:
+
+```js
+// IMPORTANT: import turbo, not turbo-rails; turbo-rails registers
+// the stream source element itself and cannot be overridden
+import '@hotwired/turbo'
+import { start } from '@anycable/turbo-stream'
+import cable from 'cable'
+
+start(cable)
+```
+
+No server-side changes are required; custom channel classes and subscription
+params work the same way as with `@hotwired/turbo-rails`. One deliberate
+difference: stream elements on temporary Turbo cache pages are skipped, which
+avoids subscribe/unsubscribe churn during navigation.
+
+Two options are worth enabling in most apps:
+
+- **Delayed unsubscribe.** During Turbo Drive navigation, the same stream
+  source often appears in both the old and the new HTML. Postponing the
+  unsubscribe keeps the subscription alive across the swap, so no commands are
+  wasted and no messages are lost in between:
+
+  ```js
+  start(cable, { delayedUnsubscribe: true }) // default delay is 300ms
+  ```
+
+- **Broadcasts to others.** Attach the current WebSocket session ID to every
+  Turbo request as the `X-Socket-ID` header, so the backend can exclude the
+  initiator from a broadcast (see [Action Cable
+  extensions](../rails/extensions.md#broadcast-to-others)):
+
+  ```js
+  start(cable, { requestSocketIDHeader: true })
+  ```
+
+For custom channel classes and custom tag names, see the [package
+docs][@anycable/turbo-stream].
+
 ## Turbo Streams over Server-Sent Events
 
 AnyCable supports [Server-Sent Events](../anycable-go/sse.md) (SSE) as a transport protocol. This means that you can use Turbo Streams with AnyCable without WebSockets and Action Cable (or AnyCable) client libraries—just with the help of the browser native `EventSource` API.

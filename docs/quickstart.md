@@ -67,7 +67,7 @@ INF Handle WebSocket connections at http://localhost:8080/cable
 ### 2. Connect a client
 
 Subscribe to a stream named `chat/1` using the
-[AnyCable client SDK](https://github.com/anycable/anycable-client):
+[AnyCable client SDK](./guides/client-side.md):
 
 ```js
 import { createCable } from '@anycable/web'

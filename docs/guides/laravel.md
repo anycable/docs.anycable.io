@@ -79,9 +79,35 @@ import { EchoCable } from "@anycable/echo";
 window.Echo = new Echo({
   broadcaster: EchoCable,
   cableOptions: {
-    url: url: import.meta.env.VITE_WEBSOCKET_URL || 'ws://localhost:8080/cable',
+    url: import.meta.env.VITE_WEBSOCKET_URL || 'ws://localhost:8080/cable',
   },
-  // other configuration options such as auth, etc
+  auth: {
+    headers: {
+      'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
+    },
+  },
+});
+```
+
+`EchoCable` uses the extended AnyCable protocol (`actioncable-v1-ext-json`) by
+default, so presence and [streams history](/anycable-go/reliable_streams.md)
+work out of the box.
+
+If you want to use the connection outside of Echo too (for example, for
+[whispering](/js/presence.md#whisper-client-to-client) or direct stream
+subscriptions), create the cable yourself and hand it to Echo:
+
+```js
+import { createCable } from "@anycable/web";
+import { EchoCable } from "@anycable/echo";
+
+const cable = createCable('ws://localhost:8080/cable', {
+  protocol: 'actioncable-v1-ext-json',
+});
+
+window.Echo = new Echo({
+  broadcaster: EchoCable,
+  cable,
 });
 ```
 

@@ -16,7 +16,7 @@ so a reconnecting client catches up on exactly what it missed.
 
 How it works: with [reliable streams](./anycable-go/reliable_streams.md) enabled
 (the `broker` preset), every broadcast is tagged with a sequential `offset` and
-an `epoch`. The [client SDK](https://github.com/anycable/anycable-client) tracks
+an `epoch`. The [client SDK](./js/reliability.md) tracks
 the last offset it saw and, on reconnect, requests history from that point. The
 server replays the missed messages and acknowledges with `confirm_history`. If
 history is no longer available, the client gets `reject_history` and can fall

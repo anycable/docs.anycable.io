@@ -94,7 +94,11 @@ The full documentation could be found [here](https://docs.anycable.io/edge/rails
 
 ### JavaScript integration
 
-> 🚧 Presence support in [anycable-serverless-js](https://github.com/anycable/anycable-serverless-js) is coming soon.
+The AnyCable JS SDK provides a full client-side presence API
+(`channel.presence.join/info/leave` and presence events); see the
+[client documentation](../js/presence.md).
+
+> 🚧 Backend presence helpers in [anycable-serverless-js](https://github.com/anycable/anycable-serverless-js) are coming soon; the client-side API above works without them.
 
 ## Presence for Hotwire
 
