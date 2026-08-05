@@ -150,9 +150,9 @@ endpoint with a key).
 
 ## Rails {#rails}
 
-For Rails, AnyCable is a drop-in replacement for Action Cable. It runs your
-existing channels over [RPC](./anycable-go/rpc.md), so your `app/channels` code
-stays the same.
+For Rails, AnyCable is a drop-in replacement for Action Cable. It [runs your
+existing channels](./anycable-go/rpc.md), so your `app/channels` code stays
+the same.
 
 ```sh
 bundle add anycable-rails
@@ -166,7 +166,7 @@ anycable-go
 ```
 
 You can also use Rails in [standalone mode](./anycable-go/signed_streams.md)
-(no RPC) for Hotwire and Turbo Streams.
+for Hotwire and Turbo Streams.
 
 ## Laravel {#laravel}
 
