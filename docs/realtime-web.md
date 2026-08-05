@@ -78,9 +78,12 @@ its own. These are the definitions used throughout the AnyCable documentation.
   receiver must tolerate an occasional duplicate. Socket.IO offers this as an
   opt-in through acknowledgments and its retries option.
 - **Exactly-once delivery** guarantees that every message arrives, and arrives
-  a single time, which requires deduplication on top of retries; Ably
-  implements it by assigning every message a unique serial number and
-  discarding any resend whose serial it has already seen.
+  a single time, which requires deduplication on top of retries. Ably
+  implements it by assigning every message a unique serial number, and
+  AnyCable achieves it through its server and client SDK working together:
+  every broadcast in a reliable stream carries an incrementing offset, and a
+  reconnecting client resumes from the last offset it saw, with neither a gap
+  nor a repeat.
 - **Connection state recovery** is Socket.IO's name for restoring a briefly
   disconnected client's state, including its subscriptions and the events it
   missed; Ably calls the same idea resuming a connection, and AnyCable
@@ -94,7 +97,9 @@ its own. These are the definitions used throughout the AnyCable documentation.
   subscription by verifying the signature instead of calling the application.
 - A **[reliable stream](./anycable-go/reliable_streams.md)** is a stream whose
   recent history the server retains, so that a client reconnecting after a
-  network drop receives every message it missed, in the original order.
+  network drop receives every message it missed, in the original order;
+  paired with the AnyCable client SDK, it upgrades delivery from at-most-once
+  to exactly-once.
 - A **[whisper](./js/presence.md)** is a message that one client sends directly
   to the other subscribers of a stream through the realtime server, without
   involving the backend application; typing indicators and live cursor
