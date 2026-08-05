@@ -72,6 +72,7 @@ erlgrpc
 fastlane
 fintech
 graphql-anycable
+graphql-ruby
 graphql-ws
 grpc
 grpc-go

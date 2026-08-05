@@ -100,6 +100,7 @@ export default withMermaid(defineConfig({
           { text: 'Presence & whispering', link: '/js/presence' },
           { text: 'Node.js, React Native & fallbacks', link: '/js/platforms' },
           { text: 'TypeScript & testing', link: '/js/testing' },
+          { text: 'GraphQL subscriptions', link: '/js/graphql' },
           { text: 'Serverless backends (server SDK)', link: '/guides/serverless' },
           { text: 'Source: anycable-client', link: 'https://github.com/anycable/anycable-client' },
           { text: 'Source: anycable-serverless-js', link: 'https://github.com/anycable/anycable-serverless-js' },
