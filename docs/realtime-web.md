@@ -88,6 +88,13 @@ its own. These are the definitions used throughout the AnyCable documentation.
   disconnected client's state, including its subscriptions and the events it
   missed; Ably calls the same idea resuming a connection, and AnyCable
   provides it through reliable streams backed by the server's stream history.
+- A **reconnection avalanche** (also known as a thundering herd) happens when
+  a restart or network incident disconnects thousands of clients at once and
+  they all try to reconnect at the same moment, hitting the servers hardest
+  exactly when they are weakest. Clients defend against it by reconnecting
+  with exponential backoff and random jitter, which the AnyCable client SDK
+  applies by default, and servers defend by spreading disconnects over the
+  shutdown period, a mode AnyCable Pro calls slow drain.
 - **[Presence](./anycable-go/presence.md)** is the live roster of clients
   subscribed to a stream, kept accurate through heartbeats and expiry, and
   delivered to applications as join and leave events.
@@ -95,11 +102,20 @@ its own. These are the definitions used throughout the AnyCable documentation.
   accompanied by a cryptographic signature that the application generates with
   a secret key, letting a realtime server such as AnyCable authorize the
   subscription by verifying the signature instead of calling the application.
+- **[RPC](./anycable-go/rpc.md)** (remote procedure call) is the integration
+  mode in which the realtime server delegates decisions to the application:
+  when a client connects, subscribes, or performs an action, AnyCable calls
+  the application code and applies its verdict, which is how existing Rails
+  Action Cable channels work with AnyCable unchanged.
 - A **[reliable stream](./anycable-go/reliable_streams.md)** is a stream whose
   recent history the server retains, so that a client reconnecting after a
   network drop receives every message it missed, in the original order;
   paired with the AnyCable client SDK, it upgrades delivery from at-most-once
   to exactly-once.
+- The **[broker](./anycable-go/broker.md)** is the component of a realtime
+  server that keeps recent stream history and session state in a short-lived
+  cache, turning a bare transport into a delivery system; AnyCable's built-in
+  broker is what makes reliable streams and resumable sessions possible.
 - A **[whisper](./js/presence.md)** is a message that one client sends directly
   to the other subscribers of a stream through the realtime server, without
   involving the backend application; typing indicators and live cursor
