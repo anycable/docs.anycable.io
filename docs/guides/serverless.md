@@ -193,8 +193,8 @@ class CableApplication extends Application {
 // Create an instance of the class to use in HTTP handlers (see the next section)
 const app = new CableApplication();
 
-// Register channel
-app.register("chat", ChatChannel);
+// Register a channel instance under the identifier clients subscribe with
+app.registerChannel("chat", new ChatChannel());
 ```
 
 To connect your channels to an AnyCable server, you MUST add AnyCable API endpoint to your HTTP server (or serverless function). The SDK provides HTTP handlers for that.
