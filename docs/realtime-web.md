@@ -98,6 +98,12 @@ its own. These are the definitions used throughout the AnyCable documentation.
 - **[Presence](./anycable-go/presence.md)** is the live roster of clients
   subscribed to a stream, kept accurate through heartbeats and expiry, and
   delivered to applications as join and leave events.
+- A **[JWT](./anycable-go/jwt_identification.md)** (JSON Web Token) is a
+  compact token, cryptographically signed by its issuer, that encodes claims
+  such as a user's identity so that any party holding the matching key can
+  verify them without a database lookup. In realtime systems the application
+  issues a JWT and the realtime server verifies it during the handshake,
+  authenticating the connection without calling the application.
 - A **[signed stream](./anycable-go/signed_streams.md)** is a stream name
   accompanied by a cryptographic signature that the application generates with
   a secret key, letting a realtime server such as AnyCable authorize the
