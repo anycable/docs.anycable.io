@@ -44,6 +44,10 @@ anycable-plus login
 anycable-plus cable create my-app --public --wait
 ```
 
+The last command prints your cable's WebSocket URL and broadcast URL. The
+steps below work the same for a hosted server: use those two URLs in place
+of the `localhost` ones (and skip running `anycable-go`).
+
 ## Any backend (standalone pub/sub) {#any-backend}
 
 In standalone mode AnyCable handles connections and message delivery on its own.
