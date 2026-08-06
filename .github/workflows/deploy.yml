@@ -68,11 +68,14 @@ jobs:
         with:
           name: dist
           path: docs/.vitepress/dist
-      - uses: nwtgck/actions-netlify@v3
+      - name: Setup Node
+        uses: actions/setup-node@v6
         with:
-          publish-dir: './docs/.vitepress/dist'
-          netlify-config-path: './netlify.toml'
-          production-deploy: true
+          node-version: 24
+      # Deploy via the Netlify CLI: unlike nwtgck/actions-netlify, it bundles
+      # and ships edge functions (docs/netlify/edge-functions) with the deploy.
+      - name: Deploy to Netlify
+        run: npx -y netlify-cli deploy --prod --dir docs/.vitepress/dist --message "GitHub Actions ${{ github.sha }}"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}

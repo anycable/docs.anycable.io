@@ -12,10 +12,14 @@ export default async (request: Request, context: any) => {
 
   const url = new URL(request.url);
   const path = url.pathname.replace(/\/+$/, "");
-  // The root page and asset-like paths have no Markdown mirror
-  if (!path || /\.[a-z0-9]+$/i.test(path)) return;
+  // Asset-like paths have no Markdown mirror
+  if (/\.[a-z0-9]+$/i.test(path)) return;
 
-  const mdUrl = new URL(`${path}.md`, url.origin);
+  // The landing page has no Markdown mirror either; serve the agent-facing
+  // index (llms.txt) as its Markdown representation.
+  const mdUrl = path
+    ? new URL(`${path}.md`, url.origin)
+    : new URL("/llms.txt", url.origin);
   const response =
     typeof context.rewrite === "function"
       ? await context.rewrite(mdUrl)
