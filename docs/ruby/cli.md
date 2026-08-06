@@ -1,4 +1,6 @@
-# AnyCable CLI
+# AnyCable Ruby CLI
+
+> This page covers the `anycable` command that ships with the AnyCable Ruby gem. Looking for the CLI of the AnyCable+ managed service? See [AnyCable+ CLI](../plus/cli.md).
 
 [AnyCable Ruby](https://github.com/anycable/anycable) comes with a gRPC server for AnyCable and a CLI to run this server along with your Ruby application.
 

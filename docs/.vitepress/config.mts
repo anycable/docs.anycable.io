@@ -123,6 +123,7 @@ export default withMermaid(defineConfig({
           { text: 'Editions', link: '/editions' },
           { text: 'Going Pro', link: '/pro' },
           { text: 'Install Pro', link: '/pro/install' },
+          { text: 'AnyCable+ CLI', link: '/plus/cli' },
         ]
       },
       {
