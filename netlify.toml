@@ -2,3 +2,5 @@
   base="docs"
   publish = "docs/.vitepress/dist"
   command="npm run build"
+  # Relative to base; declared explicitly so CLI deploys pick the functions up.
+  edge_functions = "netlify/edge-functions"

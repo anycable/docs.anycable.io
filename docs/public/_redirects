@@ -41,3 +41,7 @@
 
 # Misspelling of broadcast_adapters.
 /ruby/broadast_adapters    /ruby/broadcast_adapters        301
+
+# Markdown mirror for the landing page: agents requesting /index.md get the
+# llms.txt index (every other page has a real .md mirror next to it).
+/index.md              /llms.txt                           200
