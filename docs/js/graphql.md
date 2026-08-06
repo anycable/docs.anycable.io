@@ -21,8 +21,10 @@ const wsLink = new GraphQLWsLink(createClient({
 }))
 ```
 
-This is the official Apollo WebSocket link configuration; the legacy
-[subscriptions-transport-ws][] protocol is supported, too.
+This is the [official Apollo WebSocket link configuration][apollo-subscriptions];
+see Apollo's guide for wiring the link into your `ApolloClient` (splitting
+subscription traffic from queries). The legacy [subscriptions-transport-ws][]
+protocol is supported, too.
 
 ## Authenticate
 
@@ -67,6 +69,7 @@ passing a consumer created by the [AnyCable JS SDK](../guides/client-side.md#mig
 - [JWT authentication (server)](../anycable-go/jwt_identification.md)
 - [AnyCable JS SDK overview](../guides/client-side.md)
 
+[apollo-subscriptions]: https://www.apollographql.com/docs/react/data/subscriptions/
 [graphql-ws]: https://github.com/enisdenjo/graphql-ws
 [subscriptions-transport-ws]: https://github.com/apollographql/subscriptions-transport-ws
 [graphql-ruby]: https://graphql-ruby.org
