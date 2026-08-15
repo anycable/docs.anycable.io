@@ -1,8 +1,9 @@
+# No base directory: with base=docs the CLI bundled edge functions relative to
+# the base but assembled the deploy from the repo root, shipping 0 of them.
+# Root-relative paths keep build, bundling, and deploy consistent.
 [build]
-  base="docs"
   publish = "docs/.vitepress/dist"
-  command="npm run build"
-  # Relative to the repo root (like publish), not to base.
+  command = "npm --prefix docs run build"
   edge_functions = "docs/netlify/edge-functions"
 
 # The /index.md rewrite serves llms.txt, which would otherwise arrive as text/plain.
