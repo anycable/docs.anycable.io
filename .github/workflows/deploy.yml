@@ -64,18 +64,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: docs/.vitepress/dist
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
           node-version: 24
+          cache: npm
+          cache-dependency-path: docs/package-lock.json
+      - name: Install dependencies
+        working-directory: docs/
+        run: npm ci
       # Deploy via the Netlify CLI: unlike nwtgck/actions-netlify, it bundles
       # and ships edge functions (docs/netlify/edge-functions) with the deploy.
+      # The CLI runs the build from netlify.toml itself, so deps must be installed.
       - name: Deploy to Netlify
-        run: npx -y netlify-cli deploy --prod --dir docs/.vitepress/dist --message "GitHub Actions ${{ github.sha }}"
+        run: npx -y netlify-cli deploy --prod --message "GitHub Actions ${{ github.sha }}"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
