@@ -103,7 +103,7 @@ broadcast("chat/1", {"text": "Hello from Python"})
 > when it has an application secret: `ANYCABLE_SECRET` in the server's
 > environment, as in step 1, or the `--secret` flag. `--jwt_secret` and
 > `--streams_secret` alone leave the endpoint on port `8090` with no
-> authorization. If you start AnyCable from a Procfile, Docker Compose or
+> authorization. If you start AnyCable from a `Procfile`, Docker Compose or
 > systemd, make sure `ANYCABLE_SECRET` reaches the server process. See
 > [securing the broadcast endpoint](../anycable-go/broadcasting.md#securing-http-endpoint)
 > for details and for using an explicit `--broadcast_key`.
